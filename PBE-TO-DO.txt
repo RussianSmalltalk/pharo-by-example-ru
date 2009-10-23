@@ -1,0 +1,69 @@
+-----------------------------------------------------------------------------
+		$Id: PBE-TO-DO.txt 29473 2009-10-17 09:04:10Z oscar $
+-----------------------------------------------------------------------------
+			This is the TODO list for "Pharo By Example",
+		listing pending actions and current status of chapters.
+-----------------------------------------------------------------------------
+PHARO BOOK 1
+-----------------------------------------------------------------------------
+TO DO:
+- Incorporate Thomas Schrader's formatting suggestions? (See Regex/ToSh-Regex.tex)
+-----------------------------------------------------------------------------
+TO DO for old chapters
+----------------------
+All chapters fixed except:
+* First App -- fix pretty-print instructions; file-out package
+-----------------------------------------------------------------------------
+Check/report these pharo bugs ...
+- Refactoring scope super-sends of Morphic package broken (issue 1311)
+- pretty print (r) shortcut does nothing (issue 1312)
+- context-clicking on process browser raises an error (issue 1313)
+-----------------------------------------------------------------------------
+PHARO BOOK 2
+-----------------------------------------------------------------------------
+AUTHORS: Alexandre Bergel, Andrew Black, Stéphane Ducasse, Oscar Nierstrasz
+WITH: Damien Cassou, Jannick Menanteau, Damien Pollet, David Roethlisberger
+REVIEWERS: Fabrizio Perin, Jorge Ressia, Lukas Renggli
+-----------------------------------------------------------------------------
+STATUS OF NEW CHAPTERS
+----------------------
+* High priority for revision
++ Ready for public release
+- Draft or less
+
+[SW Development]
++ Monticello -- pharo-ready -> STEF should check this?
+- Debugging (outline only!) -> STEF
+- Profiling -- Short draft. To be rewritten. -> ALEX * ANDREW
+- Installer and other cool packages: STEF has a draft (should continue)
+
+[Frameworks]
+- Magma (STEF ported the first version of the tutorial with the rights;
+  to be rewritten with Chris Muller's help)
++ RegEx -- stable, stable, pharo-ready
++ OmniBrowser -- stable
+
+[Language]
++ Exceptions -- stable -- do we need to replace BlockContext by BlockClosure? What about MethodContext?
+- Concurrency -- To do -> STEF
+- Announcements (dependency mechanism) -- To do -> STEF (STEF wrote a first little draft)
+
+--- ABOVE: some stuff exists ; BELOW: not yet ---
+
+- Traits tutorial! -- STEF
+- Programming Pier -> OSCAR
+- We need a more practically oriented Morphic chapter.  The chapter in SBE 1 does not 	really show how to build a real GUI. [on -- from Mark Volkmann's comments]
+
+- Reflective programming (may be something for the tutorial organized by Ralf on transformation):  STEF: example of ActTalk
+
+[Building other languages]
+- New Compiler
+- Tutorial on Smacc 
+- Abstract Interpreter
+- Composable Parsers (should ask adrian kuhn for his blog in Smalltalk) * 
+
+Idioms and Style -- OSCAR ?
+	- explain why getters and setters violate encapsulation
+Inheritance/Idioms -- To do. -> ANDREW
+Common Errors -- To do. -> ???
+-----------------------------------------------------------------------------
