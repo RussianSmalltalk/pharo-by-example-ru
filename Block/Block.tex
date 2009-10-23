@@ -1,0 +1,318 @@
+% $Author: oscar $
+% $Date: 2009-08-16 16:37:09 +0200 (Sun, 16 Aug 2009) $
+% $Revision: 28477 $
+
+% HISTORY:
+% 2008-01-19 - Stef started
+% 2008-12-26 - Jannick Menanteau added text
+
+%=================================================================
+\ifx\wholebook\relax\else
+% --------------------------------------------
+% Lulu:
+	\documentclass[a4paper,10pt,twoside]{book}
+	\usepackage[
+		papersize={6.13in,9.21in},
+		hmargin={.75in,.75in},
+		vmargin={.75in,1in},
+		ignoreheadfoot
+	]{geometry}
+	\input{../common.tex}
+	\setboolean{lulu}{true}
+% --------------------------------------------
+% A4:
+%	\documentclass[a4paper,11pt,twoside]{book}
+%	\input{../common.tex}
+%	\usepackage{a4wide}
+% --------------------------------------------
+    \graphicspath{{figures/} {../figures/}}
+	\begin{document}
+\fi
+%=================================================================
+%\renewmessage{\nnbb}[2]{} % Disable editorial comments
+\sloppy
+%=================================================================
+\chapter{Block and Dynamic Behavior of Smalltalk-Runtime}\chalabel{blocks}
+
+Blocks are a powerful and essentail feature of Smalltalk. Without them it
+would be difficult to have a so small and compact syntax. The use of blocks in Smalltalk
+is the key to get conditional and loops not hardcoded in the language syntax but just 
+simple messages. 
+
+In addition block are  effective to improve the readability, reusability and efficiency of code. 
+However, the dynamic runtime semantics of Smalltalk is often not well documented. Blocks in presence of
+return statements behave like an excepting mechanism. 
+
+In this chapter we will discuss some basic block behavior such as the notion of a static environment 
+defined at block compiled time. But let us first recall some basics
+
+\section{Basics}
+
+value
+value:
+....
+
+ifTrue:ifFalse: 
+
+
+
+\section{Variables and Blocks}
+In Smalltalk, private variables (such as self, instance variables, temporaries and arguments) are 
+lexically scoped. These variables are bound in the context in which the block that contains them is defined, rather than the context in which the block is evaluated.  We call the context (set of bindings) in which a block is defined, the block home context,
+
+Define a class name BExp (for BlockExperience) and the following methods
+
+\begin{code}{}
+BExp>>testScope 
+	| t | 
+	t := 42. 
+	self testBlock: [Transcript show: t printString] 
+	
+BExp>>testBlock: aBlock 
+	| t | 
+	t := nil. 
+	aBlock value 
+\end{code}
+
+Execute \ct{BExp new testScope}
+
+Evaluating the \ct{testScope} message will print 42 in the Transcript. What you see is that the value of the temporary variable \ct{t} defined in method testScope is the one used.
+
+More blablablab here.
+
+
+\begin{code}{}
+BExp>>testScope2 
+	| t | 
+	t := 42. 
+	self testBlock: [t := 33.
+					Transcript show: t printString] 	
+	
+BExp>>testBlock: aBlock
+	| t | 
+	t := nil. 
+	aBlock value 
+\end{code}
+
+This experience shows that a block is not only an anonymous method but one with an execution context or environment. In this environment temporary variables are bound with the values they hold when the block 
+is defined. Naturally we can expect that method arguments are also bound and also self and instance variables of the class in which the method defining a block is. Let's illustrate these points now. 
+
+For method arguments
+
+\begin{code}{}
+BExp>>testScopeArg: arg
+	"self new testScopeArg: 'foo'"
+	
+	self testScopeArgValue: [Transcript show: arg ; cr]
+
+BExp>>testScopeArgValue: aBlock
+	| arg | 
+	arg := 'zork'.
+	aBlock value
+\end{code}
+
+Now executing \ct{self new testScopeArg: 'foo'} prints foo even if in the method testScopeArgValue: the temporary arg is redefined. 
+
+
+For binding of self, we can simply define a new class and a couple of method
+
+Add the instance variable x to the class BExp and define the initialize method
+as follows:
+
+\begin{code}{}
+BExp>>initialize
+	x := 666.
+\end{code}	
+
+Define another class 
+\begin{code}{}
+Object subclass: #BEXp2
+	instanceVariableNames: 'x'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'BlockExperiment'
+\end{code}
+
+
+\begin{code}{}
+BExp2>>initialize
+	x := 69.
+
+BExp2>>estScopeSelf: aBlock
+	aBlock value
+\end{code}
+
+Then define the emthods that will invoke the methods defined in BExp2.
+\begin{code}{}	
+BExp>>testScopeSelf
+	"self new testScopeSelf"
+	self testScopeSelf: [Transcript show: self printString ; show: x; cr]
+
+BExp>>testScopeSelf: aBlock
+	BEXp2 new testScopeSelf: aBlock
+\end{code}	
+	
+	
+
+Now when we execute \ct{BExp new testScopeSelf} and we see that a BExp gets printed, showing that a block captures self. 
+
+
+\section{Basics on Return}
+
+A return statement allows one to return a different value than the receiver of the message.
+Return expressions behave 
+
+\begin{code}{}
+foo
+	
+	#(1 2 3 4) do: [:each | Transcript show: each printString. 
+						each = 3 
+							ifTrue: [^ 3]]
+\end{code}
+
+
+
+\section{Returning from inside a block}
+It is not a really good idea to have return statement in a block that you pass or store into instance variables and we will explain why in this section. 
+
+In certain Smalltalk dialects, you can have expressions after a return statement in a block, in Pharo \ct{^} should be the last statement of a block body. You should get a compile error if you type and compile the following expression. 
+
+\begin{code}{}
+[ Transcript show: 'two'.
+  ^ self.  
+  Transcript show: 'not printed' ]
+\end{code}
+
+Now to see that a return is really escaping the current execution you 
+\begin{code}{}
+testExplicitReturn
+	"self new testExplicitReturn a BEXp"
+	
+	Transcript show: 'one'.
+	0 isZero ifTrue: [ Transcript show: 'two'. ^ self].
+	Transcript show: ' not printed'
+-> one two
+\end{code}
+
+Simple block \ct{[:x :y| x*x. x+y]} returns the value of the last statement to the method that sends it the message value
+
+Continuation blocks \ct{[:x :y| ^ x + y]} returns the value to the method that activated its homeContext. As a block is always evaluated in its homeContext, it is possible to attempt to return from a method which has already returned using other return. This runtime error condition is trapped by the VM.
+
+\begin{code}{}
+Object>>returnBlock
+	^[^self]
+
+Object new returnBlock
+-> Exception
+\end{code}	
+	
+	
+\begin{code}{}
+|b| 
+b:= [:x| Transcript show: x. x].
+b value: a. b value: b.
+b:= [:x| Transcript show: x. ^x].
+b value: a. b value: b.
+\end{code}
+ 
+Continuation blocks cannot be executed several times!
+
+\begin{code}{}
+Test>>testScope
+	   |t|
+    	t := 15.
+	   self testBlock: [Transcript show: "--",t printString, "--".
+	   ^35 ].
+    ^ 15
+
+Test>>testBlock:aBlock
+	   |t|
+	   t := 50.
+	   aBlock value.
+	   self halt.
+\end{code}
+
+\begin{code}{}
+Test new testBlock 	
+print: *15* and not halt. 
+return: 35
+\end{code}
+
+
+\begin{code}{}
+|val|
+val := [:exit |
+		|goSoon|
+		goSoon := Dialog confirm: 'Exit now?'.
+		goSoon ifTrue: [exit value: 'Bye'].
+		Transcript show: 'Not exiting'.
+		'last value'] myValueWithExit.
+Transcript show: val.
+val
+yes -> print Bye and return  Bye
+no -> print Not Exiting 2 and return 2
+\end{code}
+
+\begin{code}{}
+BlockClosure>>myValueWithExit
+	      self value: [:arg| ^arg ].
+      ^ '2'
+BlockClosure>>myValueWithExit
+ ^ self value: [:arg | ^ arg]        
+\end{code}
+
+
+
+\paragraph{Storing a block}
+
+
+\section{may be to trash}
+VM represents the state of execution as Context objects
+for method MethodContext
+for block BlockContext
+
+aContext contains a reference to the context from which it is invoked, the receiver arguments, temporaries in the Context
+
+We call home context the context in which a block is defined
+
+
+\paragraph{}
+Arguments, temporaries, instance variables are lexically scoped in Smalltalk
+These variables are bound in the context in which the block is defined and not in the context in which the block is evaluated
+
+
+\section{About closure....}
+lukas tests illustrated 
+
+\begin{code}{}
+(let* ((index 0)
+       (y (lambda () index)))
+  (begin
+    (set! index 4)
+    (y)))
+\end{code}
+
+
+\section{Conclusion}
+
+
+%=========================================================
+\ifx\wholebook\relax\else
+   \bibliographystyle{jurabib}
+   \nobibliography{scg}
+   \end{document}
+\fi
+
+%=================================================================
+\ifx\wholebook\relax\else\end{document}\fi
+%=================================================================
+
+%-----------------------------------------------------------------
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-PDF-mode: t
+%%% ispell-local-dictionary: "english"
+%%% End:
