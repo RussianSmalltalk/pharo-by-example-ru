@@ -11,7 +11,8 @@
 % Allows book to be generated in multiple formats.
 %=============================================================
 %:Packages
-\usepackage[T1]{fontenc}  %%%%%% really important to get the code directly in the text!
+\usepackage[T2A]{fontenc}  %%%%%% really important to get the code directly in the text!
+\usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 %\usepackage[scaled=0.85]{bookmanx} % needs another scale factor if used with \renewcommand{\sfdefault}{cmbr}
 \usepackage{palatino}
@@ -19,7 +20,7 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{theorem}
-\usepackage[english]{babel}
+\usepackage[english,russian]{babel}
 % ON: pdfsync breaks the use of p{width} for tabular columns!
 \ifdefined\usepdfsync\usepackage{pdfsync}\fi % Requires texlive 2007
 %=============================================================
