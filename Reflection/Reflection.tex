@@ -194,20 +194,25 @@ SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Iterating over instance variables}
+%\subsection{Iterating over instance variables}
+\subsection{Итерация по переменным экземпляра}
 
 \mthindex{Object}{instanceVariableValues}
-Let us consider the message \ct!instanceVariableValues!, which returns a collection of all values of instance variables defined by this class, excluding the inherited instance variables.
-For instance:
+%Let us consider the message \ct!instanceVariableValues!, which returns a collection of all values of instance variables defined by this class, excluding the inherited instance variables.
+Рессмотрим сообщение \ct!instanceVariableValues!, которое возвращает коллекцию, содержащую значения всех переменных экземпляра данного класса, кроме унаследованных от суперкласса.
+%For instance:
+Например:
 \begin{code}{@TEST}
 (1@2) instanceVariableValues --> an OrderedCollection(1 2)
 \end{code}
 
-The method is implemented in \ct{Object} as follows:
+%The method is implemented in \ct{Object} as follows:
+Этот метод определён в классе \ct{Object} следующим образом:
 \needlines{9}
 \begin{code}{}
 Object>>>instanceVariableValues
-	"Answer a collection whose elements are the values of those instance variables of the receiver which were added by the receiver's class."	
+	%"Answer a collection whose elements are the values of those instance variables of the receiver which were added by the receiver's class."	
+	"Возвращает список значений переменных объекта-получателя, определённых в его классе"
 	| c |
 	c := OrderedCollection new.
 	self class superclass instSize + 1
@@ -216,18 +221,25 @@ Object>>>instanceVariableValues
 	^ c
 \end{code}
 
-This method iterates over the indices of instance variables that the class defines, starting just after the last index used by the superclasses.
-(The method \ct!instSize! returns the number of all named instance variables that a class defines.)
+%This method iterates over the indices of instance variables that the class defines, starting just after the last index used by the superclasses.
+Этот метод осуществляет итерацию по индексам переменных экземпляра, определённых его классом, начиная с индекса следующего за последним, используемым суперклассом.
+%(The method \ct!instSize! returns the number of all named instance variables that a class defines.)
+(Метод \ct!instSize! возвращает количество поименованных переменных экземпляра, определённых его классом.)
 
 %-----------------------------------------------------------------
-\subsection{Querying classes and interfaces}
+%\subsection{Querying classes and interfaces}
+\subsection{Запросы к классам и интерфейсам}
 
-The development tools in \pharo (code browser, debugger, inspector...) all use the reflective features we have seen so far.
+%The development tools in \pharo (code browser, debugger, inspector...) all use the reflective features we have seen so far.
+Все инструменты разработчика в \pharo (браузер кода, отладчик, инспектор...) испольуют рефлексивные возможности рассмотреные выше.
 
-Here are a few other messages that might be useful to build development tools:
+%Here are a few other messages that might be useful to build development tools:
+Далее перечислены несколько других сообщений, которые могут быть полезны при разработке инструментов разработчика:
 
-\lct{isKindOf: \emph{aClass}} returns true if the receiver is instance of \lct{\emph{aClass}} or of one of its superclasses.
-For instance:
+%\lct{isKindOf: \emph{aClass}} returns true if the receiver is instance of \lct{\emph{aClass}} or of one of its superclasses.
+\lct{isKindOf: \emph{aClass}} возвращает истину, если получатель является экземпляром класса \lct{\emph{aClass}} или одного из его суперклассов.
+%For instance:
+Например:
 \begin{code}{@TEST}
 1.5 class                     --> Float
 1.5 isKindOf: Number --> true
@@ -236,29 +248,38 @@ For instance:
 \mthindex{Object}{class}
 \mthindex{Object}{isKindOf:}
 
-\lct{respondsTo: \emph{aSymbol}} returns true if the receiver has a method whose selector is \lct{\emph{aSymbol}}.
-For instance:
+%\lct{respondsTo: \emph{aSymbol}} returns true if the receiver has a method whose selector is \lct{\emph{aSymbol}}.
+\lct{respondsTo: \emph{aSymbol}} возвращает истину, если получатель содержит метод, чей селектор совпадает с \lct{\emph{aSymbol}}.
+%For instance:
+Например:
 \needlines{3}
 \begin{code}{@TEST}
-1.5 respondsTo: #floor      --> true    "since Number implements floor"
+1.5 respondsTo: #floor      --> true    "т.к. Number реализует floor"
 1.5 floor                            --> 1
-Exception respondsTo: #, --> true    "exception classes can be grouped"
+Exception respondsTo: #, --> true    "классы исключений могут быть сгруппированы"
 \end{code}
 \mthindex{Object}{respondsTo:}
 
-\important{\emph{Caveat:} Although these features are especially useful for defining development tools, they are normally not appropriate for typical applications.
-Asking an object for its class, or querying it to discover which messages it understands, are typical signs of design problems, since they violate the principle of encapsulation.
-Development tools, however, are not normal applications, since their domain is that of software itself. As such these tools have a right to dig deep into the internal details of code.}
+%\important{\emph{Caveat:} Although these features are especially useful for defining development tools, they are normally not appropriate for typical applications.
+\important{\emph{Caveat:} Хотя эти возможности особенно полезны при создании инструментов разработчика, они обычно не используются в создании обычных приложений.
+%Asking an object for its class, or querying it to discover which messages it understands, are typical signs of design problems, since they violate the principle of encapsulation.
+Запрос у объекта его класса, или списка поддерживаемых сообщений -- типичные признаки плохого дизайна, т.к. это нарушает принцип инкапсуляции.
+%Development tools, however, are not normal applications, since their domain is that of software itself. As such these tools have a right to dig deep into the internal details of code.}
+Инструменты разработки, однако, не являются обычными приложениями, т.к. их предметная область само программное обеспечение. Это даёт им право глубоко проникать в детали кода.
 
 %There also exist mechanisms for introspecting on various parts of the run-time system, such as  the process scheduler, the memory manager and so on. For now we will focus on navigating through objects, classes and methods, and we will look more closely at rest of the runtime system in an other chapter.
 %\on{let's not mention this if we don't actually write such a chapter!}
 
 %-----------------------------------------------------------------
-\subsection{Code metrics}
+%\subsection{Code metrics}
+\subsection{Метрики кода}
 
-Let's see how we can use \st's introspection features to quickly extract some code metrics.
-Code \ind{metrics} measure such aspects as the depth of the inheritance hierarchy, the number of direct or indirect subclasses, the number of methods or of instance variables in each class, or the number of locally defined methods or instance variables.
-Here are a few metrics for the class \ct!Morph!, which is the superclass of all graphical objects in \pharo, revealing that it is a huge class, and that it is at the root of a huge hierarchy. Maybe it needs some refactoring! 
+%Let's see how we can use \st's introspection features to quickly extract some code metrics.
+Давайте посмотрим, как можно использовать возможности интроспекции \st для быстрого вычисления некоторых метрик кода.
+%Code \ind{metrics} measure such aspects as the depth of the inheritance hierarchy, the number of direct or indirect subclasses, the number of methods or of instance variables in each class, or the number of locally defined methods or instance variables.
+\ind{Метрики} кода измеряют такие аспекты, как глубина иерархии наследования, количество прямых и непрямых подклассов, количество методов или атрибутов для каждого класса или количество \ugh{локально определённых методов или атрибутов}.
+%Here are a few metrics for the class \ct!Morph!, which is the superclass of all graphical objects in \pharo, revealing that it is a huge class, and that it is at the root of a huge hierarchy. Maybe it needs some refactoring! 
+Вот некоторые метрики для класса \ct!Morph!, который является суперклассом для всех графических объектов в \pharo, показывающие, что это \ugh{огромный класс -- корень огромной иерархии}. Возможно, он нуждается в рефакторинге!
 
 \mthindex{Behavior}{allSuperclasses}
 \mthindex{Behavior}{allSelectors}
@@ -269,19 +290,22 @@ Here are a few metrics for the class \ct!Morph!, which is the superclass of all 
 \mthindex{Behavior}{allSubclasses}
 \mthindex{ClassDescription}{linesOfCode}
 \begin{code}{}
-Morph allSuperclasses size.  -->       2 "inheritance depth"
-Morph allSelectors size.        --> 1378 "number of methods"
-Morph allInstVarNames size. -->      6 "number of instance variables"
-Morph selectors size.             -->  998 "number of new methods"
-Morph instVarNames size.     -->      6 "number of new variables"
-Morph subclasses size.          -->    45 "direct subclasses"
-Morph allSubclasses size.      -->  326 "total subclasses"
-Morph linesOfCode.               --> 5968 "total lines of codeBANG"
+Morph allSuperclasses size.  -->       2 "глубина наследования"
+Morph allSelectors size.        --> 1378 "количество методов"
+Morph allInstVarNames size. -->      6 "количество переменных экземпляра"
+Morph selectors size.             -->  998 "количество методов определённых непосредственно в классе Morph"
+Morph instVarNames size.     -->      6 "количество переменных определённых непосредственно в классе Morph"
+Morph subclasses size.          -->    45 "прямые подклассы"
+Morph allSubclasses size.      -->  326 "всего подклассов"
+Morph linesOfCode.               --> 5968 "строк кода (БАБАХ!)"
 \end{code}
 
-One of the most interesting metrics in the domain of object-oriented languages is the number of methods that extend methods inherited from the superclass.
-This informs us about the relation between the class and its superclasses.
-In the next sections we will see how to exploit our knowledge of the runtime structure to answer such questions.
+%One of the most interesting metrics in the domain of object-oriented languages is the number of methods that extend methods inherited from the superclass.
+Одна из наиболее интересных метрик в объектно-ориентированных языках -- количество методов, расширяющих методы, унаследованные от суперкласса. 
+%This informs us about the relation between the class and its superclasses.
+Она показывает нам отношения класса и суперкласса.
+%In the next sections we will see how to exploit our knowledge of the runtime structure to answer such questions.
+В следующем разделе мы увидим, как использовать полученные знания о структурах времени выполнения для ответа на подобные вопросы.
 
 %======================================
 \section{Browsing code}
