@@ -425,7 +425,7 @@ SystemNavigation default browseAllImplementorsOf: #ifTrue:
 \end{figure}
 
 %Particularly useful are the methods \ct{browseAllSelect:} and \lct{browseMethodsWithSourceString:}.  Here are two different ways to browse all methods in the system that perform super sends (the first way is rather brute force; the second way is better and eliminates some false positives):
-Особенно полезны методы \ct{browseAllSelect:} и \lct{browseMethodsWithSourceString:}. Вот два разных способа найти все методы в системе, производящие \ugh{супер-посылку :)} (первый способ более прямолинейный, но второй более правильный, т.к. не выдаёт неверных результатов):
+В частности, полезны методы \ct{browseAllSelect:} и \lct{browseMethodsWithSourceString:}. Вот два разных способа найти все методы в системе, производящие \ugh{супер-посылку :)} (первый способ более прямолинейный, но второй более правильный, т.к. не выдаёт неверных результатов):
 \mthindex{SystemNavigation}{browseMethodsWithSourceString:}
 \mthindex{SystemNavigation}{browseAllSelect:}
 \begin{code}{}
@@ -434,35 +434,50 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 \end{code}
 
 %======================================
-\section{Classes, method dictionaries and methods}
+%\section{Classes, method dictionaries and methods}
+\section{Классы, словари методов и методы}
 
-Since classes are objects, we can inspect or explore them just like any other object.
+%Since classes are objects, we can inspect or explore them just like any other object.
+Т.к. классы также являются объектами, мы можем изучать и исследовать их как и любой другой объект.
 
 \mthindex{Object}{explore}
-\dothis{Evaluate \ct{Point explore}.}
+%\dothis{Evaluate \ct{Point explore}.}
+\dothis{Выполните \ct{Point explore}.}
 
-In \figref{CompiledMethod}, the \ind{explorer} shows the structure of class \clsind{Point}.
-You can see that the class stores its methods in a dictionary, indexing them by their selector.
-The selector \ct{#*} points to the decompiled \ind{bytecode} of \ct!Point>>>*!.
+%In \figref{CompiledMethod}, the \ind{explorer} shows the structure of class \clsind{Point}.
+На \figref{CompiledMethod} \ind{Explorer} показывает структуру класса \clsind{Point}.
+%You can see that the class stores its methods in a dictionary, indexing them by their selector.
+Вы можете видеть, что класс хранит свои методы в словаре, в котором ключом является селектор метода.
+%The selector \ct{#*} points to the decompiled \ind{bytecode} of \ct!Point>>>*!.
+Селектор \ct{#*} указывает на декомпилированный \ind{байткод} метода \ct!Point>>>*!.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=.5\linewidth]{CompiledMethod}
-	\caption{Explorer class \ct!Point! and the bytecode of its \ct!\#*! method.\figlabel{CompiledMethod}}
+	%\caption{Explorer class \ct!Point! and the bytecode of its \ct!\#*! method.\figlabel{CompiledMethod}}
+	\caption{Класс \ct!Point! в окне Explorer'а и байткод метода \ct!\#*!.\figlabel{CompiledMethod}}
 \end{figure}
 
-Let us consider the relationship between classes and methods.
-In \figref{MethodsAsObjects} we see that classes and metaclasses have the common superclass \ct{Behavior}. This is where \mthind{Behavior}{new} is defined, amongst other key methods for classes.
-Every class has a method dictionary, which maps method selectors to \ind{compiled methods}.
-Each compiled method knows the class in which it is installed.
-In \figref{CompiledMethod} we can even see that this is stored in an association in \ct{literal5}.
+%Let us consider the relationship between classes and methods.
+Рассмотрим связь между классами и методами.
+%In \figref{MethodsAsObjects} we see that classes and metaclasses have the common superclass \ct{Behavior}. This is where \mthind{Behavior}{new} is defined, amongst other key methods for classes.
+На \figref{MethodsAsObjects} мы можем видеть, что классы и метаклассы имеют общий суперкласс \ct{Behavior}, у которого среди прочих методов классов, определён метод \mthind{Behavior}{new}.
+%Every class has a method dictionary, which maps method selectors to \ind{compiled methods}.
+Каждый класс содержит словарь методов, который сопоставляет селекторы методов со скомпилированными методами (\ind{compiled methods}).
+%Each compiled method knows the class in which it is installed.
+Каждый скомпилированный метод "знает" какому классу он принадлежит.
+%In \figref{CompiledMethod} we can even see that this is stored in an association in \ct{literal5}.
+На \figref{CompiledMethod} мы можем даже видеть, \ugh{что этот класс хранится в ассоциации в \ct{literal5}}.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{MethodsAsObjects}
-	\caption{Classes, method dictionaries and compiled methods\figlabel{MethodsAsObjects}}
+	%\caption{Classes, method dictionaries and compiled methods\figlabel{MethodsAsObjects}}
+	\caption{Классы, словари методов и скомпилированные методы\figlabel{MethodsAsObjects}}
 \end{figure}
 
-We can exploit the relationships between classes and methods to pose queries about the system.
-For example, to discover which methods are newly introduced in a given class, \ie do not override superclass methods, we can navigate from the class to the \ind{method dictionary} as follows:
+%We can exploit the relationships between classes and methods to pose queries about the system.
+Мы можем использовать связь между классом и методом, чтобы \ugh{делать запросы к системе}.
+%For example, to discover which methods are newly introduced in a given class, \ie do not override superclass methods, we can navigate from the class to the \ind{method dictionary} as follows:
+Например, чтобы узнать, какие методы были добавлены в интересующий нас класс (помимо методов, переопределяющих методы суперкласса), мы можем перейти от класса к словарю методов (\ind{method dictionary}) следующим образом:
 \mthindex{Behavior}{methodDict}
 \begin{code}{}
 [:aClass| aClass methodDict keys select: [:aMethod |
@@ -470,21 +485,27 @@ For example, to discover which methods are newly introduced in a given class, \i
   --> an IdentitySet(#threeDigitName #printStringBase:nDigits: ...)
 \end{code}
 
-A compiled method does not simply store the bytecode of a method.
-It is also an object the provides numerous useful methods for querying the system.
-One such method is \ct{isAbstract} (which tells if the method sends \ct{subclassResponsibility}).
-We can use it to identify all the abstract methods of an abstract class
+%A compiled method does not simply store the bytecode of a method.
+Скомпилированный метод не просто хранит свой байткод,
+%It is also an object the provides numerous useful methods for querying the system.
+а предоставляет также несколько полезных методов для запросов к системе.
+%One such method is \ct{isAbstract} (which tells if the method sends \ct{subclassResponsibility}).
+Один из таких методов -- \ct{isAbstract}, который говорит нам, посылает ли данный метод сообщение \ct{subclassResponsibility}.
+%We can use it to identify all the abstract methods of an abstract class
+Его можно использовать, чтобы найти все абстрактные методы абстрактного класса:
 \needlines{4}
 \begin{code}{}
 [:aClass| aClass methodDict keys select: [:aMethod |
   (aClass>>aMethod) isAbstract ]] value: Number
   --> an IdentitySet(#storeOn:base: #printOn:base: #+ #- #* #/ ...)
 \end{code}
-Note that this code sends the \ct{>>} message to a class to obtain the compiled method for a given selector.
+%Note that this code sends the \ct{>>} message to a class to obtain the compiled method for a given selector.
+Заметьте, что этот код посылает сообщение \ct{>>} классу, чтобы получить скомпилированный метод по заданному селектору.
 
 % As a slightly more complex example, we can browse 
 
-To browse the super-sends within a given hierarchy, for example within the Collections hierarchy, we can pose a more sophisticated query:
+%To browse the super-sends within a given hierarchy, for example within the Collections hierarchy, we can pose a more sophisticated query:
+Чтобы найти внутри заданной ирерархии (например, внутри иерархии коллекций) все места, откуда посылается сообщение суперклассу, мы можем составить более сложный запрос:
 \begin{code}{}
 class := Collection.
 SystemNavigation default
@@ -492,11 +513,15 @@ SystemNavigation default
     each methodDict associations
       select: [:assoc | assoc value sendsToSuper]
       thenCollect: [:assoc | MethodReference class: each selector: assoc key]])
-  name: 'Supersends of ' , class name , ' and its subclasses'
+  %name: 'Supersends of ' , class name , ' and its subclasses'
+  name: 'Вызовы методов суперкласса внутри класса' , class name , ' и его подклассов'
 \end{code}
-Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
-A \ct{MethodReference} is a lightweight proxy for a compiled method that is used by many tools.
-There is a convenience method \clsmthind{CompiledMethod}{methodReference} to return the method reference for a compiled method.
+%Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
+Заметьте, как мы переходим от классов к словарям методов, а от них к скомпилированным методам, чтобы найти интересующие нас методы.
+%A \ct{MethodReference} is a lightweight proxy for a compiled method that is used by many tools.
+Класс \ct{MethodReference} является \ugh{облегчённым посредником для скомпилированного метода}, используемым во множестве инструментов.
+%There is a convenience method \clsmthind{CompiledMethod}{methodReference} to return the method reference for a compiled method.
+У него присутствует удобный метод \clsmthind{CompiledMethod}{methodReference}, возвращающий объект-ссылку на скомпилированный метод.
 \begin{code}{@TEST}
 (Object>>#=) methodReference methodSymbol --> #=
 \end{code}
