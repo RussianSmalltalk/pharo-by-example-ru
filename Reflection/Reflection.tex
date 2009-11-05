@@ -519,7 +519,7 @@ SystemNavigation default
 %Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
 Заметьте, как мы переходим от классов к словарям методов, а от них к скомпилированным методам, чтобы найти интересующие нас методы.
 %A \ct{MethodReference} is a lightweight proxy for a compiled method that is used by many tools.
-Класс \ct{MethodReference} является \ugh{облегчённым посредником для скомпилированного метода}, используемым во множестве инструментов.
+Класс \ct{MethodReference} является \ugh{облегчённым объектом-заместителем для скомпилированного метода}, используемым во множестве инструментов.
 %There is a convenience method \clsmthind{CompiledMethod}{methodReference} to return the method reference for a compiled method.
 У него присутствует удобный метод \clsmthind{CompiledMethod}{methodReference}, возвращающий объект-ссылку на скомпилированный метод.
 \begin{code}{@TEST}
@@ -752,29 +752,42 @@ Object>>>haltIf: condition
 Возможно также передавать в метод \ct{haltIf:} в качестве аргумента логическое значение или блок, возвращающий логическое значение, но эти случаи примитивны и не используют \ct{thisContext}.
 
 %======================================
-\section{Intercepting messages not understood}
+%\section{Intercepting messages not understood}
+\section{Перехват необработанных сообщений}
 \seclabel{msgnotunderstood}
 
-So far we have used the reflective features of \st mainly to query and explore objects, classes, methods and the run-time stack. Now we will look at how to use our knowledge of the \st system structure to intercept messages and modify behaviour at run-time.
+%So far we have used the reflective features of \st mainly to query and explore objects, classes, methods and the run-time stack. Now we will look at how to use our knowledge of the \st system structure to intercept messages and modify behaviour at run-time.
+Только что мы использовали рефлексивные возможности \st главным образом для исследования объектов, классов, методов и стека вызовов. Теперь мы посмотрим, как использовать наши знания о структуре \st-системы, чтобы перехватывать сообщения и изменять поведение во время выполнения.
 
-When an object receives a message, it first looks in the method dictionary of its class for a corresponding method to respond to the message.
-If no such method exists, it will continue looking up the class hierarchy, until it reaches \ct{Object}. If still no method is found for that message, the object will \emph{send itself} the message \ct{doesNotUnderstand:} with the message selector as its argument.
-The process then starts all over again, until \clsmthind{Object}{doesNotUnderstand:} is found, and the debugger is launched.
+%When an object receives a message, it first looks in the method dictionary of its class for a corresponding method to respond to the message.
+Когда объект получает сообщение, он в первую очередь ищет в словаре методов своего класса соответствующий метод, чтобы обработать сообщение.
+%If no such method exists, it will continue looking up the class hierarchy, until it reaches \ct{Object}. If still no method is found for that message, the object will \emph{send itself} the message \ct{doesNotUnderstand:} with the message selector as its argument.
+Если такого метода не существует, он продолжит поиск вверх по иерархии классов, пока не достигнет класса \ct{Object}. Если подходящий для данного сообщения метод всё же не найден, объект \emph{отправит себе} сообщение \ct{doesNotUnderstand:} с селектором исходного сообщения в качестве аргумента.
+%The process then starts all over again, until \clsmthind{Object}{doesNotUnderstand:} is found, and the debugger is launched.
+Затем процесс повторяется снова до тех пор, пока не будет найден \clsmthind{Object}{doesNotUnderstand:}, и не запустится отладчик.
 
-But what if \ct{doesNotUnderstand:} is overridden by one of the subclasses of \ct{Object} in the lookup path?
-As it turns out, this is a convenient way of realizing certain kinds of very dynamic behaviour. An object that does not understand a message can, by overriding \ct{doesNotUnderstand:}, fall back to an alternative strategy for responding to that message.
+%But what if \ct{doesNotUnderstand:} is overridden by one of the subclasses of \ct{Object} in the lookup path?
+Но что, если \ct{doesNotUnderstand:} переопределён в одном из подклассов класса \ct{Object} в пути поиска (lookup path)?
+%As it turns out, this is a convenient way of realizing certain kinds of very dynamic behaviour. An object that does not understand a message can, by overriding \ct{doesNotUnderstand:}, fall back to an alternative strategy for responding to that message.
+Оказывается, это подходящий способ реализации некоторых видов весьма динамического поведения. Объект, который не смог обработать сообщение, может, переопределив \ct{doesNotUnderstand:}, прибегнуть к альтернативной стратегии обработки сообщения.
 
-Two very common applications of this technique are (1) to implement \ind{lightweight proxies} for objects, and (2) to dynamically compile or load missing code.
+%Two very common applications of this technique are (1) to implement \ind{lightweight proxies} for objects, and (2) to dynamically compile or load missing code.
+Два очень распросранённых приложения этой техники: (1) реализация \ind{облегчённых объектов-заместителей} (lightweight proxies) объектов, и (2) динамически компилировать или загружать недостающий код.
 
 %-----------------------------------------------------------------
-\subsection{Lightweight proxies}
+%\subsection{Lightweight proxies}
+\subsection{Облегчённые объекты-заместители}
 
-In the first case, we introduce a ``\ind{minimal object}'' to act as a proxy for an existing object.
-Since the proxy will implement virtually no methods of its own, any message sent to it will be trapped by \ct{doesNotUnderstand:}. By implementing this message, the proxy can then take special action before delegating the message to the real subject it is the proxy for.
+%In the first case, we introduce a ``\ind{minimal object}'' to act as a proxy for an existing object.
+В первом случае, мы создаём ``\ind{минимальный объект}'' (``\ind{minimal object}''), действующий как заместитель существующего объекта.
+%Since the proxy will implement virtually no methods of its own, any message sent to it will be trapped by \ct{doesNotUnderstand:}. By implementing this message, the proxy can then take special action before delegating the message to the real subject it is the proxy for.
+Т.к. объект-заместитель практически не реализует своих собственных методов, любое сообщение, отправленное ему, будет перехвачено методом  \ct{doesNotUnderstand:}. Реализуя это сообщение, объект-заместитель может выполнить некое действие перед делегированием сообщения настоящему объекту, заместителем которого он является.
 
-Let us have a look at how this may be implemented\footnote{You can also load \pkg{PBE-Reflection} from \url{http://www.squeaksource.com/PharoByExample/}}.
+%Let us have a look at how this may be implemented\footnote{You can also load \pkg{PBE-Reflection} from \url{http://www.squeaksource.com/PharoByExample/}}.
+Давайте посмотрим, как это может быть реализовано\footnote{Вы также можете загрузить \pkg{PBE-Reflection} с \url{http://www.squeaksource.com/PharoByExample/}}.
 
-We define a \ct{LoggingProxy} as follows:
+%We define a \ct{LoggingProxy} as follows:
+Мы определяем класс \ct{LoggingProxy} следующим образом:
 \begin{code}{}
 ProtoObject subclass: #LoggingProxy
 	instanceVariableNames: 'subject invocationCount'
@@ -782,15 +795,19 @@ ProtoObject subclass: #LoggingProxy
 	poolDictionaries: ''
 	category: 'PBE-Reflection'
 \end{code}
-Note that we subclass \ct{ProtoObject} rather than \ct{Object} because we do not want our proxy to inherit over 400 methods (!) from \ct{Object}.
+%Note that we subclass \ct{ProtoObject} rather than \ct{Object} because we do not want our proxy to inherit over 400 methods (!) from \ct{Object}.
+Заметьте, что мы наследуемся от класса \ct{ProtoObject}, а не \ct{Object}, потому что мы не хотим, чтобы наш объект-заместитель наследовал больше 400 методов (!) класса \ct{Object}.
 
 \begin{code}{}
 Object methodDict size --> 408
 \end{code}
 
-Our proxy has two instance variables: the \ct{subject} it is a proxy for, and a \ct{count} of the number of messages it has intercepted.
-We initialize the two instance variables and we provide an accessor for the message count.
-Initially the \ct{subject} variable points to the proxy object itself.
+%Our proxy has two instance variables: the \ct{subject} it is a proxy for, and a \ct{count} of the number of messages it has intercepted.
+Наш заместитель имеет две переменных экземпляра: \ct{subject} (субъект) -- объект который замещается, и \ct{count} -- число перехваченных сообщений.
+%We initialize the two instance variables and we provide an accessor for the message count.
+Мы инициализируем эти две переменных и предосталяем метод для получения количества сообщений.
+%Initially the \ct{subject} variable points to the proxy object itself.
+Изначально переменная \ct{subject} указывает на самого заместителя.
 \begin{code}{}
 LoggingProxy>>>initialize
 	invocationCount := 0.
@@ -802,7 +819,8 @@ LoggingProxy>>>invocationCount
 	^ invocationCount
 \end{code}
 
-We simply intercept all messages not understood, print them to the Transcript, update the message count, and forward the message to the real subject.
+%We simply intercept all messages not understood, print them to the Transcript, update the message count, and forward the message to the real subject.
+Мы просто перехватываем все необработанные сообщения, выводим их в транскрипт, обновляем количество сообщений и пересылаем сообщение настоящему субъекту.
 \begin{code}{}
 LoggingProxy>>>doesNotUnderstand: aMessage 
 	Transcript show: 'performing ', aMessage printString; cr.
@@ -810,15 +828,18 @@ LoggingProxy>>>doesNotUnderstand: aMessage
 	^ aMessage sendTo: subject
 \end{code}
 
-Here comes a bit of magic.
-We create a new \ct{Point} object and a new \ct{LoggingProxy} object, and then we tell the proxy to \mthind{ProtoObject}{become:} the point object:
+%Here comes a bit of magic.
+Здесь происходит маленькое чудо.
+%We create a new \ct{Point} object and a new \ct{LoggingProxy} object, and then we tell the proxy to \mthind{ProtoObject}{become:} the point object:
+Мы создаём новый объект класса \ct{Point} (точка) и новый объект класса \ct{LoggingProxy}, и дальше мы говорим заместителю: <<Стань точкой!>>, посылая ему сообщение \mthind{ProtoObject}{become:}.
 \seeindex{\ct{become:}}{\ct{ProtoObject>>>become:}}
 \begin{code}{}
 point := 1@2.
 LoggingProxy new !\underline{become:}! point.
 \end{code}
 
-This has the effect of swapping all references in the image to the point to now refer to the proxy, and vice versa. Most importantly, the proxy's \ct{subject} instance variable will now refer to the point!
+%This has the effect of swapping all references in the image to the point to now refer to the proxy, and vice versa. Most importantly, the proxy's \ct{subject} instance variable will now refer to the point!
+Это приводит к тому, что все ссылки на объект-точку становятся ссылками на объект-заместитель, и наоборот. А главное, --- переменная \ct{subject} объекта-заместителя теперь тоже ссылается на объект-точку!
 
 \begin{code}{}
 point invocationCount --> 0
@@ -826,29 +847,36 @@ point + (3@4)             --> 4@6
 point invocationCount --> 1
 \end{code}
 
-This works nicely in most cases, but there are some shortcomings:
+%This works nicely in most cases, but there are some shortcomings:
+Этот код превосходно работает в большинстве случаев, но есть исключения:
 \begin{code}{}
 point class --> LoggingProxy
 \end{code}
-Curiously, the method \ct{class} is not even implemented in \ct{ProtoObject} but in \ct{Object}, which \ct{LoggingProxy} does not inherit from!
-The answer to this riddle is that \ct{class} is never sent as a message but is directly answered by the virtual machine.\footnote{\ct{yourself} is also never truly sent.
-Other messages that may be directly interpreted by the VM, depending on the receiver, include:
+%Curiously, the method \ct{class} is not even implemented in \ct{ProtoObject} but in \ct{Object}, which \ct{LoggingProxy} does not inherit from!
+Любопытно, метод \ct{class} реализован не в классе \ct{ProtoObject}, а классе \ct{Object}, от которого \ct{LoggingProxy} не наследует!
+%The answer to this riddle is that \ct{class} is never sent as a message but is directly answered by the virtual machine.\footnote{\ct{yourself} is also never truly sent.
+Ответ на эту загадку заключается в том, что сообщение \ct{class} в действительности никогда не посылается, а напрямую вычисляется виртуальной машиной.\footnote{Сообщение \ct{yourself} также никогда не посылается.
+%Other messages that may be directly interpreted by the VM, depending on the receiver, include:
+Другие сообщения, которые напрямую могут быть вычислены виртуальной машиной в зависимости от получателя, включают:
 \ct{+- < > <= >= = ~= * / \ ==}
 \ct{@ bitShift: // bitAnd: bitOr:}
 \ct{at: at:put: size}
 \ct{next nextPut: atEnd}
 \ct{blockCopy: value value: do: new new: x y}.
-Selectors that are never sent, because they are inlined by the compiler and transformed to comparison and jump bytecodes:
+%Selectors that are never sent, because they are inlined by the compiler and transformed to comparison and jump bytecodes:
+Селекторы, которые никогда не посылаются, так как встраиваются (inline) компилятором и преобразуются в байткоде в команды сравнения и перехода:
 \ct{ifTrue: ifFalse: ifTrue:ifFalse: ifFalse:ifTrue:}
 \ct{and: or:}
 \ct{whileFalse: whileTrue: whileFalse whileTrue}
 \ct{to:do: to:by:do:}
 \ct{caseOf: caseOf:otherwise:}
 \ct{ifNil: ifNotNil:  ifNil:ifNotNil: ifNotNil:ifNil:}
-Attempts to send these messages to non-boolean objects can be intercepted and execution can be resumed with a valid boolean value by overriding \ct{mustBeBoolean} in the receiver or by catching the \ct{NonBooleanReceiver} exception.
+%Attempts to send these messages to non-boolean objects can be intercepted and execution can be resumed with a valid boolean value by overriding \ct{mustBeBoolean} in the receiver or by catching the \ct{NonBooleanReceiver} exception.
+Попытки отправить эти сообщения объектам нелогического типа могут быть перехвачены, и выполнение может быть продолжено с допустимым логическим значением путём переопределения \ct{mustBeBoolean} у получателя или перехвата ислючения \ct{NonBooleanReceiver}.
 }% NB: Notes by Lukas Renggli
 
-Even if we can ignore such special message sends, there is another fundamental problem which cannot be overcome by this approach: \self-sends cannot be intercepted:
+%Even if we can ignore such special message sends, there is another fundamental problem which cannot be overcome by this approach: \self-sends cannot be intercepted:
+Даже если мы можем игнорировать такие специфические случаи, существует другая фундаментальная проблема, которая не может быть преодолена этим подходом: отправка объектом сообщения самому себе не может быть перехвачена.
 \begin{code}{}
 point := 1@2.
 LoggingProxy new become: point.
@@ -857,23 +885,29 @@ point rect: (3@4)        --> 1@2 corner: 3@4
 point invocationCount --> 1
 \end{code}
 
-Our proxy has been cheated out of two \self-sends in the \ct{rect:} method:
+%Our proxy has been cheated out of two \self-sends in the \ct{rect:} method:
+Наш объект-заместитель \ugh{has been cheated out of two \self-sends in the \ct{rect:} method}:
 \begin{code}{}
 Point>>>rect: aPoint 
 	^ Rectangle  origin: (self min: aPoint) corner: (self max: aPoint)
 \end{code}
 
-Although messages can be intercepted by proxies using this technique, one should be aware of the inherent limitations of using a proxy.  In \secref{wrapper} we will see another, more general approach for intercepting messages.
+%Although messages can be intercepted by proxies using this technique, one should be aware of the inherent limitations of using a proxy.  In \secref{wrapper} we will see another, more general approach for intercepting messages.
+Хотя сообщения могут быть перехвачены объектами-заместителями, используя эту технику, вы должны понимать врождённые ограничения при её использовании. В \secref{wrapper} мы рассмотрим другой, более общий подход к перехвату сообщений.
 
 %-----------------------------------------------------------------
-\subsection{Generating missing methods}
+%\subsection{Generating missing methods}
+\subsection{Генерация недостающих методов}
 
-The other most common application of intercepting not understood messages is to dynamically load or generate the missing methods.
-Consider a very large library of classes with many methods.  Instead of loading the entire library, we could load a stub for each class in the library. The stubs know where to find the source code of all their methods.  The stubs simply trap all messages not understood, and dynamically load the missing methods on-demand.  At some point, this behaviour can be deactivated, and the loaded code can be saved as the minimal necessary subset for the client application.
+%The other most common application of intercepting not understood messages is to dynamically load or generate the missing methods.
+Другое обычное приложение перехватат необработанных сообщений --- динамическая загрузка или генерация недостающих методов.
+%Consider a very large library of classes with many methods.  Instead of loading the entire library, we could load a stub for each class in the library. The stubs know where to find the source code of all their methods.  The stubs simply trap all messages not understood, and dynamically load the missing methods on-demand.  At some point, this behaviour can be deactivated, and the loaded code can be saved as the minimal necessary subset for the client application.
+Рассмотрим очень большую библиотеку классов с большим количеством методов. Вместо того, чтобы загружать библиотеку целиком, мы можем загрузить <<заглушку>> для каждого её класса. Заглушка <<знает>>, где найти исходный код всех своих методов, перехватывает все необработанные сообщения и загружает недостающий методы по мере необходимости. В некоторый момент, это поведение может быть отключено и код может быть сохранён, как минимально необходимое подмножество для клиентской программы.
 
 %\on{Stef sez: check ObjectOut -- I looked, but this seems to be very old. Depends on SqueakPage.}
 
-Let us look at a simple variant of this technique where we have a class that automatically adds accessors for its instance variables on-demand:
+%Let us look at a simple variant of this technique where we have a class that automatically adds accessors for its instance variables on-demand:
+Давайте взглянем на простой вариант этой техники, где у нас есть класс, автоматически добавляющий методы доступа к переменным экземпляра по мере надобности.
 % \lr{the last statement should return the result of the message, otherwise you cannot proceed with the debugger} \alex{all redefinition of doesNotUnderstand: includes a return statement. However, I do not see your comment lukas, I tried to insert a 'self halt' in the method, I was able to proceed. I added the return in the function} \lr{Of course it depends on the exact circumstances. If you perform a message on self that returns self it does not matter, but in any other case a forgotten return can introduce strange side effects. There was no return in the listing below, but now there is and the problem is solved.}
 
 \begin{code}{}
@@ -886,29 +920,34 @@ DynamicAcccessors>>>doesNotUnderstand: aMessage
 			^ aMessage sendTo: self ].
 	^ super doesNotUnderstand: aMessage
 \end{code}
-Any message not understood is trapped here. If an instance variable with the same name as the message sent exists, then we ask our class to compile an accessor for that instance variables and we re-send the message.
+%Any message not understood is trapped here. If an instance variable with the same name as the message sent exists, then we ask our class to compile an accessor for that instance variables and we re-send the message.
+Любое необработанное сообщение перехватывается здесь. Если переменная экземпляра с именем отправленного сообщения существует, мы просим наш класс скомпилировать метод доступа к этой переменной и отправить сообщение повторно.
 
-Suppose the class \ct{DynamicAcccessors} has an (uninitialized) instance variable \ct{x} but no pre-defined accessor. Then the following will generate the accessor dynamically and retrieve the value:
+%Suppose the class \ct{DynamicAcccessors} has an (uninitialized) instance variable \ct{x} but no pre-defined accessor. Then the following will generate the accessor dynamically and retrieve the value:
+Допустим,  класс \ct{DynamicAcccessors} содержит (неинициализированную) переменную экземпляра \ct{x}, но не определяет метода доступа к ней. Тогда следующий код сгенерирует такой метод динамически и вернёт значение переменной:
 \needlines{2}
 \begin{code}{}
 myDA := DynamicAccessors new.
 myDA x --> nil
 \end{code}
 
-Let us step through what happens the first time the message \ct{x} is sent to our object (see \figref{DynamicAccessors}).
+%Let us step through what happens the first time the message \ct{x} is sent to our object (see \figref{DynamicAccessors}).
+Давайте по шагам рассмотрим, что происходит, когда сообщение \ct{x} впервые отправляется нашему объекту (см. \figref{DynamicAccessors}).
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{DynamicAccessors}
-	\caption{Dynamically creating accessors.\figlabel{DynamicAccessors}}
+	%\caption{Dynamically creating accessors.\figlabel{DynamicAccessors}}
+	\caption{Динамически создаваемые методы доступа.\figlabel{DynamicAccessors}}
 	% \alex{not sure whether the figure is highly necessary. The code is rather simple and the figure complete to follow in my opinion.}}
 	% \on{trust me, it is useful to see all the steps.}
 \end{figure}
 
-(1) We send \ct{x} to \ct{myDA}, (2) the message is looked up in the class, and (3) not found in the class hierarchy. (4) This causes \ct{self doesNotUnderstand: #x} to be sent back to the object, (5) triggering a new lookup. This time \ct{doesNotUnderstand:} is found immediately in \ct{DynamicAccessors}, (6) which asks its class to compile the string \ct{'x ^ x'}. The \ct{compile} method is looked up (7), and (8) finally found in \ct{Behavior}, which (9-10) adds the new compiled method to the method dictionary of \ct{DynamicAccessors}. Finally, (11-13) the message is resent, and this time it is found.
-
+%(1) We send \ct{x} to \ct{myDA}, (2) the message is looked up in the class, and (3) not found in the class hierarchy. (4) This causes \ct{self doesNotUnderstand: #x} to be sent back to the object, (5) triggering a new lookup. This time \ct{doesNotUnderstand:} is found immediately in \ct{DynamicAccessors}, (6) which asks its class to compile the string \ct{'x ^ x'}. The \ct{compile} method is looked up (7), and (8) finally found in \ct{Behavior}, which (9-10) adds the new compiled method to the method dictionary of \ct{DynamicAccessors}. Finally, (11-13) the message is resent, and this time it is found.
+(1) Мы отправляем сообщение \ct{x} объекту \ct{myDA}, (2) \ugh{сообщение ищется в классе} и (3) не находится в его иерархии наследования. (4) Это приводит к отправке объекту сообщения \ct{self doesNotUnderstand: #x}, (5) запускающего новый процесс поиска. В этот раз метод \ct{doesNotUnderstand:} тотчас находится в классе \ct{DynamicAccessors}, (6) который обращается \ugh{к своему классу} с просьбой скомпилировать строку \ct{'x ^ x'}. Ищется метод \ct{compile}, и (8), наконец, находится в классе \ct{Behavior}, который (9-10) добавляет вновь скомпилированный метод в словарь методов класса \ct{DynamicAccessors}. Наконец, (11-13) исходное сообщение отправляется повторно, и на этот раз будет найдено.
 The same technique can be used to generate setters for instance variables, or other kinds of boilerplate code, such as visiting methods for a Visitor.
 
-Note the use of \clsmthind{Object}{perform:} in step (13) which can be used to send messages that are composed at run-time:
+%Note the use of \clsmthind{Object}{perform:} in step (13) which can be used to send messages that are composed at run-time:
+Обратите внимание на использование в шаге (13) метода \clsmthind{Object}{perform:}, который может быть использован для отправки сообщений, составленных во время выполнения.
 \begin{code}{@TEST}
 5 perform: #factorial                                             --> 120
 6 perform: ('fac', 'torial') asSymbol                       --> 720
