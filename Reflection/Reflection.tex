@@ -955,20 +955,28 @@ The same technique can be used to generate setters for instance variables, or ot
 \end{code}
 
 %======================================
-\section{Objects as method wrappers}
+%\section{Objects as method wrappers}
+\section{Объекты как обёртки методов}
 \seclabel{wrapper}
 
-We have already seen that compiled methods are ordinary objects in \st, and they support a number of methods that allow the programmer to query the run-time system.
-What is perhaps a bit more surprising, is that \emph{any object} can play the role of a compiled method. All it has to do is respond to the method \ct{run:with:in:} and a few other important messages.
+%We have already seen that compiled methods are ordinary objects in \st, and they support a number of methods that allow the programmer to query the run-time system.
+Мы уже видели, что скомпилированные методы являются обычными объектами в \st, и что у них есть набор методов, позволяющих программисту делать запросы к системе времени выполнения.
+%What is perhaps a bit more surprising, is that \emph{any object} can play the role of a compiled method. All it has to do is respond to the method \ct{run:with:in:} and a few other important messages.
+Возможно, более неожиданно то, что \emph{любой объект} может играть роль скомпилированного метода. Всё, что ему для этого нужно --- это отвечать на \ct{run:with:in:} и несколько других важных сообщений.
 
-\dothis{Define an empty class \ct{Demo}. Evaluate \ct{Demo new answer42} and notice how the usual ``Message Not Understood'' error is raised.}
+%\dothis{Define an empty class \ct{Demo}. Evaluate \ct{Demo new answer42} and notice how the usual ``Message Not Understood'' error is raised.}
+\dothis{Определите пустой класс \ct{Demo}. Выполните \ct{Demo new answer42} --- появилось обычное окно <<Неопознанное сообщение>>.}
 
-Now we will install a plain \st object in the method dictionary of our \ct{Demo} class.
+%Now we will install a plain \st object in the method dictionary of our \ct{Demo} class.
+Теперь мы добавим обычный \st-объект в словарь методов класса  \ct{Demo}.
 
-\dothis{Evaluate \lct{Demo methodDict at: \#answer42 put: ObjectsAsMethodsExample new.}
-Now try again to print the result of \ct{Demo new answer42}. This time we get the answer \ct{42}.}
+%\dothis{Evaluate \lct{Demo methodDict at: \#answer42 put: ObjectsAsMethodsExample new.}
+\dothis{Выполните \lct{Demo methodDict at: \#answer42 put: ObjectsAsMethodsExample new.}
+%Now try again to print the result of \ct{Demo new answer42}. This time we get the answer \ct{42}.}
+Теперь попробуйте напечатать результат выражения \ct{Demo new answer42}. На этот раз ответ будет --- \ct{42}.}
 
-If we take look at the class \clsind{ObjectsAsMethodsExample} we will find the following methods:
+%If we take look at the class \clsind{ObjectsAsMethodsExample} we will find the following methods:
+Если мы посмотрим на класс \clsind{ObjectsAsMethodsExample} мы обнаружим там следующие методы:
 %\alex{I would prefer having return 42 in the run:with:in: method, and not having answer42 defined in ObjectsAsMethodsExample, this could be confusing I imagine}
 %\on{ObjectsAsMethodsExample is part of the standard pharo image -- it is not in PBE-Reflection}
 \needlines{5}
@@ -980,38 +988,52 @@ run: oldSelector with: arguments in: aReceiver
 	^self perform: oldSelector withArguments: arguments
 \end{code}
 
-When our \ct{Demo} instance receives the message \ct{answer42}, method lookup proceeds as usual, however the virtual machine will detect that in place of a compiled method, an ordinary \st object is trying to play this role.
-The VM will then send this object a new message \ct{run:with:in:} with the original method selector, arguments and receiver as arguments.
-Since \ct{ObjectsAsMethodsExample} implements this method, it intercepts the message and delegates it to itself.
+%When our \ct{Demo} instance receives the message \ct{answer42}, method lookup proceeds as usual, however the virtual machine will detect that in place of a compiled method, an ordinary \st object is trying to play this role.
+Когда экземпляр класса \ct{Demo} получает сообщение \ct{answer42}, поиск метода происходит как обычно, однако виртуальная машина обнаружит, что роль скомпилированного метода пытается играть обычный \st-объект.
+%The VM will then send this object a new message \ct{run:with:in:} with the original method selector, arguments and receiver as arguments.
+После этого она отправит объекту новое сообщение \ct{run:with:in:} с оригинальными селектором метода, аргументами и получателем в качестве параметров.
+%Since \ct{ObjectsAsMethodsExample} implements this method, it intercepts the message and delegates it to itself.
+Т.к. класс \ct{ObjectsAsMethodsExample} реализует этот метод, он перехватывает сообщение и делегирует его самому себе.
 
-We can now remove the fake method as follows:
+%We can now remove the fake method as follows:
+Теперь мы можем удалить поддельный метода следующим образом:
 \begin{code}{}
 Demo methodDict removeKey: #answer42 ifAbsent: []
 \end{code}
 
-If we take a closer look at \ct{ObjectsAsMethodsExample}, we will see that its superclass also implements the methods \ct{flushcache}, \ct{methodClass:} and \lct{selector:}, but they are all empty.  These messages may be sent to a compiled methods, so they need to be implemented by an object pretending to be a compiled method.  (\ct{flushcache} is the most important method to be implemented; others may be required depending on whether the method is installed using \clsmthind{Behavior}{addSelector:withMethod:} or directly using \clsmthind{MethodDictionary}{at:put:}.)
+%If we take a closer look at \ct{ObjectsAsMethodsExample}, we will see that its superclass also implements the methods \ct{flushcache}, \ct{methodClass:} and \lct{selector:}, but they are all empty.  These messages may be sent to a compiled methods, so they need to be implemented by an object pretending to be a compiled method.  (\ct{flushcache} is the most important method to be implemented; others may be required depending on whether the method is installed using \clsmthind{Behavior}{addSelector:withMethod:} or directly using \clsmthind{MethodDictionary}{at:put:}.)
+Если мы поближе посмотрим на \ct{ObjectsAsMethodsExample}, мы увидим, что его суперкласс также реализует методы \ct{flushcache}, \ct{methodClass:} и \lct{selector:}, но все они пусты. Эти сообщения могут быть отправлены скомпилированным методам, поэтому они должны быть реализованы объектом, притворяющимся скомпилированным методом. (\ct{flushcache} --- наиболее важный из них, которые могут быть востребованы в зависимости от того, был ли метод установлен с помощью \clsmthind{Behavior}{addSelector:withMethod:} или напрямую через \clsmthind{MethodDictionary}{at:put:}.)
 
 %-------------------------------------------------------------------------
-\subsection{Using methods wrappers to perform test coverage}
+%\subsection{Using methods wrappers to perform test coverage}
+\subsection{Использование обёрток методов для определения покрытия тестами}
 
-Method wrappers are a well-known technique for intercepting messages \cite{Bran98a}.
-In the original implementation\footnote{http://www.squeaksource.com/MethodWrappers.html}, a method wrapper is an instance of a subclass of \ct{CompiledMethod}. When installed, a method wrapper can perform special actions before or after invoking the original method.
-When uninstalled, the original method is returned to its rightful position in the method dictionary.
+%Method wrappers are a well-known technique for intercepting messages \cite{Bran98a}.
+Обёртки методов --- хорошо известная техника для перехвата сообщений \cite{Bran98a}.
+%In the original implementation\footnote{http://www.squeaksource.com/MethodWrappers.html}, a method wrapper is an instance of a subclass of \ct{CompiledMethod}. When installed, a method wrapper can perform special actions before or after invoking the original method.
+В оригинальной реализации\footnote{http://www.squeaksource.com/MethodWrappers.html} обёртка метода --- это экземпляр подкласса класса \ct{CompiledMethod}. Будучи установленным, обёртка метода может выполнять специфические действия до или после вызова оригинального метода.
+%When uninstalled, the original method is returned to its rightful position in the method dictionary.
+После удаления, оригинальный метод возвращается на своё законное место в словаре методов.
 
-In Pharo, \ind{method wrappers} can be implemented more easily by implementing \ct{run:with:in:} instead of by subclassing \ct{CompiledMethod}. In fact, there exists a lightweight implementation of objects as method wrappers\footnote{http://www.squeaksource.com/ObjectsAsMethodsWrap.html}, but it is not part of standard Pharo at the time of this writing.
+%In Pharo, \ind{method wrappers} can be implemented more easily by implementing \ct{run:with:in:} instead of by subclassing \ct{CompiledMethod}. In fact, there exists a lightweight implementation of objects as method wrappers\footnote{http://www.squeaksource.com/ObjectsAsMethodsWrap.html}, but it is not part of standard Pharo at the time of this writing.
+В Pharo \ind{обёртки методов} могут быть реализованы гораздо проще: определив метод \ct{run:with:in:} вместо того, чтобы наследоваться от \ct{CompiledMethod}. Фактически, существует облегчённая реализация объектов как обёрток методов\footnote{http://www.squeaksource.com/ObjectsAsMethodsWrap.html}, которая, однако, на момент написания этой книги не является частью стандартного дистрибутива Pharo.
 
-Nevertheless, the Pharo Test Runner uses precisely this technique to evaluate test coverage.
-Let's have a quick look at how it works.
+%Nevertheless, the Pharo Test Runner uses precisely this technique to evaluate test coverage.
+Тем не менее, \ugh{Pharo Test Runner} использует в точности эту же технику для определения покрытия тестами.
+%Let's have a quick look at how it works.
+Взглянем-ка, как это работает.
 
-The entry point for test coverage is the method \clsmthind{TestRunner}{runCoverage}:
+%The entry point for test coverage is the method \clsmthind{TestRunner}{runCoverage}:
+Точка входа для вычисления покрытия тестами -- метод \clsmthind{TestRunner}{runCoverage}:
 \begin{code}{}
 TestRunner>>>runCoverage
 	| packages methods |
-	... "identify methods to check for coverage"
+	... "определяем методы для вычисления покрытия их тестами"
 	self collectCoverageFor: methods
 \end{code}
 
-The method \clsmthind{TestRunner}{collectCoverageFor:} clearly illustrates the coverage checking algorithm:
+%The method \clsmthind{TestRunner}{collectCoverageFor:} clearly illustrates the coverage checking algorithm:
+Метод \clsmthind{TestRunner}{collectCoverageFor:} ясно показывает алгоритм вычисления покрытия:
 \begin{code}{}
 TestRunner>>>collectCoverageFor: methods
 	| wrappers suite |
@@ -1024,16 +1046,22 @@ TestRunner>>>collectCoverageFor: methods
 	wrappers := wrappers reject: [ :each | each hasRun ].
 	wrappers isEmpty 
 		ifTrue: 
-			[ UIManager default inform: 'Congratulations. Your tests cover all code under analysis.' ]
+			[ UIManager default inform: 'Поздравляем!. Ваши тесты покрывают весь проанализированный код.' ]
 		ifFalse: ...
 \end{code}
-A wrapper is created for each method to be checked, and each wrapper is installed.
-The tests are run, and all wrappers are uninstalled.
-Finally the user obtains feedback concerning the methods that have not been covered.
+%A wrapper is created for each method to be checked, and each wrapper is installed.
+Обёртка создаётся и устанавливается для каждого проверяемого метода.
+%The tests are run, and all wrappers are uninstalled.
+После того, как все тесты отработали, все обёртки удаляются.
+%Finally the user obtains feedback concerning the methods that have not been covered.
+Наконец, пользователь получает ответ касательно методов, не покрытых тестами.
 
-How does the wrapper itself work?
-The \ct{TestCoverage} wrapper has three instance variables, \ct{hasRun}, \ct{reference} and \ct{method}.
-They are initialized as follows:
+%How does the wrapper itself work?
+Как же работает обёртка сама по себе?
+%The \ct{TestCoverage} wrapper has three instance variables, \ct{hasRun}, \ct{reference} and \ct{method}.
+Обёртка \ct{TestCoverage} содержит три переменные экземпляра: \ct{hasRun}, \ct{reference} и \ct{method}.
+%They are initialized as follows:
+Они инициализируются следующим образом:
 \begin{code}{}
 TestCoverage class>>>on: aMethodReference
 	^ self new initializeOn: aMethodReference
@@ -1044,7 +1072,8 @@ TestCoverage>>>initializeOn: aMethodReference
 	method := reference compiledMethod
 \end{code}
 
-The install and uninstall methods simply update the method dictionary in the obvious way:
+%The install and uninstall methods simply update the method dictionary in the obvious way:
+Добавление и удаление методов простно обновляет словарь методов очевидным образом:
 \begin{code}{}
 TestCoverage>>>install
 	reference actualClass methodDictionary
@@ -1057,7 +1086,8 @@ TestCoverage>>>uninstall
 		put: method
 \end{code}
 \noindent
-and the \ct{run:with:in:} method simply updates the \ct{hasRun} variable, uninstalls the wrapper (since coverage has been verified), and resends the message to the original method
+%and the \ct{run:with:in:} method simply updates the \ct{hasRun} variable, uninstalls the wrapper (since coverage has been verified), and resends the message to the original method
+а метод \ct{run:with:in:} просто обновляет переменную \ct{hasRun}, удаляет обёртку (после того, как покрытие было проверено) и пересылает сообщение оригинальному методу:
 \begin{code}{}
 run: aSelector with: anArray in: aReceiver
 	self mark; uninstall.
@@ -1066,11 +1096,14 @@ run: aSelector with: anArray in: aReceiver
 mark
 	hasRun := true
 \end{code}
-(Have a look at \clsmthind{ProtoObject}{withArgs:executeMethod:} to see how a method displaced from its method dictionary can be invoked.)
+%(Have a look at \clsmthind{ProtoObject}{withArgs:executeMethod:} to see how a method displaced from its method dictionary can be invoked.)
+Взгляните на метод \clsmthind{ProtoObject}{withArgs:executeMethod:}, чтобы увидеть, как метод, удалённый из своего словаря методов, может быть вызван.)
 
-That's all there is to it!
+%That's all there is to it!
+Вот и всё об этом!
 
-Method wrappers can be used to perform any kind of suitable behaviour before or after the normal operation of a method.  Typical applications are instrumentation (collecting statistics about the calling patterns of methods), checking optional pre- and post-conditions, and memoization (optionally cacheing computed values of methods).
+%Method wrappers can be used to perform any kind of suitable behaviour before or after the normal operation of a method.  Typical applications are instrumentation (collecting statistics about the calling patterns of methods), checking optional pre- and post-conditions, and memoization (optionally cacheing computed values of methods).
+Обёртки методов могут быть использованы, чтобы выполнять любые необходимые действия до и после нормального вызова метода. Типичное приложение этого --- инструментализация (сбор статистики о вызываемых методах \ugh{patterns of methods???}), проверка необязательных пред- и постусловий, а также мемоизация (необязательное кэширование уже вычисленных значений методов). 
 
 %======================================
 \section{Pragmas}
