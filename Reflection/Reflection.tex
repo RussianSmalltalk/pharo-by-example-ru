@@ -1106,31 +1106,40 @@ mark
 Обёртки методов могут быть использованы, чтобы выполнять любые необходимые действия до и после нормального вызова метода. Типичное приложение этого --- инструментализация (сбор статистики о вызываемых методах \ugh{patterns of methods???}), проверка необязательных пред- и постусловий, а также мемоизация (необязательное кэширование уже вычисленных значений методов). 
 
 %======================================
-\section{Pragmas}
+%\section{Pragmas}
+\section{Прагмы}
 
-A \emphind{pragma} is an annotation that specifies data about a program, but is not involved in the execution of the program. Pragmas have no direct effect on the operation of the method they annotate.
-Pragmas have a number of uses, among them:
+%A \emphind{pragma} is an annotation that specifies data about a program, but is not involved in the execution of the program. Pragmas have no direct effect on the operation of the method they annotate.
+\emphind{Прагма} (\emphind{pragma}) --- это аннотация, которая сообщает некоторые данные о программе, но не вовлечена в процесс выполнения программы. Прагмы не оказывают прямого эффекта на функционирование метода, который они аннотируют.
+%Pragmas have a number of uses, among them:
+Прагмы имеют несколько предназначений, среди них:
 \begin{itemize}
-\item Information for the compiler: \indmain{pragmas} can be used by the compiler to make a method call a primitive function. This function has to be defined by the virtual machine or by an external plugging.
-\item Runtime processing: Some pragmas are available to be examined at runtime.
+%\item Information for the compiler: \indmain{pragmas} can be used by the compiler to make a method call a primitive function. This function has to be defined by the virtual machine or by an external plugging.
+\item Информация для компилятора: \indmain{прагмы} могут быть использованы компилятором, чтобы \ugh{заставить метод вызывать} примитивную функцию. Эта функция должна определяться виртуальной машиной или дополнением к ней.
+%\item Runtime processing: Some pragmas are available to be examined at runtime.
+\item Обработка во время выполнения: некоторые прагмы доступны для получения во время выполнения.
 \end{itemize}
 
-Pragmas can be applied to a program's method declarations only. A method may declare one or more pragmas, and the pragmas have to be declared prior any Smalltalk statement. Each pragma is in effect a static message send with literal arguments.
+%Pragmas can be applied to a program's method declarations only. A method may declare one or more pragmas, and the pragmas have to be declared prior any Smalltalk statement. Each pragma is in effect a static message send with literal arguments.
+Прагмы могут быть применены исключительно к декларациям методов. Метод может содержать одну или несколько прагм, которые должны быть определены \ugh{в самом начале метода (prior any Smalltalk statement)}. Каждая прагма имеет эффект статической отправки сообщения с литералами в качестве аргументов.
+%We briefly saw pragmas when we introduced primitives earlier in this chapter. A primitive is nothing more than a pragma declaration. 
+Мы кратко рассматривали прагмы, когда ранее в этой главе говорили о примитивах. Примитив -- это ничто иное, как определение прагмы.
+%Consider \ct{<primitive: 73>} as contained in \ct{instVarAt:}. The pragma's selector is \ct{primitive:} and its arguments is an immediate literal value, \ct{73}. 
+Рассмотрим прагму \ct{<primitive: 73>}, содержащуюся в методе ct{instVarAt:}. Селектором прагмы является \ct{primitive:}, а его аргументом --- литерал, \ct{73} (\ugh{вычисляемый в момент компиляции????}).
 
-We briefly saw pragmas when we introduced primitives earlier in this chapter. A primitive is nothing more than a pragma declaration. 
-Consider \ct{<primitive: 73>} as contained in \ct{instVarAt:}. The pragma's selector is \ct{primitive:} and its arguments is an immediate literal value, \ct{73}. 
-
-The compiler is probably the bigger user of pragmas. SUnit is another tool that makes use of annotations. SUnit is able to estimate the coverage of an application from a test unit. One may want to exclude some methods from the coverage. This is the case of the \ct!documentation! method in \ct!SplitJointTest class!:
+%The compiler is probably the bigger user of pragmas. SUnit is another tool that makes use of annotations. SUnit is able to estimate the coverage of an application from a test unit. One may want to exclude some methods from the coverage. This is the case of the \ct!documentation! method in \ct!SplitJointTest class!:
+Компилятор, возможно, самый главный пользователь прагм. SUnit -- ещё один инструмент, использующий аннотации. SUnit способен оценивать степень покрытия приложения тестами \ugh{???}. Вы можете захотеть исключить некотрые методы из этой оценки. Это верно, например, для метода \ct!documentation! класса \ct!SplitJointTest class!:
 
 \begin{code}{}
 SplitJointTest class>>>documentation
 	<ignoreForCoverage>
 	"self showDocumentation"
 	
-	^ 'This package provides function.... "
+	^ 'Этот пакет предоставляет функции.... "
 \end{code}
 
-By simply annotating a method with the pragma \ct!<ignoreForCoverage>! one can control the scope of the coverage.
+%By simply annotating a method with the pragma \ct!<ignoreForCoverage>! one can control the scope of the coverage.
+Просто проаннотировав метод прагмой \ct!<ignoreForCoverage>!, мы можем контролировать процесс (\ugh{область???}) вычисления покрытия.
 
 %Beside the compiler, Lint is a heavy user of pragmas. Lint is a static code analyzer that flags suspicious, non-portable constructs and code that is likely to contain bugs. It may happen that a method needs to be excluded from Lint analysis. This is the case here:
 
@@ -1146,7 +1155,8 @@ By simply annotating a method with the pragma \ct!<ignoreForCoverage>! one can c
 
 %One of the pragmas used by Lint to filter out methods is \ct{lint:rationale:author:}.
 
-As instances of the class \clsind{Pragma}, pragmas are first class objects. A compiled method answers to the message \mthind{CompiledMethod}{pragmas}. This method returns an array of pragmas. 
+%As instances of the class \clsind{Pragma}, pragmas are first class objects. A compiled method answers to the message \mthind{CompiledMethod}{pragmas}. This method returns an array of pragmas. 
+Будучи экземплярами класса \clsind{Pragma}, прагмы являются первоклассными (\ugh{???}) объектами. Скомпилированный метод отвечает на сообщение \mthind{CompiledMethod}{pragmas}, которое возвращает массив прагм.
 
 \begin{code}{@TEST}
 (SplitJoinTest class >> #showDocumentation) pragmas
@@ -1154,15 +1164,18 @@ As instances of the class \clsind{Pragma}, pragmas are first class objects. A co
 (Float>>#+) pragmas --> an Array(<primitive: 41>)
 \end{code}
 
-Methods defining a particular query may be retrieved from a class. The class side of \ct!SplitJoinTest! contains some methods annotated with \ct!<ignoreForCoverage>!:
+%Methods defining a particular query may be retrieved from a class. The class side of \ct!SplitJoinTest! contains some methods annotated with \ct!<ignoreForCoverage>!:
+Методы с заданной прагмой могут быть получены у класса. Класс \ct!SplitJoinTest! содержит некоторые методы, аннотированные прагмой \ct!<ignoreForCoverage>!:
 
 \begin{code}{@TEST}
 Pragma allNamed: #ignoreForCoverage in: SplitJoinTest class  --> an Array(<ignoreForCoverage> <ignoreForCoverage> <ignoreForCoverage>)
 \end{code}
 
-A variant of \ct{allNamed:in:} may be found on the class side of \ct{Pragma}.
+%A variant of \ct{allNamed:in:} may be found on the class side of \ct{Pragma}.
+Ещё несколько разновидностей метода \ct{allNamed:in:} могут быть найдены в классе \ct{Pragma} на стороне класса.
 
-A pragma knows in which method it is defined (using \ct{method}), the name of the method (\ct{selector}), the class that contains the method (\ct{methodClass}), its number of arguments (\ct{numArgs}), about the literals the pragma has for arguments (\ct{hasLiteral:} and \ct{hasLiteralSuchThat:}). 
+%A pragma knows in which method it is defined (using \ct{method}), the name of the method (\ct{selector}), the class that contains the method (\ct{methodClass}), its number of arguments (\ct{numArgs}), about the literals the pragma has for arguments (\ct{hasLiteral:} and \ct{hasLiteralSuchThat:}). 
+Прагма <<знает>> о том, в каком методе определена (метод \ct{method}), имя этого метода (\ct{selector}), класс содержащий метод (\ct{methodClass}), колчество аргументов метода (\ct{numArgs}), а также о литералах, использованных в качестве аргументов прагмы (\ct{hasLiteral:} и \ct{hasLiteralSuchThat:}).
 
 \lr{Typically pragmas are performed on an interpreter object that understands the pragma message.}
 
