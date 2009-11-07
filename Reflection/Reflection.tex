@@ -1180,26 +1180,43 @@ Pragma allNamed: #ignoreForCoverage in: SplitJoinTest class  --> an Array(<ignor
 \lr{Typically pragmas are performed on an interpreter object that understands the pragma message.}
 
 %======================================
-\section{Chapter summary}
+%\section{Chapter summary}
+\section{Подводя итог}
 
-Reflection refers to the ability to query, examine and even modify the metaobjects of the run-time system as ordinary objects.
+%Reflection refers to the ability to query, examine and even modify the metaobjects of the run-time system as ordinary objects.
+Рефлексией называется способность запрашивать, исследовать и даже изменять метаобъекты системы времени выполнения также, как и обычные объекты.
 
 \begin{itemize}
-\item The Inspector uses \ct{instVarAt:} and related methods to query and modify ``private'' instance variables of objects.
-\item Send \ct{Behavior>>>allInstances} to query instances of a class.
-\item The messages \ct{class}, \ct{isKindOf:}, \ct{respondsTo:} \etc  are useful for gathering metrics or building development tools, but they should be avoided in regular applications: they violate the encapsulation of objects and make your code harder to understand and maintain.
-\item \ct{SystemNavigation} is a utility class holding many useful queries for navigation and browsing the \ct class hierarchy. For example, use \ct{SystemNavigation default browseMethodsWithSourceString: 'pharo'.} to find and browse all methods with a given source string. (Slow, but thorough!)
-\item Every \st class points to an instance of \ct{MethodDictionary} which maps selectors to instances of \ct{CompiledMethod}. A compiled method knows its class, closing the loop.
-\item \ct{MethodReference} is a leightweight proxy for a compiled method, providing additional convenience methods, and used by many \st tools. 
-\item \ct{BrowserEnvironment}, part of the Refactoring Browser infrastructure, offers a more refined interface than \ct{SystemNavigation} for querying the system, since the result of a query can be used as a the scope of a new query. Both GUI and programmatic interfaces are available.
-\item \ct{thisContext} is a pseudo-variable that reifies the run-time stack of the virtual machine. It is mainly used by the debugger to dynamically construct an interactive view of the stack. It is also especially useful for dynamically determining the sender of a message.
-\item Intelligent breakpoints can be set using \ct{haltIf:}, taking a method selector as its argument. \ct{haltIf:} halts only if the named method occurs as a sender in the run-time stack.
-\item A common way to intercept messages sent to a given target is to use a ``minimal object'' as a proxy for that target. The proxy implements as few methods as possible, and traps all message sends by implementing \ct{doesNotunderstand:}. It can then perform some additional action and then forward the message to the original target.
-\item Send \ct{become:} to swap the references of two objects, such as a proxy and its target.
-\item Beware, some messages, like \ct{class} and \ct{yourself} are never really sent, but are interpreted by the VM.  Others, like \ct{+}, \ct{-} and \ct{ifTrue:} may be directly interpreted or inlined by the VM depending on the receiver.
-\item Another typical use for overriding \ct{doesNotUnderstand:} is to lazily load or compile missing methods.
-\item \ct{doesNotUnderstand:} cannot trap \self-sends.
-\item A more rigorous way to intercept messages is to use an object as a method wrapper. Such an object is installed in a method dictionary in place of a compiled method. It should implement \ct{run:with:in:} which is sent by the VM when it detects an ordinary object instead of a compiled method in the method dictionary. This technique is used by the SUnit Test Runner to collect coverage data.
+%\item The Inspector uses \ct{instVarAt:} and related methods to query and modify ``private'' instance variables of objects.
+\item Инспектор использует метод \ct{instVarAt:} и родственные ему, чтобы запрашивать и модифицировать <<приватные>> переменные объектов.
+%\item Send \ct{Behavior>>>allInstances} to query instances of a class.
+\item Отправьте сообщение \ct{Behavior>>>allInstances} чтобы получить все экземпляры класса.
+%\item The messages \ct{class}, \ct{isKindOf:}, \ct{respondsTo:} \etc  are useful for gathering metrics or building development tools, but they should be avoided in regular applications: they violate the encapsulation of objects and make your code harder to understand and maintain.
+\item Сообщения \ct{class}, \ct{isKindOf:}, \ct{respondsTo:} \etc подходят для вычисления метрик кода или создания инструментов разработчика, но их использования в обычных приложениях нужно избегать, т.к. они нарушают инкапсуляцию объектов и делают код более трудным для понимания и сопровождения.
+%\item \ct{SystemNavigation} is a utility class holding many useful queries for navigation and browsing the \ct class hierarchy. For example, use \ct{SystemNavigation default browseMethodsWithSourceString: 'pharo'.} to find and browse all methods with a given source string. (Slow, but thorough!)
+\item Класс \ct{SystemNavigation} --- это класс-утилита, содержащий много полезных запросов для навигации по иерархии классов \st. Например, используя \ct{SystemNavigation default browseMethodsWithSourceString: 'pharo'}, вы можете найти и просмотреть все методы, содержащие в исходном коде заданную строку. (Медленно, но зато исчерпывающе!)
+%\item Every \st class points to an instance of \ct{MethodDictionary} which maps selectors to instances of \ct{CompiledMethod}. A compiled method knows its class, closing the loop.
+\item Каждый класс в \st ссылается на экземпляр класса \ct{MethodDictionary}, который отображает селекторы на экземпляры класса \ct{CompiledMethod} (скомпилированный метод). Скомпилированный метод, в свою очередь, содержит ссылку на класс, замыкая круг. 
+%\item \ct{MethodReference} is a leightweight proxy for a compiled method, providing additional convenience methods, and used by many \st tools. 
+\item Класс \ct{MethodReference} представляет собой облегчённый объект-заместитель скомпилированного метода, предоставляющий удобные вспомогательные методы, и используется многими инструментами в \st.
+%\item \ct{BrowserEnvironment}, part of the Refactoring Browser infrastructure, offers a more refined interface than \ct{SystemNavigation} for querying the system, since the result of a query can be used as a the scope of a new query. Both GUI and programmatic interfaces are available.
+\item Часть инфраструктуры браузера рефакторинга, класс \ct{BrowserEnvironment}, предоставляет более совершенный интерфейс для запросов к системе, чем \ct{SystemNavigation}, т.к. результат одного запроса может определять границы следующего. Доступны как графический и программный интерфейсы.
+%\item \ct{thisContext} is a pseudo-variable that reifies the run-time stack of the virtual machine. It is mainly used by the debugger to dynamically construct an interactive view of the stack. It is also especially useful for dynamically determining the sender of a message.
+\item Псевдопеременная \ct{thisContext} воплощает стек вызовов виртуальной машины. Она, главным образом, используется отладчиком для динамического создания интерактивного представления стека. Она также особенно полезна для динамического определения отправителя сообщения.
+%\item Intelligent breakpoints can be set using \ct{haltIf:}, taking a method selector as its argument. \ct{haltIf:} halts only if the named method occurs as a sender in the run-time stack.
+\item <<Умные>> точки останова могут быть установлены, используя метод \ct{haltIf:}, принимающий селектор метода в качестве аргумента. \ct{haltIf:} останавливает выполнение только в том случае, если этот метод содержится в стеке предшествующих вызовов.
+%\item A common way to intercept messages sent to a given target is to use a ``minimal object'' as a proxy for that target. The proxy implements as few methods as possible, and traps all message sends by implementing \ct{doesNotunderstand:}. It can then perform some additional action and then forward the message to the original target.
+\item Обычный способ перехвата сообщений, отправленных некоторому получателю, --- это использование <<минимального объекта>> в качестве заместителя этого получателя. Объект-заместитель реализует как можно меньше методов, и перехватывает все отправленные получателю сообщения, переопределяя метод \ct{doesNotunderstand:}. Он также может выполнять дополнительные действия перед отправкой сообщения настоящему получателю.
+%\item Send \ct{become:} to swap the references of two objects, such as a proxy and its target.
+\item Отправьте сообщение \ct{become:} чтобы обменять местами два объекта (\ugh{???}), например, реальный объект и его объект-заместитель.
+%\item Beware, some messages, like \ct{class} and \ct{yourself} are never really sent, but are interpreted by the VM.  Others, like \ct{+}, \ct{-} and \ct{ifTrue:} may be directly interpreted or inlined by the VM depending on the receiver.
+\item Будьте внимательны, некоторые сообщения, такие как \ct{class} и \ct{yourself} на самом деле никогда не посылаются, а напрямую выполняются виртуальной машиной. Другие, такие, как \ct{+}, \ct{-} и \ct{ifTrue:} могут быть встроены (inlined) или вычислены напрямую виртуальной машиной, в зависимости от получателя.
+%\item Another typical use for overriding \ct{doesNotUnderstand:} is to lazily load or compile missing methods.
+\item Другой типичный пример переопределения метода \ct{doesNotUnderstand:} -- отложенная загрузка или компиляция отсутствующих методов.
+%\item \ct{doesNotUnderstand:} cannot trap \self-sends.
+\item \ct{doesNotUnderstand:} не может перехватывать сообщения отправляемые объектом самому себе.
+%\item A more rigorous way to intercept messages is to use an object as a method wrapper. Such an object is installed in a method dictionary in place of a compiled method. It should implement \ct{run:with:in:} which is sent by the VM when it detects an ordinary object instead of a compiled method in the method dictionary. This technique is used by the SUnit Test Runner to collect coverage data.
+\item Для более тщательного перехвата сообщений используйте объекты как обёртки методов. Такой объект может быть установлен в словарь методов вместо скомпилированного метода. Такой объект должен реализовывать метод \ct{run:with:in:}, который посылается виртуальной машиной, когда она обнаруживает, что место скомпилированного метода занимает обычный объект. Эта техника используется в SUnit Test Runner \ugh{???} для вычисления покрытия тестами.
 \end{itemize}
 
 %=========================================================
