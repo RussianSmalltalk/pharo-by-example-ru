@@ -41,7 +41,7 @@
 \chapter{Объектная модель \st}
 \chalabel{model}
 
-Модель программирования \st проста и единообразна: все есть объект и они могут общаться только посылая друг другу сообщения.
+Модель программирования \st проста и единообразна: всё является объектом и они могут общаться только посылая друг другу сообщения.
 Тем не менее, эта простота и единообразие может стать источником трудностей для программистов ранее использовавших другие языки. В этой главе мы покажем основные концепции объектной модели \st, в частности мы обсудим последствия представления классов как объектов.
 
 %=========================================================
@@ -52,7 +52,7 @@
 
 \begin{enumerate}[label={\textbf{Rule \arabic{*}}.}, ref={Rule \arabic{*}}, leftmargin=*]
 \item{} \rulelabel{everything}
-	Всё есть объект.
+	Всё является объектом.
 
 \item{} \rulelabel{instance}
 	Каждый объект является экземпляром класса.
@@ -69,32 +69,30 @@
 \end{enumerate}
 
 \noindent
-Let us look at each of these rules in some detail.
-
+Давайте рассмотрим эти правила повнимательнее.
 
 %=========================================================
-\section{Everything is an Object}
+\section{Всё является объектом}
 
 %\ruleref{everything}
 
-The mantra ``everything is an object'' is highly contagious.
-After only a short while working with \st, you will start to be surprised at how this rule simplifes everything you do.
-Integers, for example, are truly objects, so you can send messages to them, just as you do to any other object.
+Мантра «все является объектом» очень заразная. Даже немного поработав с \st вы начнете удивляться, как это правило упрощает все, что вы делаете.
+Целые числа, например, настоящие объекты, то есть вы можете посылать им сообщения точно так же как любому другому объекту.
 
 \begin{code}{@TEST}
-3 + 4            --> 7    "send '+ 4' to 3, yielding 7"
-20 factorial  --> 2432902008176640000   "send factorial, yielding a big number"
+3 + 4            --> 7    "послать сообщение '+ 4' объекту 3, вернёт 7"
+20 factorial  --> 2432902008176640000   "послать сообщение “факториал”, возвращает большое число"
 \end{code}
 
-The representation of \ct{20 factorial} is certainly different from the representation of \ct{7}, but because they are both objects, none of the code\,---\,not even the implementation of \ct{factorial}\,---\,needs to now about this.
+Представление \ct{20 factorial}, естественно отличается от представления \ct{7}, но так как оба они объекты, ни код ни, даже, реализация \ct{factorial} не должны знать об этом.
 
 \needlines{3}
-Perhaps the most fundamental consequence of this rule is the following:
-\important{Classes are objects too.}
-Furthermore, classes are not second-class objects: they are really first-class objects that you can send messages to, inspect, and so on.
-This means that \pharo is a truly reflective system, which gives a great deal of expressive power to developers.
+Возможно наиболее фундаментальное следствие этого правила заключается в следующем:
+\important{Классы тоже объекты}
+Более того, классы не объекты второго класса, они настоящие объекты первого класса, вы можете посылать им сообщения, инспектировать и так далее.
+Это значит, что \pharo полноценная рефлексивная система, дающая разработчикам огромную выразительную мощь.
 
-Deep in the implementation of \st, there are three different kinds of objects.  There are (1) ordinary objects with instance variables that are passed by references, there are (2) \emph{small integers} that are passed by value, and there are (3) indexable objects like arrays that hold a contiguous portion of memory.  The beauty of \st is that you normally don't need to care about the differences between these three kinds of object.
+Глубже в реализации \st существуют три разных типа объектов. Обычные объекты (1) с переменными экземпляра передающимися по ссылкам, \emph{малые целые числа} (2) передающиеся по значению, а так же перечислимые объекты, такие как массивы содержащие смежные области памяти. Красота \st в том, что обычно совершенно не имеет смысла различать эти три типа объектов.
 
 %=========================================================
 \section{Every object is an instance of a class}
