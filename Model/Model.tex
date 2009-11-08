@@ -41,31 +41,30 @@
 \chapter{Объектная модель \st}
 \chalabel{model}
 
-Модель программирования \st проста и универсальна: все есть объект и они могут общаться только посылая друг другу сообщения.
-However, this simplicity and uniformity can be a source of difficulty for programmers used to other languages. In this chapter we present the core concepts of the \st object model; in particular we discuss the consequences of representing classes as objects.
+Модель программирования \st проста и единообразна: все есть объект и они могут общаться только посылая друг другу сообщения.
+Тем не менее, эта простота и единообразие может стать источником трудностей для программистов ранее использовавших другие языки. В этой главе мы покажем основные концепции объектной модели \st, в частности мы обсудим последствия представления классов как объектов.
 
 %=========================================================
 \section{The rules of the model}
 \seclabel{rules}
 
-The \st object model is based on a set of simple 
-rules that are applied \emph{uniformly}. The rules are as follows:
+Объектная модель \st основана на наборе простых правил применяемых \emph{повсеместно}. Вот эти правила:
 
 \begin{enumerate}[label={\textbf{Rule \arabic{*}}.}, ref={Rule \arabic{*}}, leftmargin=*]
 \item{} \rulelabel{everything}
-	Everything is an object.
+	Всё есть объект.
 
 \item{} \rulelabel{instance}
-	Every object is an instance of a class.
+	Каждый объект является экземпляром класса.
 
 \item{}  \rulelabel{inheritance}
-	Every class has a superclass.
+	Каждый класс имеет суперкласс.
 
 \item{}  \rulelabel{message}
-	Everything happens by sending messages.
+	Все процессы в Smalltalk происходят через посылку сообщений.
 
 \item{}  \rulelabel{lookup}
-	Method lookup follows the inheritance chain.
+	Поиск метода следует по цепочке наследования.
 
 \end{enumerate}
 

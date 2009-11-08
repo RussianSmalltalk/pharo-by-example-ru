@@ -18,7 +18,7 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2009-10-23T18:22:42+06:00
+Last update: 2009-10-27T21:42:37+05:00
 
 ===== CHAPTER: Preface ==========
 
@@ -323,7 +323,7 @@ Transcript
 Point new setX: 25 setY: 35; isZero "--> false"
 -----
 
-===== CHAPTER: The Smalltalk object model ==========
+===== CHAPTER: Объектная модель Smalltalk ==========
 
 -----
 3 + 4 "--> 7    send '+ 4' to 3, yielding 7"
