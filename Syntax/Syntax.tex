@@ -36,7 +36,8 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{Syntax in a nutshell}
+%\chapter{Syntax in a nutshell}
+\chapter{Синтаксис в двух словах}
 \chalabel{syntax}
 
 \sd{We should add pragmas.}
@@ -45,128 +46,221 @@
 % \sd{It would be good to add link to the chapter where the reader can learn about conditional, exceptions and loops.}
 % \on{There are links already.}
 
-\pharo, like most modern \st dialects, adopts a syntax very close to that of \st-80.
-The \ind{syntax} is designed so that program text can be read aloud as though it were a kind of pidgin English:
+%\pharo, like most modern \st dialects, adopts a syntax very close to that of \st-80.
+%The \ind{syntax} is designed so that program text can be read aloud as though it were a kind of pidgin English:
+
+\pharo, как и большинство современных диалектов \st, близок к стандарту \st-80. Синтаксис такой,
+что программный текст при прочтении, похож на упрощенный английский.
 
 \begin{code}{}
 (Smalltalk includes: Class) ifTrue: [ Transcript show: Class superclass ]
 \end{code}
 
 \noindent
-\pharo's syntax is minimal.
-Essentially there is syntax only for \emph{sending messages} (\ie expressions) \damien{I don't think there is a syntax for declaring methods; in my opinion, this is just a feature of our browsers. That's why I'm commenting: and \emph{declaring methods}}.
-Expressions are built up from a very small number of  primitive elements.
-There are only 6 keywords, and there is no syntax for control structures or declaring new classes.
-Instead, nearly everything is achieved by sending messages to objects.
-For instance, instead of an if-then-else control structure, \st sends messages like \ct{ifTrue:} to \clsind{Boolean} objects.
-New \mbox{(sub-)classes} are created by sending a message to their superclass.
+%\pharo's syntax is minimal.
+%Essentially there is syntax only for \emph{sending messages} (\ie expressions) \damien{I don't think there is a syntax for %declaring methods; in my opinion, this is just a feature of our browsers. That's why I'm commenting: and \emph{declaring %methods}}.
+%Expressions are built up from a very small number of  primitive elements.
+%There are only 6 keywords, and there is no syntax for control structures or declaring new classes.
+%Instead, nearly everything is achieved by sending messages to objects.
+%For instance, instead of an if-then-else control structure, \st sends messages like \ct{ifTrue:} to \clsind{Boolean} objects.
+%New \mbox{(sub-)classes} are created by sending a message to their superclass.
+
+Синтаксис у \pharo простой. По существу, состоящий из отправки сообщения и предложений. Составляются предложения из небольшого числа примитивных элементов.
+Язык состоит из шести ключевых слов, в котором отсутствуют управляющие структуры и операторы создания новых классов.
+Вместо этого используется отправка сообщений объектам.
+Например, вместо управляющей структуры if-then-else используется посылка сообщения ifTrue: логическому (Boolean) объекту.
+Новые классы создаются отправкой сообщения суперклассу.
 
 %=================================================================
-\section{Syntactic elements}
+%\section{Syntactic elements}
+\section{Синтаксические элементы}
 
-Expressions are composed of the following building blocks:
-(i) six reserved keywords, or \emph{pseudo-variables}:
+%Expressions are composed of the following building blocks:
+Предложения строятся при помощи следующих элементов:
+%(i) six reserved keywords, or \emph{pseudo-variables}:
+(i) шесть зарезервированных ключевых слов или \emph{псевдопеременных}:
 \pvind{self}, \pvind{super}, \pvind{nil}, \pvind{true}, \pvind{false}, and \pvind{thisContext},
-(ii) constant expressions for \emphind{literal objects} including numbers, characters, strings, symbols and arrays,
-(iii) variable declarations,
-(iv) assignments,
-(v) \ind{block} closures, and
-(vi) messages.
-\seeindex{pseudo-variable}{variable, pseudo}
+%(ii) constant expressions for \emphind{literal objects} including numbers, characters, strings, symbols and arrays,
+(ii) константные выражения литеральных объектов, включающие числа, буквы, строки, символы и массивы,
+%(iii) variable declarations,
+(iii)определения переменных,
+%(iv) assignments,
+(iv)присваивания переменных,
+%(v) \ind{block} closures, and
+(v)блоки сообщений и
+%(vi) messages.
+(vi)сообщений.
+%\seeindex{pseudo-variable}{variable, pseudo}
 
 \begin{table}\centering
 	\begin{tabular}{ll}
 		\toprule
-		Syntax & What it represents \\
+		Синтакс & Что обозначает \\
 		\midrule
-		\lct{startPoint}			&	a variable name\\
-		\lct{Transcript}			&	a global variable name\\
-		\lct{self}				&	pseudo-variable \\
+		%\lct{startPoint}			&	a variable name \\
+		\lct{startPoint}			&	имя переменной \\
+		%\lct{Transcript}			&	a global variable name \\
+		\lct{Transcript}			&	имя глобальной переменной \\
+		%\lct{self}				&	pseudo-variable \\
+		\lct{self}				&	псевдопеременная \\
 		\midrule
-		\lct{1}				 	&	decimal integer \\
-		\lct{2r101}				&	binary integer \\
-		\lct{1.5}					&	floating point number \\
-		\lct{2.4e7}				&	exponential notation \\
-		\lct{\$a}					&	the character `a' \\
-		\lct{'Hello'}				&	the string ``Hello'' \\
-		\lct{\#Hello}				&	the symbol \lct{\#Hello} \\
-		\lct{\#(1 2 3)}			&	a literal array \\
-		\lct{\{1. 2. 1+2\}}		&	a dynamic array \\
+		%\lct{1}				 	&	decimal integer \\
+		\lct{1}				 	&	десятичное целое \\
+		%\lct{2r101}				&	binary integer \\
+		\lct{2r101}				&	двоичное целое \\
+		%\lct{1.5}					&	floating point number \\
+		\lct{1.5}					&	вещественное число \\
+		%\lct{2.4e7}				&	exponential notation \\
+		\lct{2.4e7}				&	экспонентная запись числа \\
+		%\lct{\$a}					&	the character `a' \\
+		\lct{\$a}					&	литера 'a' \\
+		%\lct{'Hello'}				&	the string ``Hello'' \\
+		\lct{'Hello'}				&	строка 'hello' \\
+		%\lct{\#Hello}				&	the symbol \lct{\#Hello} \\
+		\lct{\#Hello}				&	символl \lct{\#Hello} \\
+		%\lct{\#(1 2 3)}			&	a literal array \\
+		\lct{\#(1 2 3)}			&	литеральный массив \\
+		%\lct{\{1. 2. 1+2\}}		&	a dynamic array \\
+		\lct{\{1. 2. 1+2\}}		&	динамический массив \\
 		\midrule
-		\lct{"a comment"} 		&	a comment \\
+		%\lct{"a comment"} 		&	a comment \\
+		\lct{"a comment"} 		&	комментарий \\
 		\midrule
-		\lct{| x y |}				&	declaration of variables \lct{x} and \lct{y}	\\
-		\lct{x := 1}				&	assign 1 to \lct{x} \\
-		\lct{[ x + y ]}			&	a block that evaluates to \lct{x+y} \\
-		\lct{<primitive: 1>}		&	virtual machine primitive or annotation\\
+		%\lct{| x y |}				&	declaration of variables \lct{x} and \lct{y}	\\
+		\lct{| x y |}				&	временные переменных \lct{x} и \lct{y}	\\
+		%\lct{x := 1}				&	assign 1 to \lct{x} \\
+		\lct{x := 1}				&	присваивание 1 к переменной \lct{x} \\
+		%\lct{[ x + y ]}			&	a block that evaluates to \lct{x+y} \\
+		\lct{[ x + y ]}			&	блок, вычисляющий \lct{x+y} \\
+		%\lct{<primitive: 1>}		&	virtual machine primitive or annotation \\
+		\lct{<primitive: 1>}		&	виртуальный примитивный метод \\
 		\midrule
-		\lct{3 factorial}			&	unary message \\
-		\lct{3+4}					&	binary messages \\
-		\lct{2 raisedTo: 6 modulo: 10}		&	keyword message \\
+		%\lct{3 factorial}			&	unary message \\
+		\lct{3 factorial}			&	унарное сообщение \\
+		%\lct{3+4}					&	binary messages \\
+		\lct{3+4}					&	бинарное сообщение \\
+		%\lct{2 raisedTo: 6 modulo: 10}		&	keyword message \\
+		\lct{2 raisedTo: 6 modulo: 10}		&	ключевое сообщение \\
 		\midrule
-		\lct{$\uparrow$ true} 			&	return the value true	\\
-		\lct{Transcript show: 'hello'. Transcript cr }		&	expression separator (\lct{.})	\\
-		\lct{Transcript show: 'hello'; cr}					&	message cascade (\lct{;}) \\
+		%\lct{$\uparrow$ true} 			&	return the value true	\\
+		\lct{$\uparrow$ true} 			&	возвращение из метода значения true	\\
+		%\lct{Transcript show: 'hello'. Transcript cr }		&	expression separator (\lct{.})	\\
+		\lct{Transcript show: 'hello'. Transcript cr }		&	разделитель предложений (\lct{.})	\\
+		%\lct{Transcript show: 'hello'; cr}					&	message cascade (\lct{;}) \\
+		\lct{Transcript show: 'hello'; cr}					&	разделитель каскадных сообщений (\lct{;}) \\
 		\bottomrule
 	\end{tabular}
-	\caption{\pharo Syntax in a Nutshell\tablabel{syntax}}
+	%\caption{\pharo Syntax in a Nutshell\tablabel{syntax}}
+	\caption{Синтаксис в двух словах\tablabel{syntax}}
 \end{table}
 
-We can see examples of the various syntactic elements in \tabref{syntax}.
+%We can see examples of the various syntactic elements in \tabref{syntax}.
+Далее будем рассматривать примеры синтаксических элементов из \tabref{syntax}.
 \begin{description}
-\item[Local variables]	\ct{startPoint} is a variable name, or identifier.
-		By convention, identifiers are composed of words in ``\ind{camelCase}'' (\ie each word except the first starting with an upper case letter).
-		The first letter of an instance variable, method or block argument, or temporary variable must be lower case.
-		This indicates to the reader that the variable has a private scope.
+%\item[Local variables]	\ct{startPoint} is a variable name, or identifier.
+%		By convention, identifiers are composed of words in ``\ind{camelCase}'' (\ie each word except the first starting with an upper case letter).
+%		The first letter of an instance variable, method or block argument, or temporary variable must be lower case.
+%		This indicates to the reader that the variable has a private scope.
+\item[Локальная переменная]	\ct{startPoint} - это имя переменной или идентификатор.
+		по установленному соглашению, состоит из нескольких слов, например, camelCase  (т.е. каждое слово, исключая первое, начинается с заглавной буквы).
+		Первая буква переменных экземпляра, метода, аргумента блока или временной переменной начинается со строчной буквы.
+		Такое именование показывает, что у переменной ограниченная видимость.
 
-\item[Shared variables]	Identifiers that start with upper case letters are \subind{variable}{global} variables, class \subind{class}{variable}{}s, \subind{variable}{pool} dictionaries or class names.
-		\ct{Transcript} is a global variable, an instance of the class \ct{TranscriptStream}.
+%\item[Shared variables]	Identifiers that start with upper case letters are \subind{variable}{global} variables, class \subind{class}{variable}{}s, \subind{variable}{pool} dictionaries or class names.
+%		\ct{Transcript} is a global variable, an instance of the class \ct{TranscriptStream}.
+%		\seeindex{global variable}{variable, global}
+%		\seeindex{pool dictionary}{variable, pool}
+%		\seeindex{variable!class}{class, variable}
+\item[Общие переменные.]	Идентификаторы общих переменных начинаются с заглавной буквы и к ним относятся переменные: глобальные, класса, общих словарей и названия классов.
+		Например, Transcript является глобальной переменной, и к этой переменной подсоединен единственный экземпляр класса TranscriptStream.
 		\seeindex{global variable}{variable, global}
 		\seeindex{pool dictionary}{variable, pool}
 		\seeindex{variable!class}{class, variable}
 
-\item[The receiver.]	\pvind{self} is a keyword that refers to the object inside which the current method is executing. We call it ``the receiver'' because this object will normally have received the message that caused the method to execute.
-		\self is called a ``\subind{variable}{pseudo}-variable'' since we cannot assign to it.
+%\item[The receiver.]	\pvind{self} is a keyword that refers to the object inside which the current method is executing. We call it ``the receiver'' because this object will normally have received the message that caused the method to execute.
+%		\self is called a ``\subind{variable}{pseudo}-variable'' since we cannot assign to it.
+\item[Получатель.]	Ключевое слово self ссылается на объект текущего метода, который исполняется, т.е на самого себя.
+		Мы называем его «получатель», потому что этот объект на который ссылается self, является получателем сообщений.
+		Также self называется «псевдопеременной», так как к этой переменной нельзя присоединить другой объект.
 
-\item[Integers.] In addition to ordinary decimal integers like \ct{42}, \pharo also provides a \ind{radix notation}.
-	\ct{2r101} is \ct{101} in radix 2 (\ie binary), which is equal to decimal 5.
+%\item[Integers.] In addition to ordinary decimal integers like \ct{42}, \pharo also provides a \ind{radix notation}.
+%	\ct{2r101} is \ct{101} in radix 2 (\ie binary), which is equal to decimal 5.
+%	\index{literal}
+%	\index{literal!number}
+\item[Целочисленные.] В дополнение к обычным десятичным целым, например 42, Pharo использует и другие системы счисления.
+	2r101 обозначение двоичного 101 (или бинарного), которое равно десятичному 5.
 	\index{literal}
 	\index{literal!number}
 
-\item[Floating point numbers] can be specified with their base-ten \ind{exponent}: \mbox{\ct{2.4e7}} is $2.4\times 10^7$.
+%\item[Floating point numbers] can be specified with their base-ten \ind{exponent}: \mbox{\ct{2.4e7}} is $2.4\times 10^7$.
+%	\index{floating point number}
+\item[Вещественные числа] могут записываться с использованием степеней числа 10: 2.4е7 - это $2.4\times 10^7$.
 	\index{floating point number}
 
-\item[Characters.] A dollar sign introduces a literal \subind{literal}{character}: \ct{$a}\ignoredollar$ is the literal for `a'.
-		Instances of non-printing characters can be obtained by sending appropriately named messages to the \clsind{Character} class, such as \ct{Character space} \cmindex{Character class}{space} and \ct{Character tab}\cmindex{Character class}{tab}.
+%\item[Characters.] A dollar sign introduces a literal \subind{literal}{character}: \ct{$a}\ignoredollar$ is the literal for `a'.
+%		Instances of non-printing characters can be obtained by sending appropriately named messages to the \clsind{Character} class, such as \ct{Character space} \cmindex{Character class}{space} and \ct{Character tab}\cmindex{Character class}{tab}.
+\item[Литералы.] Долларовый знак и последующий литерал обозначает экземпляр класса Character, например \ct{$a}.
+		Непечатаемые символы можно получить, отправляя соответствующие сообщения классу Character, такие как Character space или Character tab.
 		
-\item[Strings.] Single quotes are used to define a literal \subind{literal}{string}.
-		If you want a string with a quote inside, just double the quote, as in \ct{'G''day'}.
+%\item[Strings.] Single quotes are used to define a literal \subind{literal}{string}.
+%		If you want a string with a quote inside, just double the quote, as in \ct{'G''day'}.
+\item[Строки.] Одиночные кавычки используются для обозначения экземпляра класса String, состоящего из последовательности букв и символов.
+		Если нужно в строку (String) добавить одинарную кавычку, то ее нужно продублировать, например \ct{'G''day'}.
 
-\item[Symbols] are like Strings, in that they contain a sequence of characters.  
-	However, unlike a string, a literal \subind{literal}{symbol} is guaranteed to be globally unique.
-		There is only one Symbol object \ct{#Hello} but there may be multiple String objects with the value \ct{'Hello'}.
+%\item[Symbols] are like Strings, in that they contain a sequence of characters.  
+%	However, unlike a string, a literal \subind{literal}{symbol} is guaranteed to be globally unique.
+%		There is only one Symbol object \ct{#Hello} but there may be multiple String objects with the value \ct{'Hello'}.
+%		\seeindex{\#@{\textsf{\#}}}{literal symbol}
+\item[Символы] также как строки (Strings), содержат последовательность букв.
+		Однако они отличаются от строк тем, что являются уникальными.
+		В системе может быть только один символьный объект \ct{#hello}, а строк 'hello' может быть несколько.
 		\seeindex{\#@{\textsf{\#}}}{literal symbol}
 
-\item[Compile-time arrays] are defined by \ct{#( )}, surrounding space-separated literals.
-		Everything within the parentheses must be a compile-time constant.
-		For example,  \ct{#(27 (true false) abc)} is a \subind{Array}{literal} \subind{literal}{array} of three elements: the integer \ct{27}, the compile-time array containing the two booleans, and the symbol \ct{#abc}. (Note that this is the same as \ct{#(27 #(true false) #abc)}.)
+%\item[Compile-time arrays] are defined by \ct{#( )}, surrounding space-separated literals.
+%		Everything within the parentheses must be a compile-time constant.
+%		For example,  \ct{#(27 (true false) abc)} is a \subind{Array}{literal} \subind{literal}{array} of three elements: the integer \ct{27}, the compile-time array containing the two booleans, and the symbol \ct{#abc}. (Note that this is the same as \ct{#(27 #(true false) #abc)}.)
+\item[Массивы создаваемые во время компилирования метода] можно определять при помощи \ct{#()}, где между скобками можно вводить литеральные объекты, разделяя их пробелами.
+		Все что расположено между скобками создается во время компилирования метода.
+		Например, \ct{#(27 (true false) abc)} состоит из трех элементов: целочисленное число 27, массива содержащего два булевых элемента и символа \ct{#abc}.
+		Это же самый пример можно записать иначе \ct{#(27 #(true false) abc)}.
 
-\item[Run-time arrays.] Curly braces \ct|{ }| define a (\subind{Array}{dynamic}) array at run-time.
-		Elements are expressions separated by periods.
-		So \ct|{ 1. 2. 1+2 }| defines an array with elements 1, 2, and the result of evaluating 1+2.
-		(The curly-brace notation is peculiar to the \pharo and \squeak dialects of \st!
-		In other \st{}s you must build up dynamic arrays explicitly.)
+%\item[Run-time arrays.] Curly braces \ct|{ }| define a (\subind{Array}{dynamic}) array at run-time.
+%		Elements are expressions separated by periods.
+%		So \ct|{ 1. 2. 1+2 }| defines an array with elements 1, 2, and the result of evaluating 1+2.
+%		(The curly-brace notation is peculiar to the \pharo and \squeak dialects of \st!
+%		In other \st{}s you must build up dynamic arrays explicitly.)
+\item[Массивы создаваемые во время выполнения метода] определяются при помощи фигурных скобок \ct|{}|.
+		 Элементы массива располагаются между скобками и разделяются точками.
+		Так\ct|{1. 2. 1+2.}| определяет массив из трех элементов: 1, 2 и результат выражения \ct{1+2}.
+		Фигурные скобки применяются только в \pharo и \squeak диалектах \st!.
 
-\item[Comments] are enclosed in double quotes.
-		\ct{"hello"} is a \ind{comment}, not a string, and is ignored by the \pharo compiler.
-		Comments may span multiple lines.
+%\item[Comments] are enclosed in double quotes.
+%		\ct{"hello"} is a \ind{comment}, not a string, and is ignored by the \pharo compiler.
+%		Comments may span multiple lines.
+\item[Комментарии] заключаются в двойные кавычки.
+		\ct{"hello"}является комментарием и игнорируется компилятором \pharo.
+		Комментарии могут состоят из нескольких строк.
 		
-\item[Local variable definitions.]	Vertical bars \ct{| |} enclose the \subind{variable}{declaration} of one or more local variables in a method (and also in a block).
+%\item[Local variable definitions.]	Vertical bars \ct{| |} enclose the \subind{variable}{declaration} of one or more local variables in a method (and also in a block).
+%		% \seeindex{\|@{\textsf{\|\|}}}{assignment}
+%		% Can't seem to index or-bars! (special char for index macro)
+%		\seeindex{declaration}{variable declaration}
+\item[Локальные переменные определяются]	вертикальными полосами \ct{| |} и размещенными между ними названиями переменных (переменных).
+		Например: \ct{|a index b|}.	
 		% \seeindex{\|@{\textsf{\|\|}}}{assignment}
 		% Can't seem to index or-bars! (special char for index macro)
 		\seeindex{declaration}{variable declaration}
 
-\item[Assignment.]	\ct{:=} assigns an object to a variable.
+%\item[Assignment.]	\ct{:=} assigns an object to a variable.
+%%		Sometimes you will see $\leftarrow$ used instead.
+%%		Unfortunately, since this is not an \textsc{ascii} character, it will appear as an underscore unless
+%%		you are using a special font.
+%%		So, \ct{x := 1} is the same as \ct{x _ 1} or \ct{x UNDERSCORE 1}. You should use \ct{:=} since the other representations have been deprecated.
+%		\index{assignment}
+%		\seeindex{:=@{\textsf{:=}}}{assignment}
+%		\seeindex{\_@{\textsf{\_}}}{assignment}
+%		\seeindex{<-@{$\leftarrow$}}{assignment}
+\item[Присваивание]	объекта к переменной осуществляется оператором \ct{:=}.
 %		Sometimes you will see $\leftarrow$ used instead.
 %		Unfortunately, since this is not an \textsc{ascii} character, it will appear as an underscore unless
 %		you are using a special font.
@@ -176,49 +270,83 @@ We can see examples of the various syntactic elements in \tabref{syntax}.
 		\seeindex{\_@{\textsf{\_}}}{assignment}
 		\seeindex{<-@{$\leftarrow$}}{assignment}
 
-\item[Blocks.] Square brackets \ct{[ ]} define a \ind{block}, also known as a block closure or a lexical closure, which is a first-class object representing a function.
-		As we shall see, blocks may take arguments and can have local variables.
+%\item[Blocks.] Square brackets \ct{[ ]} define a \ind{block}, also known as a block closure or a lexical closure, which is a first-class object representing a function.
+%		As we shall see, blocks may take arguments and can have local variables.
+%	\seeindex{[ ]@{\textsf{[ ]}}}{block}
+%	\seeindex{closure}{block}
+%	\seeindex{lexical closure}{block}
+\item[Блоки.] Квадратные скобки \ct{[]} определяют блок, известный как Block closure.
+	Объект Block представляет собой функцию.
+	Как вы увидите позднее, блоки могут иметь аргументы и локальные переменные.
 	\seeindex{[ ]@{\textsf{[ ]}}}{block}
 	\seeindex{closure}{block}
 	\seeindex{lexical closure}{block}
 
-\item[Primitives.]	\ct{<primitive: ...>} denotes an invocation of a \ind{virtual machine} \ind{primitive.}
-	(\ct{<primitive: 1>} is the VM primitive for \ct{SmallInteger>>>+}.)
-	Any code following the primitive is executed only if the primitive fails.
-	The same syntax is also used for method annotations.
+%\item[Primitives.]	\ct{<primitive: ...>} denotes an invocation of a \ind{virtual machine} \ind{primitive.}
+%	(\ct{<primitive: 1>} is the VM primitive for \ct{SmallInteger>>>+}.)
+%	Any code following the primitive is executed only if the primitive fails.
+%	The same syntax is also used for method annotations.
+\item[Примитивы.]	\ct{<primitive: ...>} обозначает ссылку на примитив виртуальной машины.
+	Например, \ct{(<primitive: 1>} - сложение с целочисленным числом Smallinteger).
+	Программный код расположенный за примитивом исполняется только если примитив выполнен с ошибкой.
 
-\item[Unary messages] consist of a single word (like \ct{factorial}) sent to a receiver (like \ct{3}).
-	\index{message!unary}
+%\item[Unary messages] consist of a single word (like \ct{factorial}) sent to a receiver (like \ct{3}).
+%	\index{message!unary}
+%	\seeindex{unary message}{message, unary}
+\item[Унарные сообщения] состоящие из одиночного слова (например factorial) посылаются получателю (к примеру 3).
 	\seeindex{unary message}{message, unary}
 
-\item[Binary messages] are operators (like \ct{+}) sent to a receiver and taking a single argument. In \ct{3+4}, the receiver is \ct{3} and the argument is \ct{4}.
-	\index{message!binary}
+%\item[Binary messages] are operators (like \ct{+}) sent to a receiver and taking a single argument. In \ct{3+4}, the receiver is \ct{3} and the argument is \ct{4}.
+%	\index{message!binary}
+%	\seeindex{binary message}{message, binary}
+\item[Бинарные сообщения] --- операторы (\ct{+}\ct{-}\ct{/}\ct{-}\ct{>} и т.д.) посылаемые получателю и содержащие один аргумент.
+	В \st! предложении \ct{3 + 4}, где получатель 3, бинарный селектор \ct{+} и аргумент 4.
+	Результатом выполнения этого предложения будет целочисленный объект 7.
 	\seeindex{binary message}{message, binary}
 
-\item[Keyword messages] consist of multiple keywords (like \ct{raisedTo:modulo:}), each ending with a colon and taking a single argument. 
-In the expression \ct{2 raisedTo: 6 modulo: 10}, the \emphind{message selector} \ct{raisedTo:modulo:} takes the two arguments \ct{6} and \ct{10}, one following each colon.  We send the message to the receiver \ct{2}.
+%\item[Keyword messages] consist of multiple keywords (like \ct{raisedTo:modulo:}), each ending with a colon and taking a single argument. 
+%In the expression \ct{2 raisedTo: 6 modulo: 10}, the \emphind{message selector} \ct{raisedTo:modulo:} takes the two arguments \ct{6} and \ct{10}, one following each colon.  We send the message to the receiver \ct{2}.
+%	\index{message!keyword}
+%	\seeindex{keyword message}{message, keyword}
+\item[Ключевые сообщения] состоят из нескольких ключевых слов (\ct{raisedTo:modulo:}),
+	каждое слово заканчивается двоеточием и аргументом.
+	В предложении \ct{2 raisedTo: 6 modulo: 10}, где в селектор сообщения \ct{raisedTo:modulo:} включено два аргумента 6 и 10.
+	Они расположены после двоеточия. Сообщение отправляется получателю 2.
 	\index{message!keyword}
 	\seeindex{keyword message}{message, keyword}
 
-\item[Method return.] \ct{^} is used to \emphind{return} a value from a method.  (You must type \verb|^| to obtain the \ct{^} character.)
-\md{\ct{^} always returns from the method, even if used in a block, it returns from the enclosing method.}
+%\item[Method return.] \ct{^} is used to \emphind{return} a value from a method.  (You must type \verb|^| to obtain the \ct{^} character.)
+%\md{\ct{^} always returns from the method, even if used in a block, it returns from the enclosing method.}
+\item[Возврат значения из метода.] Оператор \ct{^} используется для возвращения ответа из метода.
+	(На клавиатуре нужно печатать \verb|^|, чтобы ввести символ \ct{^})
 
-\item[Sequences of statements.]	A period or full-stop (\ct{.}) is the \emph{statement} \emphsubind{statement}{separator}. Putting a period between two expressions turns them into independent statements.	
+%\item[Sequences of statements.]	A period or full-stop (\ct{.}) is the \emph{statement} \emphsubind{statement}{separator}. Putting a period between two expressions turns them into independent statements.	
+%	\seeindex{full stop}{statement separator}
+%	\seeindex{period}{statement separator}
+%	\seeindex{\ct{.}}{statement separator}
+\item[Последовательности сообщений.]	Каждое \st предложение разделяется (\ct{.}) точкой.	
 	\seeindex{full stop}{statement separator}
 	\seeindex{period}{statement separator}
 	\seeindex{\ct{.}}{statement separator}
 
-\item[Cascades.] Semicolons can be used to send a \emphind{cascade} of messages to a single receiver.  In \ct{Transcript show: 'hello'; cr} we first send the keyword message \ct{show: 'hello'} to the receiver \ct{Transcript}, and then we send the unary message \ct{cr} to the same receiver.
+%\item[Cascades.] Semicolons can be used to send a \emphind{cascade} of messages to a single receiver.  In \ct{Transcript show: 'hello'; cr} we first send the keyword message \ct{show: 'hello'} to the receiver \ct{Transcript}, and then we send the unary message \ct{cr} to the same receiver.
+%	\seeindex{;}{cascade}
+\item[Каскадные сообщения.] Точка с запятой используется для посылки нескольких сообщений одному получателю.
+	В предложении \ct{Transcript show: 'hello'; cr}.
+	Сначала посылается сообщение \ct{show: 'hello'} получателю Transcript.
+	Затем посылается унарное сообщение cr этому же получателю.
 	\seeindex{;}{cascade}
 
 \end{description}
 
-The classes \ct{Number}, \ct{Character}, \ct{String} and \ct{Boolean} are described in more detail in \charef{basic}.
+%The classes \ct{Number}, \ct{Character}, \ct{String} and \ct{Boolean} are described in more detail in \charef{basic}.
+Number, Character, String and Boolean подробно будут описаны в главе \charef{basic}
 
 \on{Blocks are described in \charef{blocks}. (Control flow and Iterators).}
 
 %=================================================================
-\section{Pseudo-variables}
+%\section{Pseudo-variables}
+\section{Псевдопеременные}
 
 In \st, there are 6 reserved keywords, or \emph{pseudo-variables}:
 \pvind{nil}, \pvind{true},  \pvind{false},  \pvind{self}, \pvind{super}, and \pvind{thisContext}.
