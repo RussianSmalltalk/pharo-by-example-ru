@@ -160,9 +160,9 @@ w instVarNamed: 'contents' put: 'howdy!'; contentsChanged
 \needlines{5}
 \begin{code}{}
 Object>>>instVarAt: index 
-	"Primitive. Answer a fixed variable in an object. ..."
+	"Примитив. Возвращает значение фиксированной переменной объекта. ..."
 	!\textbf{<primitive: 73>}!
-	"Access beyond fixed variables."
+	"Выход за пределы фиксированных переменных."
 	^self basicAt: index - self class instSize		
 \end{code}
 
@@ -211,7 +211,6 @@ SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
 \needlines{9}
 \begin{code}{}
 Object>>>instanceVariableValues
-	%"Answer a collection whose elements are the values of those instance variables of the receiver which were added by the receiver's class."	
 	"Возвращает список значений переменных объекта-получателя, определённых в его классе"
 	| c |
 	c := OrderedCollection new.
@@ -265,7 +264,7 @@ Exception respondsTo: #, --> true    "классы исключений могу
 %Asking an object for its class, or querying it to discover which messages it understands, are typical signs of design problems, since they violate the principle of encapsulation.
 Запрос у объекта его класса, или списка поддерживаемых сообщений -- типичные признаки плохого дизайна, т.к. это нарушает принцип инкапсуляции.
 %Development tools, however, are not normal applications, since their domain is that of software itself. As such these tools have a right to dig deep into the internal details of code.}
-Инструменты разработки, однако, не являются обычными приложениями, т.к. их предметная область само программное обеспечение. Это даёт им право глубоко проникать в детали кода.
+Инструменты разработки, однако, не являются обычными приложениями, т.к. их предметная область само программное обеспечение. Это даёт им право глубоко проникать в детали кода.}
 
 %There also exist mechanisms for introspecting on various parts of the run-time system, such as  the process scheduler, the memory manager and so on. For now we will focus on navigating through objects, classes and methods, and we will look more closely at rest of the runtime system in an other chapter.
 %\on{let's not mention this if we don't actually write such a chapter!}
@@ -297,7 +296,7 @@ Morph selectors size.             -->  998 "количество методов 
 Morph instVarNames size.     -->      6 "количество переменных определённых непосредственно в классе Morph"
 Morph subclasses size.          -->    45 "прямые подклассы"
 Morph allSubclasses size.      -->  326 "всего подклассов"
-Morph linesOfCode.               --> 5968 "строк кода (БАБАХ!)"
+Morph linesOfCode.               --> 5968 "строк кода (ОГО-ГО)"
 \end{code}
 
 %One of the most interesting metrics in the domain of object-oriented languages is the number of methods that extend methods inherited from the superclass.
@@ -513,7 +512,6 @@ SystemNavigation default
     each methodDict associations
       select: [:assoc | assoc value sendsToSuper]
       thenCollect: [:assoc | MethodReference class: each selector: assoc key]])
-  %name: 'Supersends of ' , class name , ' and its subclasses'
   name: 'Вызовы методов суперкласса внутри класса' , class name , ' и его подклассов'
 \end{code}
 %Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
@@ -558,7 +556,6 @@ SystemNavigation default
 На \figref{sendDifferentSuper} мы можем видеть, что 19 таких методов были найдены внутри иерархии класса \ct{Collection}, включая \ct{Collection>>>printNameOn:}, который посылает \ct{super printOn:}.
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{sendDifferentSuper}
-	%\caption{Finding methods that send a different super message.\figlabel{sendDifferentSuper}}
 	\caption{Поиск методов, которые посылают суперклассу сообщение с именем, отличным от своего.\figlabel{sendDifferentSuper}}
 \end{figure}
 
@@ -570,7 +567,6 @@ SystemNavigation default
 \begin{code}{}
 ((BrowserEnvironment new forClasses: (Collection withAllSubclasses))
 	selectMethods: [:method | method sendsToSuper])
-	%label: 'Collection methods sending super';
 	label: 'Методы класса Collection, посылающие сообщения суперклассу';
 	open.
 \end{code}{}
@@ -586,7 +582,6 @@ SystemNavigation default
 	selectMethods: [:method | 
 		method sendsToSuper
 		and: [(method parseTree superMessages includes: method selector) not]])
-	%label: 'Collection methods sending different super';
 	label: 'Методы класса Collection, посылающие суперклассу сообщения с другим именем';
 	open
 \end{code}
@@ -680,7 +675,7 @@ we should have a Reflection applied chapter}
 \lr{I would love to help writing such a chapter}
 %-----------------------------------------------------------------
 %\subsection{Intelligent breakpoints}
-\subsection{"Умные" точки останова}
+\subsection{<<Умные>> точки останова}
 
 \mthindex{Object}{halt}
 %The \st way to set a breakpoint is to evaluate \ct{self halt} at an interesting point in a method.  This will cause \ct{thisContext} to be reified, and a \ind{debugger} window will open at the breakpoint.
