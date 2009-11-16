@@ -54,9 +54,9 @@
 Вкратце, это означает, что программы способны \ugh{обращаться к их собственной структуре и влиять на процесс своего выполнения}.
 % \lr{not only on execution, also on the static model}
 %More technically, this means that the \emphind{metaobjects} of the runtime system can be \emph{reified} as ordinary objects, which can be queried and inspected.
-С технической точки зрения это означает, что \emphind{метаобъекты} \ugh{времени выполнения} могут быть представлены как обычные объекты, информацию о которых можно запросить и проинспектировать.
+С технической точки зрения это означает, что \emphind{метаобъекты} (\emphind{metaobjects}) системы времени выполнения могут быть \ugh{представлены} как обычные объекты, которые можно запрашивать и инспектировать.
 %The metaobjects in \st are classes, metaclasses, method dictionaries, compiled methods, the run-time stack, and so on.
-Метаобъектами в \st являются классы, метаклассы, словари методов, скомпилированные методы, стек \ugh{вызова методов} и т.д.
+Метаобъектами в \st являются классы, метаклассы, словари методов, скомпилированные методы, стек вызовов и т.д.
 %This form of reflection is also called \emphind{introspection}, and is supported by many modern programming languages.
 Эта форма рефлексии называется также \emphind{интроспекцией} (\emphind{introspection}) и поддерживается многими современными языками программирования.
 
@@ -67,32 +67,32 @@
 \end{figure}
 
 %Conversely, it is possible in \st to modify reified metaobjects and \emph{reflect} these changes back to the runtime system (see \figref{reflect}).
-В \st можно вносить в представление метаобъектов изменения, которые будут \emph{отражаться} на \ugh{работающей системе} (см. \figref{reflect}). 
+В \st можно вносить в представление метаобъектов изменения, которые будут \emph{отражаться} (\emph{reflect}) на системе времени выполнения (см. \figref{reflect}). 
 %This is also called \emph{intercession}, and is supported mainly by dynamic programming languages, and only to a very limited degree by static languages.
-Это свойство, называемое \emph{посредничество} (\emph{intercession}), присуще, в основном, динамическим языкам и в гораздо меньшей степени статическим.
+Это свойство, называемое \emph{интерцессия} (\emph{intercession}), присуще, в основном, динамическим языкам программирования и в гораздо меньшей степени статическим.
 
 %A program that manipulates other programs (or even itself) is a \emphind{metaprogram}.
 Программа, манипулирующая другими программами (или даже собой) называется \emphind{метапрограммой} (\emphind{metaprogram}).
 %For a programming language to be reflective, it should support both \ind{introspection} and \ind{intercession}.
-Чтобы быть рефлексивным, язык программирования должен поддерживать и \ind{интроспекцию} и \ind{посредничество}.
+Чтобы быть рефлексивным, язык программирования должен поддерживать и \ind{интроспекцию} и \ind{интерцессия}.
 
 %Introspection is the ability to \emph{examine} the data structures that define the language, such as objects, classes, methods and the execution stack.
-Интроспекция (самоанализ) -- это способность языка исследовать структуры, которые его образуют, например, объекты, классы, методы и стек вызовов.
+Интроспекция (самоанализ) --- это способность языка \emph{исследовать} (\emph{examine}) структуры, которые его образуют, например, объекты, классы, методы и стек вызовов.
 %Intercession is the ability to \emph{modify} these structures, in other words to change the language semantics and the behavior of a program from within the program itself.
-Интерцессия (посредничество) -- это способность языка модифицировать эти структуры. Другими словами, изменять семантику языка и поведение программы внутри неё самой.
+Интерцессия (посредничество) --- это возможность модифицировать подобные структуры, другими словами, изменять семантику языка и поведение программы внутри неё самой.
 %\emph{Structural reflection} is about examining and modifying the structures of the run-time system, and \emphind{behavioural reflection} is about modifying the interpretation of these structures.
-\emph{Структрурная рефлексия} заключается в исследовании и изменении структур рантайм системы, в то время как \emphind{поведенческая рефлексия} заключается в изменении способа интерпретации этих структур.
+\emph{Структрурная рефлексия} (\emph{Structural reflection}) заключается в исследовании и изменении структур системы времени выполнения, в то время как \emphind{поведенческая рефлексия} (\emphind{behavioural reflection}) заключается в изменении способа интерпретации этих структур.
 
 %In this chapter we will focus mainly on \ind{structural reflection}.
-Эта глава фокусируется в основном на \ind{структурной рефлексии}.
+В этой главе мы сфокусируемся в основном на \ind{структурной рефлексии}.
 %We will explore many practical examples illustrating how \st supports introspection and metaprogramming.
-Будет рассмотрено много примеров, иллюстрирующих практическое применение интроспекции и метапрограммирования в \st.
+Мы рассмотрим множество примеров, иллюстрирующих практическое применение интроспекции и метапрограммирования в \st.
 
 %======================================
 \section{Интроспекция}
 
 %Using the inspector, you can look at an object, change the values of its instance variables, and even send messages to it.
-Используя инспектор, можно рассматривать какой-либо объект, изменять значения его атрибутов и даже посылать ему сообщения. 
+Используя инспектор, вы можете рассматривать какой-либо объект, изменять значения его переменных экземпляра и даже посылать ему сообщения. 
 
 %\dothis{Evaluate the following code in a workspace:}
 \dothis{Выполните следующий код в рабочей области:}
@@ -105,9 +105,9 @@ w inspect
 %This will open a second workspace and an inspector.
 Этот код открывает вторую рабочую область и инспектор,
 %The inspector shows the internal state of this new workspace, listing its instance variables in the left part (\ct!dependents!, \ct!contents!, \ct!bindings!...) and the value of the selected instance variable in the right part.
-который представляет внутреннее состояние вновь созданной рабочей области, выводя список её атрибутов слева (\ct!dependents!, \ct!contents!, \ct!bindings!...) и значение выбранного атрибута справа.
+который показывает внутреннее состояние вновь созданной рабочей области, слева выводя список её переменных экземпляра (\ct!dependents!, \ct!contents!, \ct!bindings!...), а справа --- значение выбранной переменной.
 %The \ct!contents! instance variable represents whatever the workspace is displaying in its text area, so if you select it, the right part will show an empty string.
-Атрибут \ct!contents! хранит содержимое текстового поля рабочей области, которое в данный момент равно пустой строке.
+Переменная экземпляра \ct!contents! хранит содержимое текстового поля рабочей области, и если вы выберете её в списке, справа появится пустая строка.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{workspaceInspector}
@@ -115,7 +115,7 @@ w inspect
 \end{figure}
 
 %\dothis{Now type \ct!'hello'! in place of that empty string, then \emph{accept} it.}
-\dothis{Теперь введите \ct!'hello'! вместо пустой строки и \emph{примените} изменения.}
+\dothis{Введите теперь \ct!'hello'! вместо пустой строки и \emph{примените} (\emph{accept}) изменения.}
 %The value of the \ct!contents! variable will change, but the workspace window will not notice it, so it does not redisplay itself.
 Значение переменной \ct!contents! изменится, но окно рабочей области не отобразит этого изменения, потому что оно не перерисовывает себя.
 %To trigger the window refresh, evaluate \ct!self contentsChanged! in the lower part of the inspector.
@@ -127,32 +127,32 @@ w inspect
 %How does the inspector work?
 Как же работает инспектор?
 %In \st, all instance variables are protected.
-В \st все атрибуты объекта являются ``защищёнными'',
+В \st все переменные экземпляра являются <<защищёнными>>,
 %In theory, it is impossible to access them from another object if the class doesn't define any accessor.
-и теоретически невозможно получить к ним доступ из другого объекта, если класс явно не определяет методов доступа к ним.
+и, теоретически, невозможно получить к ним доступ из другого объекта, если класс явно не определяет для них методов доступа.
 %In practice, the inspector can access instance variables without needing accessors, because it uses the reflective abilities of \st.
 На практике же инспектор может осуществлять доступ к переменным экземпляра без соответствующих методов, используя рефлексивные возможности \st.
 %In \st, classes define instance variables either by name or by numeric indices.
-\ugh{В \st атрибуты определяются классами по имени или по числовому индексу}.
+В \st классы определяют переменные экземпляра либо по имени, либо по числовому индексу.
 %The inspector uses methods defined by the \ct!Object! class to access them: \lct{instVarAt: \emph{index}} and \lct{instVarNamed: \emph{aString}} can be used to get the value of the instance variable at position \lct{\emph{index}} or identified by \lct{\emph{aString}}, respectively; to assign new values to these instance variables, it uses \ct!instVarAt:put:! and \ct!instVarNamed:put:!.
-Для доступа к ним инспектор использует методы, определённые в классе \ct!Object!: \lct{instVarAt: \emph{index}} и \lct{instVarNamed: \emph{aString}} возвращают значение переменной экземпляра по индексу (\lct{\emph{index}}) или по имени (\lct{\emph{aString}}) соответственно. Для установки новых значений используются методы \ct!instVarAt:put:! and \ct!instVarNamed:put:!.
+Для доступа к ним инспектор использует методы, определённые в классе \ct!Object!: \lct{instVarAt: \emph{index}} и \lct{instVarNamed: \emph{aString}} возвращают значение переменной экземпляра по индексу (\lct{\emph{index}}) и по имени (\lct{\emph{aString}}) соответственно; для установки новых значений используются методы \ct!instVarAt:put:! and \ct!instVarNamed:put:!.
 \mthindex{Object}{instVarAt:}
 \mthindex{Object}{instVarNamed:}
 \mthindex{Object}{instVarAt:put:}
 \mthindex{Object}{instVarNamed:put:}
 
-For instance, you can change the value of the \ct!w! binding of the first workspace by evaluating:
+%For instance, you can change the value of the \ct!w! binding of the first workspace by evaluating:
 Например, можно изменить значение переменной \ct!w! из предыдущего примера, выполнив код:
 \begin{code}{}
 w instVarNamed: 'contents' put: 'howdy!'; contentsChanged
 \end{code}
 
 %\important{\emph{Caveat:} Although these methods are useful for building development tools, using them to develop conventional applications is a bad idea: these reflective methods break the encapsulation boundary of your objects and can therefore make your code much harder to understand and maintain.}
-\important{\emph{Предупреждение:} Хотя эти методы полезны при создании инструментария разработчика, использование их для разработки обычных приложений не самая лучшая идея, т.к. эти методы нарушают границу инкапсуляции объектов, тем самым делая код более сложным для понимания и сопровождения.}
+\important{\emph{Внимание:} Хотя эти методы полезны при создании инструментария разработчика, использование их для разработки обычных приложений не самая лучшая идея: эти методы нарушают границу инкапсуляции объектов, тем самым делая код более сложным для понимания и сопровождения.}
 % \lr{Why? The access does not show up when looking for all readers/writers in the code browser.}
 
 %Both \ct!instVarAt:! and \ct!instVarAt:put:! are \ind{primitive methods}, meaning that they are implemented as primitive operations of the \pharo virtual machine.
-И \ct!instVarAt:!, и \ct!instVarAt:put:! являются \ind{примитивными методами} (\ind{primitive methods}), т.е. реализованными через примитивные операции виртуальной машины \pharo.
+И \ct!instVarAt:!, и \ct!instVarAt:put:! являются \ind{примитивными методами} (\ind{primitive methods}), т.е. они реализованы через примитивные операции виртуальной машины \pharo.
 %If you consult the code of these methods, you will see the special \ind{pragma} syntax \ct!<primitive: N>! where \ct!N! is an integer.
 Глядя на код этих методов можно обратить внимание на особый синтаксис \ind{прагм} (\ind{pragma}): \ct!<primitive: N>!, где \ct!N! -- целое число.
 % \lr{actually this is the syntax of pragmas (method annotations), \ct!primitive:! is just a special kind of pragma}
@@ -169,11 +169,11 @@ Object>>>instVarAt: index
 %Typically, the code after the primitive invocation is not executed.
 Обычно код, следующий за вызовом примитива, не выполняется.
 %It is executed only if the primitive fails. In this specific case, if we try to access a variable that does not exist, then the code following the primitive will be tried.
-Он выполняется только в случае, если вызов примитива завершился с ошибкой, т.е. в примере выше, при попытке получить доступ к переменной, которой не существует.
+Он выполняется только в случае, если вызов примитива завершился с ошибкой. В данном случае, -- при попытке получить доступ к переменной, которой не существует.
 %This also allows the debugger to be started on primitive methods.
-Это также позволяет запускать отладчик на примитивных методах.
+Эта особенность позволяет запускать отладчик на примитивных методах.
 %Although it is possible to modify the code of primitive methods, beware that this can be risky business for the stability of your \pharo system.
-Хотя и возможно менять код примитивных методов, это может быть рисковано в плане стабильности \pharo-системы.
+Хотя и возможно менять код примитивных методов, это может быть рисковано в плане стабильности вашей \pharo-системы.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{allInstanceVariables}
@@ -181,14 +181,14 @@ Object>>>instVarAt: index
 \end{figure}
 
 %\figref{allInstanceVariables} shows how to display the values of the instance variables of an arbitrary instance (\ct!w!) of class \ct!Workspace!.
-\figref{allInstanceVariables} \ugh{показывает как отобразить значения} атрибутов экземпляра \ct!w! класса \ct!Workspace!.
+\figref{allInstanceVariables} показывает, как отобразить значения переменных экземпляра \ct!w! класса \ct!Workspace!.
 %The method \ct!allInstVarNames! returns all the names of the instance variables of a given class.
-Метод \ct!allInstVarNames! возвращает все имена пременных экземпляра данного класса.
+Метод \ct!allInstVarNames! возвращает все имена переменных экземпляра данного класса.
 
 %In the same spirit, it is possible to gather instances that have specific properties.
-Таким же образом можно отфильтровывать экземпляры со специфичными свойствами.
+Таким же образом можно выбирать экземпляры со специфичными свойствами.
 %For instance, to get all instances of class \ct!SketchMorph! whose instance variable \ct!owner! is set to the world morph (\ie images currently displayed), try this expression:
-Например, чтобы получить все экзепляры класса \ct!SketchMorph! чьё свойство \ct!owner! ссылается на \ugh{world morph \ie images currently displayed ??????}, выполните следующие выражение:
+Например, чтобы получить все экзепляры класса \ct!SketchMorph! чья переменная \ct!owner! ссылается на \ugh{world morph (\ie images currently displayed ??????)}, выполните следующие выражение:
 \begin{code}{}
 SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
 \end{code}
@@ -199,7 +199,7 @@ SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
 
 \mthindex{Object}{instanceVariableValues}
 %Let us consider the message \ct!instanceVariableValues!, which returns a collection of all values of instance variables defined by this class, excluding the inherited instance variables.
-Рессмотрим сообщение \ct!instanceVariableValues!, которое возвращает коллекцию, содержащую значения всех переменных экземпляра данного класса, кроме унаследованных от суперкласса.
+Рессмотрим сообщение \ct!instanceVariableValues!, которое возвращает коллекцию, содержащую значения всех переменных экземпляра данного класса, кроме унаследованых.
 %For instance:
 Например:
 \begin{code}{@TEST}
@@ -221,7 +221,7 @@ Object>>>instanceVariableValues
 \end{code}
 
 %This method iterates over the indices of instance variables that the class defines, starting just after the last index used by the superclasses.
-Этот метод осуществляет итерацию по индексам переменных экземпляра, определённых его классом, начиная с индекса следующего за последним, используемым суперклассом.
+Этот метод осуществляет итерацию по индексам переменных экземпляра, определённых его классом, начиная с индекса, следующего за последним индексом, используемым суперклассом.
 %(The method \ct!instSize! returns the number of all named instance variables that a class defines.)
 (Метод \ct!instSize! возвращает количество поименованных переменных экземпляра, определённых его классом.)
 
@@ -233,7 +233,7 @@ Object>>>instanceVariableValues
 Все инструменты разработчика в \pharo (браузер кода, отладчик, инспектор...) испольуют рефлексивные возможности рассмотреные выше.
 
 %Here are a few other messages that might be useful to build development tools:
-Далее перечислены несколько других сообщений, которые могут быть полезны при разработке инструментов разработчика:
+Вот несколько других сообщений, которые могут быть полезны при создании инструментов разработчика:
 
 %\lct{isKindOf: \emph{aClass}} returns true if the receiver is instance of \lct{\emph{aClass}} or of one of its superclasses.
 \lct{isKindOf: \emph{aClass}} возвращает истину, если получатель является экземпляром класса \lct{\emph{aClass}} или одного из его суперклассов.
@@ -260,11 +260,11 @@ Exception respondsTo: #, --> true    "классы исключений могу
 \mthindex{Object}{respondsTo:}
 
 %\important{\emph{Caveat:} Although these features are especially useful for defining development tools, they are normally not appropriate for typical applications.
-\important{\emph{Caveat:} Хотя эти возможности особенно полезны при создании инструментов разработчика, они обычно не используются в создании обычных приложений.
+\important{\emph{Внимание:} Хотя эти возможности особенно полезны при создании инструментов разработчика, они практически не используются при создании обычных приложений.
 %Asking an object for its class, or querying it to discover which messages it understands, are typical signs of design problems, since they violate the principle of encapsulation.
-Запрос у объекта его класса, или списка поддерживаемых сообщений -- типичные признаки плохого дизайна, т.к. это нарушает принцип инкапсуляции.
+Запрашивание у объекта его класса, или списка сообщений, на которые он способен отвечать, -- типичные признаки проблем проектирования, т.к. эти действия нарушают принцип инкапсуляции.
 %Development tools, however, are not normal applications, since their domain is that of software itself. As such these tools have a right to dig deep into the internal details of code.}
-Инструменты разработки, однако, не являются обычными приложениями, т.к. их предметная область само программное обеспечение. Это даёт им право глубоко проникать в детали кода.}
+Инструменты разработчика, однако, не являются обычными приложениями, т.к. их предметная область само программное обеспечение. Это обстоятельство даёт им право глубоко проникать во внутреннее устройство кода.}
 
 %There also exist mechanisms for introspecting on various parts of the run-time system, such as  the process scheduler, the memory manager and so on. For now we will focus on navigating through objects, classes and methods, and we will look more closely at rest of the runtime system in an other chapter.
 %\on{let's not mention this if we don't actually write such a chapter!}
