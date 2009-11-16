@@ -66,6 +66,7 @@
 	titleformat={commasep,italic}
 ]{jurabib} % citations as footnotes
 \usepackage[
+	unicode=true,
 	colorlinks=true,
 	linkcolor=black,
 	urlcolor=black,
@@ -394,6 +395,8 @@ Damien Pollet},
 }[keywords,comments,strings]
 
 \lstset{language=Smalltalk,
+	inputencoding=utf8, 
+	extendedchars=\true,
 	basicstyle=\sffamily,
 	keywordstyle=\color{black}\bfseries,
 	% stringstyle=\ttfamily, % Ugly! do we really want this? -- on
