@@ -276,9 +276,9 @@ Exception respondsTo: #, --> true    "классы исключений могу
 %Let's see how we can use \st's introspection features to quickly extract some code metrics.
 Давайте посмотрим, как можно использовать возможности интроспекции \st для быстрого вычисления некоторых метрик кода.
 %Code \ind{metrics} measure such aspects as the depth of the inheritance hierarchy, the number of direct or indirect subclasses, the number of methods or of instance variables in each class, or the number of locally defined methods or instance variables.
-\ind{Метрики} кода измеряют такие аспекты, как глубина иерархии наследования, количество прямых и непрямых подклассов, количество методов или атрибутов для каждого класса или количество \ugh{локально определённых методов или атрибутов}.
+\ind{Метрики} кода измеряют такие аспекты, как глубина иерархии наследования, количество прямых и непрямых подклассов, количество методов или переменных экземпляра для каждого класса, или количество локально определённых методов или переменных экземпляра.
 %Here are a few metrics for the class \ct!Morph!, which is the superclass of all graphical objects in \pharo, revealing that it is a huge class, and that it is at the root of a huge hierarchy. Maybe it needs some refactoring! 
-Вот некоторые метрики для класса \ct!Morph!, который является суперклассом для всех графических объектов в \pharo, показывающие, что это \ugh{огромный класс -- корень огромной иерархии}. Возможно, он нуждается в рефакторинге!
+Вот некоторые метрики для класса \ct!Morph! -- суперкласса всех графических объектов в \pharo, показывающие, насколько это огромный класс, являющийся к тому же коренем огромной иерархии. Возможно, он нуждается в рефакторинге!
 
 \mthindex{Behavior}{allSuperclasses}
 \mthindex{Behavior}{allSelectors}
@@ -296,15 +296,15 @@ Morph selectors size.             -->  998 "количество методов 
 Morph instVarNames size.     -->      6 "количество переменных определённых непосредственно в классе Morph"
 Morph subclasses size.          -->    45 "прямые подклассы"
 Morph allSubclasses size.      -->  326 "всего подклассов"
-Morph linesOfCode.               --> 5968 "строк кода (ОГО-ГО)"
+Morph linesOfCode.               --> 5968 "строк кода!"
 \end{code}
 
 %One of the most interesting metrics in the domain of object-oriented languages is the number of methods that extend methods inherited from the superclass.
 Одна из наиболее интересных метрик в объектно-ориентированных языках -- количество методов, расширяющих методы, унаследованные от суперкласса. 
 %This informs us about the relation between the class and its superclasses.
-Она показывает нам отношения класса и суперкласса.
+Она показывает нам отношения между классом и суперклассом.
 %In the next sections we will see how to exploit our knowledge of the runtime structure to answer such questions.
-В следующем разделе мы увидим, как использовать полученные знания о структурах времени выполнения для ответа на подобные вопросы.
+В следующем разделе мы увидим, как использовать наши знания о структурах времени выполнения, чтобы получить ответ на подобные вопросы.
 
 %======================================
 %\section{Browsing code}
@@ -313,18 +313,17 @@ Morph linesOfCode.               --> 5968 "строк кода (ОГО-ГО)"
 %In \st, everything is an object. In particular, classes are objects that provide useful features for navigating through their instances.
 В \st всё является объектом. В частности, классы -- это объекты, предоставляющие полезные возможности для навигации по их экземплярам.
 %Most of the messages we will look at now are implemented in \ct{Behavior}, so they are understood by all classes.
-Большинство сообщений, которые сейчас мы рассмотрим, реализованы в классе \ct{Behavior}, и поэтому могут обрабатываться всеми классами.
+Большинство сообщений, которые мы сейчас рассмотрим, реализованы в классе \ct{Behavior}, и поэтому могут обрабатываться всеми классами.
 
 %As we saw previously, you can obtain an instance of a given class by sending it the message \ct!#someInstance!.
-Как мы видели ранее, можно получить экземпляр заданного класса, послав ему сообщение \ct!#someInstance!.
+Как мы видели ранее, можно получить некий экземпляр заданного класса, отправив ему сообщение \ct!#someInstance!.
 \mthindex{Behavior}{someInstance}
 \begin{code}{@TEST} % Possibly fragile!
 Point someInstance --> 0@0
 \end{code}
 
 %You can also gather all the instances with \ct!#allInstances!, or the number of alive instances in memory with \ct!#instanceCount!.
-Получить все экземпляры с помощью сообщения \ct!#allInstances!, а количество ``живых" экземпляров в памяти с помощью \ct!#instanceCount!.
-%\alex{In a Pharo0.1-10342dev09.96.3, I have "ByteString instanceCount --> 63607"}
+Получить все экземпляры можно с помощью сообщения \ct!#allInstances!, а количество <<живых>> экземпляров в памяти с помощью \ct!#instanceCount!.
 \mthindex{Behavior}{allInstances}
 \mthindex{Behavior}{instanceCount}
 \mthindex{Behavior}{allSubInstances}
@@ -335,10 +334,10 @@ String allSubInstances size -->  101675
 \end{code}
 
 %These features can be very useful when debugging an application, because you can ask a class to enumerate those of its methods exhibiting specific properties.
-Эти возможности \ugh{какие???} могут быть очень полезными при отладке приложения, так как вы можете запросить у класса список его методов, обладающих определёнными свойствами.
+Эти возможности могут быть очень полезны при отладке приложения, так как вы можете запросить у класса список его методов, обладающих определёнными свойствами.
 \begin{itemize}
 %\item \mthind{Behavior}{whichSelectorsAccess:} returns the list of all selectors of methods that read or write the instance variable named by the argument
-\item \mthind{Behavior}{whichSelectorsAccess:} возвращает список селекторов всех методов, которые осуществляют чтение или запись в переменную экземпляра, заданную в аргументе;
+\item \mthind{Behavior}{whichSelectorsAccess:} возвращает список селекторов всех методов, которые осуществляют чтение или запись в переменную экземпляра с заданным именем;
 %\item \mthind{Behavior}{whichSelectorsStoreInto:} returns the selectors of methods that modify the value of an instance variable
 \item \mthind{Behavior}{whichSelectorsStoreInto:} возвращает список селекторов методов, которые модифицируют значение переменной экземпляра;
 %\item \mthind{Behavior}{whichSelectorsReferTo:} returns the selectors of methods that send a given message
@@ -363,7 +362,7 @@ Point crossReference --> an Array(
 %\item \mthind{Behavior}{whichClassIncludesSelector:} returns the superclass that implements the given message
 \item \mthind{Behavior}{whichClassIncludesSelector:} возвращает суперкласс, реализующий данное сообщение;
 %\item \mthind{Behavior}{unreferencedInstanceVariables} returns the list of instance variables that are neither used in the receiver class nor any of its subclasses
-\item \mthind{Behavior}{unreferencedInstanceVariables} возвращает список переменных экземпляра, которые которые не используются ни в классе получателе, ни в его подклассах.
+\item \mthind{Behavior}{unreferencedInstanceVariables} возвращает список переменных экземпляра, которые не используются ни в классе получателя, ни в его подклассах.
 \end{itemize}
 
 \begin{code}{@TEST}
@@ -384,7 +383,7 @@ SystemNavigation default allClassesImplementing: #yourself --> {Object}
 \end{code}
 
 %The following messages should also be self-explanatory:
-Следующие сообщения, пожалуй, не нуждаются в дополнительных пояснениях:
+Следующие сообщения, пожалуй, не нуждаются в дополнительных пояснениях (\ugh{Для англоязычного читателя, видимо. Может сделать пояснение по каждому из них?}):
 
 \mthindex{SystemNavigation}{allSentMessages}
 \mthindex{SystemNavigation}{allUnsentMessages}
@@ -396,22 +395,23 @@ SystemNavigation default allUnimplementedCalls size --> 270
 \end{code}
 
 %Note that messages implemented but not sent are not necessarily useless, since they may be sent implicitly (\eg using \ct{perform:}).
-Заметьте, что сообщения, реализованные, но никем не посылаемые, совсем не обязательно являются бесполезными, т.к. они могут посылаться неявно, например, с помощью метода \ct{perform:}.
+Заметьте, что сообщения, реализованные, но никем не отправляемые, совсем не обязательно являются бесполезными, т.к. они могут посылаться неявно (например, с помощью \ct{perform:}).
 %Messages sent but not implemented, however, are more problematic, because the methods sending these messages will fail at runtime.
-Сообщения посылаемые, но не реализованные, однако, являются большей проблемой, так как методы, посылающие их могут порождать ошибку во время выполнения.
+Сообщения отправляемые, но не реализованные, однако, представляют б'ольшую проблему, так как методы, отправляющие их могут порождать ошибку во время выполнения.
 %They may be a sign of unfinished implementation, obsolete APIs, or missing libraries.
 Это может быть признаком незавершённой реализации, устаревших API или отсутствующих библиотек.
 
 \mthindex{SystemNavigation}{allCallsOn:}
 %\ct!SystemNavigation default allCallsOn: #Point! returns all messages sent explicitly to \ct!Point! as a receiver.
-\ct!SystemNavigation default allCallsOn: #Point! возвращает все сообщения, посылаемые явно классу \ct!Point!.
+\ct!SystemNavigation default allCallsOn: #Point! возвращает все сообщения, явно посылаемые классу \ct!Point!.
 
 %All these features are integrated in the programming environment of \pharo, in particular in the code browsers.
 Все перечисленные возможности инегрированы в среду программирования \pharo, в частности в браузеры кода.
 %As you are surely already aware, there are convenient keyboard shortcuts for browsing all i\underline{m}plementors (\short{m}) and se\underline{n}ders (\short{n}) of a given message.
 Как вам уже, наверное, известно, существуют удобные комбинации клавиш для поиска всех классов, реализующих (\short{m}) и посылающих (\short{n}) данное сообщение.
 %What is perhaps not so well known is that there are many such pre-packaged queries implemented as methods of the \ct{SystemNavigation} class in the \prot{browsing} protocol.
-For example, you can programmatically browse all implementors of the message \ct{ifTrue:} by evaluating:
+Возможно, это не так широко известно, но множество предустановленных запросов реализовано методами из протокола \prot{browsing} класса \ct{SystemNavigation}.
+%For example, you can programmatically browse all implementors of the message \ct{ifTrue:} by evaluating:
 Например, вы можете программно осуществить поиск всех классов, реализующих сообщение \ct{ifTrue:}, выполнив:
 \mthindex{SystemNavigation}{browseAllImplementorsOf:}
 \begin{code}{}
@@ -420,11 +420,12 @@ SystemNavigation default browseAllImplementorsOf: #ifTrue:
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{implementors}
-	\caption{Browse all implementations of \ct!\#ifTrue:!.\figlabel{implementors}}
+	%\caption{Browse all implementations of \ct!\#ifTrue:!.\figlabel{implementors}}
+	\caption{Поиск всех классов, реализующих \ct!\#ifTrue:!.\figlabel{implementors}}
 \end{figure}
 
 %Particularly useful are the methods \ct{browseAllSelect:} and \lct{browseMethodsWithSourceString:}.  Here are two different ways to browse all methods in the system that perform super sends (the first way is rather brute force; the second way is better and eliminates some false positives):
-В частности, полезны методы \ct{browseAllSelect:} и \lct{browseMethodsWithSourceString:}. Вот два разных способа найти все методы в системе, производящие \ugh{супер-посылку :)} (первый способ более прямолинейный, но второй более правильный, т.к. не выдаёт неверных результатов):
+Особенно полезны методы \ct{browseAllSelect:} и \lct{browseMethodsWithSourceString:}. Вот два разных способа найти все методы в системе, производящие отправку сообщений суперклассу (первый способ более грубый; второй же более правильный, т.к. позволяет избежать некоторых ложных срабатываний):
 \mthindex{SystemNavigation}{browseMethodsWithSourceString:}
 \mthindex{SystemNavigation}{browseAllSelect:}
 \begin{code}{}
@@ -434,38 +435,38 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 
 %======================================
 %\section{Classes, method dictionaries and methods}
-\section{Классы, словари методов и методы}
+\section{Классы, методы и словари методов}
 
 %Since classes are objects, we can inspect or explore them just like any other object.
-Т.к. классы также являются объектами, мы можем изучать и исследовать их как и любой другой объект.
+Т.к. классы тоже являются объектами, мы можем инспектировать и исследовать их как и любой другой объект.
 
 \mthindex{Object}{explore}
 %\dothis{Evaluate \ct{Point explore}.}
 \dothis{Выполните \ct{Point explore}.}
 
 %In \figref{CompiledMethod}, the \ind{explorer} shows the structure of class \clsind{Point}.
-На \figref{CompiledMethod} \ind{Explorer} показывает структуру класса \clsind{Point}.
+На \figref{CompiledMethod} \ind{обозреватель} (\ind{explorer}) показывает структуру класса \clsind{Point}.
 %You can see that the class stores its methods in a dictionary, indexing them by their selector.
 Вы можете видеть, что класс хранит свои методы в словаре, в котором ключом является селектор метода.
 %The selector \ct{#*} points to the decompiled \ind{bytecode} of \ct!Point>>>*!.
-Селектор \ct{#*} указывает на декомпилированный \ind{байткод} метода \ct!Point>>>*!.
+Селектор \ct{#*} указывает на декомпилированный \ind{байткод} (\ind{bytecode}) метода \ct!Point>>>*!.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=.5\linewidth]{CompiledMethod}
 	%\caption{Explorer class \ct!Point! and the bytecode of its \ct!\#*! method.\figlabel{CompiledMethod}}
-	\caption{Класс \ct!Point! в окне Explorer'а и байткод метода \ct!\#*!.\figlabel{CompiledMethod}}
+	\caption{Окно обозревателя с классом \ct!Point! и байткодом его метода \ct!\#*!.\figlabel{CompiledMethod}}
 \end{figure}
 
 %Let us consider the relationship between classes and methods.
-Рассмотрим связь между классами и методами.
+Рассмотрим отношения между классами и методами.
 %In \figref{MethodsAsObjects} we see that classes and metaclasses have the common superclass \ct{Behavior}. This is where \mthind{Behavior}{new} is defined, amongst other key methods for classes.
-На \figref{MethodsAsObjects} мы можем видеть, что классы и метаклассы имеют общий суперкласс \ct{Behavior}, у которого среди прочих методов классов, определён метод \mthind{Behavior}{new}.
+На \figref{MethodsAsObjects} мы можем видеть, что классы и метаклассы имеют общий суперкласс \ct{Behavior}, который, среди ключевых методов классов, определяет метод \mthind{Behavior}{new}.
 %Every class has a method dictionary, which maps method selectors to \ind{compiled methods}.
-Каждый класс содержит словарь методов, который сопоставляет селекторы методов со скомпилированными методами (\ind{compiled methods}).
+У каждого класса есть словарь методов, который отображает селекторы методов на \ind{скомпилированные методы} (\ind{compiled methods}).
 %Each compiled method knows the class in which it is installed.
-Каждый скомпилированный метод "знает" какому классу он принадлежит.
+Каждый скомпилированный метод <<знает>>, в какой класс он установлен.
 %In \figref{CompiledMethod} we can even see that this is stored in an association in \ct{literal5}.
-На \figref{CompiledMethod} мы можем даже видеть, \ugh{что этот класс хранится в ассоциации в \ct{literal5}}.
+На \figref{CompiledMethod} мы можем даже видеть, что эта связь хранится в объекте-ассоциации \ct{literal5}.
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{MethodsAsObjects}
@@ -474,9 +475,9 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 \end{figure}
 
 %We can exploit the relationships between classes and methods to pose queries about the system.
-Мы можем использовать связь между классом и методом, чтобы \ugh{делать запросы к системе}.
+Мы можем использовать связь между классом и методом, чтобы формулировать запросы к системе.
 %For example, to discover which methods are newly introduced in a given class, \ie do not override superclass methods, we can navigate from the class to the \ind{method dictionary} as follows:
-Например, чтобы узнать, какие методы были добавлены в интересующий нас класс (помимо методов, переопределяющих методы суперкласса), мы можем перейти от класса к словарю методов (\ind{method dictionary}) следующим образом:
+Например, чтобы узнать, какие новые методы (т.е. не переопределяющие методы суперкласса) определены в интересующем нас классе, мы можем перейти от класса к \ind{словарю методов} (\ind{method dictionary}) следующим образом:
 \mthindex{Behavior}{methodDict}
 \begin{code}{}
 [:aClass| aClass methodDict keys select: [:aMethod |
@@ -487,7 +488,7 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 %A compiled method does not simply store the bytecode of a method.
 Скомпилированный метод не просто хранит свой байткод,
 %It is also an object the provides numerous useful methods for querying the system.
-а предоставляет также несколько полезных методов для запросов к системе.
+он также предоставляет несколько полезных методов для запросов к системе.
 %One such method is \ct{isAbstract} (which tells if the method sends \ct{subclassResponsibility}).
 Один из таких методов -- \ct{isAbstract}, который говорит нам, посылает ли данный метод сообщение \ct{subclassResponsibility}.
 %We can use it to identify all the abstract methods of an abstract class
@@ -501,10 +502,8 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 %Note that this code sends the \ct{>>} message to a class to obtain the compiled method for a given selector.
 Заметьте, что этот код посылает сообщение \ct{>>} классу, чтобы получить скомпилированный метод по заданному селектору.
 
-% As a slightly more complex example, we can browse 
-
 %To browse the super-sends within a given hierarchy, for example within the Collections hierarchy, we can pose a more sophisticated query:
-Чтобы найти внутри заданной ирерархии (например, внутри иерархии коллекций) все места, откуда посылается сообщение суперклассу, мы можем составить более сложный запрос:
+Чтобы найти внутри заданной ирерархии (например, внутри иерархии коллекций) все места, в которых сообщение посылается суперклассу, мы можем составить более сложный запрос:
 \begin{code}{}
 class := Collection.
 SystemNavigation default
@@ -517,9 +516,9 @@ SystemNavigation default
 %Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
 Заметьте, как мы переходим от классов к словарям методов, а от них к скомпилированным методам, чтобы найти интересующие нас методы.
 %A \ct{MethodReference} is a lightweight proxy for a compiled method that is used by many tools.
-Класс \ct{MethodReference} является \ugh{облегчённым объектом-заместителем для скомпилированного метода}, используемым во множестве инструментов.
+Класс \ct{MethodReference} является облегчённым объектом-заместителем скомпилированного метода, используемым во множестве инструментов.
 %There is a convenience method \clsmthind{CompiledMethod}{methodReference} to return the method reference for a compiled method.
-У него присутствует удобный метод \clsmthind{CompiledMethod}{methodReference}, возвращающий объект-ссылку на скомпилированный метод.
+У него есть удобный метод \clsmthind{CompiledMethod}{methodReference}, возвращающий объект-ссылку на скомпилированный метод.
 \begin{code}{@TEST}
 (Object>>#=) methodReference methodSymbol --> #=
 \end{code}
