@@ -516,9 +516,9 @@ SystemNavigation default
 %Note how we navigate from classes to method dictionaries to compiled methods to identify the methods we are interested in.
 Заметьте, как мы переходим от классов к словарям методов, а от них к скомпилированным методам, чтобы найти интересующие нас методы.
 %A \ct{MethodReference} is a lightweight proxy for a compiled method that is used by many tools.
-Класс \ct{MethodReference} является облегчённым объектом-заместителем скомпилированного метода, используемым во множестве инструментов.
+Класс \ct{MethodReference} является облегчённым заместителем скомпилированного метода, используемым во множестве инструментов.
 %There is a convenience method \clsmthind{CompiledMethod}{methodReference} to return the method reference for a compiled method.
-У него есть удобный метод \clsmthind{CompiledMethod}{methodReference}, возвращающий объект-ссылку на скомпилированный метод.
+Чтобы получить такой объект-заместитель можно воспользоваться методом \clsmthind{CompiledMethod}{methodReference}.
 \begin{code}{@TEST}
 (Object>>#=) methodReference methodSymbol --> #=
 \end{code}
@@ -528,24 +528,24 @@ SystemNavigation default
 \section{Окружения браузера}
 
 %Although \clsind{SystemNavigation} offers some useful ways to programmatically query and browse system code, there is a better way.  The \ind{Refactoring Browser}, which is integrated into \pharo, provides both interactive and programmatic ways to pose complex queries.
-Хотя класс \clsind{SystemNavigation} предоставляет несколько полезных методов для составления программных запросов для исследования кода системы, существует лучший способ. \ind{Refactoring Browser}, интегрированный в \pharo, предоставляет и интерактивный и программный способы составления подобных запросов.
+Хотя класс \clsind{SystemNavigation} предоставляет несколько полезных методов, позволяющих программно составлять запросы для исследования кода системы, существует лучший способ. \ind{Браузер рефакторинга} (\ind{Refactoring Browser}), интегрированный в \pharo, позволяет состалять подобные запросы как в интерактивном режиме, так и программно.
 
 %Suppose we are interested to discover which methods in the \lct{Collection} hierarchy send a message to \super which is different from the method's selector.
-Предположим, нам нужно узнать, какие методы в иерархии класса \lct{Collection} посылают суперклассу сообщения, селектор которых отличается от их собственного.
+Предположим, нам нужно узнать, какие методы в иерархии класса \lct{Collection} посылают суперклассу сообщение, имя которого отличается от их собственного.
 %This is normally considered to be a bad \ind{code smell}, since such a \super-send should normally be replaced by a \self-send. (Think about it --- you only \emph{need} \super to extend a method you are overriding; all other inherited methods can be accessed by sending to \self!)
-Обычно это признак "кода с душком", т.к. получателем сообщения в таких случаях должен выступать сам объект, а не его суперкласс. (Подумайте об этом --- вы \emph{нуждаетесь} в \super только при расширении переопределяемого метода; другие унаследованные методы можно вызывать, используя ключевое слово \self!)
+Обычно это признак <<кода с душком>>, т.к. получателем сообщения в таких случаях должен выступать сам объект, а не его суперкласс. (Подумайте --- вы \emph{нуждаетесь} в \super только тогда, когда расширяете поведение переопределяемого метода; другие унаследованные методы объект может вызывать, посылая сообщение самому себе!)
 
 %The refactoring browser provides us with an elegant way to restrict our query to just the classes and methods we are interested in.
 Браузер рефакторинга предоставляет элегантный способ ограничить область нашего запроса только теми классами и методами, которые нас интересуют.
 
 %\dothis{Open a browser on the class \ct{Collection}.
-\dothis{Откройте браузер на классе \ct{Collection}.
+\dothis{Откройте в браузере класс \ct{Collection}.
 %\actclick on the class name and select \menu{refactoring scope>subclasses with}.
 \actclick на имени класса и выберете \menu{refactoring scope>subclasses with}.
 %This will open a new Browser Environment on just the \ct{Collection} hierarchy.
-Откроется новое окно браузера с окружением, ограниченным иерархией класса \ct{Collection}.
+Откроется новое окружение браузера, ограниченное только иерархией класса \ct{Collection}.
 %Within this restricted scope select \menu{refactoring scope>super-sends} to open a new environment with all methods that perform super-sends within the \ct{Collectuon} hierarchy.
-Внутри этой ограниченной области выберете \menu{refactoring scope>super-sends}, чтобы открыть новое окружение со всеми методами внутри иерархии класса \ct{Collectuon}, посылающими сообщения суперклассу.
+Внутри этого окружения выберете \menu{refactoring scope>super-sends}, чтобы открыть новое окружение со всеми методами внутри иерархии класса \ct{Collectuon}, посылающими сообщения суперклассу.
 %Now \click on any method and select \menu{refactor>code critics}.
 Теперь \click на любом методе и выберете \menu{refactor>code critics}.
 %Navigate to \menu{Lint checks>Possible bugs>Sends different super message} and \actclick to select \menu{browse}.}
@@ -555,11 +555,11 @@ SystemNavigation default
 На \figref{sendDifferentSuper} мы можем видеть, что 19 таких методов были найдены внутри иерархии класса \ct{Collection}, включая \ct{Collection>>>printNameOn:}, который посылает \ct{super printOn:}.
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{sendDifferentSuper}
-	\caption{Поиск методов, которые посылают суперклассу сообщение с именем, отличным от своего.\figlabel{sendDifferentSuper}}
+	\caption{Поиск методов, которые посылают суперклассу сообщение с именем, отличным от своего собственного.\figlabel{sendDifferentSuper}}
 \end{figure}
 
 %Browser environments can also be created programmatically.
-Окружения браузера могут быть созданы программно.
+Окружения браузера также могут создаваться программно.
 %Here, for example, we create a new \clsind{BrowserEnvironment} for \clsind{Collection} and its subclasses, select the super-sending methods, and open the resulting environment.
 Ниже, например, мы создаём экземпляр класса \clsind{BrowserEnvironment} для класса \clsind{Collection} и его подклассов, выбираем методы посылающие сообщение суперклассу и открываем окно с полученным окружением.
 \needlines{4}
@@ -574,7 +574,7 @@ SystemNavigation default
 Заметьте, этот код гораздо компактнее того, что мы написали ранее, используя \ct{SystemNavigation}.
 
 %Finally, we can find just those methods that send a different super message programmatically as follows:
-Наконец, мы можем программно найти методы, посылающие суперклассу сообщения с отличным именем, использовав:
+Наконец, мы можем программно найти методы, посылающие суперклассу сообщения с другим именем, использовав:
 \needlines{6}
 \begin{code}{}
 ((BrowserEnvironment new forClasses: (Collection withAllSubclasses))
@@ -585,9 +585,9 @@ SystemNavigation default
 	open
 \end{code}
 %Here we ask each compiled method for its (Refactoring Browser) parse tree, in order to find out whether the super messages differ from the method's selector.
-Здесь мы запрашиваем у каждого скомпилированного метода его дерево разбора (создаваемое браузером рефакторинга) затем, чтобы определить, отличается ли селектор сообщения, посылаемого суперклассу от селектора метода.
+Здесь мы запрашиваем у каждого скомпилированного метода его дерево разбора (создаваемое браузером рефакторинга), чтобы затем определить, отличается ли сообщение, посылаемое суперклассу от селектора метода.
 %Have a look at the \prot{querying} protocol of the class \ct{RBProgramNode} to see some the things we can ask of parse trees.
-Взгляните на протокол \prot{querying} класса \ct{RBProgramNode}, чтобы узнать, какой информацией обладают деревья разбора.
+Взгляните на протокол \prot{querying} класса \ct{RBProgramNode}, чтобы узнать, какую информацию хранят деревья разбора.
 
 %======================================
 %\section{Accessing the run-time context}
