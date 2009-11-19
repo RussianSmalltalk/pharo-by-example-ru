@@ -438,14 +438,14 @@ SystemNavigation default browseAllSelect: [:method | method sendsToSuper ].
 \section{Классы, методы и словари методов}
 
 %Since classes are objects, we can inspect or explore them just like any other object.
-Т.к. классы тоже являются объектами, мы можем инспектировать и исследовать их как и любой другой объект.
+Т.к. классы тоже являются объектами, мы можем инспектировать и анализировать их как и любой другой объект.
 
 \mthindex{Object}{explore}
 %\dothis{Evaluate \ct{Point explore}.}
 \dothis{Выполните \ct{Point explore}.}
 
 %In \figref{CompiledMethod}, the \ind{explorer} shows the structure of class \clsind{Point}.
-На \figref{CompiledMethod} \ind{обозреватель} (\ind{explorer}) показывает структуру класса \clsind{Point}.
+На \figref{CompiledMethod} \ind{эксплорер} (\ind{explorer}) показывает структуру класса \clsind{Point}.
 %You can see that the class stores its methods in a dictionary, indexing them by their selector.
 Вы можете видеть, что класс хранит свои методы в словаре, в котором ключом является селектор метода.
 %The selector \ct{#*} points to the decompiled \ind{bytecode} of \ct!Point>>>*!.
@@ -598,24 +598,24 @@ SystemNavigation default
 
 %-----------------------------------------------------------------
 %\subsection{Method contexts}
-\subsection{Контекст методов}
+\subsection{Контекст метода}
 
 %In fact, the run-time context of an executing method is in the virtual machine --- it is not in the image at all!
 Фактически, контекст выполняющегося метода содержится внутри виртуальной машины, а вовсе не в образе!
 %On the other hand, the \ind{debugger} obviously has access to this information, and we can happily explore the run-time context, just like any other object.
-С другой стороны, \ind{отладчик}, очевидно, имеет доступ к этой информации: мы можем запросто исследовать контекст времени выполнения в точности как и любой другой объект.
+С другой стороны, \ind{отладчик}, очевидно, имеет доступ к этой информации: мы можем запросто исследовать контекст времени выполнения точно также, как и любой другой объект.
 %How is this possible?
 Как же это становится возможным?
 
 %Actually, there is nothing magical about the debugger.
-В действительности, ничего магического в отладчике нет.
+На самом деле, ничего магического в отладчике нет.
 %The secret is the pseudo-variable \pvind{thisContext}, which we have encountered only in passing before.
 Весь секрет кроется в псевдо-переменной \pvind{thisContext}, которую мы ранее лишь слегка упоминали.
 %Whenever \ct{thisContext} is referred to in a running method, the entire run-time context of that method is reified and made available to the image as a series of chained \clsind{MethodContext} objects.
-Всякий раз, когда \ct{thisContext} упоминается в выполяющемся методе, весь контекст времени выполнения воплощается внутри образа как серия вложенных объектов класса \clsind{MethodContext}.
+Всякий раз, когда выполяющийся метод ссылается на \ct{thisContext}, весь его контекст времени выполнения воплощается внутри образа как серия вложенных объектов класса \clsind{MethodContext}.
 
 %We can easily experiment with this mechanism ourselves.
-Мы можем легко экспериментировать с этим механизмом.
+Мы сами можем легко экспериментировать с этим механизмом.
 
 %\dothis{Change the definition of \ct{Integer>>>factorial} by inserting the underlined expression as shown below:}
 \dothis{Измените определение метода \ct{Integer>>>factorial} добавив в него подчёркнутое выражение, как показано ниже:}
@@ -623,7 +623,7 @@ SystemNavigation default
 \mthindex{Object}{halt}
 \begin{code}{}
 Integer>>>factorial
-	"Возвращает факториал получателя."
+	"Вычисляет факториал получателя."
 	self = 0 ifTrue: [!\underline{thisContext explore. self halt.}! ^ 1].
 	self > 0 ifTrue: [^ self * (self - 1) factorial].
 	self error: 'Не вычисляется для отрицательных чисел'
@@ -634,28 +634,28 @@ Integer>>>factorial
 
 \begin{figure}[ht]\centering
 	\includegraphics[width=\linewidth]{exploringThisContext}
-	\caption{Exploring \lct{thisContext}.\figlabel{exploringThisContext}}
+	%\caption{Exploring \lct{thisContext}.\figlabel{exploringThisContext}}
+	\caption{Исследование псевдо-переменной \lct{thisContext}.\figlabel{exploringThisContext}}
 \end{figure}
 
 %Welcome to the poor-man's debugger!
-Знакомьтесь, отладчик для бедных!
+Пожалуйста, --- отладчик <<для бедных>>!
 %If you now browse the class of the explored object (\ie by evaluating \ct{self browse} in the bottom pane of the explorer) you will discover that it is an instance of the class \lct{MethodContext}, as is each \ct{sender} in the chain.
-Если вы сейчас откроете определение класса исследуемого объекта (например, выполнив \ct{self browse} в нижней панели эксплорера), то увидите, что он является экземпляром класса \lct{MethodContext}, равно как и каждый отправитель сообщения в цепочке.
-% All of these objects have been created dynamically in the image by the \st virtual machine at the point where \ct{thisContext} was referred to in the \ct{factorial} method. \lr{Not actually. In all the currently available VMs the context objects are created with every method activation, no matter if they are accessed using \ct{thisContext} or not.}
+Если вы сейчас откроете определение класса исследуемого объекта (например, выполнив \ct{self browse} в нижней панели эксплорера), то увидите, что он является экземпляром класса \lct{MethodContext}, равно как и каждый отправитель сообщения в цепочке методов.
 
 %\ct{thisContext} is not intended to be used for day-to-day programming, but it is essential for implementing tools like debuggers, and for accessing information about the call stack.
-\ct{thisContext} не предназначен для использования в повседневной работе, но он крайне важен для реализации таких инструментов, как отлдачик, и для доступа к информации о стеке вызовов.
+\ct{thisContext} не предназначен для использования в повседневной работе, но он крайне важен для реализации таких инструментов, как отлдачик, и для получения информации о стеке вызовов.
 %You can evaluate the following expression to discover which methods make use of \ct{thisContext}:
-Вы можете выполнить следующее выражение, чтобы найти методы, использующие \ct{thisContext}:
+Вы можете выполнить следующее выражение, чтобы найти методы, обращающиеся к \ct{thisContext}:
 
 \begin{code}{}
 SystemNavigation default browseMethodsWithSourceString: 'thisContext'
 \end{code}
 
 %As it turns out, one of the most common applications is to discover the sender of a message.
-Как выясняется, одно из наиболее общих применений --- поиск отправителей сообщения.
+Как выясняется, одно из наиболее типичных применений \ct{thisContext} --- получение информации об отправителе сообщения.
 %Here is a typical application:
-Вот типичное применение:
+Например:
 \begin{code}{}
 Object>>>subclassResponsibility
 	"Это сообщение задаёт каркас поведения подклассов данного класса, 
@@ -665,7 +665,7 @@ Object>>>subclassResponsibility
 \end{code}
 
 %By convention, methods in \st that send \ct{self subclassResponsibility} are considered to be abstract.  But how does \clsmthind{Object}{subclassResponsibility} provide a useful error message indicating which abstract method has been invoked?  Very simply, by asking \ct{thisContext} for the sender.
-По соглашению, методы в \st, посылаюobt \ct{self subclassResponsibility}, считаются асбтрактными. Но каким образом \clsmthind{Object}{subclassResponsibility} выдаёт подробное сообщение об ошибке, указывая, какой абстрактный метод был вызван? Очень просто --- запрашивая у \ct{thisContext} имя отправителя.
+По соглашению, в \st методы, которые посылают \ct{self subclassResponsibility}, считаются асбтрактными. Но каким образом \clsmthind{Object}{subclassResponsibility} выдаёт подробное сообщение об ошибке, указывая, какой абстрактный метод был вызван? Очень просто --- запрашивая у \ct{thisContext} информацию об отправителе.
 
 \lr{I think co-routines and continuations should at least mentioned here. Another very practical application that is simple and could be shown here is the ``escaper''. Store the current context into a temp or inst-var \ct{target := thisContext} and jump back to that stack frame at a later point in time using \ct{target return: 123}.}
 \sd{lukas maybe we should have another chapter showing such kind of beasts. I would love to read it.
@@ -678,9 +678,9 @@ we should have a Reflection applied chapter}
 
 \mthindex{Object}{halt}
 %The \st way to set a breakpoint is to evaluate \ct{self halt} at an interesting point in a method.  This will cause \ct{thisContext} to be reified, and a \ind{debugger} window will open at the breakpoint.
-В \st установить точку останова можно выполнив \ct{self halt} в интересующем вас месте внутри метода. Это влечёт создание объекта \ct{thisContext} и открытие окна \ind{отладчика} в точке останова.
+В \st установить точку останова можно, выполнив \ct{self halt} в интересующем вас месте внутри метода. Это влечёт создание объекта \ct{thisContext} и открытие окна \ind{отладчика} в точке останова.
 %Unfortunately this poses problems for methods that are intensively used in the system.
-К несчастью, это приводит к проблемам с методами, интенсивно используемыми системой.
+К несчастью, это приводит к некоторым проблемам с методами, интенсивно используемыми системой.
 
 %Suppose, for instance, that we want to explore the execution of \ct{OrderedCollection>>>add:}.
 Предположим, мы хотим исследовать процесс выполнения метода \ct{OrderedCollection>>>add:}.
@@ -697,16 +697,16 @@ OrderedCollection>>>add: newObject
 \end{code}
 
 %Notice how your image immediately freezes!  We do not even get a debugger window.
-Смотрите-ка, ваш образ моментально "завис"! Мы даже не можем увидеть окно отладчика.
+Смотрите-ка, ваш образ моментально <<завис>>! Мы даже не можем увидеть окно отладчика.
 %The problem is clear once we understand that (i) \ct{OrderedCollection>>>add:} is used by many parts of the system, so the breakpoint is triggered very soon after we accept the change, but (ii) \emph{the debugger itself} sends \ct{add:} to an instance of \ct{OrderedCollection}, preventing the debugger from opening!
-Всё проясняется, стоит нам понять, что (i) метод \ct{OrderedCollection>>>add:} используется во многих частях системы, поэтому точка останова срабатывает сразу после того, как мы приняли изменения, и  (ii) \emph{сам отладчик} посылает \ct{add:} экземпляру \ct{OrderedCollection}, не давая собственному окну открыться!
+Всё проясняется, стоит нам понять, что (i) метод \ct{OrderedCollection>>>add:} используется во многих частях системы, почему точка останова и срабатывает сразу после того, как мы приняли изменения; (ii) \emph{сам отладчик} посылает \ct{add:} экземпляру \ct{OrderedCollection}, не давая собственному окну открыться!
 %What we need is a way to \emph{conditionally halt} only if we are in a context of interest.
-Нам нужен способ \emph{условной остановки} выполнения, только в том случае, если мы находимся в интересующем нас контексте.
-This is exactly what \clsmthind{Object}{haltIf:} offers.
-Это в точности то, что предоставляет нам метод \clsmthind{Object}{haltIf:}.
+Нам нужен способ \emph{условной остановки} выполнения в случае, когда мы находимся в интересующем нас контексте.
+%This is exactly what \clsmthind{Object}{haltIf:} offers.
+Это в точности то, что предлагает нам метод \clsmthind{Object}{haltIf:}.
 
 %Suppose now that we only want to halt if \ct{add:} is sent from, say, the context of \ct{OrderedCollectionTest>>>testAdd}.
-Предположим теперь, что мы хотим остановить выполнение только если сообщение \ct{add:} было послано, скажем, из контекста метода \ct{OrderedCollectionTest>>>testAdd}.
+Предположим теперь, что мы хотим остановить выполнение, только если сообщение \ct{add:} было отправлено, скажем, из контекста метода \ct{OrderedCollectionTest>>>testAdd}.
 
 %\dothis{Fire up a fresh image again, and set the following breakpoint:}
 \dothis{Снова запустите свежий образ и поставьте следующую точку останова:}
@@ -717,7 +717,7 @@ OrderedCollection>>>add: newObject
 \end{code}
 
 %This time the image does not freeze. Try running the \ct{OrderedCollectionTest}.
-На этот раз образ не "зависает". Попробуйте выполнить тест \ct{OrderedCollectionTest}.
+На этот раз образ не <<зависает>>. Попробуйте выполнить тест \ct{OrderedCollectionTest}.
 %(You can find it in the \scat{CollectionsTests-Sequenceable} category.)
 (Вы можете найти его в категории \scat{CollectionsTests-Sequenceable}.)
 
@@ -740,7 +740,7 @@ Object>>>haltIf: condition
 %Starting from \ct!thisContext!, \ct!haltIf:! goes up through the execution stack, checking if the name of the calling method is the same as the one passed as parameter.
 Начиная с \ct!thisContext!, \ct!haltIf:! пробегает по стеку вызовов, проверяя, совпадает ли имя вызывающего метода с именем, переданным в качестве параметра. 
 %If this is the case, then it raises an exception which, by default, summons the debugger.
-Если это так, метод порождает исключение, которое по-умолчанию вызывает отладчик.
+Если это так, метод порождает исключение, которое, по-умолчанию, приводит к вызову отладчик.
 
 %It is also possible to supply a boolean or a boolean block as an argument to \ct{haltIf:}, but these cases are straightforward and do not make use of \ct{thisContext}.
 Возможно также передавать в метод \ct{haltIf:} в качестве аргумента логическое значение или блок, возвращающий логическое значение, но эти случаи примитивны и не используют \ct{thisContext}.
