@@ -95,11 +95,12 @@
 Глубже в реализации \st существуют три разных типа объектов. Обычные объекты (1) с переменными экземпляра передающимися по ссылкам, \emph{малые целые числа} (2) передающиеся по значению, а так же перечислимые объекты, такие как массивы содержащие смежные области памяти. Красота \st в том, что обычно совершенно не имеет смысла различать эти три типа объектов.
 
 %=========================================================
-\section{Every object is an instance of a class}
+\section{Каждый объект является экземпляром класса}
 
 %\ruleref{instance}
 
-Every object has a class; you can find out which by sending it the message \ct{class}.
+% Every object has a class; you can find out which by sending it the message \ct{class}.
+Каждый объект принадлежит классу, понять какому именно можно послав объекту сообщение \ct{class}.
 
 \begin{code}{@TEST}
 1 class                 --> SmallInteger
@@ -110,13 +111,19 @@ Every object has a class; you can find out which by sending it the message \ct{c
 Object new class --> Object
 \end{code}
 
-A class defines the \emph{structure} of its instances via instance variables,
-and the \emph{behavior} of its instances via methods.
-Each method has a name, called its \emphsubind{method}{selector}, which is unique within the class.
+Класс определяет \emph{структуру} его экземпляров через переменные экземпляра
+и \emph{поведение} через методы.
+Каждый метод имеет имя уникальное внутри класса называемое \emphsubind{селектор}{метода}.
+%A class defines the \emph{structure} of its instances via instance variables,
+%and the \emph{behavior} of its instances via methods.
+%Each method has a name, called its \emphsubind{method}{selector}, which is unique within the class.
 
-Since \emph{classes are objects}, and \emph{every object is an instance of a class}, it follows that classes must also be instances of classes.
-A class whose instances are classes is called a \emphind{metaclass}.
-Whenever you create a class, the system automatically creates a metaclass for you.
+Из утверждений \emph{классы это объекты} и \emph{каждый объект — экземпляр класса} следует, что классы тоже должны быть экземплярами классов.
+%Since \emph{classes are objects}, and \emph{every object is an instance of a class}, it follows that classes must also be instances of classes.
+Классы чьими экземплярами являются другие классы называются \emphind{метаклассами}.
+%A class whose instances are classes is called a \emphind{metaclass}.
+Каждый раз когда вы создаете класс, система автоматический создает метакласс.
+%Whenever you create a class, the system automatically creates a metaclass for you.
 The metaclass defines the structure and behavior of the class that is its instance.
 99\% \damien{Did any of you verify it is 99\%? Maybe 'Most' would have been better than '99\%'} of the time you will not need to think about metaclasses, and may happily ignore them.
 (We will have a closer look at metaclasses in \charef{metaclasses}.)
