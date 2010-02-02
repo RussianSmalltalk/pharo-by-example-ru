@@ -34,36 +34,49 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{Understanding message syntax}
+%\chapter{Understanding message syntax}
+\chapter{\ugh{Подробнее о синтаксисе сообщений}}
 \chalabel{understanding}
 
-Although \st's message syntax is extremely simple, it is unconventional and can take some time getting used to.
-This chapter offers some guidance to help you get acclimatized to this special syntax for sending messages.
-If you already feel comfortable with the syntax, you may choose to skip this chapter, or come back to it later.
+%Although \st's message syntax is extremely simple, it is unconventional and can take some time getting used to.
+Синтаксис сообщений в \st хотя и предельно прост, но всё же требует некоторого времени для освоения, ввиду своей непривычности.
+%This chapter offers some guidance to help you get acclimatized to this special syntax for sending messages.
+Эта глава поможет вам разобраться в специальном синтаксисе для отправки сообщений.
+%If you already feel comfortable with the syntax, you may choose to skip this chapter, or come back to it later.
+Но если вы уже чувствуете себя в нем комфортно, можете смело её пропустить, или вернуться к ней позже.
 
 %=============================================================
-\section{Identifying messages}
+%\section{Identifying messages}
+\section{Идентификация сообщений}
 
-In \st, except for the syntactic elements listed in \charef{syntax} (\ct+:= ^ . ; # () {} [ : | ]+), everything is a message send. 
-As in \ind{C++}, you can define operators like \ct{+} for your own classes, but all operators have the same precedence.
-Moreover, you cannot change the arity of a method. ``\ct{-}'' is always a binary message; there is no way to have a unary ``\ct{-}'' with a different overloading.
+%In \st, except for the syntactic elements listed in \charef{syntax} (\ct+:= ^ . ; # () {} [ : | ]+), everything is a message send. 
+В \st всё является отправкой сообщений, кроме элементов синтаксиса, описанных в \charef{syntax} (\ct+:= ^ . ; # () {} [ : | ]+).
+%As in \ind{C++}, you can define operators like \ct{+} for your own classes, but all operators have the same precedence.
+Как и в \ind{C++}, вы можете определять операторы (например, \ct{+}) для ваших классов, но все они будут иметь одинаковый приоритет выполнения.
+%Moreover, you cannot change the arity of a method. ``\ct{-}'' is always a binary message; there is no way to have a unary ``\ct{-}'' with a different overloading.
+Более того, вы не можете изменить арность (число аргументов) метода. ``\ct{-}'' -- всегда бинарное сообщение, и не существует способа, перегрузив (overload) его, определить унарный ``\ct{-}''.
 
-In \st the order in which messages are sent is determined by the kind of message. There are just three kinds of messages: \emphsubind{message}{unary}, \emphsubind{message}{binary}, and \emphsubind{message}{keyword} messages. Unary messages are always sent first, then binary messages and finally keyword ones. As in most languages, \ind{parentheses} can be used to change the order of evaluation. These rules make \st code as easy to read as possible. And most of the time you do not have to think about the rules.
+%In \st the order in which messages are sent is determined by the kind of message. There are just three kinds of messages: \emphsubind{message}{unary}, \emphsubind{message}{binary}, and \emphsubind{message}{keyword} messages. Unary messages are always sent first, then binary messages and finally keyword ones. As in most languages, \ind{parentheses} can be used to change the order of evaluation. These rules make \st code as easy to read as possible. And most of the time you do not have to think about the rules.
+В \st порядок в котором отправляются сообщения определяется видом сообщения. Таковых видов имеется три: \emphsubind{message}{унарные сообщения (unary)}, \emphsubind{message}{бинарные сообщения (binary)}, and \emphsubind{message}{сообщения с ключевыми словами (keyword)}. Унарные сообщения всегда отправляются первыми, затем идут бинарные сообщения, и, наконец, сообщения с ключевыми словами. Как и в большинстве языков, \ind{скобки} могут быть использованы для изменения порядка выполнения. Эти правила облегчают, насколько возможно, чтение \st кода, так, что в б'ольшую часть времени вы даже не будете о них вспоминать.
 
-As most computation in \st is done by message passing, correctly identifying messages is crucial. The following terminology will help us:
+%As most computation in \st is done by message passing, correctly identifying messages is crucial. The following terminology will help us:
+Т.к. практически все вычисления в \st выполняются путём обмена сообщениями, их идентификация является ключевым навыком. В этом нам поможет следующая терминология:
 
 \begin{itemize}
-  \item A message is composed of the message \emphsubind{message}{selector} and the optional message arguments.
-  \item A message is sent to a \emphsubind{message}{receiver}.
-  \item The combination of a message and its receiver is called a \emph{message} \emphsubind{message}{send} as shown in \figref{firstScriptMessage}.
-%  \item We call expression a message send, a variable, an assignment, a literal or a block. 
+  %\item A message is composed of the message \emphsubind{message}{selector} and the optional message arguments.
+  \item Сообщение состоит из \emphsubind{message}{селектора (selector)} и необязательного списка аргументов.
+  %\item A message is sent to a \emphsubind{message}{receiver}.
+  \item Сообщение отправляется \emphsubind{message}{получателю (receiver)}.
+  %\item The combination of a message and its receiver is called a \emph{message} \emphsubind{message}{send} as shown in \figref{firstScriptMessage}.
+  \item Комбинация сообщения и его получателя называется \emphsubind{message}{отправкой сообщения (message send)}, как показано на \figref{firstScriptMessage}.
 \end{itemize}
 
 \begin{figure}[htb]
 \begin{minipage}{0.53\textwidth}
 	\begin{center}
 	\includegraphics[width=0.95\textwidth]{message}
-	\caption{Two messages composed of a receiver, a method selector, and a set of arguments.\figlabel{firstScriptMessage}}\end{center}
+	%\caption{Two messages composed of a receiver, a method selector, and a set of arguments.\figlabel{firstScriptMessage}}\end{center}
+	\caption{Два сообщения, состоящие из получателя и селектора, и набор аргументов.}\figlabel{firstScriptMessage}}\end{center}
 \end{minipage}
 \hfill
 \begin{minipage}{0.43\textwidth}
@@ -71,22 +84,20 @@ As most computation in \st is done by message passing, correctly identifying mes
 	\ifluluelse
 		{\includegraphics[width=0.9\textwidth]{uKeyUnOne}}
 		{\includegraphics[width=6cm]{uKeyUnOne}}
-	\caption{\ct{aMorph color: Color yellow} is composed of two message sends: \ct{Color yellow} and \ct{aMorph color: Color yellow}.\figlabel{ellipse}}
+	%\caption{\ct{aMorph color: Color yellow} is composed of two message sends: \ct{Color yellow} and \ct{aMorph color: Color yellow}.\figlabel{ellipse}}
+	\caption{Выражение \ct{aMorph color: Color yellow}, включающее в себя отправку двух сообщений: \ct{Color yellow} и \ct{aMorph color: Color yellow}.\figlabel{ellipse}}
 	\end{center}
 \end{minipage}
 \end{figure}
 
-%\begin{figure}[ht]
-%\begin{center}
-%\includegraphics[width=0.5\textwidth]{message}
-%\caption{Two messages composed of a receiver, a method selector, and a set of arguments.\figlabel{firstScriptMessage}}\end{center}
-%\end{figure}
-
-\important{A message is always sent to a receiver, which can be a single literal, a block or a variable or the result of evaluating another message.}
+%\important{A message is always sent to a receiver, which can be a single literal, a block or a variable or the result of evaluating another message.}
+\important{Сообщение всегда отправляется получателю, который может быть простым литералом, блоком, переменной или результатом выполнения другого сообщения.}
 %sd-this is not totally right because we do not cover assignment but ok for now
 
-To help you identify the receiver of a message, we will underline it for you.
-We will also surround each message send with an ellipse and number message sends starting from the first one that will be sent to help you see the order in which messages are sent.
+%To help you identify the receiver of a message, we will underline it for you.
+Мы будем выделять получатель сообщения подчёркиваением, чтобы помочь вам распознать его.
+%We will also surround each message send with an ellipse and number message sends starting from the first one that will be sent to help you see the order in which messages are sent.
+Мы также будем заключать каждое сообщение в овал, а также нумеровать сообщения, начиная с первого отправленного, чтобы помочь вам разобраться с порядком отправки сообщений.
 
 %\begin{figure}[!ht]
 %\begin{center}
@@ -95,9 +106,11 @@ We will also surround each message send with an ellipse and number message sends
 %\caption{\ct{aMorph color: Color yellow} is composed of two expressions: \ct{Color yellow} and \ct{aMorph color: Color yellow}.\figlabel{ellipse}}
 %\end{figure}
 
-\figref{ellipse} represents two message sends, \ct{Color yellow} and \ct{aMorph color: Color yellow}, hence there are two ellipses. The message send \ct{Color yellow} is executed first so its ellipse is numbered \ct{1}.  There are two receivers: \ct{aMorph} which receives the message \ct{color: ...} and \ct{Color} which receives the message \ct{yellow}. Both receivers are underlined.
+%\figref{ellipse} represents two message sends, \ct{Color yellow} and \ct{aMorph color: Color yellow}, hence there are two ellipses. The message send \ct{Color yellow} is executed first so its ellipse is numbered \ct{1}.  There are two receivers: \ct{aMorph} which receives the message \ct{color: ...} and \ct{Color} which receives the message \ct{yellow}. Both receivers are underlined.
+На \figref{ellipse} показана отправка двух сообщений: \ct{Color yellow} и \ct{aMorph color: Color yellow}, поэтому там присутствуют два овала. Отправка сообщения \ct{Color yellow} выполняется первой, и соответствующий овал пронумерован единицей. Оба получателя: \ct{aMorph}, которому адресовано сообщение \ct{color: ...} и \ct{Color}, которому отправлено сообщение \ct{yellow}, выделены подчёркиванием.
 
-A receiver can be the first element of a message, such as \ct{100} in the message send \ct{100 + 200} or \ct{Color} in the message send \ct{Color yellow}. However, a receiver can also be the result of other messages. For example in the message \ct{Pen new go: 100}, the receiver of the message \ct{go: 100} is the object returned by the message send \ct{Pen new}. In all the cases, a message is sent to an object called the \emph{receiver} which may be the result of another message send.
+%A receiver can be the first element of a message, such as \ct{100} in the message send \ct{100 + 200} or \ct{Color} in the message send \ct{Color yellow}. However, a receiver can also be the result of other messages. For example in the message \ct{Pen new go: 100}, the receiver of the message \ct{go: 100} is the object returned by the message send \ct{Pen new}. In all the cases, a message is sent to an object called the \emph{receiver} which may be the result of another message send.
+Получатель может быть первым элементом сообщения, как, например, \ct{100} \ugh{в отправке сообщения} \ct{100 + 200}, или \ct{Color} в \ct{Color yellow}. Однако получатель может быть результатом другого сообщения. Например, в \ct{Pen new go: 100} получателем сообщения \ct{go: 100} является объект, возвращаемый в результате отправки сообщения \ct{Pen new}. Во всех этих случаях, сообщение отправляется объекту, называемому \emph{получателем (receiver)}, который, в свою очередь, может быть результатом отправки другого сообщения.
 
 \begin{table}\centering
 	\begin{tabularx}{\linewidth}{llX}
