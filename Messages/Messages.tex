@@ -171,19 +171,27 @@
 
 
 %=============================================================
-\section{Three kinds of messages}
+%\section{Three kinds of messages}
+\section{Три типа сообщений}
 
-\st defines a few simple rules to determine the order in which the messages are sent. These rules are based on the distinction between 3 different kinds of messages: 
+%\st defines a few simple rules to determine the order in which the messages are sent. These rules are based on the distinction between 3 different kinds of messages: 
+В \st есть несколько простых правил, определяющих порядок посылки сообщений. Эти правила основываются на различях между тремя типами сообщений:
 \begin{itemize}
-\item \emph{Unary messages} are messages that are sent to an object without any other information. For example in \ct{3 factorial}, \ct{factorial} is a unary message. 
-\item  \emph{Binary messages} are messages consisting of operators (often arithmetic). They are binary because they always involve only two objects: the receiver and the argument object. For example in \ct{10 + 20}, \ct{+} is a binary message sent to the receiver \ct{10} with argument \ct{20}. 
-\item  \emph{Keyword messages} are messages consisting of one or more keywords, each ending with a colon (\ct{:}) and taking an argument.
-For example in \ct{anArray at: 1 put: 10}, the keyword \ct{at:} takes the argument \ct{1} and the keyword \ct{put:} takes the argument \ct{10}.
+%\item \emph{Unary messages} are messages that are sent to an object without any other information. For example in \ct{3 factorial}, \ct{factorial} is a unary message. 
+\item \emph{Унарные сообщения} посылаются объекту безо всякой дополнительной информации. Например, в посылке \ct{3 factorial}, \ct{factorial} -- это унарное сообщение
+%\item  \emph{Binary messages} are messages consisting of operators (often arithmetic). They are binary because they always involve only two objects: the receiver and the argument object. For example in \ct{10 + 20}, \ct{+} is a binary message sent to the receiver \ct{10} with argument \ct{20}. 
+\item  \emph{Бинарные сообщения} составляются из операторов (часто арифметических). Они называются бинарными, потому что всегда затрагивают только два объекта: получателя и аргумент. Например, в \ct{10 + 20},  \ct{+} -- бинарное сообщение, отправляемое получателю \ct{10} с аргументом \ct{20}.
+%\item  \emph{Keyword messages} are messages consisting of one or more keywords, each ending with a colon (\ct{:}) and taking an argument.
+\item  \emph{Сообщения с ключевыми словами} состоят из одного или более слов, оканчивающихся двоеточием (\ct{:}), за которым следует аргумент.
+%For example in \ct{anArray at: 1 put: 10}, the keyword \ct{at:} takes the argument \ct{1} and the keyword \ct{put:} takes the argument \ct{10}.
+Например, в \ct{anArray at: 1 put: 10}, ключевому слову \ct{at:} соответствует аргумент \ct{1}, а ключевому слову \ct{put:} -- аргумент \ct{10}.
 \end{itemize}
 
 %-------------------------------------------------------------
-\subsection{Unary messages}
-Unary messages are messages that do not require any argument. They follow the syntactic template: \ct{receiver messageName}. The selector is simply made up of a succession of characters not containing \ct{:} (\eg \ct{factorial}, \ct{open}, \ct{class}).
+%\subsection{Unary messages}
+\subsection{Унарные сообщения}
+%Unary messages are messages that do not require any argument. They follow the syntactic template: \ct{receiver messageName}. The selector is simply made up of a succession of characters not containing \ct{:} (\eg \ct{factorial}, \ct{open}, \ct{class}).
+Унарные сообщения не принимают аргументов и соответсвуют следующему синтаксическому шаблону: \ct{получатель имяСообщения}. Селектор состоит из последовательности символов (characters) не содержащей двоеточия, например, \ct{factorial}, \ct{open}, \ct{class}).
 \needlines{4}
 \begin{code}{@TEST}
 89 sin           --> 0.860069405812453
@@ -191,43 +199,54 @@ Unary messages are messages that do not require any argument. They follow the sy
 Float pi         --> 3.141592653589793
 'blop' size     --> 4
 true not        --> false
-Object class --> Object class  "The class of Object is Object class (BANG)"
+Object class --> Object class  "Класс класса Object -- это Object class (BANG)"
 \end{code}
 % ON: I changed the examples to things we can test
 
-\important{Unary messages are messages that do not require any argument.\\
-They follow the syntactic template: \lct{receiver \textbf{selector}}}
+%\important{Unary messages are messages that do not require any argument.\\
+\important{Унарные сообщения не принимают аргументов.\\
+%They follow the syntactic template: \lct{receiver \textbf{selector}}}
+Они соответствуют синтаксическому шаблону: \lct{получатель \textbf{селектор}}}
 
 %-------------------------------------------------------------
-\subsection{Binary messages} 
-Binary messages are messages that require exactly one argument \emph{and} whose selector consists of a sequence of one or more characters from the set: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{~}, and \ct{@}. Note that \ct{--} is not allowed for parsing reasons.
+%\subsection{Binary messages} 
+\subsection{Бинарные сообщения} 
+%Binary messages are messages that require exactly one argument \emph{and} whose selector consists of a sequence of one or more characters from the set: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{~}, and \ct{@}. Note that \ct{--} is not allowed for parsing reasons.
+Бинарные сообщения принимают ровно один аргумент \emph{и} их селектор состоит из одного или более следующих симвовлов: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{~} и \ct{@}. Заметьте, что использовать \ct{--} не разрешается по причинам, связанным с синтаксическим анализом.
 
 \begin{code}{@TEST}
-100@100      --> 100@100  "creates a Point object"
+100@100      --> 100@100  "создаёт объект класса Point"
 3 + 4              --> 7
 10 - 1            --> 9
 4 <= 3            --> false
-(4/3) * 3 = 4   --> true  "equality is just a binary message, and Fractions are exact"
-(3/4) == (3/4) --> false  "two equal Fractions are not the same object"
+(4/3) * 3 = 4   --> true  "равенство -- это бинарное сообщение, а дроби (Fractions) -- обыкновенные"
+(3/4) == (3/4) --> false  "равные дроби -- разные объекты"
 \end{code}
 
-\important{Binary messages are messages that require exactly one argument \emph{and} whose selector is composed of a sequence of characters from: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{\&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{\~}, and \ct{@}. \ct{--} is not possible.\\
-They follow the syntactic template: \lct{receiver \textbf{selector} argument}}
+%\important{Binary messages are messages that require exactly one argument \emph{and} whose selector is composed of a sequence of characters from: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{\&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{\~}, and \ct{@}. \ct{--} is not possible.\\
+\important{Бинарные сообщения требуют ровно одного аргумента \emph{и} их селектор состоит из одного или более следующих символов: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{\&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{\~} и \ct{@}. Селектор \ct{--} запрещён.\\
+%They follow the syntactic template: \lct{receiver \textbf{selector} argument}}
+Они соответствуют синтаксическому шаблону: \lct{получатель \textbf{селектор} аргумент}}.
 
 %-------------------------------------------------------------
-\subsection{Keyword messages} 
+%\subsection{Keyword messages} 
+\subsection{Сообщения с ключевыми словами} 
 
-Keyword messages are messages that require one or more arguments and whose selector consists of one or more keywords each ending in \ct{:}.  Keyword messages follow the syntactic template: 
-\lct{receiver \textbf{selectorWordOne:} argument\-One \textbf{wordTwo:} argumentTwo}
+%Keyword messages are messages that require one or more arguments and whose selector consists of one or more keywords each ending in \ct{:}.  Keyword messages follow the syntactic template: 
+Сообщения с ключевыми словами принимают один или более аргументов и их селектор состоит из одного или более ключевых слов, каждое из которых оканчивается двоеточием. Сообщения с ключевыми словами соответствуют следующему синтаксическому шаблону:
+%\lct{receiver \textbf{selectorWordOne:} argument\-One \textbf{wordTwo:} argumentTwo}
+\lct{получатель \textbf{первоеКлючевоеСлово:} первыйАргумент \textbf{второеКлючевоеСлово:} второйАргумент}
 
-Each keyword takes an argument. Hence \ct{r:g:b:} is a method with three arguments, \ct{playFileNamed:} and \ct{at:} are methods with one argument, and \ct{at:put:} is a method with two arguments. To create an instance of the class \ct{Color} one can use the method \ct{r:g:b:} as in \ct{Color r: 1 g: 0 b: 0}, which creates the color red. Note that the colons are part of the selector.
+%Each keyword takes an argument. Hence \ct{r:g:b:} is a method with three arguments, \ct{playFileNamed:} and \ct{at:} are methods with one argument, and \ct{at:put:} is a method with two arguments. To create an instance of the class \ct{Color} one can use the method \ct{r:g:b:} as in \ct{Color r: 1 g: 0 b: 0}, which creates the color red. Note that the colons are part of the selector.
+Каждому ключевому слову сопоставлен один аргумент. Поэтому \ct{r:g:b:} -- это метод с тремя аргументами, \ct{playFileNamed:} и \ct{at:} -- методы с одним аргументом, а \ct{at:put:} -- с двумя. Чтобы создать экземпляр класса \ct{Color} можно использовать метод \ct{r:g:b:}, как в \ct{Color r: 1 g: 0 b: 0}, который \ugh{создаёт красный цвет}. Заметьте, что двоеточия -- это часть селектора.
 
-\important{In \ind{Java} or \ind{C++}, the \st method invocation \ct{Color r: 1 g: 0 b: 0}
- would be written \ct{Color.rgb(1,0,0)}.}
+%\important{In \ind{Java} or \ind{C++}, the \st method invocation \ct{Color r: 1 g: 0 b: 0}
+\important{В \ind{Java} или \ind{C++}, вызов метода записанный на \st как \ct{Color r: 1 g: 0 b: 0}
+ мог бы быть переписан на \ct{Color.rgb(1,0,0)}.}
 
 \begin{code}{@TEST | nums |}
-1 to: 10                        --> (1 to: 10)  "creates an interval"
-Color r: 1 g: 0 b: 0       --> Color red  "creates a new color"
+1 to: 10                        --> (1 to: 10)  "создаёт интервал"
+Color r: 1 g: 0 b: 0       --> Color red  "создаёт новй цвет"
 12 between: 8 and: 15 --> true
 
 nums := Array newFrom: (1 to: 5).
@@ -236,8 +255,10 @@ nums --> #(6 2 3 4 5)
 \end{code}
 % ON: Changed to real examples that we can test
 
-\important{Keyword based  messages are messages that require one or more arguments. Their selector consists of one or more keywords each ending in a colon (\lct{:}). They follow the syntactic template: \\
-\lct{receiver \textbf{selectorWordOne:} argumentOne \textbf{wordTwo:} argumentTwo}}
+%\important{Keyword based  messages are messages that require one or more arguments. Their selector consists of one or more keywords each ending in a colon (\lct{:}). They follow the syntactic template: \\
+\important{Сообщения с ключевыми словами принимают один или более аргументов. Их селектор состоит из одного или более ключевых слов, каждое из которых оканчивается двоеточием. Они соответствуют следующему синтаксическому шаблону: \\
+%\lct{receiver \textbf{selectorWordOne:} argumentOne \textbf{wordTwo:} argumentTwo}}
+\lct{получатель \textbf{первоеКлючевоеСлово:} первыйАргумент \textbf{второеКлючевоеСлово:} второйАргумент}}
 
 %=============================================================
 \section{Message composition}
