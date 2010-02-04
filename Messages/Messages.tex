@@ -261,55 +261,72 @@ nums --> #(6 2 3 4 5)
 \lct{получатель \textbf{первоеКлючевоеСлово:} первыйАргумент \textbf{второеКлючевоеСлово:} второйАргумент}}
 
 %=============================================================
-\section{Message composition}
-The three kinds of messages each have different precedence, which allows them to be composed in an elegant way. 
+%\section{Message composition}
+\section{Композиция сообщений}
+%The three kinds of messages each have different precedence, which allows them to be composed in an elegant way. 
+Каждый из трёх типов сообщений имеет свой приоритет, что позволяет компоновать их весьма элегантным способом.
 
 \begin{enumerate}
-\item Unary messages are always sent first, then binary messages and finally keyword messages. 
-\item Messages in \ind{parentheses} are sent prior to any kind of messages. 
-\item Messages of the same kind are evaluated from left to right. 
+%\item Unary messages are always sent first, then binary messages and finally keyword messages. 
+\item Унарные сообщения всегда посылаются первыми, затем идут бинарные сообщения и сообщения с ключевыми словами. 
+%\item Messages in \ind{parentheses} are sent prior to any kind of messages. 
+\item Сообщения в \ind{скобках (parentheses)} посылаются перед любым сообщением, не зависимо от типа.
+%\item Messages of the same kind are evaluated from left to right. 
+\item Сообщения одного типа вычисляются слева направо.
 \end{enumerate}
 \index{message!evaluation order}
 
-These rules lead to a very natural reading order. Now if you want to be sure that your messages are sent in the order that you want you can always put more parentheses as shown in \figref{uKeyUn}. In this  figure, the message \ct{yellow} is an unary message and the message \ct{color:} a keyword message, therefore the message send \ct{Color yellow} is sent first. However as message sends in parentheses are sent first, putting (unnecessary) parentheses around \ct{Color yellow} just emphasizes that it will be sent first. The rest of the section illustrates each of these points.
+%These rules lead to a very natural reading order. Now if you want to be sure that your messages are sent in the order that you want you can always put more parentheses as shown in \figref{uKeyUn}. In this  figure, the message \ct{yellow} is an unary message and the message \ct{color:} a keyword message, therefore the message send \ct{Color yellow} is sent first. However as message sends in parentheses are sent first, putting (unnecessary) parentheses around \ct{Color yellow} just emphasizes that it will be sent first. The rest of the section illustrates each of these points.
+Благодаря этим правилам, порядок чтения становится очень близок к естественному. Если вы хотите быть уверенными, что ваши сообщения отправляются в нужном порядке, вы всегда можете добавить скобок, как показано на \figref{uKeyUn}. Здесь \ct{yellow} -- унарное сообщение, а \ct{color:} -- сообщение с ключевыми словами, поэтому посылка \ct{Color yellow} выполняется первой. Однако, т.к. сообщения в скобках отправляются первыми, заключение (необязательное) в них \ct{Color yellow} просто подчёркивает тот факт, что это сообщение будет отправлено первым. Остаток раздела по очереди иллюстрирует каждый из этих моментов.
 
 \begin{figure}[ht]
 \ifluluelse
 	{\centerline{\includegraphics[width=0.9\textwidth]{uKeyUn}} }
 	{\centerline{\includegraphics[width=10cm]{uKeyUn}} }
-\caption{Unary messages are sent first so \ct{Color yellow} is sent. This returns a color object which is passed as argument of the message \ct{aPen color:}.\figlabel{uKeyUn}}
+%\caption{Unary messages are sent first so \ct{Color yellow} is sent. This returns a color object which is passed as argument of the message \ct{aPen color:}.\figlabel{uKeyUn}}
+\caption{\ct{Color yellow} посылается первым, поскольку это унарное сообщение. Возвращаемый им объект передаётся в качестве аргумента в \ct{aPen color:}.\figlabel{uKeyUn}}
 \end{figure}
 
 %---------------------------------------------------------
-\subsection*{Unary > Binary > Keywords}
-Unary messages are sent first, then binary messages, and finally keyword messages. We also say that unary messages have a higher  priority over the other kinds of messages.
+%\subsection*{Unary > Binary > Keywords}
+\subsection*{Унарные > Бинарные > С ключевыми словами}
+%Unary messages are sent first, then binary messages, and finally keyword messages. We also say that unary messages have a higher  priority over the other kinds of messages.
+Первыми посылаются унарные сообщения, затем бинарные и, наконец, сообщения с ключевыми словами. Мы также говорим, что унарные сообещения имеют наивысший приоритет среди других типов сообщений.
 
-\important{\textbf{Rule One.} Unary messages are sent first, then binary messages, and finally keyword based messages.\\
-\centerline{\ct{Unary > Binary > Keyword}}
+%\important{\textbf{Rule One.} Unary messages are sent first, then binary messages, and finally keyword based messages.\\
+\important{\textbf{Правило Первое.} Унарые сообщения посылаются первыми, затем бинарные сообщения и, наконец, сообщения с ключевыми словами.\\
+\centerline{\ct{Унарные > Бинарные > С ключевыми словами}}
 }
 
-As these examples show, \st's syntax rules generally ensure that message sends can be read in a natural way:
+%As these examples show, \st's syntax rules generally ensure that message sends can be read in a natural way:
+Как показано на примере, синтаксические правила \st гарантируют, что посылки сообщений могут быть прочитаны естественным способом:
 \begin{code}{@TEST}
 1000 factorial / 999 factorial --> 1000
 2 raisedTo: 1 + 3 factorial     --> 128
 \end{code}
 \noindent
 
-Unfortunately the rules are a bit too simplistic for arithmetic message sends, so you need to introduce parentheses whenever you want to impose a priority over binary operators:
+%Unfortunately the rules are a bit too simplistic for arithmetic message sends, so you need to introduce parentheses whenever you want to impose a priority over binary operators:
+К сожалению, эти правила выглядят слишком упрощёнными, когда дело касается арифметических сообщений, -- вам приходится использовать скобки, чтобы наложить приоритет на бинарные операторы:
 \begin{code}{@TEST}
 1 + 2 * 3   --> 9
 1 + (2 * 3) --> 7
 \end{code}
 
-The following example, which is a bit more complex (!), offers a nice illustration that even complicated \st expressions can be read in a natural way:
+%The following example, which is a bit more complex (!), offers a nice illustration that even complicated \st expressions can be read in a natural way:
+Следующий пример (немного более сложный (!)) прекрасно иллюстрирует тот факт, что даже сложные \st выражения могут быть прочтены естественным способом:
 \begin{code}{@TEST}
 [:aClass | aClass methodDict keys select: [:aMethod | (aClass>>aMethod) isAbstract ]] value: Boolean --> an IdentitySet(#or: #| #and: #& #ifTrue: #ifTrue:ifFalse: #ifFalse: #not #ifFalse:ifTrue:)
 \end{code}
 \noindent
-Here we want to know which methods of the \ct{Boolean} class are abstract\footnote{In fact, we could also have written the equivalent but simpler expression: \ct{Boolean methodDict select: #isAbstract thenCollect: #selector}}\damien{I've added this footnote, just remove it if you don't like it :-)}.
-We ask some argument class, \ct{aClass}, for the keys of its method dictionary, and select those methods of that class that are abstract.
-Then we bind the argument \ct{aClass} to the concrete value \ct{Boolean}.
-We need parentheses only to send the binary message \ct{>>}, which selects a method from a class, before sending the unary message \mbox{\ct{isAbstract}} to that method. The result shows us which methods must be implemented by \ct{Boolean}'s concrete subclasses \ct{True} and \ct{False}.
+%Here we want to know which methods of the \ct{Boolean} class are abstract\footnote{In fact, we could also have written the equivalent but simpler expression: \ct{Boolean methodDict select: #isAbstract thenCollect: #selector}}\damien{I've added this footnote, just remove it if you don't like it :-)}.
+В этом примере мы хотим узнать, какие методы класса \ct{Boolean} являются абстрактными\footnote{В действительности, мы могли бы записать это выражение проще: \ct{Boolean methodDict select: #isAbstract thenCollect: #selector}}.
+%We ask some argument class, \ct{aClass}, for the keys of its method dictionary, and select those methods of that class that are abstract.
+Мы запрашиваем у класса, передаваемого в качестве аргумента, список ключей словаря методов, а затем выбираем абстрактные методы.
+%Then we bind the argument \ct{aClass} to the concrete value \ct{Boolean}.
+Затем мы связываем аргумент \ct{aClass} с конкретным значением -- \ct{Boolean}.
+%We need parentheses only to send the binary message \ct{>>}, which selects a method from a class, before sending the unary message \mbox{\ct{isAbstract}} to that method. The result shows us which methods must be implemented by \ct{Boolean}'s concrete subclasses \ct{True} and \ct{False}.
+Мы нуждаемся в скобках только чтобы отправить бинарное сообщение \ct{>>}, которое получает у класса метод, перед тем, как послать этому методу унарное сообщение \mbox{\ct{isAbstract}}. Результат показывает нам, какие методы класса \ct{Boolean} должны быть реализованы в его конкретных подклассах \ct{True} и \ct{False}.
 
 %\begin{code}{}
 %Pen new go: 30 + 50          "create a turtle and moves it forward 80 pixels"
@@ -324,26 +341,33 @@ We need parentheses only to send the binary message \ct{>>}, which selects a met
 %with a structure approaching that of natural language.
 % This was one of the initial objectives so that the children can program.
 
-\paragraph{Example.}
-In the message \ct{aPen color: Color yellow}, there is one \emph{unary} message \ct{yellow} sent to the class \ct{Color} and a \emph{keyword} message \ct{color:} sent to \ct{aPen}. Unary messages are sent first so the message send \ct{Color yellow} is sent (1). This returns a color object which is passed as argument of the message \ct{aPen color: aColor} (2) as shown in \egref{decColor}.
-\figref{uKeyUn} shows graphically how messages are sent. 
+%\paragraph{Example.}
+\paragraph{Пример.}
+%In the message \ct{aPen color: Color yellow}, there is one \emph{unary} message \ct{yellow} sent to the class \ct{Color} and a \emph{keyword} message \ct{color:} sent to \ct{aPen}. Unary messages are sent first so the message send \ct{Color yellow} is sent (1). This returns a color object which is passed as argument of the message \ct{aPen color: aColor} (2) as shown in \egref{decColor}.
+В сообщении \ct{aPen color: Color yellow} присутствует только одно \emph{унарное} сообщение \ct{yellow}, посылаемое классу \ct{Color} и сообщение \emph{с ключевыми словами} \ct{color:}, отправляемую объекту \ct{aPen}. Сообщение \ct{Color yellow} унарное и посылается первым (1). Оно возвращает объект, представляющий цвет, который передаётся в качестве аргумента в сообщение \ct{aPen color: aColor} (2), как показано в \egref{decColor}.
+%\figref{uKeyUn} shows graphically how messages are sent. 
+\figref{uKeyUn} графически показывает, как отправляются сообщения.
 
 \needlines{5}
-\begin{example}[decColor]{Decomposing the evaluation of \ct{aPen color: Color yellow}}{}
+%\begin{example}[decColor]{Decomposing the evaluation of \ct{aPen color: Color yellow}}{}
+\begin{example}[decColor]{Декомпозиция процесса вычисления выражения \ct{aPen color: Color yellow}}{}
         aPen color: Color yellow
-(1)                       Color yellow        "unary message is sent first"
+(1)                       Color yellow        "унарное сообщение посылается первым"
                         --> aColor
-(2)   aPen color: aColor                 "keyword message is sent next"
+(2)   aPen color: aColor                 "затем посылается сообщение с ключевыми словами"
 \end{example}
 
-\paragraph{Example.} In the message \ct{aPen go: 100 + 20}, there is a \emph{binary} message \ct{+ 20} and a \emph{keyword} message \ct{go:}. Binary messages are sent prior to keyword messages so \ct{100 + 20} is sent first (1): the message \ct{+ 20} is sent to the object \ct{100} and returns the number \ct{120}. Then the message \ct{aPen go: 120} is sent with \ct{120} as argument (2).
-\Egref{decGo} shows how the message send is executed. 
+%\paragraph{Example.} In the message \ct{aPen go: 100 + 20}, there is a \emph{binary} message \ct{+ 20} and a \emph{keyword} message \ct{go:}. Binary messages are sent prior to keyword messages so \ct{100 + 20} is sent first (1): the message \ct{+ 20} is sent to the object \ct{100} and returns the number \ct{120}. Then the message \ct{aPen go: 120} is sent with \ct{120} as argument (2).
+\paragraph{Пример.} В сообщении \ct{aPen go: 100 + 20} присутствует \emph{бинарное} сообщение \ct{+ 20} и сообщение \emph{с ключевыми словами} \ct{go:}. Бинарные сообщения посылаются перед сообщениями с ключевыми словами, поэтому посылка \ct{100 + 20} выполняется первой (1): сообщение \ct{+ 20} посылается числу \ct{100} и возвращает число \ct{120}. Затем посылается сообщение \ct{aPen go: 120} с числом \ct{120} в качестве аргумента (2).
+%\Egref{decGo} shows how the message send is executed. 
+\Egref{decGo} показывает, как выполняется посылка сообщения.
 
-\begin{example}[decGo]{Decomposing \ct{aPen go: 100 + 20}}{}
+%\begin{example}[decGo]{Decomposing \ct{aPen go: 100 + 20}}{}
+\begin{example}[decGo]{Декомпозиция \ct{aPen go: 100 + 20}}{}
       aPen go: 100 + 20   
-(1)                 100 + 20           "binary message first"
+(1)                 100 + 20           "сначала бинарное сообщение"
                    -->   120
-(2)  aPen go: 120                   "then keyword message"
+(2)  aPen go: 120                   "потом сообщение с ключевыми словами"
 \end{example}
 
 \begin{figure}[htb]
@@ -351,7 +375,8 @@ In the message \ct{aPen color: Color yellow}, there is one \emph{unary} message 
 	\ifluluelse
 		{\centerline{\includegraphics[width=0.9\textwidth]{uKeyBin}}}
 		{\centerline{\includegraphics[width=6cm]{uKeyBin}}}
-	\caption{Binary messages are sent before keyword messages.\figlabel{uKeyBin}}
+	%\caption{Binary messages are sent before keyword messages.\figlabel{uKeyBin}}
+	\caption{Бинарные сообщения посылаются раньше сообщений с ключевыми словами.\figlabel{uKeyBin}}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
@@ -359,7 +384,8 @@ In the message \ct{aPen color: Color yellow}, there is one \emph{unary} message 
 	\ifluluelse
 		{\includegraphics[width=0.9\textwidth]{uunKeyBin}}
 		{\includegraphics[width=6cm]{uunKeyBin}}
-\caption{Decomposing \ct{Pen new go: 100 + 20}}\figlabel{unKeyBin}
+%\caption{Decomposing \ct{Pen new go: 100 + 20}}\figlabel{unKeyBin}
+\caption{Декомпозиция выражения \ct{Pen new go: 100 + 20}}\figlabel{unKeyBin}
 \end{center}
 \end{minipage}
 \end{figure}
@@ -386,7 +412,8 @@ In the message \ct{aPen color: Color yellow}, there is one \emph{unary} message 
 %(3)   aPen penSize: anotherNumber           "keyword"      
 %\end{scriptfigwithsize}
 
-\paragraph{Example.} As an exercise we let you decompose the evaluation of the message \ct{Pen new go: 100 + 20} which is composed of one unary, one keyword and one binary message (see \figref{unKeyBin}).
+%\paragraph{Example.} As an exercise we let you decompose the evaluation of the message \ct{Pen new go: 100 + 20} which is composed of one unary, one keyword and one binary message (see \figref{unKeyBin}).
+\paragraph{Пример.} В качестве упражнения, мы предлагаем вам произвести декомпозицию вычисления сообщения \ct{Pen new go: 100 + 20}, который состоит из одного унарного, одного бинарного, и одного сообщения с ключевыми словами (see \figref{unKeyBin}).
 % The unary message \ct{Pen new} is first sent. It returns a new bot, then the binary message \ct{100 + 20} is sent and returns \ct{120}. Finally the message \ct{go:} is sent to the newly created robot with \ct{120}.
 
 %\begin{figure}[ht]
