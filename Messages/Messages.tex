@@ -475,22 +475,27 @@ Evaluating the message without parentheses would lead to an error because the ob
       --> 132@375
 \end{example}
 
-\subsection{From left to right}
-Now we know how messages of different kinds or priorities are handled. The final question to be addressed is how messages with the same priority are sent. They are sent from the left to the right. Note that you already saw this behaviour in \egref{decExtent} where the two point creation messages (\ct{@}) were sent first.
+%\subsection{From left to right}
+\subsection{Слева направо}
+%Now we know how messages of different kinds or priorities are handled. The final question to be addressed is how messages with the same priority are sent. They are sent from the left to the right. Note that you already saw this behaviour in \egref{decExtent} where the two point creation messages (\ct{@}) were sent first.
+Теперь мы знаем, как обрабатываются сообщения разных типов и приоритетов. Последний вопрос, на который нам осталось ответить, это в каком порядке посылаются сообщения, имеющие одинаковый приоритет. Отправляются они слева направо. Вспомните, вы уже встречались с этим поведением в \egref{decExtent}, где сначала посылались два сообщения, создающие объекты-точки.
 
-\important{{\textbf{Rule Three.} When the messages are of the same kind, the order of evaluation is from left to right.}}
+%\important{{\textbf{Rule Three.} When the messages are of the same kind, the order of evaluation is from left to right.}}
+\important{{\textbf{Правило Третье.} Когда посылаются сообщения одного типа, порядок вычисления определяется слева направо.}}
 
 %\begin{figure}
 %\centerline{\includegraphics[width=8cm]{ucompoUn}} 
 %\caption{The message \ct{Pen new east} is composed of two unary messages. Therefore the leftmost one, \ct{new},  is sent and it returns a new robot to which the second message \ct{east} is sent. \figlabel{compoUn}}
 %\end{figure}
 
-\paragraph{Example.} In the message sends \ct{Pen new down} all messages are unary messages, so the leftmost one, \ct{Pen new}, is sent first. This returns a newly created pen to which the second message \ct{down} is sent, as shown in \figref{unaryMessages}.
+%\paragraph{Example.} In the message sends \ct{Pen new down} all messages are unary messages, so the leftmost one, \ct{Pen new}, is sent first. This returns a newly created pen to which the second message \ct{down} is sent, as shown in \figref{unaryMessages}.
+\paragraph{Пример.} В посылках \ct{Pen new down} все сообщения унарные, поэтому сначала посылается крайнее слева: \ct{Pen new}. Оно возвращает вновь созданный объект-перо, которому посылается второе сообщение \ct{down}, как показано на \figref{unaryMessages}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=8cm]{ucompoUn}
-	\caption{Decomposing \ct{Pen new down}\figlabel{unaryMessages}}
+	%\caption{Decomposing \ct{Pen new down}\figlabel{unaryMessages}}
+	\caption{Декомпозиция посылки \ct{Pen new down}\figlabel{unaryMessages}}
 \end{figure}
 
 %-------------------------------------------------------------
