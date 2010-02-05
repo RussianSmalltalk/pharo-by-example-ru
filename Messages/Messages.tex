@@ -499,24 +499,29 @@ Evaluating the message without parentheses would lead to an error because the ob
 \end{figure}
 
 %-------------------------------------------------------------
-\subsection{Arithmetic inconsistencies}
-The message composition rules are simple but they result in inconsistency for the execution of arithmetic message sends expressed in terms of binary messages. Here we see the common situations where extra parentheses are needed. 
+%\subsection{Arithmetic inconsistencies}
+\subsection{Нелогичная арифметика}
+%The message composition rules are simple but they result in inconsistency for the execution of arithmetic message sends expressed in terms of binary messages. Here we see the common situations where extra parentheses are needed. 
+Правила композиции сообщений очень просты, но они приводят к отличному от ожидаемого выполнению арифметических выражений, определённых через бинарные сообщения. Здесь мы видим часто встречающиеся ситуации, где нужны дополнительные скобки.
 
 \needlines{6}
 \begin{code}{@TEST}
-3 + 4 * 5      --> 35    "(not 23)  Binary messages sent from left to right"
+3 + 4 * 5      --> 35    "(не 23)  Бинарные сообщения посылаются слева направо"
 3 + (4 * 5)    --> 23
-1 + 1/3         --> (2/3)    "and not 4/3"
+1 + 1/3         --> (2/3)    "и не 4/3"
 1 + (1/3)       --> (4/3)
-1/3 + 2/3       --> (7/9)    "and not 1"
+1/3 + 2/3       --> (7/9)    "и не 1"
 (1/3) + (2/3)  --> 1
 \end{code}
 
-\paragraph{Example.} 
-In the message sends \ct{20 + 2 * 5}, there are only binary messages \ct{+} and \ct{*}. However in \st there is no specific priority for the operations \ct{+} and \ct{*}. They are just binary messages, hence \ct{*} does not have priority over \ct{+}. Here the leftmost message \ct{+} is sent first (1) and then the \ct{*} is sent to the result as shown in \egref{binaryMessages1}.  
+%\paragraph{Example.} 
+\paragraph{Пример.} 
+%In the message sends \ct{20 + 2 * 5}, there are only binary messages \ct{+} and \ct{*}. However in \st there is no specific priority for the operations \ct{+} and \ct{*}. They are just binary messages, hence \ct{*} does not have priority over \ct{+}. Here the leftmost message \ct{+} is sent first (1) and then the \ct{*} is sent to the result as shown in \egref{binaryMessages1}.  
+В посылках \ct{20 + 2 * 5} только два бинарных сообщения \ct{+} и \ct{*}. Однако в \st ни для одной из этих операций не определён специфичный приоритет. Это всего лишь бинарные сообщения, поэтому \ct{*} не имеет приоритета перед \ct{+}. Сначала посылается крайнее слева сообщение \ct{+} (1), а уже его результату отправляется сообщение \ct{*}, как показано на \egref{binaryMessages1}.
 
-\begin{example}[binaryMessages1]{Decomposing \ct{20 + 2 * 5}}{}
-"As there is no priority among binary messages, the leftmost message + is evaluated first even if by the rules of arithmetic the * should be sent first."
+%\begin{example}[binaryMessages1]{Decomposing \ct{20 + 2 * 5}}{}
+\begin{example}[binaryMessages1]{Декомпозиция \ct{20 + 2 * 5}}{}
+"Поскольку все бинарные сообщения имеют один приоритет, крайнее слева сообщение + выполняется первым, даже если правила арифметики гласят, что первым должно быть отправлено сообщение *."
 
       20 + 2 * 5 
 (1)  20 + 2 --> 22
@@ -527,11 +532,12 @@ In the message sends \ct{20 + 2 * 5}, there are only binary messages \ct{+} and 
 \begin{center}\includegraphics[width=8cm]{ucompoNoBracketPar}\end{center}
 \end{figure}
 \noindent
-As shown in \egref{binaryMessages1} the result of this message send is not \ct{30} but \ct{110}. This result is perhaps unexpected but follows directly from the rules used to send messages. This is somehow the price to pay for the simplicity of the \st model. To get the correct result, we should use parentheses. When messages are enclosed in parentheses, they are evaluated first. Hence the message send \ct{20 + (2 * 5)} returns the result as shown in \egref{mathcorrect}.
+%As shown in \egref{binaryMessages1} the result of this message send is not \ct{30} but \ct{110}. This result is perhaps unexpected but follows directly from the rules used to send messages. This is somehow the price to pay for the simplicity of the \st model. To get the correct result, we should use parentheses. When messages are enclosed in parentheses, they are evaluated first. Hence the message send \ct{20 + (2 * 5)} returns the result as shown in \egref{mathcorrect}.
+Как показано на \egref{binaryMessages1} результат этой посылки не \ct{30}, а \ct{110}. Этот результат является, возможно, неожиданным, но он строго следует из правил посылки сообщений. Так или иначе, это цена, которую мы платим за простоту модели языка \st. Чтобы получить верный результат, следует использовать скобки, -- заключённые в них сообщения выполняются первыми. Поэтому посылка \ct{20 + (2 * 5)} возвращает результат, показанный на \egref{mathcorrect}.
 
 \needlines{4}
-\begin{example}[mathcorrect]{Decomposing \ct{20 + (2 * 5)}}{}
-"The messages surrounded by parentheses are evaluated first therefore * is sent prior to + which produces the correct behaviour."
+%\begin{example}[mathcorrect]{Декомпозиция \ct{20 + (2 * 5)}}{}
+"Сообщения, заключённые в скобки выполняются в первую очередь, поэтому * посылается перед +, что приводит к правильному результату."
 
     20 + (2 * 5) 
 (1)        (2 * 5) --> 10
@@ -544,7 +550,8 @@ As shown in \egref{binaryMessages1} the result of this message send is not \ct{3
 \end{center}
 \end{figure}
 
-\important{In \st, arithmetic operators such as + and * do not have different priority. \ct{+} and \ct{*} are just binary messages, therefore \ct{*} does not have priority over \ct{+}. Use parentheses to obtain the desired result.}
+%\important{In \st, arithmetic operators such as + and * do not have different priority. \ct{+} and \ct{*} are just binary messages, therefore \ct{*} does not have priority over \ct{+}. Use parentheses to obtain the desired result.}
+\important{В \st, арифметические операторы, такие как + и * не имеют специфичного приоритета. \ct{+} и \ct{*} -- обычные бинарные сообщения, поэтому \ct{*} не имеет приоритета перед \ct{+}. Используйте скобки для получения желаемого результата.}
 
 %  At the beginning put parenthesis when you have multiple binary messages.}  HUH?  At the beginning of what?!
 
@@ -557,15 +564,18 @@ As shown in \egref{binaryMessages1} the result of this message send is not \ct{3
 	{\includegraphics[width=\textwidth]{uunKeyBinPar}}
 	{\includegraphics[width=10cm]{uunKeyBinPar}}
 \end{center}
-\caption{Equivalent messages using parentheses. \figlabel{uKeyUnBinPar}}
+%\caption{Equivalent messages using parentheses. \figlabel{uKeyUnBinPar}}
+\caption{Эквивалентные сообщения, использующие скобки. \figlabel{uKeyUnBinPar}}
 \end{figure}
 
-Note that the first rule stating that unary messages are sent prior to binary and keyword messages avoids the need to put explicit parentheses around them. \tabref{expressions} shows message sends written following the rules and equivalent message sends if the rules would not exist. Both message sends result in the same effect or return the same value. 
+%Note that the first rule stating that unary messages are sent prior to binary and keyword messages avoids the need to put explicit parentheses around them. \tabref{expressions} shows message sends written following the rules and equivalent message sends if the rules would not exist. Both message sends result in the same effect or return the same value. 
+Обратите внимание, первое правило утверждающее, что унарные сообщения посылаются перед бинарными и сообщениями с ключевыми словами, делает бессмысленным заключение их в скобки. В \tabref{expressions} показаны посылки сообщений, записанные следуя этим правилам и эквивалентные им посылки, записанные так, будто бы этих правил не существует. Обе посылки приводят к одному и тому же результату.
 
 \begin{figure}\centering
 	\begin{tabular}{l@{\qquad}l}
 	\toprule
-	Implicit precedence & Explicitly parenthesized equivalent \\
+	%Implicit precedence & Explicitly parenthesized equivalent \\
+	Неявный приоритет & Явный эквивалент со скобками \\
 	\midrule
 	\lct{aPen color: Color yellow}
 		& \lct{aPen color: (Color yellow)}
@@ -581,7 +591,8 @@ Note that the first rule stating that unary messages are sent prior to binary an
 		\\
 	\bottomrule
 	\end{tabular}
-	\caption{Message sends and their fully parenthesized equivalents\tablabel{expressions}}
+	%\caption{Message sends and their fully parenthesized equivalents\tablabel{expressions}}
+	\caption{Посылки сообщений и их эквиваленты использующие скобки\tablabel{expressions}}
 \end{figure}
 
 %=============================================================
