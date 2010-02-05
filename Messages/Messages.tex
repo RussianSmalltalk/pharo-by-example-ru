@@ -424,23 +424,27 @@ nums --> #(6 2 3 4 5)
 %\end{figure}
 
 %-------------------------------------------------------------
-\subsection{Parentheses first}
+%\subsection{Parentheses first}
+\subsection{Сначала скобки}
 
-\important{\textbf{Rule Two.} Parenthesised messages are sent prior to other messages.\\
-\centerline{\ct{(Msg) > Unary > Binary > Keyword}}}
+%\important{\textbf{Rule Two.} Parenthesised messages are sent prior to other messages.\\
+\important{\textbf{Правило Второе.} Сообщения в скобках посылаются раньше других сообщений.\\
+%\centerline{\ct{(Msg) > Unary > Binary > Keyword}}}
+\centerline{\ct{(Сообщение в скобках) > Унарное > Бинарное > С ключевыми словами}}}
 
 \begin{code}{@TEST}
-1.5 tan rounded asString = (((1.5 tan) rounded) asString) --> true    "parentheses not needed here"
-3 + 4 factorial   --> 27    "(not 5040)"
+1.5 tan rounded asString = (((1.5 tan) rounded) asString) --> true    "здесь скобки не нужны"
+3 + 4 factorial   --> 27    "(не 5040)"
 (3 + 4) factorial --> 5040
 \end{code}
 
-Here we need the \ind{parentheses} to force sending \ct{lowMajorScaleOn:} before \ct{play}.
+%Here we need the \ind{parentheses} to force sending \ct{lowMajorScaleOn:} before \ct{play}.
+Здесь нам нужны \ind{скобки}, чтобы отправить \ct{lowMajorScaleOn:} перед \ct{play}.
 \begin{code}{}
 (FMSound lowMajorScaleOn: FMSound clarinet) play 
-"(1) send the message clarinet to the FMSound class to create a clarinet sound.
- (2) send this sound to FMSound as argument to the lowMajorScaleOn: keyword message.
- (3) play the resulting sound."
+"(1) отправить сообщение clarinet классу FMSound чтобы создать звук кларнета.
+ (2) отправить этот звук классу FMSound как аргумент сообщения с ключевыми словами lowMajorScaleOn:.
+ (3) проиграть полученный звук."
 \end{code}
 
 % ON: This has nothing to do with parentheses!
@@ -451,20 +455,23 @@ Here we need the \ind{parentheses} to force sending \ct{lowMajorScaleOn:} before
 %(HTTPSocket httpShowGif:
 %   'www.altavista.digital.com/av/pix/default/av-adv.gif') display
 
-\paragraph{Example.}
-The message \ct{(65@325 extent: 134 @ 100) center} returns the center of a rectangle whose top left point is $(65, 325)$ and whose size is $134{\times}100$. \Egref{decExtent} shows how the message is decomposed and sent. First the message between parentheses is sent: it contains two binary messages \ct{65@325} and \ct{134@100} that are sent first and return points, and a keyword message \ct{extent:} which is then sent and returns a rectangle. Finally the unary message \ct{center} is sent to the rectangle and a point is returned. 
+%\paragraph{Example.}
+\paragraph{Пример.}
+%The message \ct{(65@325 extent: 134 @ 100) center} returns the center of a rectangle whose top left point is $(65, 325)$ and whose size is $134{\times}100$. \Egref{decExtent} shows how the message is decomposed and sent. First the message between parentheses is sent: it contains two binary messages \ct{65@325} and \ct{134@100} that are sent first and return points, and a keyword message \ct{extent:} which is then sent and returns a rectangle. Finally the unary message \ct{center} is sent to the rectangle and a point is returned. 
+Сообщение \ct{(65@325 extent: 134 @ 100) center} возвращает центр прямоугольника, чья левая верхняя вершина находится в точке $(65, 325)$, а размер равен $134{\times}100$. \Egref{decExtent} показывает, как производится декомпозиция и посылка этого сообщения. Сначала отправляется сообщение в скобках, которое включает в себя два бинарных сообщения \ct{65@325} и \ct{134@100}, которые посылаются первыми и возвращают объекты-точки, а также сообщение с ключевыми словами \ct{extent:}, которое посылается после них и возвращает прямоугольник. В конце прямоугольнику отправляется унарное сообщение \ct{center}, возвращающее точку.
 Evaluating the message without parentheses would lead to an error because the object \ct{100} does not understand the message \ct{center}.
 
 \needlines{9}
-\begin{example}[decExtent]{Example of Parentheses.}{}
+%\begin{example}[decExtent]{Example of Parentheses.}{}
+\begin{example}[decExtent]{Пример использования скобок.}{}
       (65 @ 325 extent: 134 @ 100) center
-(1)   65@325                                                    "binary"
+(1)   65@325                                                    "бинарное"
     --> aPoint
-(2)                                134@100                     "binary"
+(2)                                134@100                     "бинарное"
                                  --> anotherPoint
-(3)   aPoint extent: anotherPoint                       "keyword"
+(3)   aPoint extent: anotherPoint                       "с ключевыми словами"
       --> aRectangle
-(4)   aRectangle center                                     "unary"
+(4)   aRectangle center                                     "унарное"
       --> 132@375
 \end{example}
 
