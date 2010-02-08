@@ -662,25 +662,33 @@ ord := OrderedCollection new.
 %The basic principle is that you should use \ct{[ ]} when you do not know how many times, potentially zero, an expression should be evaluated.
 Базовый принцип здесь такой: используйте \ct{[ ]}, когда не знаете сколько раз будет выполнено заключённое в них выражение (возможно, ни разу).
 %\lct{[\emph{expression}]} will create a \ind{block} closure (\ie an object) from \lct{\emph{expression}}, which may be evaluated any number of times (possibly zero), depending on the context. Here note that an expression can either be a message send, a variable, a literal, an assignment or a block.
-\lct{[\emph{выражение}]} создаст \ind{блок}-замыкание (\ind{block} closure) (\ie некоторый объект) из \lct{\emph{выражения}}, который может быть выполнен произвольное число раз (в том числе ноль) в зависимости от контекста. 
+\lct{[\emph{выражение}]} создаст \ugh{\ind{блок}-замыкание} (\ind{block} closure) (\ie некоторый объект) из \lct{\emph{выражения}}, который может быть выполнен произвольное число раз (в том числе ноль) в зависимости от контекста. Заметьте, что выражение может быть посылкой сообщения, переменной, литералом, присваиванием или блоком.
 
-Hence the conditional branches of \ct{ifTrue:} or \ct{ifTrue:ifFalse:} require blocks. Following the same principle both the receiver and the argument of a \ct{whileTrue:} message require the use of square brackets since we do not know how many times either the receiver or the argument should be evaluated.
+%Hence the conditional branches of \ct{ifTrue:} or \ct{ifTrue:ifFalse:} require blocks. Following the same principle both the receiver and the argument of a \ct{whileTrue:} message require the use of square brackets since we do not know how many times either the receiver or the argument should be evaluated.
+Поэтому условные ветви сообщений \ct{ifTrue:} or \ct{ifTrue:ifFalse:} принимают блоки. Следуя этому же принципу, и получатель и аргумент сообщения \ct{whileTrue:} требуют использования квадратных скобок, т.к. мы не знаем, сколько раз должен быть выполнен каждый из них.
 
-Parentheses, on the other hand, only affect the order of sending messages.
-So in \lct{(\emph{expression})}, the \lct{\emph{expression}} will \emph{always} be evaluated exactly once.
+%Parentheses, on the other hand, only affect the order of sending messages.
+Круглые скобки, с другой стороны, влияют лишь на порядок посылки сообщений.
+%So in \lct{(\emph{expression})}, the \lct{\emph{expression}} will \emph{always} be evaluated exactly once.
+Поэтому \lct{(\emph{выражениие})} будет выполнено ровно один раз.
 
 \begin{code}{}
-[ x isReady ] whileTrue: [ y doSomething ]   "both the receiver and the argument must be blocks"
-4 timesRepeat: [ Beeper beep ]                   "the argument is evaluated more than once, so must be a block"
-(x isReady) ifTrue: [ y doSomething ]           "receiver is evaluated once, so is not a block"
+[ x isReady ] whileTrue: [ y doSomething ]   "и получатель, и аргумент должны быть блоками"
+4 timesRepeat: [ Beeper beep ]                   "аргумент выполняется больше одного раза, поэтому должен быть блоком"
+(x isReady) ifTrue: [ y doSomething ]           "получатель выполняется лишь один раз, а значит, это не блок"
 \end{code}
 
 %=============================================================
-\section{Expression sequences}
-Expressions (\ie messages sends, assignments\dots) separated by periods are evaluated in sequence.
-Note that there is no period between a variable definition and the following expression.
-The value of a sequence is the value of the last expression. The values returned by all the 
-expressions except the last one are ignored. Note that the period is a \subind{statement}{separator} and not a terminator. Therefore a final period is optional.
+%\section{Expression sequences}
+\section{Цепочки выражений}
+%Expressions (\ie messages sends, assignments\dots) separated by periods are evaluated in sequence.
+Выражения (\ie посылки сообщений, присваивания\dots), разделённые точками (period), выполняются последовательно.
+%Note that there is no period between a variable definition and the following expression.
+Обратите внимание, что между определением переменных и последующими выражениями точка не ставится.
+%The value of a sequence is the value of the last expression. The values returned by all the 
+Значением цепочки выражений является результат выполнения последнего выражения. Значения, возвращаемые
+%expressions except the last one are ignored. Note that the period is a \subind{statement}{separator} and not a terminator. Therefore a final period is optional.
+любым выражением, кроме последнего, игнорируются. Заметьте, точка не завершает (terminate), а разделяет (separate) предложения (statements) языка. Поэтому завершающая точка не обязательна.
 
 \begin{code}{@TEST}
 | box |
