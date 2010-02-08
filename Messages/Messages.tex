@@ -596,16 +596,23 @@ Evaluating the message without parentheses would lead to an error because the ob
 \end{figure}
 
 %=============================================================
-\section{Hints for identifying keyword messages}
-Often beginners have problems understanding when they need to add parentheses. Let's see how keywords messages are recognized by the compiler. 
+%\section{Hints for identifying keyword messages}
+\section{Советы по идентификации сообщений с ключевыми словами}
+%Often beginners have problems understanding when they need to add parentheses. Let's see how keywords messages are recognized by the compiler. 
+Начинающие часто имеют проблемы с пониманием того, когда нужно использовать скобки. Давайте посмотрим, как сообщения с ключевыми словами распознаются компилятором.
 
 %-------------------------------------------------------------
-\subsection{Parentheses or not?}
-The characters \ct{[}, \ct{]}, \ct{(} and \ct{)} 
-delimit distinct areas. Within such an area, a keyword message is the longest sequence of words terminated  by \ct{:} that is not cut by the characters \ct{.},  or \ct{;}. 
-When the characters \ct{[}, \ct{]}, \ct{(} and \ct{)} surround some words with colons, these words participate in the keyword message \emph{local} to the area defined.
+%\subsection{Parentheses or not?}
+\subsection{Скобки, нужны или нет?}
+%The characters \ct{[}, \ct{]}, \ct{(} and \ct{)} 
+Символы \ct{[}, \ct{]}, \ct{(} и \ct{)} 
+%delimit distinct areas. Within such an area, a keyword message is the longest sequence of words terminated  by \ct{:} that is not cut by the characters \ct{.},  or \ct{;}. 
+определяют границы различных областей. Внутри такой области, сообщение с ключевыми словами -- это последовательность наибольшей длины, состоящая из слов, оканчивающихся на \ct{:}, и не прерывающаяся символами \ct{.} или \ct{;}. 
+%When the characters \ct{[}, \ct{]}, \ct{(} and \ct{)} surround some words with colons, these words participate in the keyword message \emph{local} to the area defined.
+Когда символы \ct{[}, \ct{]}, \ct{(} and \ct{)} окружают слова с двоеточиями, эти слова входят в сообщение с ключевыми словами, \emph{локальное (local)} по отношению к определённой области.
 
-In this example, there are two distinct keyword messages:  \ct{rotatedBy:magnify:smoothing:} and \ct{at:put:}.
+%In this example, there are two distinct keyword messages:  \ct{rotatedBy:magnify:smoothing:} and \ct{at:put:}.
+В следующем примере присутствуют два разных сообщения с ключевыми словами: \ct{rotatedBy:magnify:smoothing:} и \ct{at:put:}.
 
 \begin{code}{}
 aDict
@@ -617,34 +624,45 @@ aDict
 \end{code}
 
 \important{
-The characters \lct{[}, \lct{]}, \lct{(} and \lct{)} delimit distinct areas. Within such an area, 
-a keyword message is the longest sequence  of words terminated by \lct{:} that is not cut by the characters \lct{.},  or \lct{;}. 
-When the characters \lct{[}, \lct{]}, \lct{(} and \lct{)} surround some words with colons, these words participate in the keyword message local to the area defined.}
+%The characters \lct{[}, \lct{]}, \lct{(} and \lct{)} delimit distinct areas. Within such an area, 
+Символы \lct{[}, \lct{]}, \lct{(} и \lct{)} определяют границы различных областей. Внутри такой области
+%a keyword message is the longest sequence  of words terminated by \lct{:} that is not cut by the characters \lct{.},  or \lct{;}. 
+сообщение с ключевыми словами определяется как последовательность наибольшей длины, состоящая из слов, завершающихся двоеточием, и не прерываемая символами \lct{.} или \lct{;}.
+%When the characters \lct{[}, \lct{]}, \lct{(} and \lct{)} surround some words with colons, these words participate in the keyword message local to the area defined.}
+Когда символы \lct{[}, \lct{]}, \lct{(} и \lct{)} окружают слова с двоеточиями, эти слова входят в сообщение с ключевыми словами, локальное для данной области.
 
 \on{Sounds terribly complicated.}
 
-\paragraph{Hints.} If you have problems with these precedence rules, you may start simply by putting parentheses whenever you want to distinguish two messages having the same precedence.
+%\paragraph{Hints.} If you have problems with these precedence rules, you may start simply by putting parentheses whenever you want to distinguish two messages having the same precedence.
+\paragraph{Советы.} Если у вас возникают трудности с этими правилами, вы можете ставить скобки везде, где сочтёте необходимым для различения двух сообщений, имеющих одинаковый приоритет.
 
-The following piece of code does not require parentheses because the message send  \ct{x isNil} is unary hence is sent prior to the keyword message \ct{ifTrue:}.
+%The following piece of code does not require parentheses because the message send  \ct{x isNil} is unary hence is sent prior to the keyword message \ct{ifTrue:}.
+Следующий код не требует скобок, потому что посылка \ct{x isNil} -- унарная и выполняется перед сообщением с ключевыми словами \ct{ifTrue:}.
 \begin{code}{}
 (x isNil)
    ifTrue:[...]
 \end{code}
 
-The following piece of code requires parentheses because the messages \ct{includes:} and \ct{ifTrue:} are both keyword messages. 
+%The following piece of code requires parentheses because the messages \ct{includes:} and \ct{ifTrue:} are both keyword messages. 
+Следующий код, наоборот, требует скобок, потому что оба сообщения \ct{includes:} и \ct{ifTrue:} являются сообщениями с ключевыми словами.
 \begin{code}{}
 ord := OrderedCollection new.
 (ord includes: $a)
    ifTrue:[...]
 \end{code}
 \noindent
-Without parentheses the unknown message \ct{includes:ifTrue:} would be sent to the collection!
+%Without parentheses the unknown message \ct{includes:ifTrue:} would be sent to the collection!
+Не будь здесь скобок, коллекции было бы отправлено неопределённое сообщение \ct{includes:ifTrue:}!
 
 %-------------------------------------------------------------
-\subsection{When to use \lct{[ ]} or \lct{( )}}
-You may also have problems understanding when to use square brackets rather than parentheses.
-The basic principle is that you should use \ct{[ ]} when you do not know how many times, potentially zero, an expression should be evaluated.
-\lct{[\emph{expression}]} will create a \ind{block} closure (\ie an object) from \lct{\emph{expression}}, which may be evaluated any number of times (possibly zero), depending on the context. Here note that an expression can either be a message send, a variable, a literal, an assignment or a block.
+%\subsection{When to use \lct{[ ]} or \lct{( )}}
+\subsection{Когда использовать \lct{[ ]} и когда \lct{( )}}
+%You may also have problems understanding when to use square brackets rather than parentheses.
+У вас также могут возникнуть проблемы с пониманием того, когда использовать квадратные скобки (brackets), а когда круглые (parentheses).
+%The basic principle is that you should use \ct{[ ]} when you do not know how many times, potentially zero, an expression should be evaluated.
+Базовый принцип здесь такой: используйте \ct{[ ]}, когда не знаете сколько раз будет выполнено заключённое в них выражение (возможно, ни разу).
+%\lct{[\emph{expression}]} will create a \ind{block} closure (\ie an object) from \lct{\emph{expression}}, which may be evaluated any number of times (possibly zero), depending on the context. Here note that an expression can either be a message send, a variable, a literal, an assignment or a block.
+\lct{[\emph{выражение}]} создаст \ind{блок}-замыкание (\ind{block} closure) (\ie некоторый объект) из \lct{\emph{выражения}}, который может быть выполнен произвольное число раз (в том числе ноль) в зависимости от контекста. 
 
 Hence the conditional branches of \ct{ifTrue:} or \ct{ifTrue:ifFalse:} require blocks. Following the same principle both the receiver and the argument of a \ct{whileTrue:} message require the use of square brackets since we do not know how many times either the receiver or the argument should be evaluated.
 
