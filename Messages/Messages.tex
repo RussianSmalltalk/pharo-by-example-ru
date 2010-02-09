@@ -733,23 +733,34 @@ Point new setX: 25 setY: 35; isZero --> false
 
 %=============================================================
 \section{Chapter summary}
-
+%\section{Итоги главы}
 \begin{itemize}
-\item A message is always sent to an object named the \emph{receiver} which may be the result of other message sends.
+%\item A message is always sent to an object named the \emph{receiver} which may be the result of other message sends.
+\item Сообщение всегда посылается объекту, называемому \emph{получатель}, который, в свою очередь, может быть результатом посылки другого сообщения.
 
-\item Unary messages are messages that do not require any argument.\\
-They are of the form of \lct{receiver \textbf{selector}}.
+%\item Unary messages are messages that do not require any argument.\\
+\item Унарными называются сообщения, которые не принимают никаких аргументов.\\
+%They are of the form of \lct{receiver \textbf{selector}}.
+Они имеют форму \lct{получатель \textbf{селектор}}.
 
-\item Binary messages are messages that involve two objects, the receiver and another object \emph{and} whose selector is composed of  one or more characters from the following list: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{|}, \texttt{\&}, \ct{=}, \ct{>}, \ct{<}, \texttt{\~}, and \ct{@}.
+%\item Binary messages are messages that involve two objects, the receiver and another object \emph{and} whose selector is composed of  one or more characters from the following list: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{|}, \texttt{\&}, \ct{=}, \ct{>}, \ct{<}, \texttt{\~}, and \ct{@}.
+\item Бинарными называются сообщения, затрагивающие два объекта, получателя и какой-либо другой объект, \emph{а также} имеющие селектор, состоящий из одного или более следующих символов: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{|}, \texttt{\&}, \ct{=}, \ct{>}, \ct{<}, \texttt{\~} и \ct{@}.
 They are of the form: \lct{receiver \textbf{selector} argument}
-\item Keyword messages are messages that involve more than one object and that contain at least one colon character (\ct{:}). \\
-They are of the form:
-\lct{receiver \textbf{selectorWordOne:} argumentOne \textbf{wordTwo:} argumentTwo}
+%\item Keyword messages are messages that involve more than one object and that contain at least one colon character (\ct{:}). \\
+\item Сообщениями с ключевыми словами называются сообщения, затрагивающие более одного объекта и содержащие по крайней мере одно двоеточие (\ct{:}). \\
+%They are of the form:
+Они имеют форму:
+%\lct{receiver \textbf{selectorWordOne:} argumentOne \textbf{wordTwo:} argumentTwo}
+\lct{получатель \textbf{первоеСловоСелектора:} первыйАргумент \textbf{второеСловоСелектора:} второйАргумент}
 
-\item \textbf{Rule One.} Unary messages are sent first, then binary messages, and finally keyword messages.
-\item \textbf{Rule Two.} Messages in parentheses are sent before any others.
-\item \textbf{Rule Three.} When the messages are of the same kind, the order of evaluation is from left to right.
-\item In \st, traditional arithmetic operators such as + and * have the same priority. \ct{+} and \ct{*} are just binary messages, therefore \ct{*} does not have priority over \ct{+}. You must use parentheses to obtain a different result.
+%\item \textbf{Rule One.} Unary messages are sent first, then binary messages, and finally keyword messages.
+\item \textbf{Правило Первое.} Унарные сообщения посылаются первыми, затем бинарные сообщения, и, наконец, сообщения с ключевыми словами.
+%\item \textbf{Rule Two.} Messages in parentheses are sent before any others.
+\item \textbf{Правило Второе.} Сообщения в скобках посылаются прежде других сообщений.
+%\item \textbf{Rule Three.} When the messages are of the same kind, the order of evaluation is from left to right.
+\item \textbf{Правило Третье.} При посылке сообщений одного типа, порядок посылки определяется как слева направо.
+%\item In \st, traditional arithmetic operators such as + and * have the same priority. \ct{+} and \ct{*} are just binary messages, therefore \ct{*} does not have priority over \ct{+}. You must use parentheses to obtain a different result.
+\item В \st традиционные арифметические операторы, такие как + и * имеют одинаковый приорите. \ct{+} и \ct{*} являются всего лишь бинарными сообщениями, поэтому \ct{*} не имеет приоритета перед \ct{+}. Используйте скобки, чтобы получить другой результат.
 \end{itemize}
 
 %\end{document}
