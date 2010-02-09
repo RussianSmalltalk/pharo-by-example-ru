@@ -697,30 +697,35 @@ box containsPoint: 40@50 --> true
 \end{code}
 
 %=============================================================
-\section{Cascaded messages}
-\st offers a way to send multiple messages to the same receiver using a semicolon (\ct{;}). This is called the \emphind{cascade} in \st jargon.
+%\section{Cascaded messages}
+\section{Каскадные сообщения}
+%\st offers a way to send multiple messages to the same receiver using a semicolon (\ct{;}). This is called the \emphind{cascade} in \st jargon.
+\st позволяет, используя точку с запятой (\ct{;}), отправить несколько сообщений одному получателю. На жаргоне \st это называется \emphind{каскад} (cascade).
 
-\important{Expression Msg1 ; Msg2}
+%\important{Expression Msg1 ; Msg2}
+\important{Выражение сообщение1 ; сообщение2}
 
 \begin{minipage}{0.35\textwidth}
 \begin{code}{}
-Transcript show: 'Pharo is '.
-Transcript show: 'fun '.
+Transcript show: 'Pharo -- это '.
+Transcript show: 'весело '.
 Transcript cr.
 \end{code}
 \end{minipage}
-\emph{is equivalent to:}
+\emph{эквивалентно:}
 \begin{minipage}{0.35\textwidth}
 \begin{code}{}
 Transcript        
-   show: 'Pharo is';
-   show: 'fun ';
+   show: 'Pharo -- это ';
+   show: 'весело ';
    cr
 \end{code}
 \end{minipage}
 
-Note that the object receiving the cascaded messages can itself be the result of a message send. 
-In fact the receiver of all the cascaded messages is the receiver of the first message involved in a cascade. In the following example, the first cascaded message is \ct{setX:setY} since it is followed by a cascade. The receiver of the cascaded message \ct{setX:setY:} is the newly created point resulting from the evaluation of \ct{Point new}, and \emph{not} \ct{Point}. The subsequent message \ct{isZero} is sent to that same receiver. 
+%Note that the object receiving the cascaded messages can itself be the result of a message send. 
+Обратите внимание, объект, получающий каскадные сообщения тоже может быть результатом посылки другого сообщения.
+%In fact the receiver of all the cascaded messages is the receiver of the first message involved in a cascade. In the following example, the first cascaded message is \ct{setX:setY} since it is followed by a cascade. The receiver of the cascaded message \ct{setX:setY:} is the newly created point resulting from the evaluation of \ct{Point new}, and \emph{not} \ct{Point}. The subsequent message \ct{isZero} is sent to that same receiver. 
+Фактически, получатель всех каскадных сообщений -- это получатель первого сообщения, входящего в каскад. В следующем примере \ugh{первое каскадное сообщение -- \ct{setX:setY}, т.к. за ним идёт каскад}. Получателем каскадного сообщения \ct{setX:setY:} является точка, создаваемая в результате вычисления \ct{Point new}, а \emph{не} \ct{Point}. Последующее сообщение \ct{isZero} посылается тому же получателю.
 
 \begin{code}{}
 Point new setX: 25 setY: 35; isZero --> false
