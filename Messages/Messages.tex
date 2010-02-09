@@ -35,7 +35,7 @@
 \fi
 %=================================================================
 %\chapter{Understanding message syntax}
-\chapter{\ugh{Подробнее о синтаксисе сообщений}}
+\chapter{Подробнее о синтаксисе сообщений}
 \chalabel{understanding}
 
 %Although \st's message syntax is extremely simple, it is unconventional and can take some time getting used to.
@@ -76,7 +76,7 @@
 	\begin{center}
 	\includegraphics[width=0.95\textwidth]{message}
 	%\caption{Two messages composed of a receiver, a method selector, and a set of arguments.\figlabel{firstScriptMessage}}\end{center}
-	\caption{Два сообщения, состоящие из получателя и селектора, и набор аргументов.}\figlabel{firstScriptMessage}}\end{center}
+	\caption{Два сообщения, состоящие из получателя и селектора, и набор аргументов.\figlabel{firstScriptMessage}}\end{center}
 \end{minipage}
 \hfill
 \begin{minipage}{0.43\textwidth}
@@ -116,7 +116,7 @@
 	\begin{tabularx}{\linewidth}{llX}
 		\toprule
 		%Message send & Message type & Result \\
-		Посылка сообщения & Тип сообщения & Результат
+		Посылка сообщения & Тип сообщения & Результат \\
 		\midrule
 		\lct{Color yellow}
 			%& unary
@@ -191,7 +191,7 @@
 %\subsection{Unary messages}
 \subsection{Унарные сообщения}
 %Unary messages are messages that do not require any argument. They follow the syntactic template: \ct{receiver messageName}. The selector is simply made up of a succession of characters not containing \ct{:} (\eg \ct{factorial}, \ct{open}, \ct{class}).
-Унарные сообщения не принимают аргументов и соответсвуют следующему синтаксическому шаблону: \ct{получатель имяСообщения}. Селектор состоит из последовательности символов (characters) не содержащей двоеточия, например, \ct{factorial}, \ct{open}, \ct{class}).
+Унарные сообщения не принимают аргументов и соответсвуют следующему синтаксическому шаблону: \ct{получатель имяСообщения}. Селектор состоит из последовательности символов (characters) не содержащей двоеточия, например, \ct{factorial}, \ct{open}, \ct{class}.
 \needlines{4}
 \begin{code}{@TEST}
 89 sin           --> 0.860069405812453
@@ -226,7 +226,7 @@ Object class --> Object class  "Класс класса Object -- это Object 
 %\important{Binary messages are messages that require exactly one argument \emph{and} whose selector is composed of a sequence of characters from: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{\&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{\~}, and \ct{@}. \ct{--} is not possible.\\
 \important{Бинарные сообщения требуют ровно одного аргумента \emph{и} их селектор состоит из одного или более следующих символов: \ct{+}, \ct{-}, \ct{*}, \ct{/}, \ct{\&}, \ct{=}, \ct{>}, \ct{|}, \ct{<}, \ct{\~} и \ct{@}. Селектор \ct{--} запрещён.\\
 %They follow the syntactic template: \lct{receiver \textbf{selector} argument}}
-Они соответствуют синтаксическому шаблону: \lct{получатель \textbf{селектор} аргумент}}.
+Они соответствуют синтаксическому шаблону: \lct{получатель \textbf{селектор} аргумент}}
 
 %-------------------------------------------------------------
 %\subsection{Keyword messages} 
@@ -246,7 +246,7 @@ Object class --> Object class  "Класс класса Object -- это Object 
 
 \begin{code}{@TEST | nums |}
 1 to: 10                        --> (1 to: 10)  "создаёт интервал"
-Color r: 1 g: 0 b: 0       --> Color red  "создаёт новй цвет"
+Color r: 1 g: 0 b: 0       --> Color red  "создаёт новый цвет"
 12 between: 8 and: 15 --> true
 
 nums := Array newFrom: (1 to: 5).
@@ -258,7 +258,7 @@ nums --> #(6 2 3 4 5)
 %\important{Keyword based  messages are messages that require one or more arguments. Their selector consists of one or more keywords each ending in a colon (\lct{:}). They follow the syntactic template: \\
 \important{Сообщения с ключевыми словами принимают один или более аргументов. Их селектор состоит из одного или более ключевых слов, каждое из которых оканчивается двоеточием. Они соответствуют следующему синтаксическому шаблону: \\
 %\lct{receiver \textbf{selectorWordOne:} argumentOne \textbf{wordTwo:} argumentTwo}}
-\lct{получатель \textbf{первоеКлючевоеСлово:} первыйАргумент \textbf{второеКлючевоеСлово:} второйАргумент}}
+\lct{получатель \textbf{первоеКлючевоеСлово:} первыйАргумент \textbf{второеКлючевоеСлово:} второйАргумент}.}
 
 %=============================================================
 %\section{Message composition}
@@ -294,8 +294,8 @@ nums --> #(6 2 3 4 5)
 Первыми посылаются унарные сообщения, затем бинарные и, наконец, сообщения с ключевыми словами. Мы также говорим, что унарные сообещения имеют наивысший приоритет среди других типов сообщений.
 
 %\important{\textbf{Rule One.} Unary messages are sent first, then binary messages, and finally keyword based messages.\\
-\important{\textbf{Правило Первое.} Унарые сообщения посылаются первыми, затем бинарные сообщения и, наконец, сообщения с ключевыми словами.\\
-\centerline{\ct{Унарные > Бинарные > С ключевыми словами}}
+\important{\textbf{Правило Первое.} Унарные сообщения посылаются первыми, затем бинарные сообщения и, наконец, сообщения с ключевыми словами.\\
+\centerline{\ct{Унарные > Бинарные > С ключевыми словами}}.
 }
 
 %As these examples show, \st's syntax rules generally ensure that message sends can be read in a natural way:
@@ -536,7 +536,7 @@ Evaluating the message without parentheses would lead to an error because the ob
 Как показано на \egref{binaryMessages1} результат этой посылки не \ct{30}, а \ct{110}. Этот результат является, возможно, неожиданным, но он строго следует из правил посылки сообщений. Так или иначе, это цена, которую мы платим за простоту модели языка \st. Чтобы получить верный результат, следует использовать скобки, -- заключённые в них сообщения выполняются первыми. Поэтому посылка \ct{20 + (2 * 5)} возвращает результат, показанный на \egref{mathcorrect}.
 
 \needlines{4}
-%\begin{example}[mathcorrect]{Декомпозиция \ct{20 + (2 * 5)}}{}
+\begin{example}[mathcorrect]{Декомпозиция \ct{20 + (2 * 5)}}{}
 "Сообщения, заключённые в скобки выполняются в первую очередь, поэтому * посылается перед +, что приводит к правильному результату."
 
     20 + (2 * 5) 
@@ -629,7 +629,7 @@ aDict
 %a keyword message is the longest sequence  of words terminated by \lct{:} that is not cut by the characters \lct{.},  or \lct{;}. 
 сообщение с ключевыми словами определяется как последовательность наибольшей длины, состоящая из слов, завершающихся двоеточием, и не прерываемая символами \lct{.} или \lct{;}.
 %When the characters \lct{[}, \lct{]}, \lct{(} and \lct{)} surround some words with colons, these words participate in the keyword message local to the area defined.}
-Когда символы \lct{[}, \lct{]}, \lct{(} и \lct{)} окружают слова с двоеточиями, эти слова входят в сообщение с ключевыми словами, локальное для данной области.
+Когда символы \lct{[}, \lct{]}, \lct{(} и \lct{)} окружают слова с двоеточиями, эти слова входят в сообщение с ключевыми словами, локальное для данной области.}
 
 \on{Sounds terribly complicated.}
 
@@ -732,8 +732,8 @@ Point new setX: 25 setY: 35; isZero --> false
 \end{code}
 
 %=============================================================
-\section{Chapter summary}
-%\section{Итоги главы}
+%\section{Chapter summary}
+\section{Итоги главы}
 \begin{itemize}
 %\item A message is always sent to an object named the \emph{receiver} which may be the result of other message sends.
 \item Сообщение всегда посылается объекту, называемому \emph{получатель}, который, в свою очередь, может быть результатом посылки другого сообщения.
@@ -760,7 +760,7 @@ They are of the form: \lct{receiver \textbf{selector} argument}
 %\item \textbf{Rule Three.} When the messages are of the same kind, the order of evaluation is from left to right.
 \item \textbf{Правило Третье.} При посылке сообщений одного типа, порядок посылки определяется как слева направо.
 %\item In \st, traditional arithmetic operators such as + and * have the same priority. \ct{+} and \ct{*} are just binary messages, therefore \ct{*} does not have priority over \ct{+}. You must use parentheses to obtain a different result.
-\item В \st традиционные арифметические операторы, такие как + и * имеют одинаковый приорите. \ct{+} и \ct{*} являются всего лишь бинарными сообщениями, поэтому \ct{*} не имеет приоритета перед \ct{+}. Используйте скобки, чтобы получить другой результат.
+\item В \st традиционные арифметические операторы, такие как + и * имеют одинаковый приоритет. \ct{+} и \ct{*} являются всего лишь бинарными сообщениями, поэтому \ct{*} не имеет приоритета перед \ct{+}. Используйте скобки, чтобы получить другой результат.
 \end{itemize}
 
 %\end{document}
