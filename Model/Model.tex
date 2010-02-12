@@ -124,14 +124,17 @@ Object new class --> Object
 %A class whose instances are classes is called a \emphind{metaclass}.
 Каждый раз когда вы создаете класс, система автоматический создает метакласс.
 %Whenever you create a class, the system automatically creates a metaclass for you.
-The metaclass defines the structure and behavior of the class that is its instance.
-99\% \damien{Did any of you verify it is 99\%? Maybe 'Most' would have been better than '99\%'} of the time you will not need to think about metaclasses, and may happily ignore them.
-(We will have a closer look at metaclasses in \charef{metaclasses}.)
+Метакласс определяет стуктуру и поведение класса, который станет его экземпляром.
+%The metaclass defines the structure and behavior of the class that is its instance.
+Большую часть времени вам не придется думать о метаклассах, можно вообще забыть о их существовании.
+%99\% \damien{Did any of you verify it is 99\%? Maybe 'Most' would have been better than '99\%'} of the time you will not need to think about metaclasses, and may happily ignore them.
+(Поближе мы рассмотим метаклассы в \charef{metaclasses}.)
+%(We will have a closer look at metaclasses in \charef{metaclasses}.)
 
 %---------------------------------------------------------
-\subsection{Instance variables}
+\subsection{Переменные экземпляра}
 
-Instance variables in \st are private to the \emph{instance} itself.
+%Instance variables in \st are private to the \emph{instance} itself.
 This is in contrast to \ind{Java} and \ind{C++}, which allow instance variables (also known as ``fields'' or ``member variables'') to be accessed by any other instance that happens to be of the same class.
 We say that the \emphind{encapsulation boundary} of objects in Java and C++ is the class, whereas in \st it is the instance.
 \seeindex{variable!instance}{instance variable}

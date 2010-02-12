@@ -18,7 +18,7 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2009-10-27T21:42:37+05:00
+Last update: 2010-02-07T16:17:16+05:00
 
 ===== CHAPTER: Preface ==========
 
@@ -125,7 +125,7 @@ MCHttpRepository
     password: ''
 -----
 
-===== CHAPTER: Syntax in a nutshell ==========
+===== CHAPTER: Синтаксис в двух словах ==========
 
 -----
 (Smalltalk includes: Class) ifTrue: [ Transcript show: Class superclass ]
@@ -326,8 +326,8 @@ Point new setX: 25 setY: 35; isZero "--> false"
 ===== CHAPTER: Объектная модель Smalltalk ==========
 
 -----
-3 + 4 "--> 7    send '+ 4' to 3, yielding 7"
-20 factorial "--> 2432902008176640000   send factorial, yielding a big number"
+3 + 4 "--> 7    послать сообщение '+ 4' объекту 3, вернёт 7"
+20 factorial "--> 2432902008176640000   послать сообщение “факториал”, возвращает большое число"
 -----
 1 class "--> SmallInteger"
 20 factorial class "--> LargePositiveInteger"
@@ -2047,7 +2047,7 @@ new Ajax.Updater(
 return false
 -----
 
-===== CHAPTER: Reflection ==========
+===== CHAPTER: Рефлексия ==========
 
 -----
 w := Workspace new.
@@ -2057,9 +2057,9 @@ w inspect
 w instVarNamed: 'contents' put: 'howdy!'; contentsChanged
 -----
 Object>>instVarAt: index 
-	"Primitive. Answer a fixed variable in an object. ..."
+	"Примитив. Возвращает значение фиксированной переменной объекта. ..."
 	!\textbf{<primitive: 73>}!
-	"Access beyond fixed variables."
+	"Выход за пределы фиксированных переменных."
 	^self basicAt: index - self class instSize		
 -----
 SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
@@ -2067,7 +2067,7 @@ SketchMorph allInstances select: [:c | (c instVarNamed: 'owner') isWorldMorph]
 (1@2) instanceVariableValues "--> an OrderedCollection(1 2)"
 -----
 Object>>instanceVariableValues
-	"Answer a collection whose elements are the values of those instance variables of the receiver which were added by the receiver's class."	
+	"Возвращает список значений переменных объекта-получателя, определённых в его классе"
 	| c |
 	c := OrderedCollection new.
 	self class superclass instSize + 1
@@ -2079,18 +2079,18 @@ Object>>instanceVariableValues
 1.5 isKindOf: Number "--> true"
 1.5 isKindOf: Integer "--> false"
 -----
-1.5 respondsTo: #floor "--> true    since Number implements floor"
+1.5 respondsTo: #floor "--> true    т.к. Number реализует floor"
 1.5 floor "--> 1"
-Exception respondsTo: #, "--> true    exception classes can be grouped"
+Exception respondsTo: #, "--> true    классы исключений могут быть сгруппированы"
 -----
-Morph allSuperclasses size. "-->       2 inheritance depth"
-Morph allSelectors size. "--> 1378 number of methods"
-Morph allInstVarNames size. "-->      6 number of instance variables"
-Morph selectors size. "-->  998 number of new methods"
-Morph instVarNames size. "-->      6 number of new variables"
-Morph subclasses size. "-->    45 direct subclasses"
-Morph allSubclasses size. "-->  326 total subclasses"
-Morph linesOfCode. "--> 5968 total lines of code!"
+Morph allSuperclasses size. "-->       2 глубина наследования"
+Morph allSelectors size. "--> 1378 количество методов"
+Morph allInstVarNames size. "-->      6 количество переменных экземпляра"
+Morph selectors size. "-->  998 количество методов определённых непосредственно в классе Morph"
+Morph instVarNames size. "-->      6 количество переменных определённых непосредственно в классе Morph"
+Morph subclasses size. "-->    45 прямые подклассы"
+Morph allSubclasses size. "-->  326 всего подклассов"
+Morph linesOfCode. "--> 5968 строк кода!"
 -----
 Point someInstance "--> 0@0"
 -----
@@ -2134,35 +2134,35 @@ SystemNavigation default
     each methodDict associations
       select: [:assoc | assoc value sendsToSuper]
       thenCollect: [:assoc | MethodReference class: each selector: assoc key]])
-  name: 'Supersends of ' , class name , ' and its subclasses'
+  name: 'Вызовы методов суперкласса внутри класса' , class name , ' и его подклассов'
 -----
 (Object>>#=) methodReference methodSymbol "--> #="
 -----
 ((BrowserEnvironment new forClasses: (Collection withAllSubclasses))
 	selectMethods: [:method | method sendsToSuper])
-	label: 'Collection methods sending super';
+	label: 'Методы класса Collection, посылающие сообщения суперклассу';
 	open.
 -----
 ((BrowserEnvironment new forClasses: (Collection withAllSubclasses))
 	selectMethods: [:method | 
 		method sendsToSuper
 		and: [(method parseTree superMessages includes: method selector) not]])
-	label: 'Collection methods sending different super';
+	label: 'Методы класса Collection, посылающие суперклассу сообщения с другим именем';
 	open
 -----
 Integer>>factorial
-	"Answer the factorial of the receiver."
+	"Вычисляет факториал получателя."
 	self = 0 ifTrue: [!\underline{thisContext explore. self halt.}! ^ 1].
 	self > 0 ifTrue: [^ self * (self - 1) factorial].
-	self error: 'Not valid for negative integers'
+	self error: 'Не вычисляется для отрицательных чисел'
 -----
 SystemNavigation default browseMethodsWithSourceString: 'thisContext'
 -----
 Object>>subclassResponsibility
-	"This message sets up a framework for the behavior of the class' subclasses.
-	Announce that the subclass should have implemented this message."
+	"Это сообщение задаёт каркас поведения подклассов данного класса, 
+	напоминая, что подкласс должен реализовать это сообщение"
 
-	self error: 'My subclass should have overridden ', thisContext sender selector printString
+	self error: 'Подкласс должен переопределять ', thisContext sender selector printString
 -----
 OrderedCollection>>add: newObject
 	!\underline{self halt.}!
@@ -2175,7 +2175,7 @@ OrderedCollection>>add: newObject
 Object>>haltIf: condition
 	| cntxt |
 	condition isSymbol ifTrue: [
-		"only halt if a method with selector symbol is in callchain"
+		"останавливать только если метод с указанным селектором присутствует в стеке вызовов"
 		cntxt := thisContext.
 		[cntxt sender isNil] whileFalse: [
 			cntxt := cntxt sender. 
@@ -2248,7 +2248,7 @@ Demo methodDict removeKey: #answer42 ifAbsent: []
 -----
 TestRunner>>runCoverage
 	| packages methods |
-	... "identify methods to check for coverage"
+	... "определяем методы для вычисления покрытия их тестами"
 	self collectCoverageFor: methods
 -----
 TestRunner>>collectCoverageFor: methods
@@ -2262,7 +2262,7 @@ TestRunner>>collectCoverageFor: methods
 	wrappers := wrappers reject: [ :each | each hasRun ].
 	wrappers isEmpty 
 		ifTrue: 
-			[ UIManager default inform: 'Congratulations. Your tests cover all code under analysis.' ]
+			[ UIManager default inform: 'Поздравляем!. Ваши тесты покрывают весь проанализированный код.' ]
 		ifFalse: ...
 -----
 TestCoverage class>>on: aMethodReference
@@ -2294,7 +2294,7 @@ SplitJointTest class>>documentation
 	<ignoreForCoverage>
 	"self showDocumentation"
 	
-	^ 'This package provides function.... "
+	^ 'Этот пакет предоставляет функции.... '
 -----
 (SplitJoinTest class >> #showDocumentation) pragmas
  "--> an Array(<ignoreForCoverage>)"
