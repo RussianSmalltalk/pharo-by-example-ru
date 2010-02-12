@@ -724,7 +724,7 @@ Transcript
 %Note that the object receiving the cascaded messages can itself be the result of a message send. 
 Обратите внимание, объект, получающий каскадные сообщения тоже может быть результатом посылки другого сообщения.
 %In fact the receiver of all the cascaded messages is the receiver of the first message involved in a cascade. In the following example, the first cascaded message is \ct{setX:setY} since it is followed by a cascade. The receiver of the cascaded message \ct{setX:setY:} is the newly created point resulting from the evaluation of \ct{Point new}, and \emph{not} \ct{Point}. The subsequent message \ct{isZero} is sent to that same receiver. 
-Фактически, получатель всех каскадных сообщений -- это получатель первого сообщения, входящего в каскад. В следующем примере \ugh{первое каскадное сообщение -- \ct{setX:setY}, т.к. за ним идёт каскад}. Получателем каскадного сообщения \ct{setX:setY:} является точка, создаваемая в результате вычисления \ct{Point new}, а \emph{не} \ct{Point}. Последующее сообщение \ct{isZero} посылается тому же получателю.
+Фактически, получатель всех каскадных сообщений -- это получатель первого сообщения, входящего в каскад. В следующем примере первое каскадное сообщение -- \ct{setX:setY}, т.к. за ним идёт каскад. Получателем каскадного сообщения \ct{setX:setY:} является точка, создаваемая в результате вычисления \ct{Point new}, а \emph{не} \ct{Point}. Последующее сообщение \ct{isZero} посылается тому же получателю.
 
 \begin{code}{}
 Point new setX: 25 setY: 35; isZero --> false

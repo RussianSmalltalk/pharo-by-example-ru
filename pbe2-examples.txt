@@ -18,9 +18,9 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2010-02-07T16:17:16+05:00
+Last update: 2010-02-12T19:06:48+05:00
 
-===== CHAPTER: Seaside by Example ==========
+===== CHAPTER: Seaside в примерах ==========
 
 -----
 WAHelloWorld>>renderContentOn: html
@@ -156,7 +156,8 @@ SeasideEditCallDemo>>renderContentOn: html
 		with: self text.
 	html space.
 	html anchor
-		callback: [self text: (self !\underline{call:}! (SeasideEditAnswerDemo new text: self text))];
+callback: [self text: (self !\underline{call:}! (SeasideEditAnswerDemo new text: self
+text))];
 		with: 'edit'
 -----
 SeasideEditAnswerDemo>>renderContentOn: html
@@ -359,6 +360,6 @@ new Ajax.Updater(
 	'display',
 	'http://localhost/seaside/RPN+Calculator',
 	{'evalScripts': true,
-	  'parameters': ['_s=zcdqfonqwbeYzkza', '_k=jMORHtqr','9'].join('&')});
-return false
+'parameters': ['_s=zcdqfonqwbeYzkza',
+'_k=jMORHtqr','9'].join('&')});return false
 -----

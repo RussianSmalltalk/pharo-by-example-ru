@@ -18,7 +18,7 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2010-02-07T16:17:16+05:00
+Last update: 2010-02-12T19:06:47+05:00
 
 ===== CHAPTER: Preface ==========
 
@@ -208,7 +208,7 @@ result "--> '1 2 3 4 5 6 7 8 9 10 '"
   ^ super + aNumber
 -----
 
-===== CHAPTER: Understanding message syntax ==========
+===== CHAPTER: Подробнее о синтаксисе сообщений ==========
 
 -----
 89 sin "--> 0.860069405812453"
@@ -216,17 +216,17 @@ result "--> '1 2 3 4 5 6 7 8 9 10 '"
 Float pi "--> 3.141592653589793"
 'blop' size "--> 4"
 true not "--> false"
-Object class "--> Object class  The class of Object is Object class (!)"
+Object class "--> Object class  Класс класса Object -- это Object class (!)"
 -----
-100@100 "--> 100@100  creates a Point object"
+100@100 "--> 100@100  создаёт объект класса Point"
 3 + 4 "--> 7"
 10 - 1 "--> 9"
 4 <= 3 "--> false"
-(4/3) * 3 = 4 "--> true  equality is just a binary message, and Fractions are exact"
-(3/4) == (3/4) "--> false  two equal Fractions are not the same object"
+(4/3) * 3 = 4 "--> true  равенство -- это бинарное сообщение, а дроби (Fractions) -- обыкновенные"
+(3/4) == (3/4) "--> false  равные дроби -- разные объекты"
 -----
-1 to: 10 "--> (1 to: 10)  creates an interval"
-Color r: 1 g: 0 b: 0 "--> Color red  creates a new color"
+1 to: 10 "--> (1 to: 10)  создаёт интервал"
+Color r: 1 g: 0 b: 0 "--> Color red  создаёт новый цвет"
 12 between: 8 and: 15 "--> true"
 
 nums := Array newFrom: (1 to: 5).
@@ -242,48 +242,48 @@ nums "--> #(6 2 3 4 5)"
 [:aClass | aClass methodDict keys select: [:aMethod | (aClass>>aMethod) isAbstract ]] value: Boolean "--> an IdentitySet(#or: #| #and: #& #ifTrue: #ifTrue:ifFalse: #ifFalse: #not #ifFalse:ifTrue:)"
 -----
         aPen color: Color yellow
-(1)                       Color yellow "unary message is sent first"
+(1)                       Color yellow "унарное сообщение посылается первым"
  "--> aColor"
-(2)   aPen color: aColor "keyword message is sent next"
+(2)   aPen color: aColor "затем посылается сообщение с ключевыми словами"
 -----
       aPen go: 100 + 20   
-(1)                 100 + 20 "binary message first"
+(1)                 100 + 20 "сначала бинарное сообщение"
  "-->   120"
-(2)  aPen go: 120 "then keyword message"
+(2)  aPen go: 120 "потом сообщение с ключевыми словами"
 -----
-1.5 tan rounded asString = (((1.5 tan) rounded) asString) "--> true    parentheses not needed here"
-3 + 4 factorial "--> 27    (not 5040)"
+1.5 tan rounded asString = (((1.5 tan) rounded) asString) "--> true    здесь скобки не нужны"
+3 + 4 factorial "--> 27    (не 5040)"
 (3 + 4) factorial "--> 5040"
 -----
 (FMSound lowMajorScaleOn: FMSound clarinet) play 
-"(1) send the message clarinet to the FMSound class to create a clarinet sound.
- (2) send this sound to FMSound as argument to the lowMajorScaleOn: keyword message.
- (3) play the resulting sound."
+"(1) отправить сообщение clarinet классу FMSound чтобы создать звук кларнета.
+ (2) отправить этот звук классу FMSound как аргумент сообщения с ключевыми словами lowMajorScaleOn:.
+ (3) проиграть полученный звук."
 -----
       (65 @ 325 extent: 134 @ 100) center
-(1)   65@325 "binary"
+(1)   65@325 "бинарное"
  "--> aPoint"
-(2)                                134@100 "binary"
+(2)                                134@100 "бинарное"
  "--> anotherPoint"
-(3)   aPoint extent: anotherPoint "keyword"
+(3)   aPoint extent: anotherPoint "с ключевыми словами"
  "--> aRectangle"
-(4)   aRectangle center "unary"
+(4)   aRectangle center "унарное"
  "--> 132@375"
 -----
-3 + 4 * 5 "--> 35    (not 23)  Binary messages sent from left to right"
+3 + 4 * 5 "--> 35    (не 23)  Бинарные сообщения посылаются слева направо"
 3 + (4 * 5) "--> 23"
-1 + 1/3 "--> (2/3)    and not 4/3"
+1 + 1/3 "--> (2/3)    и не 4/3"
 1 + (1/3) "--> (4/3)"
-1/3 + 2/3 "--> (7/9)    and not 1"
+1/3 + 2/3 "--> (7/9)    и не 1"
 (1/3) + (2/3) "--> 1"
 -----
-"As there is no priority among binary messages, the leftmost message + is evaluated first even if by the rules of arithmetic the * should be sent first."
+"Поскольку все бинарные сообщения имеют один приоритет, крайнее слева сообщение + выполняется первым, даже если правила арифметики гласят, что первым должно быть отправлено сообщение *."
 
       20 + 2 * 5 
 (1)  20 + 2 "--> 22"
 (2)  22       * 5 "--> 110"
 -----
-"The messages surrounded by parentheses are evaluated first therefore * is sent prior to + which produces the correct behaviour."
+"Сообщения, заключённые в скобки выполняются в первую очередь, поэтому * посылается перед +, что приводит к правильному результату."
 
     20 + (2 * 5) 
 (1)        (2 * 5) "--> 10"
@@ -303,21 +303,21 @@ ord := OrderedCollection new.
 (ord includes: $a)
    ifTrue:[...]
 -----
-[ x isReady ] whileTrue: [ y doSomething ] "both the receiver and the argument must be blocks"
-4 timesRepeat: [ Beeper beep ] "the argument is evaluated more than once, so must be a block"
-(x isReady) ifTrue: [ y doSomething ] "receiver is evaluated once, so is not a block"
+[ x isReady ] whileTrue: [ y doSomething ] "и получатель, и аргумент должны быть блоками"
+4 timesRepeat: [ Beeper beep ] "аргумент выполняется больше одного раза, поэтому должен быть блоком"
+(x isReady) ifTrue: [ y doSomething ] "получатель выполняется лишь один раз, а значит, это не блок"
 -----
 | box |
 box := 20@30 corner: 60@90.
 box containsPoint: 40@50 "--> true"
 -----
-Transcript show: 'Pharo is '.
-Transcript show: 'fun '.
+Transcript show: 'Pharo -- это '.
+Transcript show: 'весело '.
 Transcript cr.
 -----
 Transcript        
-   show: 'Pharo is';
-   show: 'fun ';
+   show: 'Pharo -- это ';
+   show: 'весело ';
    cr
 -----
 Point new setX: 25 setY: 35; isZero "--> false"
@@ -603,7 +603,7 @@ ExampleSetTest run: #testRemove "--> 1 run, 1 passed, 0 failed, 0 errors"
 -----
 ExampleSetTest suite run "--> 5 run, 5 passed, 0 failed, 0 errors"
 -----
-TestResource subclass: #MyTestResource
+ TestResource subclass: #MyTestResource
 	instanceVariableNames: ''
 
 MyTestCase class>>resources
@@ -664,6 +664,7 @@ TestCase class>>testSelectors
 	^self selectors asSortedCollection asOrderedCollection select: [:each | 
 		('test*' match: each) and: [each numArgs isZero]]
 -----
+\begin{method}[testsuiterun]{Выполнение набора тестов}
 TestSuite>>run
 	| result |
  	result := TestResult new.
@@ -1704,7 +1705,7 @@ Metaclass class class "--> Metaclass"
 Metaclass superclass "--> ClassDescription"
 -----
 
-===== CHAPTER: Seaside by Example ==========
+===== CHAPTER: Seaside в примерах ==========
 
 -----
 WAHelloWorld>>renderContentOn: html
@@ -1840,7 +1841,8 @@ SeasideEditCallDemo>>renderContentOn: html
 		with: self text.
 	html space.
 	html anchor
-		callback: [self text: (self !\underline{call:}! (SeasideEditAnswerDemo new text: self text))];
+callback: [self text: (self !\underline{call:}! (SeasideEditAnswerDemo new text: self
+text))];
 		with: 'edit'
 -----
 SeasideEditAnswerDemo>>renderContentOn: html
@@ -2043,8 +2045,8 @@ new Ajax.Updater(
 	'display',
 	'http://localhost/seaside/RPN+Calculator',
 	{'evalScripts': true,
-	  'parameters': ['_s=zcdqfonqwbeYzkza', '_k=jMORHtqr','9'].join('&')});
-return false
+'parameters': ['_s=zcdqfonqwbeYzkza',
+'_k=jMORHtqr','9'].join('&')});return false
 -----
 
 ===== CHAPTER: Рефлексия ==========
