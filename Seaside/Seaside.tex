@@ -39,46 +39,100 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{Seaside by Example}
+%\chapter{Seaside by Example}
+\chapter{Seaside шаг за шагом}
 \chalabel{seaside}
 
 %=================================================================
 
-\ind{Seaside} is a framework for building web applications in Smalltalk.  It was originally developed by Avi Bryant \index{Bryant, Avi} in 2002; once mastered, Seaside makes web applications almost as easy to write as desktop applications.
+%\ind{Seaside} is a framework for building web applications in Smalltalk.
+\ind{Seaside} - это фреймворк для разработки веб-приложений на \st.
+%It was originally developed by Avi Bryant \index{Bryant, Avi} in 2002; once mastered,
+Его разработал Ави Браянт (Avi Bryant) \index{Bryant, Avi} в 2002; 
+%Seaside makes web applications almost as easy to write as desktop applications.
+с помощью Seaside создавать веб-приложения почти также легко, как и обычные приложения.
 
-Two of the better known applications built with Seaside are \ind{SqueakSource}\footnote{\url{http://SqueakSource.com}} and \ind{Dabble DB}\footnote{\url{http://DabbleDB.com}}.
-Seaside is unusual in that it is thoroughly object-oriented: there are no XHTML templates, no complicated control flows through web pages, and no encoding of state in URLs. Instead, you just send messages to objects.  What a nice idea!
+%Two of the better known applications built with Seaside are
+Наиболее известные приложения, написанные с помощью Seaside:
+%\ind{SqueakSource}\footnote{\url{http://SqueakSource.com}} and
+\ind{SqueakSource}\footnote{\url{http://SqueakSource.com}} и
+%\ind{Dabble DB}\footnote{\url{http://DabbleDB.com}}.
+\ind{Dabble DB}\footnote{\url{http://DabbleDB.com}}.
+%Seaside is unusual in that it is thoroughly object-oriented:
+Отличие Seaside в том, что он полностью объектно-ориентирован:
+%there are no XHTML templates, no complicated control flows through web pages,
+нет XHTML-шаблонов, нет сложных потоков выполнения (control flow) между веб-страницами
+%and no encoding of state in URLs.
+и больше не надо вручную кодировать состояние в URL.
+%Instead, you just send messages to objects.  What a nice idea!
+Вместо этого, вы просто посылаете сообщения объектам. Какая замечательная идея!
 
-\section{Why do we need Seaside?}
+%\section{Why do we need Seaside?}
+\section{Для чего нам нужен Seaside?}
 
-Modern web applications try to interact with the user in the same way as desktop applications: they ask the user questions and the user responds, usually by filling in a form or clicking a button.
-But the web works the other way around: the user's browser makes a request of the server, and the server responds with a new web page.
-So \ind{web application development} frameworks have to cope with a host of problems, chief among them being the management of this ``inverted'' control flow. 
-Because of this, many web applications try to forbid the use of the browser's ``back'' button due to the difficulty of keeping track of the state of a session. 
-Expressing non-trivial control flows across multiple web pages is often cumbersome, and multiple control flows can be difficult or impossible to express.
+%Modern web applications try to interact with the user in the same way as desktop applications:
+Современные веб-приложения пытаются взаимодействовать с пользователем как обычные приложения:
+%they ask the user questions and the user responds, usually by filling in a form or clicking a button.
+они задают пользователю вопрос, тот отвечает, заполнив форму или нажав на кнопку.
+%But the web works the other way around: the user's browser makes a request of the server,
+Но веб работает по-другому: браузер со стороны пользователя посылает запрос на сервер,
+%and the server responds with a new web page.
+а сервер отвечает на него, выдавая новую веб-страницу.
+%So \ind{web application development} frameworks have to cope with a host of problems,
+Поэтому фреймворки для разработки веб-приложений (\ind{web application development}) вынуждены уживаться с подобными проблемами,
+%chief among them being the management of this ``inverted'' control flow. 
+главная из которых - это управление таким ``перевернутым'' потоком выполнения.
+%Because of this, many web applications try to forbid the use of the browser's ``back'' button
+Поэтому большинство веб-приложений пытаются запретить использование кнопки ``назад'' в браузере,
+%due to the difficulty of keeping track of the state of a session. 
+так как очень трудно отслеживать правильное состояние в текущей сессии.
+%Expressing non-trivial control flows across multiple web pages is often cumbersome,
+Закодировать нетривиальный поток выполнения на множестве веб-страниц довольно тяжело,
+%and multiple control flows can be difficult or impossible to express.
+а множественный поток выполнения - почти невозможно.
 
 % Seaside is a component-based framework that uses ``\ind{continuations}''\footnote{A \emph{continuation} represents ``the rest of the computation'' at any point in a computation. In Smalltalk, a continuation is just an object that captures the current state of the computation, and which can be resumed at any point.} to keep track of multiple points in the control flow of web applications. Continuations are managed automatically by Seaside, so web developers do not even have to be aware of the underlying machinery. It just works.
 
 \index{Seaside!backtracking state}
 \index{Seaside!transactions}
 \index{Seaside!components}
-Seaside is a component-based framework that makes web development easier in several ways.
-First,  control flow can be expressed naturally using message sends.
-Seaside keeps track of which web page corresponds to which point in the execution of the web application.
-This means that the browser's ``back'' button works correctly.
 
-Second, state is managed for you.
-As the developer, you have the choice of enabling 
-backtracking of state, so that navigation ``back'' in time will undo side-effects.
-Alternatively, you can use the transaction support built into Seaside to prevent users from undoing permanent side-effects when they use the back button.
-You do not have to encode state information in the URL\,---\,this too is managed automatically for you.
+%Seaside is a component-based framework that makes web development easier in several ways.
+Seaside - это основанный на компонентах фреймворк, который упрощает веб-разработку.
+%First,  control flow can be expressed naturally using message sends.
+Во-первых, поток выполнения можно закодировать используя отправку сообщений.
+%Seaside keeps track of which web page corresponds to which point in the execution of the web application.
+Seaside отслеживает какая веб-страница соответствует какой точке выполнения веб-приложения.
+%This means that the browser's ``back'' button works correctly.
+Это означает, что кнопка ``назад'' в браузере работает правильно.
 
-Third, web pages are built up from nested components, each of which can support its own, independent control flow.
-There are no XHTML templates\,---\,instead valid XHTML is generated programmatically using a simple Smalltalk protocol.
-Seaside supports Cascading Style Sheets (\ind{CSS}), so content and layout are cleanly separated.
+%Second, state is managed for you.
+Во-вторых, о состоянии сессии позаботились за вас.
+%As the developer, you have the choice of enabling backtracking of state,
+Вы, как разработчик, можете включить слежение за состоянием,
+%so that navigation ``back'' in time will undo side-effects.
+и кнопка ``назад'' будет отменять последнее действие.
+%Alternatively, you can use the transaction support built into Seaside
+В противном случае, вы можете использовать механизм транзакций, встроенный в Seaside,
+%to prevent users from undoing permanent side-effects when they use the back button.
+чтобы кнопка ``назад'' возвращала на предыдущую страницу, но не отменяла действие.
+%You do not have to encode state information in the URL\,---\,this too is managed automatically for you.
+Нет необходимости кодировать информацию о состоянии в URL\,---\, это будет происходить автоматически.
+
+%Third, web pages are built up from nested components, each of which can support its own, independent control flow.
+В-третьих, веб-страницы формируются из вложенных компонентов, каждый из которых поддерживает свой собственный, независимый поток выполнения (control flow).
+%There are no XHTML templates\,---\,instead valid XHTML is generated programmatically using a simple Smalltalk protocol.
+Нет никаких XHTML-шаблонов, вместо них автоматически генерируется валидный XHTML.
+%Seaside supports Cascading Style Sheets (\ind{CSS}), so content and layout are cleanly separated.
+Seaside поддерживает каскадные таблицы стилей (\ind{CSS}), поэтому контент и дизайн полностью разделены.
 \seeindex{Cascading Style Sheets}{CSS}
 
-Finally, Seaside provides a convenient web-based development interface, making it easy to develop applications iteratively, debug applications interactively, and recompile and extend applications while the server is running.
+%Finally, Seaside provides a convenient web-based development interface,
+Наконец, Seaside предоставляет удобный веб-интерфейс для разработки,
+%making it easy to develop applications iteratively, debug applications interactively,
+что упрощает итерационную разработку приложений, интерактивную отладку приложений,
+%and recompile and extend applications while the server is running.
+а также перекомпилцию и доработку приложений без остановки сервера.
 
 %=================================================================
 \section{Getting started}
