@@ -37,75 +37,83 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{Streams}\chalabel{streams}
+%\chapter{Streams}\chalabel{streams}
+\chapter{Потоки}\chalabel{streams}
 
-\ew{Streams are presented as a way to navigate collection. From my point of view, stream are important not to navigate collection, but to produce/consume data:
+%\ew{Streams are presented as a way to navigate collection. From my point of view, stream are important not to navigate collection, but to produce/consume data:
 (a)	memory constraint. Data can not hold into memory and must be processed in a stream fashion, e.g: encryption
 (b)	blocking IO. A stream is a nice abstraction to deal with, and the stream manages internally data availability, buffering, etc. to simplify the consumption/production of data
 Only few streams have random access capability.}
 
 \clsindexmain{Stream}
-Streams are used to iterate over sequences of elements such as sequenced
-collections, files, and network streams.
-Streams may be either readable, or writeable, or both.
-Reading or writing is always relative to the current position in the stream.
-Streams can easily be converted to collections, and vice versa.
+%Streams are used to iterate over sequences of elements such as sequenced collections, files, and network streams.
+Потоки используются для итерации по элементам последовательностей, таких, как упорядоченные коллекции, файлы, \ugh{сетевые потоки ввода-вывода}.
+%Streams may be either readable, or writeable, or both.
+Потоки могут быть для чтения, для записи или для чтения и записи одновременно.
+%Reading or writing is always relative to the current position in the stream.
+Чтение и запись всегда производятся относительно текущей позиции в потоке.
+%Streams can easily be converted to collections, and vice versa.
+Потоки моут быть легко преобразованы в коллекции и наоборот.
+
 \lr{"Streams can easily be converted into collections." I wouldn't say it like this, because it is not true for all streams (infinite streams). According to Kent Beck we should only talk about conversion when the same protocol is supported. Collections and Streams do not support the same protocol. (p. 249)}
 
 %=============================================================
-\section{Two sequences of elements}
-A good metaphor to understand a stream is the following: A stream
-can be represented as two sequences of elements: a past element sequence
-and a future element sequence. The stream is positioned between the two
-sequences. Understanding this model is important since all stream
-operations in Smalltalk rely on it.
-For this reason, most of the \clsind{Stream} classes are subclasses of \clsind{PositionableStream}.
-\figref{_abcde} presents a stream which contains five characters. This stream is in its original position, \ie there is no element in the past. You can go back to this position using the message \mthind{PositionableStream}{reset}.
+%\section{Two sequences of elements}
+\section{Две последовательности элементов}
+%A good metaphor to understand a stream is the following: A stream can be represented as two sequences of elements: a past element sequence and a future element sequence. 
+Подходящей метафорой для потока будет следующая. Поток можно рассматривать как две последовательности элементов: \ugh{последовательность прошлых элементов и последовательность элеметнов будущих}.
+%The stream is positioned between the two sequences. 
+Поток расположен между двумя этими последовательностями.
+%Understanding this model is important since all stream operations in Smalltalk rely on it.
+Понимание этой модели важно, т.к. все операции над потоками в \st основываются на ней.
+%For this reason, most of the \clsind{Stream} classes are subclasses of \clsind{PositionableStream}.
+По этой причине, большинство классов потоков являются наследниками \clsind{PositionableStream}.
+%\figref{_abcde} presents a stream which contains five characters. This stream is in its original position, \ie there is no element in the past. You can go back to this position using the message \mthind{PositionableStream}{reset}.
+\figref{_abcde} изображён поток, состоящий из пяти букв. Этот поток находится в начальной позиции, \ie <<в прошлом>> нет элементов. Вы можете вернуться к этой позиции с помощью сообщения \mthind{PositionableStream}{reset}.
 
 \begin{figure}[ht]
 \centerline{\includegraphics[scale=0.5]{_abcdeStef}}
-\caption{A stream positioned at its beginning.}
+%\caption{A stream positioned at its beginning.}
+\caption{Поток находится в начальной позиции.}
 \figlabel{_abcde}
 \vspace{.2in}
 \end{figure}
 
-Reading an element conceptually means removing the first element of the future element sequence  and putting it after the last element in the past
-element sequence. After having read one element using the message \ct{next}, the state of your stream is that shown in \figref{a_bcde}.
+%Reading an element conceptually means removing the first element of the future element sequence and putting it after the last element in the past element sequence. After having read one element using the message \ct{next}, the state of your stream is that shown in \figref{a_bcde}.
+Чтение элемента из потока концептуально можно представить как удаление первого элемента <<будущей>> последовательности и добавление их в конец <<прошлой>> последовательности. На \figref{a_bcde} показано состояние потока после прочтения одного элемента с помощью сообщения \ct{next}.
 
 \begin{figure}[ht]
 \centerline{\includegraphics[scale=0.5]{a_bcdeStef}}
-\caption{The same stream after the execution of the method \ct{next}: the character \ct{a} is ``in the past'' whereas \ct{b}, \ct{c}, \ct{d} and \ct{e} are ``in the future''.}
+%\caption{The same stream after the execution of the method \ct{next}: the character \ct{a} is ``in the past'' whereas \ct{b}, \ct{c}, \ct{d} and \ct{e} are ``in the future''.}
+\caption{Тот же поток после выполнения метода \ct{next}: буква \ct{a} <<в прошлом>>, а \ct{b}, \ct{c}, \ct{d} и \ct{e} -- <<в будущем>>.}
 \figlabel{a_bcde}
 \vspace{.2in}
 \end{figure}
 
-Writing an element means replacing the first element of the future sequence by the new one and moving it to the past. \figref{ax_cde} shows the state of the same stream after having written an \ct{x} using the message \mthind{Stream}{nextPut:} \ct{anElement}.
+%Writing an element means replacing the first element of the future sequence by the new one and moving it to the past. \figref{ax_cde} shows the state of the same stream after having written an \ct{x} using the message \mthind{Stream}{nextPut:} \ct{anElement}.
+Запись элемента подразумевает замену первого элемента <<будущей>> последовательности и перемещение его <<в прошлое>>. На \figref{ax_cde} показано состояние потока после записи буквы \ct{x} при помощи сообщения \mthind{Stream}{nextPut:} \ct{anElement}.
 
 \begin{figure}[h!t]
 \centerline{\includegraphics[scale=0.5]{ax_cdeStef}}
-\caption{The same stream after having written an \ct{x}.}
+%\caption{The same stream after having written an \ct{x}.}
+\caption{Поток после записи в него буквы \ct{x}.}
 \figlabel{ax_cde}
 \vspace{.2in}
 \end{figure}
 
 %=============================================================
-\section{Streams vs. collections}
+%\section{Streams vs. collections}
+\section{Потоки и коллекции}
 
-The collection protocol supports the storage, removal and enumeration
-of the elements of a collection, but does not allow these operations
-to be intermingled.  For example, if the elements of an
-\clsind{OrderedCollection} are processed by a \mthind{OrderedCollection}{do:} method, it is not
-possible to add or remove elements from inside the \ct{do:} block.
-Nor does the collection protocol offer ways to iterate over two
-collections at the same time, choosing which collection goes forward
-and which does not. Procedures like these require that a traversal index or
-position reference is maintained outside of the collection itself:
-this is exactly the role of \clsind{ReadStream}, \clsind{WriteStream} and
-\clsind{ReadWriteStream}.
+%The collection protocol supports the storage, removal and enumeration of the elements of a collection, but does not allow these operations to be intermingled. For example, if the elements of an \clsind{OrderedCollection} are processed by a \mthind{OrderedCollection}{do:} method, it is not possible to add or remove elements from inside the \ct{do:} block.
+Протокол коллекций поддерживает сохранение, удаление и перечисление элементов коллекции, но не позволяет совмещать эти операции. Например, при обработке элементов \clsind{OrderedCollection} с помощью метода \mthind{OrderedCollection}{do:} внутри блока \ct{do:} невозможно ни добавлять, ни удалять элементы.
+%Nor does the collection protocol offer ways to iterate over two collections at the same time, choosing which collection goes forward and which does not. Procedures like these require that a traversal index or position reference is maintained outside of the collection itself: this is exactly the role of \clsind{ReadStream}, \clsind{WriteStream} and \clsind{ReadWriteStream}.
+Также не позволяет протокол коллекций производить итерацию сразу по двум коллекциям, выбирая, по какой из них идёт продвижение, а по какой нет. Операции, подобные этой, требуют чтобы индекс обхода или указатель позиции поддерживался вне самой коллекции: это в точности то, что позволяют \clsind{ReadStream}, \clsind{WriteStream} и \clsind{ReadWriteStream}.
 
-These three classes are defined to \emph{stream over} some collection.
-For example, the following snippet creates a stream on an interval,
-then it reads two elements.
+%These three classes are defined to \emph{stream over} some collection.
+Эти три класса существуют, чтобы \ugh{\emph{протекать через}} коллекции.
+%For example, the following snippet creates a stream on an interval, then it reads two elements.
+Например, следующий фрагмент кода создаёт поток над интервалом, а затем читает из него два элемента.
 \needlines{5}
 \begin{code}{@TEST |r|}
 r := ReadStream on: (1 to: 1000).
@@ -114,7 +122,8 @@ r next.   --> 2
 r atEnd.--> false
 \end{code}
 
-\ct{WriteStream}s can write data to the collection:
+%\ct{WriteStream}s can write data to the collection:
+\ct{WriteStream} может записывать данные в коллекцию:
 \begin{code}{@TEST |w|}
 w := WriteStream on: (String new: 5).
 w nextPut: $a.
@@ -122,23 +131,20 @@ w nextPut: $b.
 w contents. -->  'ab'
 \end{code}
 
-It is also possible to create \ct{ReadWriteStream}s that support both
-the reading and writing protocols.
+%It is also possible to create \ct{ReadWriteStream}s that support both the reading and writing protocols.
+Можно также использовать \ct{ReadWriteStream}, который поддерживает оба протокола: и чтение, и запись.
 
-The main problem with \ct{WriteStream} and \ct{ReadWriteStream} is
-that they only support arrays and strings in \pharo. This is currently
-being changed by the development of a new library named Nile, 
-but for now if you try to stream over another kind of
-collection, you will get an error:
+%The main problem with \ct{WriteStream} and \ct{ReadWriteStream} is that they only support arrays and strings in \pharo. This is currently being changed by the development of a new library named Nile, but for now if you try to stream over another kind of collection, you will get an error:
+Основная проблема с \ct{WriteStream} и \ct{ReadWriteStream} заключается в том, что они поддерживают только массивы и строки в \pharo. Эта проблема адресована в новой библиотеке Nile, но сейчас, если вы попытаетесь обернуть в поток другой тип коллекции, вы получите ошибку:
 
 \needlines{3}
 \begin{code}{}
 w := WriteStream on: (OrderedCollection new: 20).
-w nextPut: 12. -->  raises an error
+w nextPut: 12. -->  выдаёт ошибку
 \end{code}
 
-Streams are not only meant for collections, they can be used for files or sockets
-too. The following example creates a file named \ct{test.txt}, writes two strings to it, separated by a carriage return, and closes the file.
+%Streams are not only meant for collections, they can be used for files or sockets too. The following example creates a file named \ct{test.txt}, writes two strings to it, separated by a carriage return, and closes the file.
+Потоки предназначены не только для коллекций. Они также могут быть использованы для файлов и сокетов. В следующем примере создаётся файл \ct{test.txt}, в него записываются две строки, разделённые символом возврата каретки, а затем файл закрывается.
 
 \needlines{3}
 \begin{code}{}
@@ -151,7 +157,8 @@ StandardFileStream
 \end{code}
 \cmindex{FileStream class}{fileNamed:do:}
 
-The following sections present the protocols in more depth.
+%The following sections present the protocols in more depth.
+Последующие главы в деталях рассказывают об этих протоколах.
 
 %=============================================================
 \section{Streaming over collections}
