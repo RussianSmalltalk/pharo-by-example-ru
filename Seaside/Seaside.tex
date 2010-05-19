@@ -657,23 +657,40 @@ the instance side.}
 нам нужно чтобы Seaside переводил в правильное состояние объект \ct{WACounter}.
 Seaside включает механизм восстановления предыдущих состояний объекта, но каждое приложение может сообщать Seaside, какие части нужно восстановить.
 
-A component enables backtracking by implementing the \ct{states} method on the instance
-side:
-% \ab{note that xspace messes up again, by inserting a space at the start of this line}
-\ct{states} should answer an array containing all the objects to be tracked.
-In this case, the \ct{WACounter} object adds itself to Seaside's table of backtrackable
-objects by returning \ct{Array with: self}.
+% A component enables backtracking by implementing the \ct{states} method on the instance
+% side:
+% % \ab{note that xspace messes up again, by inserting a space at the start of this line}
+% \ct{states} should answer an array containing all the objects to be tracked.
+% In this case, the \ct{WACounter} object adds itself to Seaside's table of backtrackable
+% objects by returning \ct{Array with: self}.
 
-\paragraph{\emph{Caveat.}}
-There is a subtle but important point to watch for when declaring objects for
-backtracking.
-Seaside tracks state by making a \emph{copy} of all the objects declared in the
-\ct{states} array.
-It does this using a \clsind{WASnapshot} object; \ct{WASnapshot} is a subclass of
-\clsind{IdentityDictionary} that records the objects to be tracked as keys and shallow
-copies of their state as values.
-If the state of an application is backtracked to a particular snapshot, the state of eachobject entered into the snapshot dictionary is overwritten by the copy saved in the
-snapshot.
+Компонент разрешает возрат в предыдущее состояние реализацией метода \ct{states}
+на стороне экземпляра.
+Метод \ct{states} должен возвращать массив, содержащий все предыдущие состояния.
+В нашем случае, объект \ct{WACounter} добавляет самого себя в таблицу предыдущих состояний,
+возвращая \ct{Array with: self}.
+
+% \paragraph{\emph{Caveat.}}
+% There is a subtle but important point to watch for when declaring objects for
+% backtracking.
+% Seaside tracks state by making a \emph{copy} of all the objects declared in the
+% \ct{states} array.
+% It does this using a \clsind{WASnapshot} object; \ct{WASnapshot} is a subclass of
+% \clsind{IdentityDictionary} that records the objects to be tracked as keys and shallow
+% copies of their state as values.
+% If the state of an application is backtracked to a particular snapshot,
+% the state of eachobject entered into the snapshot dictionary
+% is overwritten by the copy saved in the snapshot.
+
+\emph{Предостережение.}
+Обратим внимание на малозаметный, но важный нюанс,
+для объектов сохраняющих прежние состояния.
+Seaside отслеживает состояния, созданием копий всех объектов размещенных в массиве \ct{states}.
+Используется объект \clsind{WASnapshot}; являющийся подклассом \clsind{IdentityDictionary},
+который записывает объекты в виде ключа и поверхностной копии (shallow) объекта в виде значения.
+If the state of an application is backtracked to a particular snapshot,
+the state of eachobject entered into the snapshot dictionary
+is overwritten by the copy saved in the snapshot.
 
 Here is the point to watch out for:
 In the case of \ct{WACounter}, you might think that the state to be tracked is a
@@ -693,35 +710,63 @@ value; this correctly replaces the current value of \ct{count} by a prior value.
 \index{Seaside!backtracking state}
 \index{WAPresenter!states@\ct{states}}
 
-\section{Rendering XHTML}
+% \section{Rendering XHTML}
+\section{Создание XHTML}
 
-The purpose of a web application is to create, or ``render'', web pages. As we mentioned
-in \secref{components}, each Seaside component is responsible for rendering itself.
-So, lets start our exploration of rendering by seeing how the counter component renders
-itself.
+% The purpose of a web application is to create, or ``render'', web pages. As we mentioned
+% in \secref{components}, each Seaside component is responsible for rendering itself.
+% So, lets start our exploration of rendering by seeing how the counter component renders
+% itself.
 
-\subsection{Rendering the Counter}
+Назначением веб-приложения является создание (или прорисовка) веб-страницы.
+Как мы уже упоминали в \secref{components},
+каждый Seaside компонент имеет возможность прорисовывать (отражать) себя на веб-страницу.
+Итак, давайте начнем наше изучение на примере компонента counter.
 
-The rendering of the counter is relatively straightforward; the code is shown in
-\figref{WACounter}.
-The current value of the counter is displayed as an XHTML heading, and the increment and
-decrement operations are implemented as html anchors (that is, links) with callbacks to
-blocks that will send \ct{increase} and \ct{decrease} to the counter object.
+%\subsection{Rendering the Counter}
+\subsection{Прорисовка компонента Counter}
+
+% The rendering of the counter is relatively straightforward; the code is shown in
+% \figref{WACounter}.
+% The current value of the counter is displayed as an XHTML heading, and the increment and
+% decrement operations are implemented as html anchors (that is, links) with callbacks to
+% blocks that will send \ct{increase} and \ct{decrease} to the counter object.
+
+Отражение на веб-страницу объекта counter достаточно простое; код показан на \figref{WACounter}.
+Текущее значение counter показывается в качестве XHTML-заголовка,
+а шаговое увеличение (уменьшение) реализовано гиперссылками с
+блоками обратного вызова,
+которые посылают сообщения \ct{increase} и \ct{decrease} объекту counter.
 
 We will have a closer look at the rendering protocol in a moment.
 But before we do, let's have a quick look at the \subind{Seaside}{multi-counter}.
 
-\subsection{From Counter to MultiCounter}
+Мы будем подробно рассматривать протокол прорисовки позже.
+Но сначала бегло просмотрим \subind{Seaside}{multi-counter}.
 
-\ct{WAMultiCounter}, shown in \figref{WAMultiCounter} is also a standalone application,
-so it overrides \mthind{WAComponent class}{canBeRoot} to answer \ct{true}.
-In addition, it is a \emph{composite} component, so Seaside requires it to declare its
-children by implementing a method \ct{children} that answers an array of all the
-components it contains.
-It renders itself by rendering each of its subcomponents, separated by a horizontal
-rule.Aside from instance and class-side initialization methods, there is nothing else to
-the
-multi-counter!
+
+% \subsection{From Counter to MultiCounter}
+\subsection{От Counter до MultiCounter}
+
+% \ct{WAMultiCounter}, shown in \figref{WAMultiCounter} is also a standalone application,
+% so it overrides \mthind{WAComponent class}{canBeRoot} to answer \ct{true}.
+% In addition, it is a \emph{composite} component, so Seaside requires it to declare its
+% children by implementing a method \ct{children} that answers an array of all the
+% components it contains.
+% It renders itself by rendering each of its subcomponents, separated by a horizontal
+% rule.Aside from instance and class-side initialization methods, there is nothing else to
+% the multi-counter!
+
+\ct{WAMutliCounter}, рассмотренный в \figref{WAMultiCounter} является к тому же
+самостоятельным приложением,
+переопределяет метод класса \mthind{WAComponent}{canBeRoot},
+возвращающий результат \ct{true}.
+В дополнение, WAMultiCounter - составной компонент.
+Seaside требует регистрации вложенных компонентов осуществлением метода \ct{children},
+который отвечает массивом вложенных компонентов.
+Компонент сам прорисовывает каждый вложенный элемент, разделяя горизонтальной линией.
+Кроме экземпляра и инициализирующих методов со стороны класса,
+в multiCounter больше ничего нет!
 
 \begin{figure}[bht]
 \begin{center}
@@ -732,7 +777,8 @@ multi-counter!
 \end{figure}
 
 %-----------------------------------------------------------------
-\subsection{More about Rendering XHTML}
+% \subsection{More about Rendering XHTML}
+\subsection{Подробнее о создании XHTML}
 
 As you can see from these examples, Seaside does not use templates to generate web
 pages.Instead it generates XTHML programmatically.
