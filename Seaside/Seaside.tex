@@ -322,27 +322,46 @@ Seaside приложение создается из подключаемых <<
 \end{center}
 \end{figure}
 
-\dothis{Select \button{Toggle Halos}. You should see a web page like
-\figref{counterHalos}.
-At the top left the text \ct{WACounter} tells us the class of the Seaside component that
-implements the behavior of this web page.
-Next to this are three clickable icons. 
-The first, with the pencil, activates a Seaside class browser on this class.
-The second, with the magnifying glass, opens an object inspector on the currently active
-\ct{WACounter} instance.
-The third, with the coloured circles, displays the \ind{CSS} style sheet for this
-component.
-At the top right, the \link{R} and \link{S} let you toggle between the rendered and
-source views of the web page.
-Experiment with all of these links. 
-Note that the \link{++} and \link{--} links are also active in the source view.
-Contrast the nicely-formatted source view provided by the Halos with the unformatted
-source view offered by your browser.}
+% \dothis{Select \button{Toggle Halos}. You should see a web page like
+% \figref{counterHalos}.
+% At the top left the text \ct{WACounter} tells us the class of the Seaside component that
+% implements the behavior of this web page.
+% Next to this are three clickable icons. 
+% The first, with the pencil, activates a Seaside class browser on this class.
+% The second, with the magnifying glass, opens an object inspector on the currently active
+% \ct{WACounter} instance.
+% The third, with the coloured circles, displays the \ind{CSS} style sheet for this
+% component.
+% At the top right, the \link{R} and \link{S} let you toggle between the rendered and
+% source views of the web page.
+% Experiment with all of these links. 
+% Note that the \link{++} and \link{--} links are also active in the source view.
+% Contrast the nicely-formatted source view provided by the Halos with the unformatted
+% source view offered by your browser.}
 
-The Seaside class browser and object inspector can be very convenient when the server is
-running on another computer, especially when the server does not have a display, or if itis in remote place.
-However, when you are first developing a Seaside application, the server will be running
-locally, and it is easy to use the ordinary \pharo development tools in the server image.
+\dothis{Выберите \button{Toggle Halos}. Откроется веб-страница как на
+\figref{counterHalos}.
+Слева вверху расположен текст \ct{WACounter}
+говорящий нам  какой класс Seaside компонента осуществляет реализацию этой веб-страницы.
+Далее расположены три ссылки в виде изображений.
+Первая, с изображением карандаша, активизирует Seaside классовый браузер.
+Вторая, с изображением лупы, открывает объектный инспектор текущего активного экземпляра.
+Третья ссылка с цветными кругами показывает \ind{CSS} стиль компонента.
+В правой части, гиперссылки \link{R} и \link{S} позволяют просмотреть нам готовую веб-страницу и в виде HTML-кода.
+Поэксперементируйте с этими ссылками.
+Обратие внимание, что гиперссылки \link{++} и \link{- -} остаются активными и в HTML-коде.
+Красиво оформленный HTML-код показываемый в режиме Halos разительно отличается от представления кода браузером.}
+
+% The Seaside class browser and object inspector can be very convenient when the server is
+% running on another computer, especially when the server does not have a display, or if itis in remote place.
+% However, when you are first developing a Seaside application, the server will be running
+% locally, and it is easy to use the ordinary \pharo development tools in the server image.
+
+Seaside классовый браузер и объектный инспектор могут быть очень удобными, когда сервер исполняется на другом компьютере,
+в особенности когда сервер не имеет монитора или расположен на удаленом месте.
+Обычно, когда вы будете создавать первое Seaside приложение, сервер будет работать локально,
+и проще использовать стандартный инструментарий образа.
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{haltingCounter}
@@ -351,16 +370,27 @@ locally, and it is easy to use the ordinary \pharo development tools in the serv
 \end{center}
 \end{figure}
 
-\dothis{Using the object inspector link in the web browser, open an inspector on the
-underlying Smalltalk counter object and evaluate \ct{self halt}.
-The web page will stop loading.
-Now switch to the Seaside image.
-You should see a pre-debugger window (\figref{haltingCounter}) showing a \ct{WACounter}
-object executing a \ct{halt}.
-Examine this execution in the debugger, and then \button{Proceed}.
-Go back to the web browser and notice that the counter application is running again.}
+% \dothis{Using the object inspector link in the web browser, open an inspector on the
+% underlying Smalltalk counter object and evaluate \ct{self halt}.
+% The web page will stop loading.
+% Now switch to the Seaside image.
+% You should see a pre-debugger window (\figref{haltingCounter}) showing a \ct{WACounter}
+% object executing a \ct{halt}.
+% Examine this execution in the debugger, and then \button{Proceed}.
+% Go back to the web browser and notice that the counter application is running again.}
 
-Seaside components can be instantiated multiple times and in different contexts.
+\dothis{Используя ссылки объектного инспектора в веб-браузере,
+откройте инспектор текущего объекта Smalltalk counter и выполните \ct{self halt}.
+Загрузка веб-страницы будет приостановленна.
+Переключитесь на Seaside образ.
+И в нем увидите отладочное окно (\figref{haltingCounter}) показываеющее
+обработку сообщения \ct{halt} экземпляром \ct{WACounter}.
+Проверив выполнение в отладчике, далее нажмите \button{Proceed}.
+Вернувшись обратно в браузер, земетьте, что приложение продолжило свою работу.}
+
+% Seaside components can be instantiated multiple times and in different contexts.
+
+Seaside компоненты могут быть созданы много раз и в различных контекстах.
 
 \begin{figure}[ht]
 \begin{center}
@@ -370,36 +400,69 @@ Seaside components can be instantiated multiple times and in different contexts.
 \end{center}
 \end{figure}
 
-\dothis{Point your web browser to
+% \dothis{Point your web browser to
+% \url{http://localhost:8080/seaside/examples/multicounter}.
+% You will see an application built out of a number of independent instances of the countercomponent.
+% Increment and decrement several of the counters.
+% Verify that they behave correctly even if you use the ``back'' button.
+% Toggle the halos to see how the application is built out of nested components.
+% Use the Seaside class browser to view the implementation of \ct{WAMultiCounter}.
+% You should see three methods on the class side (\ct{canBeRoot}, \ct{description}, and
+% \ct{initialize}) and three on the instance side (\ct{children}, \ct{initialize}, and
+% \ct{renderContentOn:}).
+% Note that an application is simply a component that is willing to be at the root of the
+% component containment hierarchy; this willingness is indicated by defining a class-side
+% method \ct{canBeRoot}
+% to answer \ct{true}.}
+% \index{Seaside!multi-counter}
+
+\dothis{Откройте в браузере страницу
 \url{http://localhost:8080/seaside/examples/multicounter}.
-You will see an application built out of a number of independent instances of the countercomponent.
-Increment and decrement several of the counters.
-Verify that they behave correctly even if you use the ``back'' button.
-Toggle the halos to see how the application is built out of nested components.
-Use the Seaside class browser to view the implementation of \ct{WAMultiCounter}.
-You should see three methods on the class side (\ct{canBeRoot}, \ct{description}, and
-\ct{initialize}) and three on the instance side (\ct{children}, \ct{initialize}, and
-\ct{renderContentOn:}).
-Note that an application is simply a component that is willing to be at the root of the
-component containment hierarchy; this willingness is indicated by defining a class-side
-method \ct{canBeRoot}
-to answer \ct{true}.}
+Вы увидете приложение, которое построено на наскольких независимых экземплярах класса Counter.
+Попробуйте увеличивать и уменьшать значение счетчиков.
+Убедитесь, что счетчики работают корректно даже после использования кнопки <<назад>>.
+Переключите Halos, чтобы увидеть как построено приложение из вложенных компонентов.
+Воспользуйтесь классовым браузером Seaside,
+чтобы просмотреть имплементацию \ct{WAMultiCounter}.
+Вы увидете три метода на стороне класса (\ct{canBeRoot},
+\ct{description}, и \ct{initialize}) и три на стороне экземпляра (\ct{children},
+\ct{initialize}, и \ct{renderContentOn:}).
+Заметье, что приложение является простым компонентом,
+которое готово быть корнем для вложенных компонентов;
+готовность быть корнем определяется методом \ct{canBeRoot},
+который расположен на стороне класса и возвращает значение \ct{true}.}
 \index{Seaside!multi-counter}
 
-You can use the Seaside web interface to configure, copy or remove individual
-applications (\ie root-level components). Try making the following configuration change.
+% You can use the Seaside web interface to configure, copy or remove individual
+% applications (\ie root-level components). Try making the following configuration change.
 
-\dothis{Point your web browser to \url{http://localhost:8080/seaside/config}.
-Supply the login and password (\ct{admin} and \ct{seaside} by default).
-Select \link{Configure} next to ``examples.''
-Under the heading ``Add entry point'', enter the new name ``counter2'' for the type
-\emph{Application} and click on \button{Add} (see \figref{counter2}).
-On the next screen, set the \emph{Root Component} to \clsind{WACounter}, then click
-\button{Save} and \button{Close}.
-Now we have a new counter installed at
+Вы можете использовать веб-интерфейс Seaside, чтобы конфигурировать,
+копировать или удалять индивидуальные приложения.
+Попробуйте выполнить нежеследующие изменения конфигурации.
+
+% \dothis{Point your web browser to \url{http://localhost:8080/seaside/config}.
+% Supply the login and password (\ct{admin} and \ct{seaside} by default).
+% Select \link{Configure} next to ``examples.''
+% Under the heading ``Add entry point'', enter the new name ``counter2'' for the type
+% \emph{Application} and click on \button{Add} (see \figref{counter2}).
+% On the next screen, set the \emph{Root Component} to \clsind{WACounter}, then click
+% \button{Save} and \button{Close}.
+% Now we have a new counter installed at
+% \url{http://localhost:8080/seaside/examples/counter2}.
+% Use the same configuration interface to remove this entry point.}
+% \index{Seaside!configuration}
+
+\dothis{Перейдите на страницу \url{http://localhost:8080/seaside/config}.
+Авторизуйтесь, введя логин и пароль (\ct{admin} и \ct{seaside} по умолчанию).
+Выберите \link{Configure} и далее <<examples>>.
+Под заголовком <<Add entry point>> (добавить входную точку),
+введите новое имя <<counter2>>, выберите тип \emph{Application},
+далее нажмите на кнопку \button{Add} (смотрите \figref{counter2}).
+На следующем экране, установите опцию \emph{Root Component} на
+\clsind{WACounter}, далее нажмите кнопки \button{Save} и \button{close}.
+Теперь мы имеем новый счетчик расположенный в
 \url{http://localhost:8080/seaside/examples/counter2}.
-Use the same configuration interface to remove this entry point.
-}
+Для удаления этой входной точки используется этот же самый интерфейс конфигурации.}
 \index{Seaside!configuration}
 
 
@@ -411,74 +474,128 @@ Use the same configuration interface to remove this entry point.
 \end{center}
 \end{figure}
 
-Seaside operates in two modes: \emph{development} mode, which is what we have seen so
-far, and \emph{deployment} mode, in which the toolbar is not available.
+% Seaside operates in two modes: \emph{development} mode, which is what we have seen so
+% far, and \emph{deployment} mode, in which the toolbar is not available.
+% \index{Seaside!deployment mode}
+% \index{Seaside!development mode}
+% You can put Seaside into deployment mode using either the configuration page (navigate tothe entry for the application and click on the \link{Configure} link)
+% % \ab{How?  I couldn't find this}
+% or click the \button{Configure} button in the toolbar.
+% In either case, set the deployment mode to \emph{true}.
+% Note that this affects new sessions only.
+% You can also set the mode globally by evaluating
+% \clsind{WAGlobalConfiguration} \lct{setDeploymentMode}
+% or
+% \ct{WAGlobalConfiguration setDevelopmentMode}.
+% \index{Seaside!deployment mode}
+% \index{Seaside!development mode}
+
+Seaside работает в двух режимах: \emph{development} (Развиваемый),
+который позволяет получить полный доступ и увидеть все,
+и \emph{deployment} (развернутый, рабочий), в котором панель инструментов не доступна.
 \index{Seaside!deployment mode}
 \index{Seaside!development mode}
-You can put Seaside into deployment mode using either the configuration page (navigate tothe entry for the application and click on the \link{Configure} link)
-% \ab{How?  I couldn't find this}
-or click the \button{Configure} button in the toolbar.
-In either case, set the deployment mode to \emph{true}.
-Note that this affects new sessions only.
-You can also set the mode globally by evaluating
-\clsind{WAGlobalConfiguration} \lct{setDeploymentMode}
-or
+Вы можете перевести Seaside в deployment режим используя страницу конфигурации или нажмите кнопку \button{Configure} на панели инструментов.
+В любом случае, установите deployment режим на \emph{true}.
+Заметье, изменения появятся только для следующих новых сессий.
+Также можете установить режим для всех компонентов, выполнив,
+\clsind{WAGlobalConfiguration} \lct{setDeploymentMode} или
 \ct{WAGlobalConfiguration setDevelopmentMode}.
 \index{Seaside!deployment mode}
 \index{Seaside!development mode}
 
-The configuration web page is just another Seaside application, so it too can be
-controlled from the configuration page.
-If you remove the ``config'' application, you can get it back by evaluating
-\clsind{WADispatcherEditor} \ct{initialize}.
+% The configuration web page is just another Seaside application, so it too can be
+% controlled from the configuration page.
+% If you remove the ``config'' application, you can get it back by evaluating
+% \clsind{WADispatcherEditor} \ct{initialize}.
+
+Веб-страница конфигурации является Seaside приложением, и его тоже можно управлять со страницы конфигурации.
+Если вы удалите приложение <<config>>, то можете восстановить его выполнив, \clsind{WADispatcherEditor} \ct{initialize}.
 
 %=================================================================
-\section{Seaside components}
+% \section{Seaside components}
+% \seclabel{components}
+
+\section{Seaside компоненты}
 \seclabel{components}
 
-%\ab{This section was too long\,---\,18 pages. It also contained several self-references
-(``see section 1.3''). So I broke into smaller sections, by promoting some of the
-subsections and subsubsections.
+% %\ab{This section was too long\,---\,18 pages. It also contained several self-references
+% (``see section 1.3''). So I broke into smaller sections, by promoting some of the
+% subsections and subsubsections.
 
-As we mentioned in the previous section, Seaside applications are built out of
-\emph{\subind{Seaside}{components}.}
-Let's take a closer look at how Seaside works by implementing the \emph{Hello World}
-component.
+% As we mentioned in the previous section, Seaside applications are built out of
+% \emph{\subind{Seaside}{components}.}
+% Let's take a closer look at how Seaside works by implementing the \emph{Hello World}
+% component.
 
-Every Seaside component should inherit directly or indirectly from \clsind{WAComponent},
-as shown in \figref{WACounter}.
+Как мы отмечали в предыдущей главе, Seaside приложение строится из
+Seaside  компонентов. Давайте посмотрим как работает Seaside внутри на
+примере компонента \emph{Hello World}.
 
-\dothis{Define a subclass of \ct{WAComponent} called \ct{WAHelloWorld}.}
+%Every Seaside component should inherit directly or indirectly from \clsind{WAComponent},
+% as shown in \figref{WACounter}.
 
-Components must know how to render themselves.
-Usually this is done by implementing the method \mthind{WAPresenter}{renderContentOn:},
-which gets as its argument an instance of \clsind{WAHtmlCanvas}, which knows how to
-render XHTML.
+Каждый Seaside компонент должен быть прямым или косвенным наследником \clsind{WACounter},
+как показано на \figref{WACounter}.
+
+% \dothis{Define a subclass of \ct{WAComponent} called \ct{WAHelloWorld}.}
+
+\dothis{Создайте подкласс \ct{WAComponent} назвав его \ct{WAHelloWorld}.}
+
+% Components must know how to render themselves.
+% Usually this is done by implementing the method \mthind{WAPresenter}{renderContentOn:},
+% which gets as its argument an instance of \clsind{WAHtmlCanvas}, which knows how to
+% render XHTML.
+% \index{Seaside!rendering}
+
+Компоненты должны знать как рендерить себя.
+Обычно это реализованно в методе \mthind{WAPresenter}
+{renderContentOn:},
+который получает в качестве аргумента экземпляр \clsind{WAHtmlCanvas}, умеющий, в свою очередь, создавать XHTML.
 \index{Seaside!rendering}
 
-\dothis{Implement the following method, and put it in a protocol called
-\prot{rendering}:}
+
+% \dothis{Implement the following method, and put it in a protocol called
+% \prot{rendering}:}
+
+Реализуйте нижерасположенный метод и расместите его в протокол, который вызывается при создании веб-страницы.
+
 \needlines{2}
 \begin{code}{}
 WAHelloWorld>>>renderContentOn: html
 	html text: 'hello world'
 \end{code}
 
+% \noindent
+% Now we must inform Seaside that this component is willing to be a standalone application.\dothis{Implement the following method on the class side of \ct{WAHelloWorld}.}
+
 \noindent
-Now we must inform Seaside that this component is willing to be a standalone application.\dothis{Implement the following method on the class side of \ct{WAHelloWorld}.}
+Сейчас на нужно информировать Seaside,
+что этот компонет будет независимым приложением.
+
+\dothis{Осуществите нижерасположенный метод на стороне класса \ct{WAHelloWorld}.}
 
 \begin{code}{}
 WAHelloWorld class>>>canBeRoot
 	^ true
 \end{code}
 
-\noindent
-We are almost done!
+% \noindent
+% We are almost done!
 
-\dothis{Point your web browser at \url{http://localhost:8080/seaside/config}, add a new
-entry point called ``hello'', and set its root component to be \ct{WAHelloWorld}.
-Now point your browser to \url{http://localhost:8080/seaside/hello}.
-That's it!  You should see a web page like \figref{WAHelloWorld}.}
+\noindent
+Мы почти у цели!
+
+% \dothis{Point your web browser at \url{http://localhost:8080/seaside/config}, add a new
+% entry point called ``hello'', and set its root component to be \ct{WAHelloWorld}.
+% Now point your browser to \url{http://localhost:8080/seaside/hello}.
+% That's it!  You should see a web page like \figref{WAHelloWorld}.}
+
+\dothis{Перейдите в обозревателе на страницу
+\url{http://localhost:8080/seaside/config}, добавте новую точку входа назвав ее
+<<hello>>, далее установите в качестве корневого компонента (root component) \ct{WAHelloWorld}.
+Теперь откройте в обозревателе \url{http://localhost:8080/seaside/hello}.
+Вот и все! Вы увидете веб-страницу как на \figref{WAHelloWorld}.}
 
 \begin{figure}[htb]
 \begin{center}
@@ -489,11 +606,16 @@ That's it!  You should see a web page like \figref{WAHelloWorld}.}
 \end{figure}
 
 %-----------------------------------------------------------------
-\subsection{State backtracking and the ``Counter'' Application}
+% \subsection{State backtracking and the ``Counter'' Application}
 %{Simple and nested components}
 
-The ``counter'' application is only slightly more complex than the ``hello world''
-application.
+\subsection{Предыдущие страницы и приложение <<Counter>>}
+
+% The ``counter'' application is only slightly more complex than the ``hello world''
+% application.
+% \seclabel{backtracking}
+
+Приложение <<counter>> немного сложнее чем <<hello world>>.
 \seclabel{backtracking}
 
 \begin{figure}[ht]
@@ -506,37 +628,69 @@ the instance side.}
 \end{center}
 \end{figure}
 
-The class \clsind{WACounter} is a standalone application, so \ct{WACounter class} must
-answer \ct{true} to the \mthind{WAComponent class}{canBeRoot} message.
-It must also register itself as an application; this is done in its class-side
-\ct{initialize} method, as shown in \figref{WACounter}.
+% The class \clsind{WACounter} is a standalone application, so \ct{WACounter class} must
+% answer \ct{true} to the \mthind{WAComponent class}{canBeRoot} message.
+% It must also register itself as an application; this is done in its class-side
+% \ct{initialize} method, as shown in \figref{WACounter}.
 
-\ct{WACounter} defines two methods, \ct{increase} and \ct{decrease}, which will be
-triggered from the \link{++} and \link{--\,--} links on the web page.
-It also defines an instance variable \ct{count} to record the state of the counter.
-However, we also want Seaside to synchronize the counter with the browser page:
-when the user clicks on the browser's ``back'' button, we want seaside to ``backtrack''
-the state of the \ct{WACounter} object.
-Seaside includes a general mechanism for backtracking, but each application has to tell
-Seaside which parts of its state to track.
+Класс \clsind{WACounter} - независимое приложение, и поэтому класс 
+\ct{WACounter} ответит \ct{true} на сообщение
+\mthind{WAComponent class}{canBeRoot}.
+Данный метод нужен при регистрации в качестве приложения;
+все делается на стороне класса в методе \ct{initialize}, показано на \figref{WACounter}.
 
-A component enables backtracking by implementing the \ct{states} method on the instance
-side:
-% \ab{note that xspace messes up again, by inserting a space at the start of this line}
-\ct{states} should answer an array containing all the objects to be tracked.
-In this case, the \ct{WACounter} object adds itself to Seaside's table of backtrackable
-objects by returning \ct{Array with: self}.
+% \ct{WACounter} defines two methods, \ct{increase} and \ct{decrease}, which will be
+% triggered from the \link{++} and \link{--\,--} links on the web page.
+% It also defines an instance variable \ct{count} to record the state of the counter.
+% However, we also want Seaside to synchronize the counter with the browser page:
+% when the user clicks on the browser's ``back'' button, we want seaside to ``backtrack''
+% the state of the \ct{WACounter} object.
+% Seaside includes a general mechanism for backtracking, but each application has to tell
+% Seaside which parts of its state to track.
 
-\paragraph{\emph{Caveat.}}
-There is a subtle but important point to watch for when declaring objects for
-backtracking.
-Seaside tracks state by making a \emph{copy} of all the objects declared in the
-\ct{states} array.
-It does this using a \clsind{WASnapshot} object; \ct{WASnapshot} is a subclass of
-\clsind{IdentityDictionary} that records the objects to be tracked as keys and shallow
-copies of their state as values.
-If the state of an application is backtracked to a particular snapshot, the state of eachobject entered into the snapshot dictionary is overwritten by the copy saved in the
-snapshot.
+\ct{WACounter} определяет два метода, \ct{increase} и \ct{decrease},
+которые срабатывают при переходе по ссылкам \link{++} и \link{--\,--}
+на веб-странице.
+Также определена переменная экземпляра \ct{count},
+чтобы записывать состояние <<counter>>.
+И еще мы хотим, чтобы Seaside синхронизировал <<counter>> с веб-страницей: когда пользователь нажмет в браузере кнопку <<назад>>,
+нам нужно чтобы Seaside переводил в правильное состояние объект \ct{WACounter}.
+Seaside включает механизм восстановления предыдущих состояний объекта, но каждое приложение может сообщать Seaside, какие части нужно восстановить.
+
+% A component enables backtracking by implementing the \ct{states} method on the instance
+% side:
+% % \ab{note that xspace messes up again, by inserting a space at the start of this line}
+% \ct{states} should answer an array containing all the objects to be tracked.
+% In this case, the \ct{WACounter} object adds itself to Seaside's table of backtrackable
+% objects by returning \ct{Array with: self}.
+
+Компонент разрешает возрат в предыдущее состояние реализацией метода \ct{states}
+на стороне экземпляра.
+Метод \ct{states} должен возвращать массив, содержащий все предыдущие состояния.
+В нашем случае, объект \ct{WACounter} добавляет самого себя в таблицу предыдущих состояний,
+возвращая \ct{Array with: self}.
+
+% \paragraph{\emph{Caveat.}}
+% There is a subtle but important point to watch for when declaring objects for
+% backtracking.
+% Seaside tracks state by making a \emph{copy} of all the objects declared in the
+% \ct{states} array.
+% It does this using a \clsind{WASnapshot} object; \ct{WASnapshot} is a subclass of
+% \clsind{IdentityDictionary} that records the objects to be tracked as keys and shallow
+% copies of their state as values.
+% If the state of an application is backtracked to a particular snapshot,
+% the state of eachobject entered into the snapshot dictionary
+% is overwritten by the copy saved in the snapshot.
+
+\emph{Предостережение.}
+Обратим внимание на малозаметный, но важный нюанс,
+для объектов сохраняющих прежние состояния.
+Seaside отслеживает состояния, созданием копий всех объектов размещенных в массиве \ct{states}.
+Используется объект \clsind{WASnapshot}; являющийся подклассом \clsind{IdentityDictionary},
+который записывает объекты в виде ключа и поверхностной копии (shallow) объекта в виде значения.
+If the state of an application is backtracked to a particular snapshot,
+the state of eachobject entered into the snapshot dictionary
+is overwritten by the copy saved in the snapshot.
 
 Here is the point to watch out for:
 In the case of \ct{WACounter}, you might think that the state to be tracked is a
@@ -556,35 +710,63 @@ value; this correctly replaces the current value of \ct{count} by a prior value.
 \index{Seaside!backtracking state}
 \index{WAPresenter!states@\ct{states}}
 
-\section{Rendering XHTML}
+% \section{Rendering XHTML}
+\section{Создание XHTML}
 
-The purpose of a web application is to create, or ``render'', web pages. As we mentioned
-in \secref{components}, each Seaside component is responsible for rendering itself.
-So, lets start our exploration of rendering by seeing how the counter component renders
-itself.
+% The purpose of a web application is to create, or ``render'', web pages. As we mentioned
+% in \secref{components}, each Seaside component is responsible for rendering itself.
+% So, lets start our exploration of rendering by seeing how the counter component renders
+% itself.
 
-\subsection{Rendering the Counter}
+Назначением веб-приложения является создание (или прорисовка) веб-страницы.
+Как мы уже упоминали в \secref{components},
+каждый Seaside компонент имеет возможность прорисовывать (отражать) себя на веб-страницу.
+Итак, давайте начнем наше изучение на примере компонента counter.
 
-The rendering of the counter is relatively straightforward; the code is shown in
-\figref{WACounter}.
-The current value of the counter is displayed as an XHTML heading, and the increment and
-decrement operations are implemented as html anchors (that is, links) with callbacks to
-blocks that will send \ct{increase} and \ct{decrease} to the counter object.
+%\subsection{Rendering the Counter}
+\subsection{Прорисовка компонента Counter}
+
+% The rendering of the counter is relatively straightforward; the code is shown in
+% \figref{WACounter}.
+% The current value of the counter is displayed as an XHTML heading, and the increment and
+% decrement operations are implemented as html anchors (that is, links) with callbacks to
+% blocks that will send \ct{increase} and \ct{decrease} to the counter object.
+
+Отражение на веб-страницу объекта counter достаточно простое; код показан на \figref{WACounter}.
+Текущее значение counter показывается в качестве XHTML-заголовка,
+а шаговое увеличение (уменьшение) реализовано гиперссылками с
+блоками обратного вызова,
+которые посылают сообщения \ct{increase} и \ct{decrease} объекту counter.
 
 We will have a closer look at the rendering protocol in a moment.
 But before we do, let's have a quick look at the \subind{Seaside}{multi-counter}.
 
-\subsection{From Counter to MultiCounter}
+Мы будем подробно рассматривать протокол прорисовки позже.
+Но сначала бегло просмотрим \subind{Seaside}{multi-counter}.
 
-\ct{WAMultiCounter}, shown in \figref{WAMultiCounter} is also a standalone application,
-so it overrides \mthind{WAComponent class}{canBeRoot} to answer \ct{true}.
-In addition, it is a \emph{composite} component, so Seaside requires it to declare its
-children by implementing a method \ct{children} that answers an array of all the
-components it contains.
-It renders itself by rendering each of its subcomponents, separated by a horizontal
-rule.Aside from instance and class-side initialization methods, there is nothing else to
-the
-multi-counter!
+
+% \subsection{From Counter to MultiCounter}
+\subsection{От Counter до MultiCounter}
+
+% \ct{WAMultiCounter}, shown in \figref{WAMultiCounter} is also a standalone application,
+% so it overrides \mthind{WAComponent class}{canBeRoot} to answer \ct{true}.
+% In addition, it is a \emph{composite} component, so Seaside requires it to declare its
+% children by implementing a method \ct{children} that answers an array of all the
+% components it contains.
+% It renders itself by rendering each of its subcomponents, separated by a horizontal
+% rule.Aside from instance and class-side initialization methods, there is nothing else to
+% the multi-counter!
+
+\ct{WAMutliCounter}, рассмотренный в \figref{WAMultiCounter} является к тому же
+самостоятельным приложением,
+переопределяет метод класса \mthind{WAComponent}{canBeRoot},
+возвращающий результат \ct{true}.
+В дополнение, WAMultiCounter - составной компонент.
+Seaside требует регистрации вложенных компонентов осуществлением метода \ct{children},
+который отвечает массивом вложенных компонентов.
+Компонент сам прорисовывает каждый вложенный элемент, разделяя горизонтальной линией.
+Кроме экземпляра и инициализирующих методов со стороны класса,
+в multiCounter больше ничего нет!
 
 \begin{figure}[bht]
 \begin{center}
@@ -595,7 +777,8 @@ multi-counter!
 \end{figure}
 
 %-----------------------------------------------------------------
-\subsection{More about Rendering XHTML}
+% \subsection{More about Rendering XHTML}
+\subsection{Подробнее о создании XHTML}
 
 As you can see from these examples, Seaside does not use templates to generate web
 pages.Instead it generates XTHML programmatically.
