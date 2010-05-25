@@ -384,65 +384,74 @@ String streamContents: [ :tempStream |
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Reading and writing at the same time}
+%\subsection{Reading and writing at the same time}
+\subsection{Чтение и запись в одно и то же время}
 
-It's possible to use a stream to access a collection for reading and
-writing at the same time.
-Imagine you want to create an \ct{History} class which will manage
-backward and forward buttons in a web browser.
-A history would react as in figures from \ref{fig:emptyStream} to
-\ref{fig:page4}.
+%It's possible to use a stream to access a collection for reading and writing at the same time.
+Поток можно использовать для доступа к коллекции одновременно на чтение и запись.
+%Imagine you want to create an \ct{History} class which will manage backward and forward buttons in a web browser.
+Вообразите, что вы хотите создать класс \ct{History} (<<история>>), который бы управлял поведением кнопок <<Вперёд>> и <<Назад>> в веб-браузере.
+%A history would react as in figures from \ref{fig:emptyStream} to \ref{fig:page4}.
+Планируемое поведение истории представлено на \ref{fig:emptyStream} по \ref{fig:page4}.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{emptyStef}}
-\caption{A new history is empty. Nothing is displayed in the web browser.}
+%\caption{A new history is empty. Nothing is displayed in the web browser.}
+\caption{Вновь созданная история пуста. В браузере ничего не отображается.}
 \figlabel{emptyStream}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page1Stef}}
-\caption{The user opens to page 1.}
+%\caption{The user opens to page 1.}
+\caption{Пользователь открывает страницу 1.}
 \figlabel{page1}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page2Stef}}
-\caption{The user clicks on a link to page 2.}
+%\caption{The user clicks on a link to page 2.}
+\caption{Пользователь кликает по ссылке на страницу 2.}
 \figlabel{page2}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page3Stef}}
-\caption{The user clicks on a link to page 3.}
+%\caption{The user clicks on a link to page 3.}
+\caption{Пользователь кликает по ссылке на страницу 3.}
 \figlabel{page3}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page2_Stef}}
-\caption{The user clicks on the back button. He is now viewing page 2 again.}
+%\caption{The user clicks on the back button. He is now viewing page 2 again.}
+\caption{Пользователь нажимает на кнопку <<Назад>> -- в браузере снова отображается страница 2.}
 \figlabel{page2_}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page1_Stef}}
-\caption{The user clicks again the back button. Page 1 is now displayed.}
+%\caption{The user clicks again the back button. Page 1 is now displayed.}
+\caption{Пользователь снова нажимает на кнопку <<Назад>> -- отображается страница 1.}
 \figlabel{page1_}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page4Stef}}
-\caption{From page 1, the user clicks on a link to page 4. The history forgets pages 2 and 3.}
+%\caption{From page 1, the user clicks on a link to page 4. The history forgets pages 2 and 3.}
+\caption{На странице 1 пользователь кликает по ссылке 4, и из истории пропадают страницы 2 и 3.}
 \figlabel{page4}
 \vspace{.2in}
 \end{figure}
 
-This behaviour can be implemented using a \clsind{ReadWriteStream}.
+%This behaviour can be implemented using a \clsind{ReadWriteStream}.
+Такое поведение может быть реализовано с помощью \clsind{ReadWriteStream}.
 
 \needlines{6}
 \begin{code}{}
@@ -457,35 +466,33 @@ History>>initialize
     stream := ReadWriteStream on: Array new.
 \end{code}
 
-Nothing really difficult here, we define a new class which contains a
-stream. The stream is created during the \ct{initialize} method.
+%Nothing really difficult here, we define a new class which contains a stream. The stream is created during the \ct{initialize} method.
+Здесь не происходит ничего сложного, мы просто определяем новый класс, содержащий поток, который создаётся в методе \ct{initialize} нового класса.
 
-We need methods to go backward and forward:
+%We need methods to go backward and forward:
+Нам нужны методы для навигации вперёд и назад:
 
 \begin{code}{}
 History>>goBackward
-  self canGoBackward ifFalse: [self error: 'Already on the first element'].
+  self canGoBackward ifFalse: [self error: 'Уже указываем на первый элемент'].
   stream skip: -2.
   ^ stream next.
 
 History>>goForward
-  self canGoForward ifFalse: [self error: 'Already on the last element'].
+  self canGoForward ifFalse: [self error: 'Уже указываем на последний элемент'].
   ^ stream next
 \end{code}
 
-Until then, the code was pretty straightforward. Now, we have to deal
-with the \ct{goTo:} method which should be activated when the user
-clicks on a link. A possible solution is:
+%Until then, the code was pretty straightforward. Now, we have to deal with the \ct{goTo:} method which should be activated when the user clicks on a link. A possible solution is:
+До сих пор всё было достаточно просто. Займёмся же теперь методом \ct{goTo:}, который должен быть вызван, когда пользователь кликает по ссылке. Вот его возможная реализация:
 
 \begin{code}{}
 History>>goTo: aPage
     stream nextPut: aPage.
 \end{code}
 
-This version is incomplete however. This is because when the user
-clicks on the link, there should be no more future pages to go to,
-\ie the forward button must be deactivated. To do this, the simplest
-solution is to write \ct{nil} just after to indicate the history end:
+%This version is incomplete however. This is because when the user clicks on the link, there should be no more future pages to go to, \ie the forward button must be deactivated. To do this, the simplest solution is to write \ct{nil} just after to indicate the history end:
+Однако это ещё не всё: когда пользователь кликает по ссылке, не должно остаться страниц, на которые можно можно попасть по кнопке <<Вперёд>>, которая должна быть деактивирована. Простейший способ сделать это -- записать \ct{nil}, обозначающий конец истории, сразу после текущего элемента:
 
 \begin{code}{}
 History>>goTo: anObject
@@ -494,12 +501,11 @@ History>>goTo: anObject
   stream back.
 \end{code}
 
-Now, only methods \ct{canGoBackward} and \ct{canGoForward} have to be
-implemented.
+%Now, only methods \ct{canGoBackward} and \ct{canGoForward} have to be implemented.
+Осталось только реализовать методы \ct{canGoBackward} и \ct{canGoForward}.
 
-A stream is always positioned between two elements. To go backward,
-there must be two pages before the current position: one page is the
-current page, and the other one is the page we want to go to.
+%A stream is always positioned between two elements. To go backward, there must be two pages before the current position: one page is the current page, and the other one is the page we want to go to.
+Поток всегда \ugh{позиционируется} между двумя элементами. Чтобы иметь возможность отправиться назад, перед текущей позицией должны находиться как минимум две страницы: текущая страница, и страница, на которую мы хотим перейти.
 
 \begin{code}{}
 History>>canGoBackward
@@ -509,13 +515,15 @@ History>>canGoForward
   ^ stream atEnd not and: [stream peek notNil]
 \end{code}
 
-Let us add a method to peek at the contents of the stream:
+%Let us add a method to peek at the contents of the stream:
+Добавим также метод для получения содержимого потока:
 \begin{code}{}
 History>>contents
   ^ stream contents
 \end{code}
 
-And the history works as advertised:
+%And the history works as advertised:
+История работает, как нам и хотелось:
 \begin{code}{}
 History new
 	goTo: #page1;
