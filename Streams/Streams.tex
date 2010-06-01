@@ -364,7 +364,7 @@ string. -->   '#(1 2 3) size = 3'
   temp := WriteStream on: String new.
   (1 to: 100000)
     do: [:i | temp nextPutAll: i asString; space].
-  temp contents] timeToRun --> 1262 "(миллисекунд)"
+  temp contents] timeToRun --> 1262 "миллисекунд"
 \end{code}
 
 %The reason that using a stream can be much more efficient is that comma creates a new string containing the concatenation of the receiver and the argument, so it must copy both of them.
