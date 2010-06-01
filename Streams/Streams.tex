@@ -536,68 +536,51 @@ History new
 \end{code}
 
 %=============================================================
-\section{Using streams for file access}
+%\section{Using streams for file access}
+\section{Использование потоков для работы с файлами}
 
-You have already seen how to stream over collections of elements. It's
-also possible to stream over files on your hard disk.
-Once created, a stream on a file is really like a stream on a
-collection: you will be able to use the same protocol to read, write
-or position the stream.
-The main difference appears in the creation of the stream.
-There are several different ways to create file streams, as we shall now see.
+%You have already seen how to stream over collections of elements. It's also possible to stream over files on your hard disk.
+Вы уже видели, как использовать потоки для работы с коллекциями. Оказывается, то же самое можно проделывать и с файлами на вашем жёстком диске.
+%Once created, a stream on a file is really like a stream on a collection: you will be able to use the same protocol to read, write or position the stream.
+Будучи созданным, поток, оборачивающий файл, ничем не отличается от потока, оборачивающего коллекцию: вы можете использовать тот же самый протокол, чтобы читать, записывать или задавать позицию в потоке.
+%The main difference appears in the creation of the stream.
+Главное же различие заключается в способе создания этих потоков.
+%There are several different ways to create file streams, as we shall now see.
+Как мы увидим далее, существует несколько различных способов создания потоков над файлами.
 
 %-----------------------------------------------------------------
-\subsection{Creating file streams}
+%\subsection{Creating file streams}
+\subsection{Создание потока над файлом}
 \seclabel{creat-file-stre}
 
-To create file streams, you will have to use one of the following
-instance creation methods offered by the class \clsindmain{FileStream}:
+%To create file streams, you will have to use one of the following instance creation methods offered by the class \clsindmain{FileStream}:
+Чтобы создать над файлом поток, следует воспользоваться один из методов, предлагаемых классом \clsindmain{FileStream}:
 
 \begin{description}
-
-\item[\lct{fileNamed:}] Open a file with the given name for reading and
-  writing. If the file already exists, its prior contents may be
-  modified or replaced, but the file will not be truncated on
-  close. If the name has no directory part, then the file will be
-  created in the default directory.
-  \cmindex{FileStream class}{fileNamed:}
-  
-\item[\lct{newFileNamed:}] Create a new file with the given name,
-  and answer a stream opened for writing on that file. If the file
-  already exists, ask the user what to do.
-  \cmindex{FileStream class}{newFileNamed:}
-  
-\item[\lct{forceNewFileNamed:}] Create a new file with the given
-  name, and answer a stream opened for writing on that file. If the
-  file already exists, delete it without asking before creating the
-  new file.
-  \cmindex{FileStream class}{forceNewFileNamed:}
-
-\item[\lct{oldFileNamed:}] Open an existing file with the given
-  name for reading and writing. If the file already exists, its prior
-  contents may be modified or replaced, but the file will not be
-  truncated on close. If the name has no directory part, then the file
-  will be created in the default directory.
-  \cmindex{FileStream class}{oldFileNamed:}
-
-\item[\lct{readOnlyFileNamed:}] Open an existing file with the
-  given name for reading.
-  \cmindex{FileStream class}{readOnlyFileNamed:}
-
+%\item[\lct{fileNamed:}] Open a file with the given name for reading and writing. If the file already exists, its prior contents may be modified or replaced, but the file will not be truncated on close. If the name has no directory part, then the file will be created in the default directory. \cmindex{FileStream class}{fileNamed:}
+\item[\lct{fileNamed:}] Открывает файл с заданным именем для чтения и записи. Если файл уже существует, его исходное содержимое может быть изменено или замещено, но файл не будет усечён при закрытии. Если в имени файла не присутствует директория, файл будет создан в директории по умолчанию. \cmindex{FileStream class}{fileNamed:}
+%\item[\lct{newFileNamed:}] Create a new file with the given name, and answer a stream opened for writing on that file. If the file already exists, ask the user what to do. \cmindex{FileStream class}{newFileNamed:}
+\item[\lct{newFileNamed:}] Создаёт новый файл с заданным именем и возвращает поток открытый для записи в этот файл. Если файл уже существует, пользователю будет выдано предупреждение о перезаписи файла. \cmindex{FileStream class}{newFileNamed:}
+%\item[\lct{forceNewFileNamed:}] Create a new file with the given name, and answer a stream opened for writing on that file. If the file already exists, delete it without asking before creating the new file. \cmindex{FileStream class}{forceNewFileNamed:}
+\item[\lct{forceNewFileNamed:}] Создаёт новый файл с заданным именем и возвращает поток, открытый для записи в этот файл. Если файл уже существует, удаляет его без предупреждения прежде, чем создать новый. \cmindex{FileStream class}{forceNewFileNamed:}
+%\item[\lct{oldFileNamed:}] Open an existing file with the given name for reading and writing. If the file already exists, its prior contents may be modified or replaced, but the file will not be truncated on close. If the name has no directory part, then the file will be created in the default directory. \cmindex{FileStream class}{oldFileNamed:}
+\item[\lct{oldFileNamed:}] Открывает существующий файл с заданным именем для чтения и записи. Если файл уже существует, его первоначальное содержимое может быть изменено или замещено, но файл не будет усечён при закрытии. Если в имени файла не содержится директория, файл будет создан в директории по умолчанию. \cmindex{FileStream class}{oldFileNamed:}
+%\item[\lct{readOnlyFileNamed:}] Open an existing file with the given name for reading. \cmindex{FileStream class}{readOnlyFileNamed:}
+\item[\lct{readOnlyFileNamed:}] Открывает существующий файл с заданным именем для чтения. \cmindex{FileStream class}{readOnlyFileNamed:}
 \end{description}
 
-You have to remember that each time you open a stream on a file, you
-have to close it too. This is done through the \mthind{FileStream}{close} method.
+%You have to remember that each time you open a stream on a file, you have to close it too. This is done through the \mthind{FileStream}{close} method.
+Важно помнить, что за каждым открытием файла должно следовать его закрытие. Для этого используется метод \mthind{FileStream}{close}.
 
 \begin{code}{@TEST |stream|}
 stream := FileStream forceNewFileNamed: 'test.txt'.
 stream
-    nextPutAll: 'This text is written in a file named ';
+    nextPutAll: 'Этот текст будет записан в файл с именем ';
     print: stream localName.
 stream close.
 
 stream := FileStream readOnlyFileNamed: 'test.txt'.
-stream contents. --> 'This text is written in a file named ''test.txt'''
+stream contents. --> 'Этот текст будет записан в файл с именем ''test.txt'''
 stream close.
 \end{code}
 
@@ -608,47 +591,40 @@ stream close.
 %	ifAbsent: [ 'Could not delete ', fileName ] ]
 %	value: 'test.txt'
 
-The method \mthind{FileStream}{localName} answers the last component of the name of the file. You can
-also access the full path name using the method
-\mthind{StandardFileStream}{fullName}.
+%The method \mthind{FileStream}{localName} answers the last component of the name of the file. You can also access the full path name using the method \mthind{StandardFileStream}{fullName}.
+Метод \mthind{FileStream}{localName} возвращает последнюю часть имени файла. Полный путь вы можете получить, используя \mthind{StandardFileStream}{fullName}.
 
-You will soon notice that manually closing the file stream is
-painful and error-prone. That's why \ct{FileStream} offers a message called \mthind{FileStream class}{forceNewFileNamed:do:} to
-automatically close a new stream after evaluating a block that
-sets its contents.
+%You will soon notice that manually closing the file stream is painful and error-prone. That's why \ct{FileStream} offers a message called \mthind{FileStream class}{forceNewFileNamed:do:} to automatically close a new stream after evaluating a block that sets its contents.
+Очень скоро вы обнаружите, что закрытие файла <<вручную>> крайне неудобно и чревато ошибками. Вот почему \ct{FileStream} предоставляет вам ещё один метод, называемый \mthind{FileStream class}{forceNewFileNamed:do:}, который будет автоматически закрывать поток после завершения блока, работающего с его содержимым.
 
 \begin{code}{@TEST |string|}
 FileStream
     forceNewFileNamed: 'test.txt'
     do: [:stream |
         stream
-            nextPutAll: 'This text is written in a file named ';
+            nextPutAll: 'Этот текст будет записан в файл с именем ';
             print: stream localName].
 string := FileStream
             readOnlyFileNamed: 'test.txt'
             do: [:stream | stream contents].
-string --> 'This text is written in a file named ''test.txt'''
+string --> 'Этот текст будет записан в файл с именем ''test.txt'''
 \end{code}
 
-The stream-creation methods that take a block as an argument first
-create a stream on a file, then execute the block with the stream
-as an argument, and finally close the stream. These methods return what
-is returned by the block, which is to say, the value of the last
-expression in the block. This is used in the previous example to get
-the content of the file and put it in the variable \ct{string}.
+%The stream-creation methods that take a block as an argument first create a stream on a file, then execute the block with the stream as an argument, and finally close the stream.
+Методы созадния потоков, принимающие блок в качестве аргумента, сначала создают поток над файлом, затем выполняют блок, передавая ему поток в качестве аргумента, и, наконец, закрывают поток.
+%These methods return what is returned by the block, which is to say, the value of the last expression in the block. This is used in the previous example to get the content of the file and put it in the variable \ct{string}.
+Эти методы возращают значение, вычисляемое блоком, иными словами, значение последнего выражения в блоке. Этот факт использовался в предыдущем примере, чтобы получить содержимое файла и записать его в переменную \ct{string}.
 
 %-----------------------------------------------------------------
-\subsection{Binary streams}
+%\subsection{Binary streams}
+\subsection{Двоичные потоки}
 \seclabel{binary-streams}
 
-By default, created streams are text-based which means you will read
-and write characters. If your stream must be binary, you have to send
-the message \mthind{FileStream}{binary} to your stream.
+%By default, created streams are text-based which means you will read and write characters. If your stream must be binary, you have to send the message \mthind{FileStream}{binary} to your stream.
+По умолчанию, создаваемый поток является текстовым, т.е. вы читаете и записываете туда символы. Если вы хотите работать с потоком как с двоичным (binary), необходимо послать ему сообщение \mthind{FileStream}{binary}.
 
-When your stream is in binary mode, you can only write numbers from 0
-to 255 (1 Byte). If you want to use \ct{nextPutAll:} to write more
-than one number at a time, you have to pass a \clsind{ByteArray} as
-argument.
+%When your stream is in binary mode, you can only write numbers from 0 to 255 (1 Byte). If you want to use \ct{nextPutAll:} to write more than one number at a time, you have to pass a \clsind{ByteArray} as argument.
+Когда ваш поток находится в двоичном режиме, вы можете записывать в него только числа от 0 до 255 (один байт). Чтобы записать сразу несколько чисел, восползуйтесь методом \ct{nextPutAll:}, передав в него \clsind{ByteArray} в качестве аргумента.
 
 \begin{code}{@TEST}
 FileStream
@@ -668,8 +644,8 @@ FileStream
       ].
 \end{code}
 
-Here is another example which creates a picture in a file named
-``test.pgm'' (portable graymap file format). You can open this file with your favorite drawing program.
+%Here is another example which creates a picture in a file named ``test.pgm'' (portable graymap file format). You can open this file with your favorite drawing program.
+Вот другой пример, в котором в файл ``test.pgm'' записывается картинка в формате <<portable graymap>> (переносимый формат полутоновых изображений). Вы можете открыть этот файл в своём любимом графическом редакторе.
 
 % The following does not assert anything, but @TEST is used to ensure
 % that no error is thrown.
@@ -689,26 +665,35 @@ FileStream
 	]
 \end{code}
 
-This creates a 4x4 checkerboard as shown in \figref{checkerboard4x4}.
+%This creates a 4x4 checkerboard as shown in \figref{checkerboard4x4}.
+Созданная в примере шахматная доска размера 4x4 представлена на \figref{checkerboard4x4}.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.25\textwidth]{checkerboard4x4}}
-\caption{A 4x4 checkerboard you can draw using binary streams.}
+%\caption{A 4x4 checkerboard you can draw using binary streams.}
+\caption{Шахматная доска размером 4x4, которую вы можете нарисовать с помощью двоичных потоков.}
 \figlabel{checkerboard4x4}
 \vspace{.2in}
 \end{figure}
 
 %=============================================================
-\section{Chapter summary}
+%\section{Chapter summary}
+\section{Итоги главы}
 
-Streams offer a better way than collections to incrementally read and write a sequence of elements. There are easy ways to convert back and forth between streams and collections.
+%Streams offer a better way than collections to incrementally read and write a sequence of elements. There are easy ways to convert back and forth between streams and collections.
+Потоки предоставляют лучший по сравнению с коллекциями способ последовательного чтения и записи последовательности элементов. Существуют также простые способы преобразования потоков в коллекции и наоборот.
 
 \begin{itemize}
-  \item Streams may be either readable, writeable or both readable and writeable.
-  \item To convert a collection to a stream, define a stream ``on'' a collection, \eg \ct{ReadStream on: (1 to: 1000)}, or send the messages \ct{readStream}, \etc to the collection.
-  \item To convert a stream to a collection, send the message \ct{contents}.
-  \item To concatenate large collections, instead of using the comma operator, it is more efficient to create a stream, append the collections to the stream with \ct{nextPutAll:}, and extract the result by sending \ct{contents}.
-  \item File streams are by default character-based. Send \ct{binary} to explicitly make them binary.
+%  \item Streams may be either readable, writeable or both readable and writeable.
+  \item Потоки могут быть на чтение, на запись или на чтение и запись одновременно.
+%  \item To convert a collection to a stream, define a stream ``on'' a collection, \eg \ct{ReadStream on: (1 to: 1000)}, or send the messages \ct{readStream}, \etc to the collection.
+  \item Чтобы преобразовать коллекцию в поток, <<оберните>> в него коллекцию, например, \ct{ReadStream on: (1 to: 1000)}, или отправьте коллекции сообщение \ct{readStream}, \etc.
+%  \item To convert a stream to a collection, send the message \ct{contents}.
+  \item Чтобы преобразовать поток в коллекцию, отправьте ему сообщение \ct{contents}.
+%  \item To concatenate large collections, instead of using the comma operator, it is more efficient to create a stream, append the collections to the stream with \ct{nextPutAll:}, and extract the result by sending \ct{contents}.
+  \item Для объединения больших коллекций, вместо оператора <<запятая>> более эффективно использовать поток, добавляя к нему коллекции с помощью \ct{nextPutAll:} и получить результат, используя \ct{contents}.
+%  \item File streams are by default character-based. Send \ct{binary} to explicitly make them binary.
+  \item Потоки над файлами по умолчанию являются текстовыми. Отправьте сообщение \ct{binary}, чтобы сделать поток двоичным.
 \end{itemize}
 
 %=================================================================
