@@ -292,31 +292,30 @@ result. -->   an OrderedCollection(1 1 2 3 4 4 5 9 10 11 12 13 13 14 15)
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Writing to collections}
+%\subsection{Writing to collections}
+\subsection{Запись в коллекции}
 
-We have already seen how to read a collection by iterating over its
-elements using a \ct{ReadStream}. We'll now learn how to create
-collections using \clsindmain{WriteStream}{}s.
+%We have already seen how to read a collection by iterating over its elements using a \ct{ReadStream}. We'll now learn how to create collections using \clsindmain{WriteStream}{}s.
+Мы уже посмотрели, как читать коллекцию, производя итерацию по её элементам с использованием \ct{ReadStream}.
 
-\ct{WriteStream}s are useful for appending a lot of data to a collection at various locations. They are often used to construct strings that are based on static and dynamic parts as in this example:
+%\ct{WriteStream}s are useful for appending a lot of data to a collection at various locations. They are often used to construct strings that are based on static and dynamic parts as in this example:
+\ct{WriteStream} полезен для добавления большого количества данных в разные места коллекции. Он часто используется для составления строк содержащих статические и динамические части. Например:
 
 \begin{code}{NB: can't be tested due to the changing number of classes}
 stream := String new writeStream.
 stream
-  nextPutAll: 'This Smalltalk image contains: ';
+  nextPutAll: 'В этом Smalltalk образе ';
   print: Smalltalk allClasses size;
-  nextPutAll: ' classes.';
+  nextPutAll: ' классов.';
   cr;
-  nextPutAll: 'This is really a lot.'.
+  nextPutAll: 'Это очень много.'.
 
-stream contents. --> 'This Smalltalk image contains: 2322 classes.
-This is really a lot.'
+stream contents. --> 'В этом Smalltalk образе 2322 классов.
+Это очень много.'
 \end{code}
 
-This technique is used in the different implementations of the method
-\ct{printOn:} for example. There is a simpler and more efficient way
-of creating streams if you are only interested in the content of the
-stream:
+%This technique is used in the different implementations of the method \ct{printOn:} for example. There is a simpler and more efficient way of creating streams if you are only interested in the content of the stream:
+Эта техника, например, используется в различных реализациях метода \ct{printOn:}. Но есть и более простой и эффективный способ создать поток в том случае, если вам интересно только его содержимое:
 
 \begin{code}{@TEST |string|}
 string := String streamContents:
@@ -332,56 +331,51 @@ string := String streamContents:
 string. -->   '#(1 2 3) size = 3'
 \end{code}
 
-The method \mthind{SequenceableCollection class}{streamContents:} \seclabel{streamContents} creates a collection and a stream on
-that collection for you. It then executes the block you gave passing
-the stream as a parameter. When the block ends, \ct{streamContents:}
-returns the content of the collection.
+%The method \mthind{SequenceableCollection class}{streamContents:} \seclabel{streamContents} creates a collection and a stream on that collection for you. It then executes the block you gave passing the stream as a parameter. When the block ends, \ct{streamContents:} returns the content of the collection.
+Метод \mthind{SequenceableCollection class}{streamContents:} \seclabel{streamContents} создаёт коллекцию и поток над этой коллекцией, а затем выполняет блок, передавая туда поток в качестве параметра. Когда блок завершается, \ct{streamContents:} возвращает содержимое созданной коллекции.
 
-The following \ct{WriteStream} methods are especially useful in this context:
+%The following \ct{WriteStream} methods are especially useful in this context:
+Перечисленные ниже методы класса \ct{WriteStream} особенно полезны в этом контексте:
 
 \begin{description}
-\item[\lct{nextPut:}] adds the parameter to the stream;
-\item[\lct{nextPutAll:}] adds each element of the collection, passed as a
-  parameter, to the stream;
-\item[\lct{print:}] adds the textual representation of the parameter to the
-  stream.
-	\cmindex{Stream}{print:}
+%\item[\lct{nextPut:}] adds the parameter to the stream;
+\item[\lct{nextPut:}] -- добавляет параметр в поток;
+%\item[\lct{nextPutAll:}] adds each element of the collection, passed as a parameter, to the stream;
+\item[\lct{nextPutAll:}] -- добавляет в поток каждый элемент коллекции, переданной в качестве параметра;
+%\item[\lct{print:}] adds the textual representation of the parameter to the stream. \cmindex{Stream}{print:}
+\item[\lct{print:}] -- добавляет текстовое представление параметра в поток. \cmindex{Stream}{print:}
 \end{description}
 
-There are also methods useful for printing different kinds of characters to
-the stream like \mthind{WriteStream}{space}, \mthind{WriteStream}{tab} and
-\mthind{WriteStream}{cr} (carriage return). Another useful
-method is \mthind{WriteStream}{ensureASpace} which ensures that the last character
-in the stream is a space; if the last character isn't a space it adds one.
+%There are also methods useful for printing different kinds of characters to the stream like \mthind{WriteStream}{space}, \mthind{WriteStream}{tab} and \mthind{WriteStream}{cr} (carriage return). Another useful method is \mthind{WriteStream}{ensureASpace} which ensures that the last character in the stream is a space; if the last character isn't a space it adds one.
+Имеются также методы для <<печати>> в поток разного рода символов, например, \mthind{WriteStream}{space} (пробел), \mthind{WriteStream}{tab} (табуляция) и \mthind{WriteStream}{cr} (возврат каретки). Ещё один полезный метод -- \mthind{WriteStream}{ensureASpace}, который проверяет, что последний символ в потоке является пробелом, и, если это не так, добавляет его.
 
-\paragraph{About Concatenation.}
-Using \mthind{WriteStream}{nextPut:} and \mthind{WriteStream}{nextPutAll:} on a \ct{WriteStream} is often the best way to
-concatenate characters. Using the comma concatenation operator (\ct{,}) is far
-less efficient:
-\index{Collection!comma operator}
+%\paragraph{About Concatenation.}
+\paragraph{О конкатенации.}
+%Using \mthind{WriteStream}{nextPut:} and \mthind{WriteStream}{nextPutAll:} on a \ct{WriteStream} is often the best way to concatenate characters. Using the comma concatenation operator (\ct{,}) is far less efficient: \index{Collection!comma operator}
+Использование \mthind{WriteStream}{nextPut:} и \mthind{WriteStream}{nextPutAll:} -- это, зачастую, лучший способ конкатенации символов. Ипользование оператор конкатенации: запятой (\ct{,}), гораздо менее эффективно: \index{Collection!comma operator}
 
 \begin{code}{}
 [| temp |
   temp := String new.
   (1 to: 100000)
-    do: [:i | temp := temp, i asString, ' ']] timeToRun --> 115176 "(milliseconds)"
+    do: [:i | temp := temp, i asString, ' ']] timeToRun --> 115176 "(миллисекунд)"
 
 [| temp |
   temp := WriteStream on: String new.
   (1 to: 100000)
     do: [:i | temp nextPutAll: i asString; space].
-  temp contents] timeToRun --> 1262 "(milliseconds)"
+  temp contents] timeToRun --> 1262 "(миллисекунд)"
 \end{code}
 
-The reason that using a stream can be much more efficient is that 
-comma creates a new string containing
-the concatenation of the receiver and the argument, so it must copy both of them.
-When you repeatedly concatenate onto the same receiver, it gets longer and longer each time,
-so that the number of characters that must be copied goes up exponentially.
-This also creates a lot of garbage, which must be collected. Using
-a stream instead of string concatenation is a well-known optimization.
+%The reason that using a stream can be much more efficient is that comma creates a new string containing the concatenation of the receiver and the argument, so it must copy both of them.
+Причина, по которой использование потока позволяет выполнить данную операцию более эффективно, кроется в том, что оператор <<запятая>> всякий создаёт новую строку, объединяющую строку-получатель и строку-аргумент, тем самым копируя их обе.
+%When you repeatedly concatenate onto the same receiver, it gets longer and longer each time, so that the number of characters that must be copied goes up exponentially.
+Поэтому, когда вы снова и снова конкатенируете одну и ту же строку-получатель, она становится длиннее с каждым разом, так что количество символов, которые нужно скопировать, растёт экспоненциально.
+%This also creates a lot of garbage, which must be collected. Using a stream instead of string concatenation is a well-known optimization.
+Этот процесс, кроме прочего, порождает огромное количество мусора, который затем потребуется собирать. В то же время использование потока вместо строки --- хорошо всем знакомая оптимизация.
 \lr{About Concatenation. This is not true for real world examples (the example benchmark is unrealistic). Most of the time concatenation is simpler, cleaner and much faster, for example when being used on a small number of longer strings. (p. 257)}
-In fact, you can use \mthind{SequenceableCollection class}{streamContents:} (mentioned on page \pageref{sec:streamContents}) to help you do this:
+%In fact, you can use \mthind{SequenceableCollection class}{streamContents:} (mentioned on page \pageref{sec:streamContents}) to help you do this:
+Фактически, вы можете использовать для этого \mthind{SequenceableCollection class}{streamContents:}, упомянутый на стр. \pageref{sec:streamContents}:
 
 \begin{code}{}
 String streamContents: [ :tempStream |
@@ -390,65 +384,74 @@ String streamContents: [ :tempStream |
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Reading and writing at the same time}
+%\subsection{Reading and writing at the same time}
+\subsection{Чтение и запись в одно и то же время}
 
-It's possible to use a stream to access a collection for reading and
-writing at the same time.
-Imagine you want to create an \ct{History} class which will manage
-backward and forward buttons in a web browser.
-A history would react as in figures from \ref{fig:emptyStream} to
-\ref{fig:page4}.
+%It's possible to use a stream to access a collection for reading and writing at the same time.
+Поток можно использовать для доступа к коллекции одновременно на чтение и запись.
+%Imagine you want to create an \ct{History} class which will manage backward and forward buttons in a web browser.
+Вообразите, что вы хотите создать класс \ct{History} (<<история>>), который бы управлял поведением кнопок <<Вперёд>> и <<Назад>> в веб-браузере.
+%A history would react as in figures from \ref{fig:emptyStream} to \ref{fig:page4}.
+Планируемое поведение истории представлено на \ref{fig:emptyStream} по \ref{fig:page4}.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{emptyStef}}
-\caption{A new history is empty. Nothing is displayed in the web browser.}
+%\caption{A new history is empty. Nothing is displayed in the web browser.}
+\caption{Вновь созданная история пуста. В браузере ничего не отображается.}
 \figlabel{emptyStream}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page1Stef}}
-\caption{The user opens to page 1.}
+%\caption{The user opens to page 1.}
+\caption{Пользователь открывает страницу 1.}
 \figlabel{page1}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page2Stef}}
-\caption{The user clicks on a link to page 2.}
+%\caption{The user clicks on a link to page 2.}
+\caption{Пользователь кликает по ссылке на страницу 2.}
 \figlabel{page2}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page3Stef}}
-\caption{The user clicks on a link to page 3.}
+%\caption{The user clicks on a link to page 3.}
+\caption{Пользователь кликает по ссылке на страницу 3.}
 \figlabel{page3}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page2_Stef}}
-\caption{The user clicks on the back button. He is now viewing page 2 again.}
+%\caption{The user clicks on the back button. He is now viewing page 2 again.}
+\caption{Пользователь нажимает на кнопку <<Назад>> -- в браузере снова отображается страница 2.}
 \figlabel{page2_}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page1_Stef}}
-\caption{The user clicks again the back button. Page 1 is now displayed.}
+%\caption{The user clicks again the back button. Page 1 is now displayed.}
+\caption{Пользователь снова нажимает на кнопку <<Назад>> -- отображается страница 1.}
 \figlabel{page1_}
 \vspace{.2in}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[scale=0.5]{page4Stef}}
-\caption{From page 1, the user clicks on a link to page 4. The history forgets pages 2 and 3.}
+%\caption{From page 1, the user clicks on a link to page 4. The history forgets pages 2 and 3.}
+\caption{На странице 1 пользователь кликает по ссылке 4, и из истории пропадают страницы 2 и 3.}
 \figlabel{page4}
 \vspace{.2in}
 \end{figure}
 
-This behaviour can be implemented using a \clsind{ReadWriteStream}.
+%This behaviour can be implemented using a \clsind{ReadWriteStream}.
+Такое поведение может быть реализовано с помощью \clsind{ReadWriteStream}.
 
 \needlines{6}
 \begin{code}{}
@@ -463,35 +466,33 @@ History>>initialize
     stream := ReadWriteStream on: Array new.
 \end{code}
 
-Nothing really difficult here, we define a new class which contains a
-stream. The stream is created during the \ct{initialize} method.
+%Nothing really difficult here, we define a new class which contains a stream. The stream is created during the \ct{initialize} method.
+Здесь не происходит ничего сложного, мы просто определяем новый класс, содержащий поток, который создаётся в методе \ct{initialize} нового класса.
 
-We need methods to go backward and forward:
+%We need methods to go backward and forward:
+Нам нужны методы для навигации вперёд и назад:
 
 \begin{code}{}
 History>>goBackward
-  self canGoBackward ifFalse: [self error: 'Already on the first element'].
+  self canGoBackward ifFalse: [self error: 'Уже указываем на первый элемент'].
   stream skip: -2.
   ^ stream next.
 
 History>>goForward
-  self canGoForward ifFalse: [self error: 'Already on the last element'].
+  self canGoForward ifFalse: [self error: 'Уже указываем на последний элемент'].
   ^ stream next
 \end{code}
 
-Until then, the code was pretty straightforward. Now, we have to deal
-with the \ct{goTo:} method which should be activated when the user
-clicks on a link. A possible solution is:
+%Until then, the code was pretty straightforward. Now, we have to deal with the \ct{goTo:} method which should be activated when the user clicks on a link. A possible solution is:
+До сих пор всё было достаточно просто. Займёмся же теперь методом \ct{goTo:}, который должен быть вызван, когда пользователь кликает по ссылке. Вот его возможная реализация:
 
 \begin{code}{}
 History>>goTo: aPage
     stream nextPut: aPage.
 \end{code}
 
-This version is incomplete however. This is because when the user
-clicks on the link, there should be no more future pages to go to,
-\ie the forward button must be deactivated. To do this, the simplest
-solution is to write \ct{nil} just after to indicate the history end:
+%This version is incomplete however. This is because when the user clicks on the link, there should be no more future pages to go to, \ie the forward button must be deactivated. To do this, the simplest solution is to write \ct{nil} just after to indicate the history end:
+Однако это ещё не всё: когда пользователь кликает по ссылке, не должно остаться страниц, на которые можно можно попасть по кнопке <<Вперёд>>, которая должна быть деактивирована. Простейший способ сделать это -- записать \ct{nil}, обозначающий конец истории, сразу после текущего элемента:
 
 \begin{code}{}
 History>>goTo: anObject
@@ -500,12 +501,11 @@ History>>goTo: anObject
   stream back.
 \end{code}
 
-Now, only methods \ct{canGoBackward} and \ct{canGoForward} have to be
-implemented.
+%Now, only methods \ct{canGoBackward} and \ct{canGoForward} have to be implemented.
+Осталось только реализовать методы \ct{canGoBackward} и \ct{canGoForward}.
 
-A stream is always positioned between two elements. To go backward,
-there must be two pages before the current position: one page is the
-current page, and the other one is the page we want to go to.
+%A stream is always positioned between two elements. To go backward, there must be two pages before the current position: one page is the current page, and the other one is the page we want to go to.
+Поток всегда \ugh{позиционируется} между двумя элементами. Чтобы иметь возможность отправиться назад, перед текущей позицией должны находиться как минимум две страницы: текущая страница, и страница, на которую мы хотим перейти.
 
 \begin{code}{}
 History>>canGoBackward
@@ -515,13 +515,15 @@ History>>canGoForward
   ^ stream atEnd not and: [stream peek notNil]
 \end{code}
 
-Let us add a method to peek at the contents of the stream:
+%Let us add a method to peek at the contents of the stream:
+Добавим также метод для получения содержимого потока:
 \begin{code}{}
 History>>contents
   ^ stream contents
 \end{code}
 
-And the history works as advertised:
+%And the history works as advertised:
+История работает, как нам и хотелось:
 \begin{code}{}
 History new
 	goTo: #page1;
