@@ -252,36 +252,48 @@ students select: [ :each | each gpa < threshold ]
 %  How is the order established? Sorted collections use a supplied total ordering function, intervals are implicitly ordered, while arrays and ordered collections are ordered explicitly when elements are inserted.
 
 %=========================================================
-\section{Implementations of collections}
+%\section{Implementations of collections}
+\section{Реализация коллекций}
 \seclabel{implementation}
 
 \begin{figure*}
 \begin{center}
 \includegraphics[width=\textwidth]{CollectionsByImpl}
-\caption{Some collection classes categorized by implementation technique.
+%\caption{Some collection classes categorized by implementation technique.
+%\caption{Некоторые классы коллекций сгруппированные по технике реализации.
     \figlabel{collsByImpl}}
 \end{center}
 \end{figure*}
 
-These categorizations by functionality are not our only concern; we must also consider how the collection classes are implemented. As shown in \figref{collsByImpl}, five main implementation techniques are employed.
+%These categorizations by functionality are not our only concern; we must also consider how the collection classes are implemented. As shown in \figref{collsByImpl}, five main implementation techniques are employed.
+Эта классификация по функциональности не единственный вопрос, который мы затрагиваем. Мы также рассмотрим реализацию классов коллекций. Как показано на \figref{collsByImpl} использутся пять основных техник реализации.
 
 \begin{enumerate}
-  \item Arrays store their elements in the (indexable) instance variables of the collection object itself; as a consequence, arrays must be of a fixed size, but can be created with a single memory allocation.
+  %\item Arrays store their elements in the (indexable) instance variables of the collection object itself; as a consequence, arrays must be of a fixed size, but can be created with a single memory allocation.
+  \item Массивы хранят свои элементы в индексируемых переменных экземпляра непосредственно объекта коллекции. Как следствие, массивы имеют фиксированный размер, но зато могут быть созданы с помощью одной операции выделения памяти.
   \clsindex{Array}
-  \item \clsind{OrderedCollections} and \clsind{SortedCollections} store their elements in an array that is referenced by one of the instance variables of the collection.
-Consequently, the internal array can be replaced with a larger one if the collection grows beyond its storage capacity.
-  \item The various kinds of set and dictionary also reference a subsidiary array for storage, but use the array as a hash table.  Bags use a subsidiary \ct{Dictionary}, with the elements of the bag as keys and the number of occurrences as values.
+  %\item \clsind{OrderedCollections} and \clsind{SortedCollections} store their elements in an array that is referenced by one of the instance variables of the collection.
+  \item \clsind{OrderedCollections} и \clsind{SortedCollections} хранят свои элементы в массиве, на который ссылается одна из переменных экземпляра коллекции.
+%Consequently, the internal array can be replaced with a larger one if the collection grows beyond its storage capacity.
+Следовательно, внутренний массив может быть замещён массивом большего размера, если коллекция выходит за границы первоначальной ёмкости.
+  %\item The various kinds of set and dictionary also reference a subsidiary array for storage, but use the array as a hash table.  Bags use a subsidiary \ct{Dictionary}, with the elements of the bag as keys and the number of occurrences as values.
+  \item Различные виды множеств и словарей также используют дочерний массив для хранения, но в то же время в качестве хеш-таблицы используется массив. \ugh{Мешки} используют дочерний словарь (\ct{Dictionary}) с элементами \ugh{мешка} в качестве ключей и количеством вхождений в качестве значений.
   \clsindex{Bag}
-  \item LinkedLists use a standard singly-linked representation.
+  %\item LinkedLists use a standard singly-linked representation.
+  \item Связанные списки используют стандартную односвязную реализацию.
   \clsindex{LinkedList}
-  \item Intervals are represented by three integers that record the two endpoints and the step size.
+  %\item Intervals are represented by three integers that record the two endpoints and the step size.
+  \item Интервалы представляются тремя целыми числами: начальной, конечно точками и размером шага.
   \clsindex{Interval}
 \end{enumerate}
-In addition to these classes, there are also ``\subind{Collection}{weak}'' variants of \ct{Array}, \ct{Set} and of the various kinds of dictionary.  These collections hold onto their elements weakly, \ie in a way that does not prevent the elements from being garbage collected.
-The \pharo virtual machine is aware of these classes and handles them specially.
+%In addition to these classes, there are also ``\subind{Collection}{weak}'' variants of \ct{Array}, \ct{Set} and of the various kinds of dictionary.  These collections hold onto their elements weakly, \ie in a way that does not prevent the elements from being garbage collected.
+В дополнение к этим классам существуют также <<слабые>> (``\subind{Collection}{weak}'') варианты классов \ct{Array}, \ct{Set} и разного рода словарей. Эти коллекции <<слабо>> удерживают свои элементы. Т.е. таким образом, что они могут быть собраны уборщиком мусора.
+%The \pharo virtual machine is aware of these classes and handles them specially.
+Виртуальная машина \pharo <<знает>> про эти классы и рабоает с ними особенным образом.
 \index{weak collections}
 
-Readers interested in learning more about the \st collections are referred to LaLonde and Pugh's excellent book \cite{LaLo90a}.
+%Readers interested in learning more about the \st collections are referred to LaLonde and Pugh's excellent book \cite{LaLo90a}.
+Если вы хотите больше узнать о коллекциях в \st, мы рекомендуем обратиться к превосходной книге Ля Лонд (LaLonde) и По (Pugh) \cite{LaLo90a}.
 
 %=========================================================
 \section{Examples of key classes}
