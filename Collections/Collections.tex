@@ -366,10 +366,14 @@ In particular, \cmind{Dictionary class}{withAll:} interprets its argument as a c
 %В частности, \cmind{Dictionary class}{withAll:} интерпретирует аргумент как коллекцию значений, в то время как \cmind{Dictionary class}{newFrom:} ожидает коллекцию ассоциаций.
 
 %---------------------------------------------------------
-\subsection{Array}
-An \clsindmain{Array} is a fixed-sized collection of elements accessed by integer indices.
-Contrary to the C convention, the first element of a \st array is at position 1 and not 0. 
-The main protocol to access array elements is the method \mthind{Array}{at:} and \mthind{Array}{at:put:}. \ct{at: anInteger} returns the element at index \ct{anInteger}. \ct{at: anInteger put: anObject} puts \ct{anObject} at index \ct{anInteger}. Arrays are fixed-size collections therefore we cannot add or remove elements at the end of an array. The following code creates an array of size 5, puts values in the first 3 locations and returns the first element. 
+%\subsection{Array}
+\subsection{Массив}
+%An \clsindmain{Array} is a fixed-sized collection of elements accessed by integer indices.
+Массив (\clsindmain{Array}) -- это набор элементов фиксированного размера с доступом по целочисленному индексу.
+%Contrary to the C convention, the first element of a \st array is at position 1 and not 0. 
+В отличие от соглашения, принятого в языке C, первый элемент массива в \st находится в позиции 1, а не 0.
+%The main protocol to access array elements is the method \mthind{Array}{at:} and \mthind{Array}{at:put:}. \ct{at: anInteger} returns the element at index \ct{anInteger}. \ct{at: anInteger put: anObject} puts \ct{anObject} at index \ct{anInteger}. Arrays are fixed-size collections therefore we cannot add or remove elements at the end of an array. The following code creates an array of size 5, puts values in the first 3 locations and returns the first element. 
+Основной протокол доступа к элементам массива -- это методы \mthind{Array}{at:} и \mthind{Array}{at:put:}. Метод \ct{at: anInteger} возвращает элемент по индексу \ct{anInteger}. Метод \ct{at: anInteger put: anObject} записывает объект \ct{anObject} по индексу \ct{anInteger}. Т.к. массивы являются коллекциями фиксированного размера, мы не можем добавить элементы в массив или удалить элементы из него. Следующий код создаёт массив на пять элементов, записывает значения в первые три ячейки и возвращает первый элемент.
 
 \begin{code}{@TEST | anArray | }
 anArray := Array new: 5.
