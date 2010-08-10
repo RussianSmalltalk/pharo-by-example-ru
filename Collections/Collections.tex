@@ -296,20 +296,28 @@ students select: [ :each | each gpa < threshold ]
 Если вы хотите больше узнать о коллекциях в \st, мы рекомендуем обратиться к превосходной книге Ля Лонд (LaLonde) и По (Pugh) \cite{LaLo90a}.
 
 %=========================================================
-\section{Examples of key classes}
-We present now the most common or important collection classes using simple code examples. 
-The main protocols of collections are: \mthind{Collection}{at:}, \mthind{Collection}{at:put:} --- to access an element, \mthind{Collection}{add:}, \mthind{Collection}{remove:} --- to add or remove an element, \mthind{Collection}{size}, \mthind{Collection}{isEmpty}, \mthind{Collection}{include:} --- to get some information about the collection, \mthind{Collection}{do:}, \mthind{Collection}{collect:}, \mthind{Collection}{select:} --- to iterate over the collection. 
-Each collection may implement or not such protocols, and when they do, they interpret them to fit with their semantics. We suggest you browse the classes themselves to identify specific and more advanced protocols.
+%\section{Examples of key classes}
+\section{Примеры основных классов}
+%We present now the most common or important collection classes using simple code examples. 
+В этой главе мы на простых примерах рассмотрим наиболее общеиспользуемые и важные классы коллекций.
+%The main protocols of collections are: \mthind{Collection}{at:}, \mthind{Collection}{at:put:} --- to access an element, \mthind{Collection}{add:}, \mthind{Collection}{remove:} --- to add or remove an element, \mthind{Collection}{size}, \mthind{Collection}{isEmpty}, \mthind{Collection}{include:} --- to get some information about the collection, \mthind{Collection}{do:}, \mthind{Collection}{collect:}, \mthind{Collection}{select:} --- to iterate over the collection. 
+Основные протоколы коллекций -- это \mthind{Collection}{at:}, \mthind{Collection}{at:put:} -- для доступа к элементу; \mthind{Collection}{add:}, \mthind{Collection}{remove:} -- для добавления или удаления элемента; \mthind{Collection}{size}, \mthind{Collection}{isEmpty}, \mthind{Collection}{include:} -- для получения некоторой информации о коллекции; \mthind{Collection}{do:}, \mthind{Collection}{collect:}, \mthind{Collection}{select:} -- для итерации по коллекции.
+%Each collection may implement or not such protocols, and when they do, they interpret them to fit with their semantics. We suggest you browse the classes themselves to identify specific and more advanced protocols.
+Любая коллекци может реализовавть (или не реализовывать) эти протоколы, и в этом случае коллекции интерпретируют их в соответствии со своей семантикой. Мы предлагаем вам самостоятельно просмотреть классы коллеций в поисках более специфичных и <<продвинутых>> протоколов.
 \seeindex{do:@\ct{do:}}{Collection, \ct{do:}}
 \seeindex{at:@\ct{at:}}{Collection, \ct{at:}}
 \seeindex{at:put:@\ct{at:put:}}{Collection, \ct{at:put:}}
 
-We will focus on the most common collection classes: \clsind{OrderedCollection}, \clsind{Set}, \clsind{SortedCollection}, \clsind{Dictionary}, \clsind{Interval}, and \clsind{Array}.
+%We will focus on the most common collection classes: \clsind{OrderedCollection}, \clsind{Set}, \clsind{SortedCollection}, \clsind{Dictionary}, \clsind{Interval}, and \clsind{Array}.
+Мы сосредоточимся на наиболее широкоиспользуемых классах: \clsind{OrderedCollection}, \clsind{Set}, \clsind{SortedCollection}, \clsind{Dictionary}, \clsind{Interval} и \clsind{Array}.
 
-\paragraph{Common creation protocol.}
-There are several ways to create instances of collections. The most generic ones use the methods \mthind{Collection class}{new:} and \mthind{Collection class}{with:}. \ct{new: anInteger} creates a collection of size \ct{anInteger} whose elements will all be \ct{nil}.  \mthind{Collection class}{with:} \ct{anObject} creates a collection and adds \ct{anObject} to the created collection. Different collections will realize this behaviour differently.
+%\paragraph{Common creation protocol.}
+\paragraph{Общий протокол создания.}
+%There are several ways to create instances of collections. The most generic ones use the methods \mthind{Collection class}{new:} and \mthind{Collection class}{with:}. \ct{new: anInteger} creates a collection of size \ct{anInteger} whose elements will all be \ct{nil}.  \mthind{Collection class}{with:} \ct{anObject} creates a collection and adds \ct{anObject} to the created collection. Different collections will realize this behaviour differently.
+Существует несколько способов создания экземпляров коллекций. Наиболее общим является использование методов \mthind{Collection class}{new:} и \mthind{Collection class}{with:}. Метод \ct{new: anInteger} создаёт коллекцию заданного размера чьи элементы будут установлены в \ct{nil}. Метод \mthind{Collection class}{with:} \ct{anObject} создаёт коллекцию и добавляет в неё объект \ct{anObject}. Различные коллекции реализуют это поведение по-разному.
 
-You can create collections with initial elements using the methods \mthind{Collection class}{with:}, \mthind{Collection class}{with:with:} \etc for up to six elements.
+%You can create collections with initial elements using the methods \mthind{Collection class}{with:}, \mthind{Collection class}{with:with:} \etc for up to six elements.
+Можно создать коллекцию с несколькими элементами с помощью методов \mthind{Collection class}{with:}, \mthind{Collection class}{with:with:} \etc до шести элементов.
 
 \begin{code}{@TEST}
 Array with: 1 --> #(1)
@@ -320,15 +328,18 @@ Array with: 1 with: 2 with: 3 with: 4 with: 5 --> #(1 2 3 4 5)
 Array with: 1 with: 2 with: 3 with: 4 with: 5 with: 6 --> #(1 2 3 4 5 6)
 \end{code}
 
-You can also use \ct{addAll:} to add all elements of one kind of collection to another kind:
+%You can also use \ct{addAll:} to add all elements of one kind of collection to another kind:
+Или можно воспользоваться методом \ct{addAll:} для добавления всех элементов одной коллекции в другую:
 
 \begin{code}{@TEST}
 (1 to: 5) asOrderedCollection addAll: '678'; yourself --> an OrderedCollection(1 2 3 4 5 $6 $7 $8)
 \end{code}
 \noindent
-Take care that \mthind{Collection}{addAll:} also returns its argument, and not the receiver!
+%Take care that \mthind{Collection}{addAll:} also returns its argument, and not the receiver!
+Не забывайте, что метод \mthind{Collection}{addAll:} возвращает свой аргумента, а не получателя!
 
-You can also create many collections with \mthind{Collection class}{withAll:} or \mthind{Collection class}{newFrom:}
+%You can also create many collections with \mthind{Collection class}{withAll:} or \mthind{Collection class}{newFrom:}
+Многие коллекции можно создать с помощью методов \mthind{Collection class}{withAll:} или \mthind{Collection class}{newFrom:}
 
 \begin{code}{@TEST}
 Array withAll: #(7 3 1 3)                      --> #(7 3 1 3)
@@ -349,8 +360,10 @@ Bag newFrom: #(7 3 1 3)                                           --> a Bag(7 1 
 Dictionary newFrom: {1 -> 7. 2 -> 3. 3 -> 1. 4 -> 3} --> a Dictionary(1->7 2->3 3->1 4->3 )
 \end{code}
 \noindent
-Note that these two methods are not identical.
+%Note that these two methods are not identical.
+Обратите внимание, эти два метода не идентичны.
 In particular, \cmind{Dictionary class}{withAll:} interprets its argument as a collection of values, whereas \cmind{Dictionary class}{newFrom:} expects a collection of associations.
+%В частности, \cmind{Dictionary class}{withAll:} интерпретирует аргумент как коллекцию значений, в то время как \cmind{Dictionary class}{newFrom:} ожидает коллекцию ассоциаций.
 
 %---------------------------------------------------------
 \subsection{Array}
