@@ -94,7 +94,7 @@ Browser new printString --> 'a Browser'
 \end{code}
 
 %The class \ct{Color} shows an example of \mthind{Color}{printOn:} specialization. It prints the name of the class followed the name of the class method used to generate that color.
-Класс \ct{Color} показывает пример специализации метода \mthind{Color}{printOn:}. Он печатает имя класса, и следом за ним - название метода класса, использонного для генерации данного цвета.
+Класс \ct{Color} показывает пример специализации метода \mthind{Color}{printOn:}. Он печатает имя класса, и следом за ним - название метода класса, использованного для генерации данного цвета.
 
 
 \needlines{7}
@@ -112,7 +112,8 @@ Color>>>printOn: aStream
 Color red printString --> 'Color red'
 \end{code}
 
-Note that the message \ct{printOn:} is not the same as \mthind{Object}{storeOn:}. The message \ct{storeOn:} puts on its argument stream an expression that can be used to recreate the receiver. This expression is evaluated when the stream is read using the message \ct{readFrom:}. \ct{printOn:} just returns a textual version of the receiver. Of course, it may happen that this textual representation may represent the receiver as a self-evaluating expression.
+%Note that the message \ct{printOn:} is not the same as \mthind{Object}{storeOn:}. The message \ct{storeOn:} puts on its argument stream an expression that can be used to recreate the receiver. This expression is evaluated when the stream is read using the message \ct{readFrom:}. \ct{printOn:} just returns a textual version of the receiver. Of course, it may happen that this textual representation may represent the receiver as a self-evaluating expression.
+Обратите внимание: сообщения \ct{printOn:} и \mthind{Object}{storeOn:} не являются одним и тем же. Сообщение \ct{storeOn:} выводит на переданный поток выражение, которое затем может быть использовано для пересоздания получателя. Данное выражение вычисляется при чтении из потока посредством сообщения \ct{readFrom:}. \ct{printOn:} всего лишь возвращает текстовую версию получателя. Конечно, порой текстовое представление получателя может совпадать с его self-evaluating expression.
 
 \paragraph{A word about representation and self-evaluating representation.}
 In functional programming, expressions return values when executed. In Smalltalk, messages (expressions) return objects (values). Some objects have the nice properties that their value is themselves. For example, the value of the object \ct{true} is itself \ie the object \ct{true}. We call such objects \emphind{self-evaluating objects}. You can see a \emph{printed} version of an object value when you print the object in a workspace. Here are some examples of such self-evaluating expressions. 
@@ -162,31 +163,50 @@ Interval>>>printOn: aStream
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Identity and equality}
+%\subsection{Identity and equality}
+\subsection{Идентичность и равенство}
 
-In Smalltalk, the message \ct{=} tests object \emphsubindmain{Object}{equality} (\ie whether two objects represent the same value) whereas \ct{==} tests object \emphsubindmain{Object}{identity} (\ie whether two expressions represent the same object).
+%In Smalltalk message \ct{=} tests object \emphsubindmain{Object}{equality} (\ie whether two objects represent the same value) whereas \ct{==} tests object \emphsubindmain{Object}{identity} (\ie whether two expressions represent the same object).
+В Smalltalk сообщение \ct{=} проверяет объект на \emphsubindmain{Object}{равенство другому объекту} (\ie когда объекты представляют одно и то же значение), в то время как сообщение \ct{==} проверяет объект на \emphsubindmain{Object}{идентичность} (\ie когда два выражения представляют один и тот же объект).
 \seeindex{\ct{=}}{Object, equality}
 \seeindex{\ct{==}}{Object, identity}
 \seeindex{equality}{Object, equality}
 \seeindex{identity}{Object, identity}
 
-The default implementation of object equality is to test for object identity:
+%The default implementation of object equality is to test for object identity:
+По-умолчанию реализация проверки объектов на равенство заключается в проверке объектов на идентичность:
+% \begin{method}{Object equality}
+% Object>>>= anObject
+%     "Answer whether the receiver and the argument represent the same object.
+%     If = is redefined in any subclass, consider also redefining the message hash."
+%     ^ self == anObject
+% \end{method}
+% \cmindex{Object}{=}
 \begin{method}{Object equality}
 Object>>>= anObject
     "Answer whether the receiver and the argument represent the same object.
-    If = is redefined in any subclass, consider also redefining the message hash."
+    Если = переопределено в каком-либо потомке, рекомендуется так же
+    переопределить сообщение hash."
     ^ self == anObject
 \end{method}
 \cmindex{Object}{=}
 
-This is a method that you will frequently want to override. Consider the case of \ct{Complex} numbers:
 
+%This is a method that you will frequently want to override. Consider the case of \ct{Complex} numbers:
+Сообщение \ct{=} входит в число тех сообщений, которые вы возможно будете часто переопределять. Рассмотрим пример с комплексными числами (класс \ct{Complex}):
+
+% \begin{code}{@TEST}
+% (1 + 2 i) = (1 + 2 i)   --> true     "same value"
+% (1 + 2 i) == (1 + 2 i) --> false    "but different objects"
+% \end{code}
 \begin{code}{@TEST}
-(1 + 2 i) = (1 + 2 i)   --> true     "same value"
-(1 + 2 i) == (1 + 2 i) --> false    "but different objects"
+(1 + 2 i) = (1 + 2 i)   --> true     "одно и то же значние"
+(1 + 2 i) == (1 + 2 i) --> false    "но разные объекты"
 \end{code}
 
-This works because \ct{Complex} overrides \ct{=} as follows:
+
+%This works because \ct{Complex} overrides \ct{=} as follows:
+Данный код работает, потому что класс \ct{Complex} переопределяет метод \ct{=} следующим образом:
 \cmindex{Complex}{=}
 \needlines{5}
 \begin{method}{Equality for complex numbers}
@@ -196,7 +216,8 @@ Complex>>>= anObject
         ifFalse: [^ anObject adaptToComplex: self andSend: #=]
 \end{method}
 
-The default implementation of \ct{Object>>>~=} simply negates \ct{Object>>>=}, and should not normally need to be changed.
+%The default implementation of \ct{Object>>>~=} simply negates \ct{Object>>>=}, and should not normally need to be changed.
+Реализация-по-умолчанию метода \ct{Object>>>~=} попросту инвертирует результат вызова \ct{Object>>>=}, и, как правило, нет нужды переопределять данный метод.
 %\cmindex{Object}{\~=}
 \index{Object!~=@\ct{~=}} % needs special treatment due to ~
 
@@ -204,7 +225,14 @@ The default implementation of \ct{Object>>>~=} simply negates \ct{Object>>>=}, a
 (1 + 2 i) ~= (1 + 4 i) --> true
 \end{code}
 
-If you override \ct{=}, you should consider overriding \mthind{Object}{hash}. If instances of your class are ever used as keys in a \clsind{Dictionary}, then you should make sure that instances that are considered to be equal have the same hash value:
+%If you override \ct{=}, you should consider overriding \mthind{Object}{hash}. If instances of your class are ever used as keys in a \clsind{Dictionary}, then you should make sure that instances that are considered to be equal have the same hash value:
+Если вы переопределяете метод \ct{=}, вам настоятельно рекомендуется переопределить так же метод \mthind{Object}{hash}. Если экземпляры вашего класса когда-нибудь будут использоваться как ключи в словаре (класс \clsind{Dictionary}), вы должны убедиться, что объекты, считающиеся равными, имеют одинаковые значения хэшей:
+% \cmindex{Complex}{hash}
+% \begin{method}{Hash must be reimplemented for complex numbers}
+% Complex>>>hash
+%     "Hash is reimplemented because = is implemented."
+%     ^ real hash bitXor: imaginary hash.
+% \end{method}
 \cmindex{Complex}{hash}
 \begin{method}{Hash must be reimplemented for complex numbers}
 Complex>>>hash
@@ -212,9 +240,13 @@ Complex>>>hash
     ^ real hash bitXor: imaginary hash.
 \end{method}
 
-Although you should override \ct{=} and \ct{hash} together, you should \emph{never} override \ct{==}. (The semantics of object identity is the same for all classes.)  \ct{==} is a primitive method of \clsind{ProtoObject}.
 
-Note that \pharo has some strange behaviour compared to other Smalltalks: for example a symbol and a string can be equal. (We consider this be a bug, not a feature.)
+%Although you should override \ct{=} and \ct{hash} together, you should \emph{never} override \ct{==}. (The semantics of object identity is the same for all classes.)  \ct{==} is a primitive method of \clsind{ProtoObject}.
+Несмотря на то, что вы можете переопределить методы \ct{=} и \ct{hash} вместе, \emph{никогда} не переопределяйте метод \ct{==}. (Семантика идентичности объектов -- общая для всех классов.) \ct{==} -- это примитивный метод класса \clsind{ProtoObject}.
+
+%Note that \pharo has some strange behaviour compared to other Smalltalks: for example a symbol and a string can be equal. (We consider this be a bug, not a feature.)
+Примите во внимание то, что в \pharo наблюдается несколько странное поведение по сравнению с другими диалектами Smalltalk: например, строка и символ могут быть равны (мы считаем это ошибкой, а не особенностью реализации.)
+
 
 \begin{code}{@TEST}
 #'lulu' = 'lulu' --> true
