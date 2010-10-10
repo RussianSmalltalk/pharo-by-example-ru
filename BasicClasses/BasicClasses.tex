@@ -386,14 +386,18 @@ Object>>>copy
 \on{I looked, but did not finda good example in the system.}
 
 %-----------------------------------------------------------------
-\subsection{Debugging}
+%\subsection{Debugging}
+\subsection{Отладка}
 
-The most important method here is \mthind{Object}{halt}. In order to set a breakpoint in a method, simply insert the message send \ct{self halt} at some point in the body of the method.  When this message is sent, execution will be interrupted and a \ind{debugger} will open to this point in your program.
-(See \charef{env} for more details about the debugger.)
+%The most important method here is \mthind{Object}{halt}. In order to set a breakpoint in a method, simply insert the message send \ct{self halt} at some point in the body of the method.  When this message is sent, execution will be interrupted and a \ind{debugger} will open to this point in your program.
+Самый важный метод в плане отладки -- \mthind{Object}{halt}. Чтобы добавить точку останова в методе, просто вставте отправку сообщения \ct{self halt} где-нибудь в теле методаю Когда это сообщение будет отправлено, выполнение будет прервано и \ind{debugger} откроется в данной точке вашей программы.
+%(See \charef{env} for more details about the debugger.)
+(Больше информации об отладчике вы найдете в \charef{env})
 
 \sd{in another chapter haltIf:, haltOnce, inspectOnce, flagging: isThisEverCalled, }
 
-The next most important message is \mthind{Object}{assert:}, which takes a \ind{block} as its argument. If the block returns \ct{true}, execution continues. Otherwise an \ct{AssertionFailure} exception will be raised. If this exception is not otherwise caught, the debugger will open to this point in the execution. \ct{assert:} is especially useful to support \emphind{design by contract}. The most typical usage is to check non-trivial pre-conditions to public methods of objects. \cmind{Stack}{pop} could easily have been implemented as follows:
+%The next most important message is \mthind{Object}{assert:}, which takes a \ind{block} as its argument. If the block returns \ct{true}, execution continues. Otherwise an \ct{AssertionFailure} exception will be raised. If this exception is not otherwise caught, the debugger will open to this point in the execution. \ct{assert:} is especially useful to support \emphind{design by contract}. The most typical usage is to check non-trivial pre-conditions to public methods of objects. \cmind{Stack}{pop} could easily have been implemented as follows:
+Следующее важное сообщение -- \mthind{Object}{assert:} -- принимает блок как аргумент. Если блок возвращает \ct{true}, выполнение продолжается. В противном случае будет raised исключение \ct{AssertionFailure}. Самое типичное применение данного метода - проверять нетривиальные условия публичным методам объектов. \cmind{Stack}{pop} мог быть просто реализован:
 
 \begin{method}{Checking a pre-condition}
 Stack>>>pop
@@ -402,15 +406,21 @@ Stack>>>pop
     ^self linkedList removeFirst element
 \end{method}
 
-Do not confuse \ct{Object>>>assert:} with \cmind{TestCase}{assert:}, which occurs in the SUnit testing framework (see \charef{SUnit}). While the former expects a block as its argument\footnote{Actually, it will take any argument that understands \ct{value}, including a \ct{Boolean}.}, the latter expects a \clsind{Boolean}. Although both are useful for debugging, they each serve a very different intent.
+%Do not confuse \ct{Object>>>assert:} with \cmind{TestCase}{assert:}, which occurs in the SUnit testing framework (see \charef{SUnit}). While the former expects a block as its argument\footnote{Actually, it will take any argument that understands \ct{value}, including a \ct{Boolean}.}, the latter expects a \clsind{Boolean}. Although both are useful for debugging, they each serve a very different intent.
+Не путайте \ct{Object>>>assert:} с \cmind{TestCase}{assert:}, который появляется в фреймворке тестирования SUnit (см. \charef{SUnit}). В то время, как первый ожидает получить блок как аргумент \footnote{В действительности, данный метод принимает любой аргумент, который понимает сообщение \сt{value}, включая \ct{Boolean}.}, второй ожидает объект класса \clsind{Boolean}. Несмотря на то, что оба метода подходят для отладки, их предназначение сильно отличается.
 
 %-----------------------------------------------------------------
-\subsection{Error handling}
+%\subsection{Error handling}
+\subsection{Обработка ошибок}
 
-This protocol contains several methods useful for signaling run-time errors.
+%This protocol contains several methods useful for signaling run-time errors.
+Данный протокол содержит ряд методов, используемых для сообщении об ошибках времени выполнения.
 
-Sending \lct{self deprecated: \emph{anExplanationString}} signals that the current method should no longer be used, if deprecation has been turned on in the \protind{debug} protocol of the \ind{preference browser}.
-The \ct{String} argument should offer an alternative.
+%Sending \lct{self deprecated: \emph{anExplanationString}} signals that the current method should no longer be used, if deprecation has been turned on in the \protind{debug} protocol of the \ind{preference browser}.
+Отправка \lct{self deprecated: \emph{anExplanationString}} даёт понять о том, что текущий метод не должен больше использоваться, если соответствующая возможность протокола отладки была включена в браузере настроек.  
+
+%The \ct{String} argument should offer an alternative.
+Аргумент типа \ct{String} должен предложить альтернативу.
 \cmindex{Object}{deprecated:}
 \index{deprecation}
 
@@ -419,15 +429,19 @@ The \ct{String} argument should offer an alternative.
 	--> !\emph{SmallInteger(Object)>>doIfNotNil: has been deprecated. use ifNotNilDo:}!
 \end{code}
 
-\ct{doesNotUnderstand:} is sent whenever message lookup fails. The default implementation, \ie \cmind{Object}{doesNotUnderstand:} will trigger the debugger at this point. It may be useful to override \lct{does\-Not\-Un\-der\-stand:} to provide some other behaviour.
+%\ct{doesNotUnderstand:} is sent whenever message lookup fails. The default implementation, \ie \cmind{Object}{doesNotUnderstand:} will trigger the debugger at this point. It may be useful to override \lct{does\-Not\-Un\-der\-stand:} to provide some other behaviour.
+Сообщение \ct{doesNotUnderstand:} посылается каждый раз, когда поиск соответствующего метода в классе оканчивается неудачей. В реализации по-умолчанию, \ie \cmind{Object}{doesNotUnderstand:} откроет отладчик в данной точке. Иногда может оказаться полезным переопределить \lct{does\-Not\-Un\-der\-stand:} чтобы реализовать некое иное поведение.
 
 \on{Add a chapter ref when we write the chapter on exceptions.}
 
-\cmind{Object}{error} and \cmind{Object}{error:} are generic methods that can be used to raise exceptions.
-(Generally it is better to raise your own custom exceptions, so you can distinguish errors arising from your code from those coming from kernel classes.)
+%\cmind{Object}{error} and \cmind{Object}{error:} are generic methods that can be used to raise exceptions.
+\cmind{Object}{error} и \cmind{Object}{error:} являются обобщёнными методами, используемыми при выкидывании исключений.
+%(Generally it is better to raise your own custom exceptions, so you can distinguish errors arising from your code from those coming from kernel classes.)
+(Обычно лучше выкидывать ваши собственные исключения, чтобы вы могли различать ошибки, появляющиеся в вашем коде, от ошибок, идущих из основных классов).
 \lr{Maybe mention that it is preferred to create your own custom exception class. (p. 208)}
 
-Abstract methods in Smalltalk are implemented by convention with the body \lct{self sub\-class\-Res\-pon\-si\-bi\-li\-ty}. Should an abstract class be instantiated by accident, then calls to abstract methods will result in \cmind{Object}{subclassResponsibility} being evaluated.
+%Abstract methods in Smalltalk are implemented by convention with the body \lct{self sub\-class\-Res\-pon\-si\-bi\-li\-ty}. Should an abstract class be instantiated by accident, then calls to abstract methods will result in \cmind{Object}{subclassResponsibility} being evaluated.
+Абстрактные методы в Smalltalk реализуются по соглашению с помощью сообщения \lct{self sub\-class\-Res\-pon\-si\-bi\-li\-ty}. Если вдруг экземпляр абстрактного класса будет создан по неосторожности, вызовы к абстрактным методам приведут к выполнению \cmind{Object}{subclassResponsibility}.
 
 \begin{method}{Signaling that a method is abstract}
 Object>>>subclassResponsibility
@@ -436,17 +450,20 @@ Object>>>subclassResponsibility
     self error: 'My subclass should have overridden ', thisContext sender selector printString
 \end{method}
 
-\clsind{Magnitude}, \clsind{Number} and \clsind{Boolean} are classical examples of \subind{class}{abstract} classes that we shall see shortly in this chapter.
+%\clsind{Magnitude}, \clsind{Number} and \clsind{Boolean} are classical examples of \subind{class}{abstract} classes that we shall see shortly in this chapter.
+Классы \clsind{Magnitude}, \clsind{Number} и \clsind{Boolean} являются классическими примерами \subind{class}{абстрактных} классов, которые мы ещё рассмотрим вкратце в данной главе.
 
 \begin{code}{NB: CANNOT TEST}
 Number new + 1 --> !\emph{Error: My subclass should have overridden \#+}!
 \end{code}
 
-\ct{self shouldNotImplement} is sent by convention to signal that an inherited method is not appropriate for this subclass. This is generally a sign that something is not quite right with the design of the class hierarchy. Due to the limitations of single inheritance, however, sometimes it is very hard to avoid such workarounds. 
+%\ct{self shouldNotImplement} is sent by convention to signal that an inherited method is not appropriate for this subclass. This is generally a sign that something is not quite right with the design of the class hierarchy. Due to the limitations of single inheritance, however, sometimes it is very hard to avoid such workarounds. 
+\ct{self shouldNotImplement} отправляется по соглашению, чтобы показать, что унаследованный метод не соответствует данному субклассу. Обычно это означает, что что-то не так с дизайном иерархии классов. В связи с ограничениями единичного наследования, однако, порой очень сложно избежать подобные обходные пути. 
 \cmindex{Object}{shouldNotImplement}
 \index{inheritance!canceling}
 
-A typical example is \cmind{Collection}{remove:} which is inherited by \clsind{Dictionary} but flagged as not implemented. (A \ct{Dictionary} provides \mthind{Dictionary}{removeKey:} instead.)
+%A typical example is \cmind{Collection}{remove:} which is inherited by \clsind{Dictionary} but flagged as not implemented. (A \ct{Dictionary} provides \mthind{Dictionary}{removeKey:} instead.)
+Типичный пример -- это метод \cmind{Collection}{remove:}, который унаследован классом \clsind{Dictionary}, но помечен как не реализованный. (Класс \ct{Dictionary} предоставляет метод \mthind{Dictionary}{removeKey:} вместо него.)
 
 %-----------------------------------------------------------------
 \sd{ subsection{Deprecation} }
