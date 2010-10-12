@@ -492,7 +492,8 @@ res --> 33
 
 %\paragraph{Conversion.}
 \paragraph{Преобразование.}
-It is possible to get an \ct{OrderedCollection} from an \ct{Array} (or any other collection) by sending the message \mthind{Collection}{asOrderedCollection}:
+%It is possible to get an \ct{OrderedCollection} from an \ct{Array} (or any other collection) by sending the message \mthind{Collection}{asOrderedCollection}:
+Упорядоченную коллекцию (\ct{OrderedCollection}) можно получить из массива (\ct{Array}) (или любой другой коллекции) с помощью сообщения \mthind{Collection}{asOrderedCollection}:
 
 \begin{code}{@TEST}
 #(1 2 3) asOrderedCollection --> an OrderedCollection(1 2 3)
@@ -515,21 +516,25 @@ It is possible to get an \ct{OrderedCollection} from an \ct{Array} (or any other
 %This can be faster than creating the ordered collection with \ct{new} and letting it grow (see \charef{profiling}).
 
 %---------------------------------------------------------
-\subsection{Interval}
-The class \clsindmain{Interval} represents ranges of numbers. For example, the interval of numbers from 1 to 100 is defined as follows:
+%\subsection{Interval}
+\subsection{Интервал}
+%The class \clsindmain{Interval} represents ranges of numbers. For example, the interval of numbers from 1 to 100 is defined as follows:
+Класс \clsindmain{Interval} (интервал) представляет собой массив чисел. Например, интервал чисел от 1 до 100 представляется следующим образом:
 \cmindex{Interval class}{from:to:}
 \begin{code}{@TEST}
 Interval from: 1 to: 100 --> (1 to: 100)
 \end{code}
 
 \noindent
-The \mthind{Interval class}{printString} of this interval reveals that the class \ct{Number} provides us with a convenience method called \mthind{Number}{to:} to generate intervals:
+%The \mthind{Interval class}{printString} of this interval reveals that the class \ct{Number} provides us with a convenience method called \mthind{Number}{to:} to generate intervals:
+Посмотрев на метод \mthind{Interval class}{printString} этого интервала, мы обнаружим, что существует способ создания интервалов с помощью метода \mthind{Number}{to:} класса \ct{Number}:
 
 \begin{code}{}
 (Interval from: 1 to: 100) = (1 to: 100) --> true
 \end{code}
 
-We can use \cmind{Interval class}{from:to:by:} or \cmind{Number}{to:by:} to specify the step between two numbers as follow:
+%We can use \cmind{Interval class}{from:to:by:} or \cmind{Number}{to:by:} to specify the step between two numbers as follow:
+Можно использовать \cmind{Interval class}{from:to:by:} or \cmind{Number}{to:by:}, чтобы указать шаг между двумя числами в интервале:
 
 \begin{code}{@TEST}
 (Interval from: 1 to: 100 by: 0.5) size --> 199
