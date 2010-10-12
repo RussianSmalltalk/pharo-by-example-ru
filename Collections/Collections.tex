@@ -460,8 +460,10 @@ anArray at: 3 --> 33
 Динамические массивы лишены подобных проблем.
 
 %---------------------------------------------------------
+%\subsection{OrderedCollection}
 \subsection{OrderedCollection}
-\clsindmain{OrderedCollection} is one of the collections that can grow, and to which elements can be added sequentially. It offers a variety of methods such as \mthind{OrderedCollection}{add:}, \mthind{OrderedCollection}{addFirst:}, \mthind{OrderedCollection}{addLast:}, and \mthind{OrderedCollection}{addAll:}. 
+%\clsindmain{OrderedCollection} is one of the collections that can grow, and to which elements can be added sequentially. It offers a variety of methods such as \mthind{OrderedCollection}{add:}, \mthind{OrderedCollection}{addFirst:}, \mthind{OrderedCollection}{addLast:}, and \mthind{OrderedCollection}{addAll:}. 
+\clsindmain{OrderedCollection} (Упорядоченная коллекция) -- одна из тех коллекций, которые могут увеличиваться в размере, и в которые можно последовательно добавлять элементы. Она предоставляет множество методов, таких как \mthind{OrderedCollection}{add:}, \mthind{OrderedCollection}{addFirst:}, \mthind{OrderedCollection}{addLast:}, and \mthind{OrderedCollection}{addAll:}. 
 
 \begin{code}{@TEST | ordCol |}
 ordCol := OrderedCollection new.
@@ -469,7 +471,8 @@ ordCol add: 'Seaside'; add: 'SqueakSource'; addFirst: 'Monticello'.
 ordCol --> an OrderedCollection('Monticello' 'Seaside' 'SqueakSource')
 \end{code}
 
-\paragraph{Removing Elements.} The method \mthind{OrderedCollection}{remove:} \ct{anObject} removes the first occurrence of an object from the collection. If the collection does not include such an object, it raises an error. 
+%\paragraph{Removing Elements.} The method \mthind{OrderedCollection}{remove:} \ct{anObject} removes the first occurrence of an object from the collection. If the collection does not include such an object, it raises an error. 
+\paragraph{Removing Elements.} Метод \mthind{OrderedCollection}{remove:} \ct{anObject} удаляет первое вхождение объекта из коллекции.
 
 \begin{code}{@TEST | ordCol | ordCol := OrderedCollection with: 'Monticello' with: 'Seaside' with: 'SqueakSource'.}
 ordCol add: 'Monticello'.
@@ -477,15 +480,18 @@ ordCol remove: 'Monticello'.
 ordCol --> an OrderedCollection('Seaside' 'SqueakSource' 'Monticello')
 \end{code}
 
-There is a variant of \ct{remove:} named \mthind{OrderedCollection}{remove:ifAbsent:} that allows one to specify 
-as second argument a block that is executed in case the element to be removed is not in the collection. 
+%There is a variant of \ct{remove:} named \mthind{OrderedCollection}{remove:ifAbsent:} that allows one to specify 
+Существует разновидность \ct{remove:} -- \mthind{OrderedCollection}{remove:ifAbsent:}, позволяющая указать
+%as second argument a block that is executed in case the element to be removed is not in the collection. 
+в качестве второго аргумента блок, который выполнится в случае, если переданный элемент не найден в коллекции.
 
 \begin{code}{@TEST | ordCol res | ordCol := OrderedCollection with: 'Seaside' with: 'SqueakSource' with: 'Monticello'.}
 res := ordCol remove: 'zork' ifAbsent: [33].
 res --> 33
 \end{code}
 
-\paragraph{Conversion.}
+%\paragraph{Conversion.}
+\paragraph{Преобразование.}
 It is possible to get an \ct{OrderedCollection} from an \ct{Array} (or any other collection) by sending the message \mthind{Collection}{asOrderedCollection}:
 
 \begin{code}{@TEST}
