@@ -517,7 +517,7 @@ res --> 33
 
 %---------------------------------------------------------
 %\subsection{Interval}
-\subsection{Интервал}
+\subsection{Interval}
 %The class \clsindmain{Interval} represents ranges of numbers. For example, the interval of numbers from 1 to 100 is defined as follows:
 Класс \clsindmain{Interval} (интервал) представляет собой массив чисел. Например, интервал чисел от 1 до 100 представляется следующим образом:
 \cmindex{Interval class}{from:to:}
@@ -534,7 +534,7 @@ Interval from: 1 to: 100 --> (1 to: 100)
 \end{code}
 
 %We can use \cmind{Interval class}{from:to:by:} or \cmind{Number}{to:by:} to specify the step between two numbers as follow:
-Можно использовать \cmind{Interval class}{from:to:by:} or \cmind{Number}{to:by:}, чтобы указать шаг между двумя числами в интервале:
+Можно использовать \cmind{Interval class}{from:to:by:} или \cmind{Number}{to:by:}, чтобы указать шаг между двумя числами в интервале:
 
 \begin{code}{@TEST}
 (Interval from: 1 to: 100 by: 0.5) size --> 199
@@ -543,9 +543,12 @@ Interval from: 1 to: 100 --> (1 to: 100)
 \end{code}
 
 %---------------------------------------------------------
+%\subsection{Dictionary}
 \subsection{Dictionary}
-Dictionaries are important collections whose elements are accessed using keys. 
-Among the most commonly used messages of dictionary you will find \mthind{Dictionary}{at:}, \mthind{Dictionary}{at:put:}, \mthind{Dictionary}{at:ifAbsent:}, \mthind{Dictionary}{keys} and \mthind{Dictionary}{values}.
+%Dictionaries are important collections whose elements are accessed using keys. 
+Словари (класс Dictionary) представляют собой коллекции, доступ к элементам которых осуществляется по ключу.
+%Among the most commonly used messages of dictionary you will find \mthind{Dictionary}{at:}, \mthind{Dictionary}{at:put:}, \mthind{Dictionary}{at:ifAbsent:}, \mthind{Dictionary}{keys} and \mthind{Dictionary}{values}.
+Среди наиболее употребляемых сообщений словарей -- это \mthind{Dictionary}{at:}, \mthind{Dictionary}{at:put:}, \mthind{Dictionary}{at:ifAbsent:}, \mthind{Dictionary}{keys} и \mthind{Dictionary}{values}.
 \seeindex{keys}{Dictionary, keys}
 \seeindex{values}{Dictionary, values}
 
@@ -559,10 +562,12 @@ colors keys          --> a Set(#blue #yellow #red)
 colors values       --> {Color blue . Color yellow . Color red}
 \end{code}
 
-Dictionaries compare keys by equality. Two keys are considered to be the same if they return true when compared using \ct{=}. A common and difficult to spot bug is to use as key an object whose \ct{=} method has been redefined but not its \ct{hash} method. Both methods are used in the implementation of dictionary and when comparing objects.
+%Dictionaries compare keys by equality. Two keys are considered to be the same if they return true when compared using \ct{=}. A common and difficult to spot bug is to use as key an object whose \ct{=} method has been redefined but not its \ct{hash} method. Both methods are used in the implementation of dictionary and when comparing objects.
+Словари проверяют ключи на равенство. Два ключа признаются одинаковыми, если сравнение их с помощью \ct{=} возвращает истину. Часто встречающаяся (и трудноуловимая) ошибка -- это использование в качестве ключа объекта, у которого был переопределён метод \ct{=}, но не был метод \ct{hash}. Оба метода используются реализацией словарей для сравнения объектов.
 \index{Dictionary!overriding \ct{=} and \ct{hash}}
 
-The class \clsindmain{Dictionary} clearly illustrates that the collection hierarchy is based on subclassing and not subtyping.  Even though \ct{Dictionary} is a subclass of \clsind{Set}, we would normally not want to use a \ct{Dictionary} where a \ct{Set} is expected. In its implementation, however, a \ct{Dictionary} can clearly be seen as consisting of a set of associations (key value) created using the message \mthind{Object}{->}. We can create a \ct{Dictionary} from a collection of associations, or we may convert a dictionary to an array of associations.
+%The class \clsindmain{Dictionary} clearly illustrates that the collection hierarchy is based on subclassing and not subtyping.  Even though \ct{Dictionary} is a subclass of \clsind{Set}, we would normally not want to use a \ct{Dictionary} where a \ct{Set} is expected. In its implementation, however, a \ct{Dictionary} can clearly be seen as consisting of a set of associations (key value) created using the message \mthind{Object}{->}. We can create a \ct{Dictionary} from a collection of associations, or we may convert a dictionary to an array of associations.
+Класс \clsindmain{Dictionary} ясно показывает, что иерархия коллекций основана на \ugh{subclassing and not subtyping}. Хотя \ct{Dictionary} является подклассом класса \clsind{Set}, мы, скорее всего, не станем использовать \ct{Dictionary} там, где ожидаем \ct{Set}. Реализацию \ct{Dictionary}, однако, можно рассматривать как множество ассоциаций (ключ-значение), созданных с помощью сообщения \mthind{Object}{->}. Мы можем получить \ct{Dictionary} из коллекции ассоциаций или преобразовать его к такой коллекции.
 \seeindex{association}{Object, \ct{->}}
 
 \needlines{5}
@@ -572,11 +577,15 @@ colors removeKey: #blue.
 colors associations --> {#yellow->Color yellow . #red->Color red}
 \end{code}
 
+%\paragraph{IdentityDictionary.}
 \paragraph{IdentityDictionary.}
-While a dictionary uses the result of the messages \ct{=} and \ct{hash} to determine if two keys are the same, the class \clsindmain{IdentityDictionary} uses the identity (message \mthind{ProtoObject}{==}) of the key instead of its values, \ie it considers two keys to be equal \emph{only} if they are the same object.
+%While a dictionary uses the result of the messages \ct{=} and \ct{hash} to determine if two keys are the same, the class \clsindmain{IdentityDictionary} uses the identity (message \mthind{ProtoObject}{==}) of the key instead of its values, \ie it considers two keys to be equal \emph{only} if they are the same object.
+В то время как \clsind{Dictionary} использует результат сообщений \ct{=} и \ct{hash} для определения, являются ли два ключа одинаковыми, класс \clsindmain{IdentityDictionary} использует признак идентичности (сообщение \mthind{ProtoObject}{==}) ключей, т.е. он считает ключи равными \emph{только} в том случае, если это один и тот же объект.
 
-Often \ct{Symbol}s are used as keys, in which case it is natural to use an \ct{IdentityDictionary}, since a \clsind{Symbol} is guaranteed to be globally unique.
-If, on the other hand, your keys are \ct{String}s, it is better to use a plain \ct{Dictionary}, or you may get into trouble:
+%Often \ct{Symbol}s are used as keys, in which case it is natural to use an \ct{IdentityDictionary}, since a \clsind{Symbol} is guaranteed to be globally unique.
+Зачастую в качестве ключей используют символы (\ct{Symbol}). И в этом случае разумно использовать \ct{IdentityDictionary}, т.к. символы гарантированно глобально уникальны.
+%If, on the other hand, your keys are \ct{String}s, it is better to use a plain \ct{Dictionary}, or you may get into trouble:
+Если же ваши ключи -- это строки, лучше использовать обычный словарь \ct{Dictionary}, а иначе это может привести к проблемам:
 
 \begin{code}{@TEST | a b trouble |}
 a := 'foobar'.
@@ -589,21 +598,28 @@ trouble at: 'foobar' --> 'a'
 \end{code}
 
 \noindent
-Since \ct{a} and \ct{b} are different objects, they are treated as different objects.
-Interestingly, the literal \mbox{\ct{'foobar'}} is allocated just once, so is really the same object as \ct{a}.
-You don't want your code to depend on behaviour like this!
-A plain \ct{Dictionary} would give the same value for any key equal to \ct{'foobar'}.
+%Since \ct{a} and \ct{b} are different objects, they are treated as different objects.
+Т.к. \ct{a} и \ct{b} -- это разные объекты, они и обрабатываются как \emph{разные} объекты.
+%Interestingly, the literal \mbox{\ct{'foobar'}} is allocated just once, so is really the same object as \ct{a}.
+Интересно, что литерал \mbox{\ct{'foobar'}} создаётся в памяти лишь раз и является тем же объектом, что и \ct{a}.
+%You don't want your code to depend on behaviour like this!
+Не стоит полагаться на такое поведение в своём коде!
+%A plain \ct{Dictionary} would give the same value for any key equal to \ct{'foobar'}.
+Обычный словарь вернул бы одинаковые значения для любого ключа, равного \ct{'foobar'}.
 
-Use only globally unique objects (like \ct{Symbol}s or \ct{SmallInteger}s) as keys for a \ct{IdentityDictionary}, and \ct{String}s (or other objects) as keys for a plain \ct{Dictionary}.
+%Use only globally unique objects (like \ct{Symbol}s or \ct{SmallInteger}s) as keys for a \ct{IdentityDictionary}, and \ct{String}s (or other objects) as keys for a plain \ct{Dictionary}.
+Используйте только глобально уникальные объекты (такие как объкты классов \ct{Symbol} или \ct{SmallInteger}) в качестве ключей для \ct{IdentityDictionary}, а строки (или другие объекты) в качестве ключей для \ct{Dictionary}.
 
 
-Note that the global \glbind{Smalltalk} is an instance of \clsind{SystemDictionary}, a subclass of \ct{IdentityDictionary}, hence all its keys are \ct{Symbol}s (actually, \ct{ByteSymbol}s, which contain only 8-bit characters).
+%Note that the global \glbind{Smalltalk} is an instance of \clsind{SystemDictionary}, a subclass of \ct{IdentityDictionary}, hence all its keys are \ct{Symbol}s (actually, \ct{ByteSymbol}s, which contain only 8-bit characters).
+Заметьте, что глобальная переменная \glbind{Smalltalk} -- это экземпляр класса \clsind{SystemDictionary}, подкласса \ct{IdentityDictionary}, поэтому все его ключи -- символы (на самом деле это экземпляры класса \ct{ByteSymbol}, которые могут содержать только 8-ми битовые знаки).
 
 \begin{code}{@TEST}
 Smalltalk keys collect: [ :each | each class ] --> a Set(ByteSymbol)
 \end{code}
 \noindent
-Sending \ct{keys} or \ct{values} to a \ct{Dictionary} results in a \ct{Set}, which we look at next.
+%Sending \ct{keys} or \ct{values} to a \ct{Dictionary} results in a \ct{Set}, which we look at next.
+Посылка сообщений \ct{keys} или \ct{values} экземляру класса \ct{Dictionary} вернёт экземляр класса \ct{Set}, который мы рассмотрим далее.
 % Since every key has the same class, the set of classes of keys contains only a single element, \ct{ByteSymbol}.
 
 %---------------------------------------------------------
