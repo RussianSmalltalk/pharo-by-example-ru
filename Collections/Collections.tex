@@ -674,37 +674,48 @@ s size --> 2
 Доступ к элементам множества можно получить с помощью итераторов, о которых будте рассказано далее (см. \secref{iterators}).
 
 %---------------------------------------------------------
+%\subsection{SortedCollection}
 \subsection{SortedCollection}
-In contrast to an \ct{OrderedCollection}, a \clsindmain{SortedCollection} maintains its elements in sort order. By default, a sorted collection uses the message \mthind{Magnitude}{<=} to establish sort order, so it can sort instances of subclasses of the abstract class \clsind{Magnitude}, which defines the protocol of comparable objects (\mthind{Magnitude}{<}, \mthind{Magnitude}{=}, \mthind{Magnitude}{>}, \mthind{Magnitude}{>=}, \mthind{Magnitude}{between:and:}...).
-(See \charef{basic}.)
+%In contrast to an \ct{OrderedCollection}, a \clsindmain{SortedCollection} maintains its elements in sort order. By default, a sorted collection uses the message \mthind{Magnitude}{<=} to establish sort order, so it can sort instances of subclasses of the abstract class \clsind{Magnitude}, which defines the protocol of comparable objects (\mthind{Magnitude}{<}, \mthind{Magnitude}{=}, \mthind{Magnitude}{>}, \mthind{Magnitude}{>=}, \mthind{Magnitude}{between:and:}...).
+В отличие от класса \ct{OrderedCollection}, класс \clsindmain{SortedCollection} (отсортированная коллекция) поддерживает свои элементы в упорядоченном виде. По-умолчанию отсортированная коллекция использует сообщение \mthind{Magnitude}{<=} для упорядочивания элементов. Благодаря этому, она может сортировать экземпляры подклассов абстрактного класса \clsind{Magnitude} (Величина), который определяет протокол объектов, допускающих сравнение (\mthind{Magnitude}{<}, \mthind{Magnitude}{=}, \mthind{Magnitude}{>}, \mthind{Magnitude}{>=}, \mthind{Magnitude}{between:and:}...). 
+%(See \charef{basic}.)
+(См. \charef{basic}.)
 
-You can create a \ct{SortedCollection} by creating a new instance and adding elements to it:
+%You can create a \ct{SortedCollection} by creating a new instance and adding elements to it:
+Получить отсортированную коллекцию можно, просто создав экземпляр класса \ct{SortedCollection} и добавив туда элементы:
 \begin{code}{@TEST}
 SortedCollection new add: 5; add: 2; add: 50; add: -10; yourself. --> a SortedCollection(-10 2 5 50)
 \end{code}
 
 \noindent
-More usually, though, one will send the conversion message \mthind{Collection}{asSortedCollection} to an existing collection:
+%More usually, though, one will send the conversion message \mthind{Collection}{asSortedCollection} to an existing collection:
+Однако более распространённой является конвертация имеющийся коллекции в отсортированную с помощью \mthind{Collection}{asSortedCollection}:
 \begin{code}{@TEST}
 #(5 2 50 -10) asSortedCollection --> a SortedCollection(-10 2 5 50)
 \end{code}
 
-This example answers the following FAQ:
+%This example answers the following FAQ:
+Этот пример отвечает на следующий часто задаваемый вопрос:
 
-\important{FAQ: How do you sort a collection?\\
-{\sc Answer}: Send the message \ct{asSortedCollection} to it.}
+%\important{FAQ: How do you sort a collection?\\
+\important{Вопрос: Как мне отсортировать коллекцию?\\
+%{\sc Answer}: Send the message \ct{asSortedCollection} to it.}
+{\sc Ответ}: Пошлите ей сообщение \ct{asSortedCollection}.}
 
 \begin{code}{@TEST}
 'hello' asSortedCollection --> a SortedCollection($e $h $l $l $o)
 \end{code}
 
-How do you get a \ct{String} back from this result?
-\ct{asString} unfortunately returns the \ct{printString} representation, which is not what we want:
+%How do you get a \ct{String} back from this result?
+Но как же из полученной коллекции получить обратно строку?
+%\ct{asString} unfortunately returns the \ct{printString} representation, which is not what we want:
+К сожалению метод \ct{asString} возвращает то же, что и \ct{printString}, а это не совсем то, чего мы хотим:
 \begin{code}{@TEST}
 'hello' asSortedCollection asString --> 'a SortedCollection($e $h $l $l $o)'
 \end{code}
 \noindent
-The correct answer is to either use \ct{String class>>>newFrom:}, \ct{String class>>>withAll:} or \ct{Object>>>as:}:
+%The correct answer is to either use \ct{String class>>>newFrom:}, \ct{String class>>>withAll:} or \ct{Object>>>as:}:
+Правильным же будет использование \ct{String class>>>newFrom:}, \ct{String class>>>withAll:} либо \ct{Object>>>as:}:
 \begin{code}{@TEST}
 'hello' asSortedCollection as: String              --> 'ehllo'
 String newFrom: ('hello' asSortedCollection) --> 'ehllo'
@@ -712,12 +723,14 @@ String withAll: ('hello' asSortedCollection)     --> 'ehllo'
 \end{code}
 \seeindex{Collection!sorting}{Collection, \ct{asSortedCollection}}
 
-It is possible to have different kinds of elements in a \ct{SortedCollection} as long as they are all comparable. For example we can mix different kinds of numbers such as integers, floats and fractions:
+%It is possible to have different kinds of elements in a \ct{SortedCollection} as long as they are all comparable. For example we can mix different kinds of numbers such as integers, floats and fractions:
+Вполне возможно содержать в отсортированной коллекции элементы разных типов, но при условии, что все они допускают сравнение. Например, можно смешать различные числа: целы, с плавающей точкой, обыкновенные дроби:
 \begin{code}{@TEST | col |}
 { 5. 2/-3. 5.21 } asSortedCollection --> a SortedCollection((-2/3) 5 5.21)
 \end{code}
 
-Imagine that you want to sort objects that do not define the method \ct{<=} or that you would like to have a different sorting criterion. You can do this by supplying a two argument block, called a sortblock, to the sorted collection. For example, the class \ct{Color} is not a Magnitude and it does not implement the method \ct{<=}, but we can specify a block stating that the colors should be sorted according to their luminance (a measure of brightness).
+%Imagine that you want to sort objects that do not define the method \ct{<=} or that you would like to have a different sorting criterion. You can do this by supplying a two argument block, called a sortblock, to the sorted collection. For example, the class \ct{Color} is not a Magnitude and it does not implement the method \ct{<=}, but we can specify a block stating that the colors should be sorted according to their luminance (a measure of brightness).
+Но что, если вы хотите сортировать объекты, не определяющие метода \ct{<=}, или, например, желаете использовать свой собственный критерий сортировки? Этого можно добиться, предоставив коллекции блок с двумя аргументами, называемый <<блок сортировки>> (sortblock). Например, класс \ct{Color} не является подклассом \ct{Magnitude} и не определяет метода \ct{<=}, но мы можем использовать блок, указывающий, что цвета должны сравниваться в соответствии с их \ugh{яркостью}.
 
 \begin{code}{@TEST | col |}
 col := SortedCollection sortBlock: [:c1 :c2 | c1 luminance <= c2 luminance].
