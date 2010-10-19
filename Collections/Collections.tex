@@ -623,8 +623,10 @@ Smalltalk keys collect: [ :each | each class ] --> a Set(ByteSymbol)
 % Since every key has the same class, the set of classes of keys contains only a single element, \ct{ByteSymbol}.
 
 %---------------------------------------------------------
+%\subsection{Set}
 \subsection{Set}
-The class \clsindmain{Set} is a collection which behaves as a mathematical set, \ie as a collection with no duplicate elements and without any order. In a \ct{Set} elements are added using the message \mthind{Set}{add:} and they cannot be accessed using the message \ct{at:}. Objects put in a set should implement the methods \ct{hash} and \ct{=}.
+%The class \clsindmain{Set} is a collection which behaves as a mathematical set, \ie as a collection with no duplicate elements and without any order. In a \ct{Set} elements are added using the message \mthind{Set}{add:} and they cannot be accessed using the message \ct{at:}. Objects put in a set should implement the methods \ct{hash} and \ct{=}.
+Класс \clsindmain{Set} (Множество) представляет из себя отражение математического понятия <<множество>>. Т.е. это коллекция, не содержащая дубликатов, и элементы её неупорядочены. В \ct{Set} элементы могут быть добавлены сообщением \mthind{Set}{add:}, но не могут быть получены сообщением \ct{at:}. Объекты, добавляемые во множество, должны реализовывать методы \ct{hash} и \ct{=}.
 
 \begin{code}{@TEST | s | }
 s := Set new.
@@ -632,26 +634,32 @@ s add: 4/2; add: 4; add:2.
 s size --> 2
 \end{code}
 
-You can also create sets using \cmind{Set class}{newFrom:} or the conversion message \cmind{Collection}{asSet}:
+%You can also create sets using \cmind{Set class}{newFrom:} or the conversion message \cmind{Collection}{asSet}:
+Множество можно создать также с помощью \cmind{Set class}{newFrom:} или преобразованием коллекции \cmind{Collection}{asSet}:
 
 \begin{code}{@TEST}
 (Set newFrom: #( 1 2 3 1 4 )) = #(1 2 3 4 3 2 1) asSet --> true
 \end{code}
 
-\mthind{Collection}{asSet} offers us a convenient way to eliminate duplicates from a collection:
+%\mthind{Collection}{asSet} offers us a convenient way to eliminate duplicates from a collection:
+Метод \mthind{Collection}{asSet} предлагает удобный способ избавиться от дубликатов в коллекции:
 \begin{code}{@TEST}
 { Color black. Color white. (Color red + Color blue + Color green) } asSet size --> 2
 \end{code}
 \noindent
-Note that red + blue + green = white.
+%Note that red + blue + green = white.
+Обратите внимание на то, что красный + синий + зелёный = белый.
 
-A \clsindmain{Bag} is much like a \ct{Set} except that it does allow duplicates:
+%A \clsindmain{Bag} is much like a \ct{Set} except that it does allow duplicates:
+Класс \clsindmain{Bag} (Мешок) практически тот же \ct{Set}, за исключением того, что допускает в себе наличие дубликатов.
 \begin{code}{@TEST}
 { Color black. Color white. (Color red + Color blue + Color green) } asBag size --> 3
 \end{code}
 
-The set operations \emph{union}, \emph{intersection} and \emph{membership test} are implemented by the \ct{Collection} messages \mthind{Collection}{union:}, \mthind{Collection}{intersection:} and \mthind{Collection}{includes:}.
-The receiver is first converted to a \ct{Set}, so these operations work for all kinds of collections!
+%The set operations \emph{union}, \emph{intersection} and \emph{membership test} are implemented by the \ct{Collection} messages \mthind{Collection}{union:}, \mthind{Collection}{intersection:} and \mthind{Collection}{includes:}.
+Набор операций \emph{объединения} (union), \emph{пересечения} (intersection) и \emph{проверки вхождения} (membership test) реализуются методами класса \ct{Collection} \mthind{Collection}{union:}, \mthind{Collection}{intersection:} и \mthind{Collection}{includes:} соответственно.
+%The receiver is first converted to a \ct{Set}, so these operations work for all kinds of collections!
+Т.к. получатель сначала конвертируется в \ct{Set}, эти операции работают для любых типов коллекций!
 \seeindex{Set!union}{Collection, \ct{union:}}
 \seeindex{Set!intersection}{Collection, \ct{intersection:}}
 \seeindex{Set!membership}{Collection, \ct{includes:}}
@@ -662,7 +670,8 @@ The receiver is first converted to a \ct{Set}, so these operations work for all 
 #Smalltalk includes: $k     --> true
 \end{code}
 
-As we explain below, elements of a set are accessed using iterators (see \secref{iterators}).
+%As we explain below, elements of a set are accessed using iterators (see \secref{iterators}).
+Доступ к элементам множества можно получить с помощью итераторов, о которых будте рассказано далее (см. \secref{iterators}).
 
 %---------------------------------------------------------
 \subsection{SortedCollection}
