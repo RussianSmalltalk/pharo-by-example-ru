@@ -730,7 +730,7 @@ String withAll: ('hello' asSortedCollection)     --> 'ehllo'
 \end{code}
 
 %Imagine that you want to sort objects that do not define the method \ct{<=} or that you would like to have a different sorting criterion. You can do this by supplying a two argument block, called a sortblock, to the sorted collection. For example, the class \ct{Color} is not a Magnitude and it does not implement the method \ct{<=}, but we can specify a block stating that the colors should be sorted according to their luminance (a measure of brightness).
-Но что, если вы хотите сортировать объекты, не определяющие метода \ct{<=}, или, например, желаете использовать свой собственный критерий сортировки? Этого можно добиться, предоставив коллекции блок с двумя аргументами, называемый <<блок сортировки>> (sortblock). Например, класс \ct{Color} не является подклассом \ct{Magnitude} и не определяет метода \ct{<=}, но мы можем использовать блок, указывающий, что цвета должны сравниваться в соответствии с их \ugh{яркостью}.
+Но что, если вы хотите сортировать объекты, не определяющие метода \ct{<=}, или, например, желаете использовать свой собственный критерий сортировки? Этого можно добиться, предоставив коллекции блок с двумя аргументами, называемый <<блок сортировки>> (sortblock). Например, класс \ct{Color} не является подклассом \ct{Magnitude} и не определяет метода \ct{<=}, но мы можем использовать блок, указывающий, что цвета должны сравниваться в соответствии с их относительной яркостью (luminance).
 
 \begin{code}{@TEST | col |}
 col := SortedCollection sortBlock: [:c1 :c2 | c1 luminance <= c2 luminance].
@@ -740,10 +740,14 @@ col --> a SortedCollection(Color black Color red Color yellow Color white)
 \cmindex{SortedCollection class}{sortBlock:}
 
 %---------------------------------------------------------
+%\subsection{String}
 \subsection{String}
-A \st \clsindmain{String} represents a collection of \ct{Character}s.
-It is sequenceable, indexable, mutable and homogeneous, containing only \clsind{Character} instances.
-Like \ct{Array}s, \ct{String}s have a dedicated syntax, and are normally created by directly specifying a \ct{String} literal within single quotes, but the usual collection creation methods will work as well.
+%A \st \clsindmain{String} represents a collection of \ct{Character}s.
+Строка в \st (класс \clsindmain{String}) представляет собой коллекцию знаков (класс \ct{Character}).
+%It is sequenceable, indexable, mutable and homogeneous, containing only \clsind{Character} instances.
+Эта коллекция последовательная, индексируемая, изменяемая и однородная, т.е. содержащая только экземпляры класса \clsind{Character}.
+%Like \ct{Array}s, \ct{String}s have a dedicated syntax, and are normally created by directly specifying a \ct{String} literal within single quotes, but the usual collection creation methods will work as well.
+Так же как и для массивов, для строк определён специальный синтаксис, и они обычно создаются прямо в коде определением строкового литерала в одинарных кавычках. Однако обычные для коллекций методы также будут работать.
 
 \begin{code}{@TEST | s1 s2 |}
 'Hello'                                             --> 'Hello'
@@ -752,25 +756,31 @@ String with: $h with: $i with: $BANG       --> 'hiBANG'
 String newFrom: #($h $e $l $l $o) --> 'hello'
 \end{code}
 
-In actual fact, \ct{String} is abstract.
-When we instantiate a \ct{String} we actually get either an 8-bit \clsind{ByteString} or a 32-bit \clsind{WideString}.
-To keep things simple, we usually ignore the difference and just talk about instances of \ct{String}.
+%In actual fact, \ct{String} is abstract.
+В действительности, класс \ct{String} -- абстрактный.
+%When we instantiate a \ct{String} we actually get either an 8-bit \clsind{ByteString} or a 32-bit \clsind{WideString}.
+Когда мы создаём экземпляр строки мы, на самом деле, получаем либо 8-битовую строку (\clsind{ByteString}), либо 32-битовую (\clsind{WideString}).
+%To keep things simple, we usually ignore the difference and just talk about instances of \ct{String}.
+Но, чтобы излишне не усложнять, мы это различие обычно во внимание не принимаем и говорим просто о экземплярах строки.
 
-Two instances of \ct{String} can be concatenated with a comma.
+%Two instances of \ct{String} can be concatenated with a comma.
+Две строки могут быть соединены в одну (concatenation) с помощью запятой.
 \index{Collection!comma operator}
 \begin{code}{@TEST |s|}
 s := 'no', ' ', 'worries'.
 s -->  'no worries'
 \end{code}
 
-Since a string is a mutable collection we can also change it using the method \mthind{String}{at:put:}.
+%Since a string is a mutable collection we can also change it using the method \mthind{String}{at:put:}.
+Т.к. строка -- это изменяемая коллекция, мы можем заменить любой её элемент с помощью метода \mthind{String}{at:put:}.
 
 \begin{code}{@TEST |s| s := 'no', ' ', 'worries'.}
 s at: 4 put: $h; at: 5 put: $u.
 s --> 'no hurries'
 \end{code}
 
-Note that the comma method is defined by \ct{Collection}, so it will work for any kind of collection!
+%Note that the comma method is defined by \ct{Collection}, so it will work for any kind of collection!
+Обратите внимание на то, что метод <<запятая>> определён в классе \ct{Collection}, поэтому будет работать для всех видов коллекций!
 \begin{code}{@TEST}
 (1 to: 3) , '45' --> #(1 2 3 $4 $5)
 \end{code}
@@ -778,7 +788,8 @@ Note that the comma method is defined by \ct{Collection}, so it will work for an
 \seeindex{String!comma}{Collection, comma operator}
 \index{Collection!comma operator}
 
-We can also modify an existing string using \mthind{String}{replaceAll:with:} or \mthind{String}{replaceFrom:to:with:} as shown below. Note that the number of characters and the interval should have the same size.
+%We can also modify an existing string using \mthind{String}{replaceAll:with:} or \mthind{String}{replaceFrom:to:with:} as shown below. Note that the number of characters and the interval should have the same size.
+Существующую строку можно также изменить с помощью методов \mthind{String}{replaceAll:with:} или \mthind{String}{replaceFrom:to:with:}.
 
 \begin{code}{@TEST |s| s := 'no hurries' copy.}
 s replaceAll: $n with: $N.
@@ -787,37 +798,47 @@ s replaceFrom: 4 to: 5 with: 'wo'.
 s --> 'No worries'
 \end{code}
 
-In contrast to the methods described above, the method \mthind{String}{copyReplaceAll:} creates a new string.
-(Curiously, here the arguments are substrings rather than individual characters, and their sizes do not have to match.)
+%In contrast to the methods described above, the method \mthind{String}{copyReplaceAll:} creates a new string.
+В противоположность перечисленным выше методам, метод \mthind{String}{copyReplaceAll:} создаёт новую строку.
+%(Curiously, here the arguments are substrings rather than individual characters, and their sizes do not have to match.)
+(Забавно, что здесь в качестве аргументов принимаются подстроки, а не отдельные знаки, причём их размеры могут не совпадать.)
 
 \begin{code}{@TEST |s| s:= 'No worries' copy.}
 s copyReplaceAll: 'rries' with: 'mbats' --> 'No wombats'
 \end{code}
 
-A quick look at the implementation of these methods reveals that they are defined not only for \ct{String}s, but for any kind of \ct{SequenceableCollection}, so the following also works:
+%A quick look at the implementation of these methods reveals that they are defined not only for \ct{String}s, but for any kind of \ct{SequenceableCollection}, so the following also works:
+Один взгляд на реализацию этих методов даёт понять, что они определены не только для строк, но и для всех последовательных коллекций (\ct{SequenceableCollection}). Поэтому данный код тоже будет работать:
 
 \begin{code}{@TEST}
 (1 to: 6) copyReplaceAll: (3 to: 5) with: { 'three'. 'etc.' } --> #(1 2 'three' 'etc.' 6)
 \end{code}
 
-\paragraph{String matching.}
+%\paragraph{String matching.}
+\paragraph{Сопоставление строк с шаблоном.}
 \index{String!pattern matching}
-It is possible to ask whether a pattern matches a string by sending the \mthind{String}{match:} message.
-The pattern can specify \ct{*} to match an arbitrary series of characters and \# to match a single character. Note that \ct{match:} is sent to the pattern and not the string to be matched.
+%It is possible to ask whether a pattern matches a string by sending the \mthind{String}{match:} message.
+Чтобы узнать, соответствует ли строка шаблону, нужно послать ему сообщение \mthind{String}{match:}.
+%The pattern can specify \ct{*} to match an arbitrary series of characters and \# to match a single character. Note that \ct{match:} is sent to the pattern and not the string to be matched.
+Шаблон может содержать символ \ct{*}, означающий произвольную цепочку знаков, а также \#, означающий один любой знак. Заметьте, \ct{match:} посылается шаблону, а не строке, с которой производится сопоставление.
+
 \begin{code}{@TEST}
 'Linux *' match: 'Linux mag'                      --> true
 'GNU/Linux #ag' match: 'GNU/Linux tag' --> true
 \end{code}
 
-Another useful method is \ct{findString:}.
+%Another useful method is \ct{findString:}.
+Другой полезный метод -- это \ct{findString:}.
 \begin{code}{@TEST}
 'GNU/Linux mag' findString: 'Linux'                                                      --> 5
 'GNU/Linux mag' findString: 'linux' startingAt: 1 caseSensitive: false  --> 5
 \end{code}
 
-More advanced pattern matching facilities offering the capabilities of Perl are also available in the \pkgind{Regex} package.
+%More advanced pattern matching facilities offering the capabilities of Perl are also available in the \pkgind{Regex} package.
+Более продвинутые средства для сопоставления с образцом, совпадающие по мощи с аналогичными средствами языка Perl, доступны в пакете \pkgind{Regex}.
 
-\paragraph{Some tests on strings.} The  following examples illustrate the use of \mbox{\mthind{String}{isEmpty},} \mthind{String}{includes:} and \mthind{String}{anySatisfy:} which are further messages defined not only on Strings but more generally on collections. 
+%\paragraph{Some tests on strings.} The  following examples illustrate the use of \mbox{\mthind{String}{isEmpty},} \mthind{String}{includes:} and \mthind{String}{anySatisfy:} which are further messages defined not only on Strings but more generally on collections. 
+\paragraph{Некотрые проверки на строках.} Следующие примеры демонстрируют использование методов \mbox{\mthind{String}{isEmpty} (проверка на пустоту),} \mthind{String}{includes:} (проверка вхождения) и \mthind{String}{anySatisfy:} (проверка на соответствие какого-либо элемента заданному критерию), которые также представляют собой сообщения, поддерживаемые не только строками но и другими коллекциями.
 
 \begin{code}{@TEST}
 'Hello' isEmpty --> false
@@ -826,14 +847,17 @@ More advanced pattern matching facilities offering the capabilities of Perl are 
 'Joe' anySatisfy: [:c | c isLowercase] --> true
 \end{code}
 
-\paragraph{String templating.}
-There are three messages that are useful to manage string \subind{String}{templating}: \mthind{String}{format:}, \mthind{String}{expandMacros} and \mthind{String}{expandMacrosWith:}.
+%\paragraph{String templating.}
+\paragraph{Шаблонизация строк.}
+%There are three messages that are useful to manage string \subind{String}{templating}: \mthind{String}{format:}, \mthind{String}{expandMacros} and \mthind{String}{expandMacrosWith:}.
+В эту категорию попадают три сообщения из протокола \subind{String}{templating}: \mthind{String}{format:}, \mthind{String}{expandMacros} и \mthind{String}{expandMacrosWith:}.
 
 \begin{code}{@TEST}
 '{1} is {2}' format: {'Pharo' . 'cool'}  --> 'Pharo is cool'
 \end{code}
 
-The messages of the expandMacros family offer variable substitution, using \ct{<n>} for carriage return, \ct{<t>} for tabulation, \ct{<1s>}, \ct{<2s>}, \ct{<3s>} for arguments (\ct{<1p>}, \ct{<2p>}, surrounds the string with single quotes), and \ct{<1?value1:value2>} for conditional.
+%The messages of the expandMacros family offer variable substitution, using \ct{<n>} for carriage return, \ct{<t>} for tabulation, \ct{<1s>}, \ct{<2s>}, \ct{<3s>} for arguments (\ct{<1p>}, \ct{<2p>}, surrounds the string with single quotes), and \ct{<1?value1:value2>} for conditional.
+Сообщения из семейства expandMacros предоставляют возможности по замене переменных, используя \ct{<n>} для перевода строки, \ct{<t>} для табуляции, \ct{<1s>}, \ct{<2s>}, \ct{<3s>} для аргументов (\ct{<1p>}, \ct{<2p>} помещают свои значения в одинарные кавычки) и \ct{<1?value1:value2>} для условных подстановок.
 
 \begin{code}{@TEST}
 'look-<t>-here' expandMacros                                         --> 'look-	-here'
@@ -844,8 +868,10 @@ The messages of the expandMacros family offer variable substitution, using \ct{<
 '<1?Quentin:Thibaut> plays' expandMacrosWith: false    --> 'Thibaut plays'
 \end{code}
 
-\paragraph{Some other utility methods.}
-The class \ct{String} offers numerous other utilities including the messages \mthind{String}{asLowercase}, \mthind{String}{asUppercase} and \mthind{String}{capitalized}. 
+%\paragraph{Some other utility methods.}
+\paragraph{Ещё несколько полезных методов.}
+%The class \ct{String} offers numerous other utilities including the messages \mthind{String}{asLowercase}, \mthind{String}{asUppercase} and \mthind{String}{capitalized}. 
+Класс \ct{String} предоставляет несколько других полезных сообщений, включая \mthind{String}{asLowercase}, \mthind{String}{asUppercase} и \mthind{String}{capitalized}. 
 
 \begin{code}{@TEST}
 'XYZ' asLowercase --> 'xyz'
@@ -855,16 +881,20 @@ The class \ct{String} offers numerous other utilities including the messages \mt
 'this sentence is without a doubt far too long' contractTo: 20 --> 'this sent...too long'
 \end{code}
 
-Note that there is generally a difference between asking an object its string representation by sending the message \mthind{Object}{printString} and converting it to a string by sending the message \mthind{Object}{asString}.
-Here is an example of the difference.
+%Note that there is generally a difference between asking an object its string representation by sending the message \mthind{Object}{printString} and converting it to a string by sending the message \mthind{Object}{asString}.
+Заметьте, что в общем случае существует разница между получением строкового представления объекта путём посылки сообщения \mthind{Object}{printString} и преобразованием его в строку с помощью сообщения \mthind{Object}{asString}.
+%Here is an example of the difference.
+Вот несколько примеров.
 
 \begin{code}{@TEST}
 #ASymbol printString --> '#ASymbol'
 #ASymbol asString    --> 'ASymbol'
 \end{code}
 
-A symbol is similar to a string but is guaranteed to be globally unique.  For this reason symbols are preferred to strings as keys for dictionaries, in particular for instances of \ct{IdentityDictionary}.
-See also \charef{basic} for more about \clsind{String} and \clsind{Symbol}.
+%A symbol is similar to a string but is guaranteed to be globally unique.  For this reason symbols are preferred to strings as keys for dictionaries, in particular for instances of \ct{IdentityDictionary}.
+Символ (symbol) идентичен строке, но гарантирует собственную глобальную уникальность. Из-за этого символы являются предпочтительнее строк в роли словарных ключей, в частности для экземпляров \ct{IdentityDictionary}.
+%See also \charef{basic} for more about \clsind{String} and \clsind{Symbol}.
+За более подробной информацией о строках (\clsind{String}) и символах \clsind{Symbol} обращайтесь также к \charef{basic}.
 
 %=========================================================
 \section{Collection iterators}
