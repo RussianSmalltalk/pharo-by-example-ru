@@ -897,39 +897,50 @@ s copyReplaceAll: 'rries' with: 'mbats' --> 'No wombats'
 За более подробной информацией о строках (\clsind{String}) и символах \clsind{Symbol} обращайтесь также к \charef{basic}.
 
 %=========================================================
-\section{Collection iterators}
+%\section{Collection iterators}
+\section{Итераторы}
 \seclabel{iterators}
 
-In \st loops and conditionals are simply messages sent to collections or other objects such as integers or blocks (see also \charef{syntax}). In addition to low-level messages such as \ct{to:do:} which evaluates a block with an argument ranging from an initial to a final number, the \st collection hierarchy offers various high-level iterators. Using such iterators will make your code more robust and compact. 
+%In \st loops and conditionals are simply messages sent to collections or other objects such as integers or blocks (see also \charef{syntax}). In addition to low-level messages such as \ct{to:do:} which evaluates a block with an argument ranging from an initial to a final number, the \st collection hierarchy offers various high-level iterators. Using such iterators will make your code more robust and compact. 
+В \st циклы и условные ветвления -- это такие же сообщения, посылаемые коллекциям или другим объектам, таким как, например, целые числа, блоки и т.д. (см. \charef{syntax}). В добавок к низкоуровневым циклам типа сообщения \ct{to:do:}, которое вычисляет блок с аргументом, меняющимся в диапазоне, ограниченном двумя числами, коллекции в \st предоставляют множество высокоуровневых итераторов. Использование итераторов делает код более надёжным и компактным.
 \index{Collection!iteration}
 
 %---------------------------------------------------------
-\subsection{Iterating (\lct{do:})}
-The method \mthind{Collection}{do:} is the basic collection iterator. It applies its argument (a block taking a single argument) to each element of the receiver.
-The following example prints all the strings contained in the receiver to the transcript.
+%\subsection{Iterating (\lct{do:})}
+\subsection{Итерация (\lct{do:})}
+%The method \mthind{Collection}{do:} is the basic collection iterator. It applies its argument (a block taking a single argument) to each element of the receiver.
+Метод \mthind{Collection}{do:} является базовым итератором коллекций. Он применяет свой аргумент (блок с одним параметром) к каждому элементу получателя.
+%The following example prints all the strings contained in the receiver to the transcript.
+Следующий пример \ugh{печатает} все строки, содержащиеся в получателе.
 
 \begin{code}{}
 #('bob' 'joe' 'toto') do: [:each | Transcript show: each; cr].
 \end{code}
 
-\paragraph{Variants.} There are a lot of variants of \ct{do:}, such as \mbox{\mthind{Collection}{do:without:},} \mbox{\mthind{SequenceableCollection}{doWithIndex:}} and \mthind{OrderedCollection}{reverseDo:}:
-For the indexed collections (\ct{Array}, \ct{OrderedCollection}, \ct{SortedCollection}) the method \mthind{SequenceableCollection}{doWithIndex:} also gives access to the current index. This method is related to \ct{to:do:} which is defined in class \ct{Number}.
+%\paragraph{Variants.} There are a lot of variants of \ct{do:}, such as \mbox{\mthind{Collection}{do:without:},} \mbox{\mthind{SequenceableCollection}{doWithIndex:}} and \mthind{OrderedCollection}{reverseDo:}:
+\paragraph{Многообразие \lct{do:}.} Существует много вариантов метода \ct{do:}, например, \mbox{\mthind{Collection}{do:without:},} \mbox{\mthind{SequenceableCollection}{doWithIndex:}} и \mthind{OrderedCollection}{reverseDo:}:
+%For the indexed collections (\ct{Array}, \ct{OrderedCollection}, \ct{SortedCollection}) the method \mthind{SequenceableCollection}{doWithIndex:} also gives access to the current index. This method is related to \ct{to:do:} which is defined in class \ct{Number}.
+Для индексированных коллекций (\ct{Array}, \ct{OrderedCollection}, \ct{SortedCollection}) метод \mthind{SequenceableCollection}{doWithIndex:} позволяет получить доступ не только к текущему элементу, но и к его индексу. Он имеет отношение к методу \ct{to:do:}, определённому в классе \ct{Number}.
 
 \begin{code}{@TEST}
 #('bob' 'joe' 'toto') doWithIndex: [:each :i | (each = 'joe') ifTrue: [ ^ i ] ] --> 2
 \end{code}
 
-For ordered collections, \mthind{OrderedCollection}{reverseDo:} walks the collection in the reverse order. 
+%For ordered collections, \mthind{OrderedCollection}{reverseDo:} walks the collection in the reverse order. 
+Для упорядоченных коллекций метод \mthind{OrderedCollection}{reverseDo:} проходит по их содержимому в обратном порядке.
 
-The following code shows an interesting message: \mthind{Collection}{do:separatedBy:} which 
-executes the second block only in between two elements.
+%The following code shows an interesting message: \mthind{Collection}{do:separatedBy:} which 
+Следующий код демонстрирует интересное сообщение \mthind{Collection}{do:separatedBy:}, которое
+%executes the second block only in between two elements.
+выполняет второй блок только в промежутке между обработкой двух элементов.
 \begin{code}{@TEST | res | }
 res := ''.
 #('bob' 'joe' 'toto') do: [:e | res := res, e ] separatedBy: [res := res, '.'].
 res --> 'bob.joe.toto'
 \end{code}
 \noindent
-Note that this code is not especially efficient since it creates intermediate strings and it would be better to use a write stream to buffer the result (see \charef{streams}):
+%Note that this code is not especially efficient since it creates intermediate strings and it would be better to use a write stream to buffer the result (see \charef{streams}):
+Приведённый код не очень эффективен, т.к. создаёт промежуточные строки, и будет лучше использовать поток (stream) для записи результата (see \charef{streams}):
 \begin{code}{@TEST}
 String streamContents: [:stream | #('bob' 'joe' 'toto') asStringOn: stream delimiter: '.' ] --> 'bob.joe.toto'
 \end{code}
@@ -946,22 +957,28 @@ String streamContents: [:stream | #('bob' 'joe' 'toto') asStringOn: stream delim
 %res --> 'bob.joe.toto'
 
 
-\paragraph{Dictionaries.}
-When the message \mthind{Dictionary}{do:} is sent to a dictionary, the elements taken into account are the values, not the associations. The proper methods to use are \mthind{Dictionary}{keysDo:}, \mthind{Dictionary}{valuesDo:}, and \mthind{Dictionary}{associationsDo:}, which iterate respectively on keys, values or associations.
+%\paragraph{Dictionaries.}
+\paragraph{Словари (Dictionaries).}
+%When the message \mthind{Dictionary}{do:} is sent to a dictionary, the elements taken into account are the values, not the associations. The proper methods to use are \mthind{Dictionary}{keysDo:}, \mthind{Dictionary}{valuesDo:}, and \mthind{Dictionary}{associationsDo:}, which iterate respectively on keys, values or associations.
+Когда сообщение \mthind{Dictionary}{do:} обрабатывает словарь, итерация происходит по значениям, а не по ассоциациям. Чтобы указать по чему именно будет происходить итерация, нужно использовать методы \mthind{Dictionary}{keysDo:}, \mthind{Dictionary}{valuesDo:} и \mthind{Dictionary}{associationsDo:}, которые итерируют по ключам, значениям и ассоциациям соответственно.
 
 \begin{code}{}
 colors := Dictionary newFrom: { #yellow -> Color yellow. #blue -> Color blue. #red -> Color red }.
-colors keysDo: [:key | Transcript show: key; cr].                    "displays the keys"
-colors valuesDo: [:value | Transcript show: value;cr].            "displays the values"
-colors associationsDo: [:value | Transcript show: value;cr].  "displays the associations"
+colors keysDo: [:key | Transcript show: key; cr].                    "выводит ключи"
+colors valuesDo: [:value | Transcript show: value; cr].            "выводит значения"
+colors associationsDo: [:value | Transcript show: value; cr].  "выводит ассоциации"
 \end{code}
 
 %---------------------------------------------------------
-\subsection{Collecting results (\lct{collect:})}
-If you want to process the elements of a collection and produce a new collection as a result, rather than using \ct{do:}, you are probably better off using \ct{collect:}, or one of the other iterator methods.
-Most of these can be found in the \protind{enumerating} protocol of \ct{Collection} and its subclasses.
+%\subsection{Collecting results (\lct{collect:})}
+\subsection{Сбор результатов (\lct{collect:})}
+%If you want to process the elements of a collection and produce a new collection as a result, rather than using \ct{do:}, you are probably better off using \ct{collect:}, or one of the other iterator methods.
+Если вы хотите обработать элементы одной коллекции и создать из них другую, вместо \ct{do:} лучше использовать \ct{collect:} или какой-нибудь другой метод-итератор.
+%Most of these can be found in the \protind{enumerating} protocol of \ct{Collection} and its subclasses.
+Большинство из них вы найдёте в протоколе \protind{enumerating} (перечисление) класса \ct{Collection} и его подклассов.
 
-Imagine that we want a collection containing the doubles of the elements in another collection. Using the method \ct{do:} we must write the following:
+%Imagine that we want a collection containing the doubles of the elements in another collection. Using the method \ct{do:} we must write the following:
+Представьте, что нам нужна коллекция, содержащая удвоенные значения элементов из другой коллекции. Используя метод \ct{do:} мы должны написать следующее:
 
 \begin{code}{@TEST | double |}
 double := OrderedCollection new.
@@ -970,13 +987,16 @@ double --> an OrderedCollection(2 4 6 8 10 12)
 \end{code}
 
 \noindent
-The method \mthind{Collection}{collect:} executes its argument block for each element and returns a new collection containing the results. 
-Using \ct{collect:} instead, the code is much simpler:
+%The method \mthind{Collection}{collect:} executes its argument block for each element and returns a new collection containing the results. 
+Метод \mthind{Collection}{collect:} выполняет блок, передаваемый ему в качестве аргумента, для каждого элемента и возвращает новую коллекцию, содержащую результаты выполнения блока.
+%Using \ct{collect:} instead, the code is much simpler:
+С методом \ct{collect:} код выглядит намного проще:
 \begin{code}{@TEST}
 #(1 2 3 4 5 6) collect: [:e | 2 * e] --> #(2 4 6 8 10 12)
 \end{code}
 
-The advantages of \ct{collect:} over \mthind{Collection}{do:} are even more dramatic in the following example, where we take a collection of integers and generate as a result a collection of absolute values of these integers:
+%The advantages of \ct{collect:} over \mthind{Collection}{do:} are even more dramatic in the following example, where we take a collection of integers and generate as a result a collection of absolute values of these integers:
+Преимущества использования \ct{collect:} перед \mthind{Collection}{do:} становятся ещё более заметны в следующем примере, где на входе мы имеем коллекцию целых чисел, а на выходе должны получить коллекцию их модулей.
 
 \begin{code}{@TEST |aCol result|}
 aCol :=  #( 2 -3 4 -35 4 -11).
@@ -985,98 +1005,123 @@ result := aCol species new: aCol size.
 result --> #(2 3 4 35 4 11)
 \end{code}
 \noindent
-Contrast the above with the much simpler following expression:
+%Contrast the above with the much simpler following expression:
+А теперь сравните это со следующим выражением:
 \begin{code}{@TEST}
 #( 2 -3 4 -35 4 -11) collect: [:each | each abs ] --> #(2 3 4 35 4 11)
 \end{code}
 \noindent
-A further advantage of the second solution is that it will also work for sets and bags.
+%A further advantage of the second solution is that it will also work for sets and bags.
+Преимущество второго подхода также в том, что он будет работать также для множеств и других подобных коллекций.
 
-Generally you should avoid using \ct{do:}, unless you want to send messages to each of the elements of a collection.
+%Generally you should avoid using \ct{do:}, unless you want to send messages to each of the elements of a collection.
+В общем случае старайтесь не использовать \ct{do:}, \ugh{unless you want to send messages to each of the elements of a collection}.
 
-Note that sending the message \ct{collect:} returns the same kind of collection as the receiver.
-For this reason the following code fails.
+%Note that sending the message \ct{collect:} returns the same kind of collection as the receiver.
+Учитывайте, что посылка сообщения \ct{collect:} возвращает коллекцию того же типа, что и получатель.
+%For this reason the following code fails.
+По этой причине следующий код завершится с ошибкой.
 (A \ct{String} cannot hold integer values.)
 \begin{code}{}
 'abc' collect: [:ea | ea asciiValue ]      "errorBANG"
 \end{code}
 \noindent
-Instead we must first convert the string to an \ct{Array} or an \ct{OrderedCollection}:
+%Instead we must first convert the string to an \ct{Array} or an \ct{OrderedCollection}:
+Вместо этого мы должны сначала преобразовать строку к массиву или экземляру \ct{OrderedCollection}:
 \begin{code}{@TEST}
 'abc' asArray collect: [:ea | ea asciiValue ] --> #(97 98 99)
 \end{code}
 
-Actually \ct{collect:} is not guaranteed to return a collection of exactly the same class as the receiver, but only the same \emph{``species''}.  In the case of an \ct{Interval}, the species is actually an \ct{Array}!
+%Actually \ct{collect:} is not guaranteed to return a collection of exactly the same class as the receiver, but only the same \emph{``species''}.  In the case of an \ct{Interval}, the species is actually an \ct{Array}!
+Хотя на самом деле нет гарантий, что \ct{collect:} вернёт коллекцию того же класса, что и получатель. Он вернёт коллекцию того же \emph{<<вида>>} (species). В случае интервала (\ct{Interval}), видом на самом деле является массив!
 \begin{code}{@TEST}
 (1 to: 5) collect: [ :ea | ea * 2 ] --> #(2 4 6 8 10)
 \end{code}
 
 %---------------------------------------------------------
-\subsection{Selecting and rejecting elements}
+%\subsection{Selecting and rejecting elements}
+\subsection{Выборка и исключение элементов}
 % (\ct{select:}, \ct{reject:}, \ct{detect:})}
 
-\mthind{Collection}{select:} returns the elements of the receiver that satisfy a particular condition:
+%\mthind{Collection}{select:} returns the elements of the receiver that satisfy a particular condition:
+Метод \mthind{Collection}{select:} возвращает элементы получателя, удовлетворяющие заданному условию:
 
 \begin{code}{@TEST}
 (2 to: 20) select: [:each | each isPrime] --> #(2 3 5 7 11 13 17 19)
 \end{code}
 
-\mthind{Collection}{reject:} does the opposite:
+%\mthind{Collection}{reject:} does the opposite:
+Метод \mthind{Collection}{reject:} делает прямо противоположное:
 \begin{code}{@TEST}
 (2 to: 20) reject: [:each | each isPrime] --> #(4 6 8 9 10 12 14 15 16 18 20)
 \end{code}
 
 %---------------------------------------------------------
-\subsection{Identifying an element with \lct{detect:}}
-The method \mthind{OrderedCollection}{detect:} returns the first element of the receiver that matches block argument. 
+%\subsection{Identifying an element with \lct{detect:}}
+\subsection{Поиск элемента с помощью \lct{detect:}}
+%The method \mthind{OrderedCollection}{detect:} returns the first element of the receiver that matches block argument. 
+Метод \mthind{OrderedCollection}{detect:} возвращает первый элемент коллекции-получателся, для которого переданный в качестве аргумента блок вернёт значение <<истина>>.
 
 \begin{code}{@TEST}
 'through' detect: [:each | each isVowel] --> $o
 \end{code}
 
-The method \mthind{Collection}{detect:ifNone:} is a variant of the method \ct{detect:}. Its second block is evaluated
-when there is no element matching the block.
+%The method \mthind{Collection}{detect:ifNone:} is a variant of the method \ct{detect:}. Its second block is evaluated
+Метод \mthind{Collection}{detect:ifNone:} -- это разновидность метода \ct{detect:}. Вторым его аргументом является блок, выполняющийся,
+%when there is no element matching the block.
+если элементов соответствующих первому блоку не было найдено.
 
 \begin{code}{@TEST}
 Smalltalk allClasses detect: [:each | '*cobol*' match: each asString] ifNone: [ nil ] --> nil
 \end{code}
 
 %---------------------------------------------------------
-\subsection{Accumulating results with \lct{inject:into:}}
-Functional programming languages often provide a higher-order function called \emph{fold} or \emph{reduce} to accumulate a result by applying some binary operator iteratively over all elements of a collection.
-In \pharo this is done by \cmind{Collection}{inject:into:}.
+%\subsection{Accumulating results with \lct{inject:into:}}
+\subsection{Накопление результатов с помощью \lct{inject:into:}}
+%Functional programming languages often provide a higher-order function called \emph{fold} or \emph{reduce} to accumulate a result by applying some binary operator iteratively over all elements of a collection.
+Функциональные языки программирования часто имеют в своём составе функции высшего порядка \emph{fold} или \emph{reduce} (функция свёртки списка), для накопления результата последовательного применения бинарного оператора ко всем элементам коллекции.
+%In \pharo this is done by \cmind{Collection}{inject:into:}.
+В \pharo за это отвечает метод \cmind{Collection}{inject:into:}.
 
-The first argument is an initial value, and the second argument is a two-argument block which is applied to the result this far, and each element in turn.
+%The first argument is an initial value, and the second argument is a two-argument block which is applied to the result this far, and each element in turn.
+Первый аргумент -- это начальное значение, а второй -- это блок, принимающий два параметра, который применяется к текущему результату вычисления и каждому элементу по-очереди.
 
-A trivial application of \ct{inject:into:} is to produce the sum of a collection of numbers.
-Following Gauss, in \pharo we could write this expression to sum the first 100 integers:
+%A trivial application of \ct{inject:into:} is to produce the sum of a collection of numbers.
+Простейшее приложение \ct{inject:into:} -- сумма элементов в коллекции чисел.
+%Following Gauss, in \pharo we could write this expression to sum the first 100 integers:
+Следуя примеру Гаусса, мы могли бы посчитать сумму первых ста целых чисел. В \pharo это выглядит как:
 \begin{code}{@TEST}
 (1 to: 100) inject: 0 into: [:sum :each | sum + each ] --> 5050
 \end{code}
 
-Another example is the following one-argument block which computes factorials:
+%Another example is the following one-argument block which computes factorials:
+Другой пример -- блок с одним аргументом для подсчёта факториала:
 \begin{code}{@TEST |factorial|}
 factorial := [:n | (1 to: n) inject: 1 into: [:product :each | product * each ] ].
 factorial value: 10 --> 3628800
 \end{code}
 
 %---------------------------------------------------------
-\subsection{Other messages}
+%\subsection{Other messages}
+\subsection{Прочие сообщения}
 
-\paragraph{\mthind{Collection}{count:}} The message \ct{count:} returns the number of elements satisfying a condition.  The condition is represented as a boolean block.
+%\paragraph{\mthind{Collection}{count:}} The message \ct{count:} returns the number of elements satisfying a condition.  The condition is represented as a boolean block.
+\paragraph{\mthind{Collection}{count:}} Сообщение \ct{count:} возвращает количество элементов, соответствующих некоторому условию. Условие представляется блоком, возвращающим логическое значение.
 
 \begin{code}{@TEST}
 Smalltalk allClasses count: [:each | 'Collection*' match: each asString ] --> 3
 \end{code}
 
-\paragraph{\mthind{Collection}{includes:}} The message \ct{includes:} checks whether the argument is contained in the collection. 
+%\paragraph{\mthind{Collection}{includes:}} The message \ct{includes:} checks whether the argument is contained in the collection. 
+\paragraph{\mthind{Collection}{includes:}} Сообщение \ct{includes:} проверяет, содержится ли данный элемент в коллекции.
 
 \begin{code}{@TEST | colors |}
 colors := {Color white . Color yellow. Color red . Color blue . Color orange}.
 colors includes: Color blue. --> true
 \end{code}
 
-\paragraph{\mthind{OrderedCollection}{anySatisfy:}} The message \ct{anySatisfy:} answers true if at least one element of the collection satisfies the condition represented by the argument.
+%\paragraph{\mthind{OrderedCollection}{anySatisfy:}} The message \ct{anySatisfy:} answers true if at least one element of the collection satisfies the condition represented by the argument.
+\paragraph{\mthind{OrderedCollection}{anySatisfy:}} Сообщение \ct{anySatisfy:} возвращает значение <<истина>>, если по крайней мере один элемент удовлетворяет условию, переданному в качестве аргумента.
 
 \begin{code}{@TEST | colors | colors := {Color white . Color yellow. Color red . Color blue . Color orange}.}
 colors anySatisfy: [:c | c red > 0.5] --> true
