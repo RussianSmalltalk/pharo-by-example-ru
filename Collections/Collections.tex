@@ -1206,21 +1206,33 @@ Book>>>hash
 Не делайте этого, если вам не нравится проводить время в отладчике!
 
 %=========================================================
-\section{Chapter summary}
+%\section{Chapter summary}
+\section{Итоги глваы}
 
-The \st collection hierarchy provides a common vocabulary for uniformly manipulating a variety of different kinds of collections.
+%The \st collection hierarchy provides a common vocabulary for uniformly manipulating a variety of different kinds of collections.
+Иерархия коллекций в \st предоставляет общий лексикон для единообразной работы с разными типами коллекций.
 
 \begin{itemize}
-  \item A key distinction is between \ct{SequenceableCollection}s, which maintain their elements in a given order, \ct{Dictionary} and its subclasses, which maintain key-to-value associations, and \ct{Set}s and \ct{Bag}s, which are unordered.
-  \item You can convert most collections to another kind of collection by sending them the messages \ct{asArray}, \ct{asOrderedCollection} \etc.
-  \item To sort a collection, send it the message \ct{asSortedCollection}.
-  \item Literal \ct{Array}s are created with the special syntax \ct{#( ... )}.  Dynamic \ct{Array}s are created with the syntax \ct|{ ... }|.
-  \item A \ct{Dictionary} compares keys by equality. It is most useful when keys are instances of \ct{String}. An \ct{IdentityDictionary} instead uses object identity to compare keys.  It is more suitable when \ct{Symbol}s are used as keys, or when mapping object references to values.
-  \item \ct{String}s also understand the usual collection messages.  In addition, a \ct{String} supports a simple form of pattern-matching. For more advanced application, look instead at the RegEx package.
-  \item The basic iteration message is \ct{do:}. It is useful for imperative code, such as modifying each element of a collection, or sending each element a message.
-  \item Instead of using \ct{do:}, it is more common to use \ct{collect:}, \ct{select:}, \ct{reject:}, \ct{includes:}, \ct{inject:into:} and other higher-level messages to process collections in a uniform way.
-  \item Never remove an element from a collection you are iterating over. If you must modify it, iterate over a copy instead.
-  \item If you override \ct{=}, remember to override \ct{hash} as well!
+%  \item A key distinction is between \ct{SequenceableCollection}s, which maintain their elements in a given order, \ct{Dictionary} and its subclasses, which maintain key-to-value associations, and \ct{Set}s and \ct{Bag}s, which are unordered.
+  \item Ключевые различия существуют между классами \ct{SequenceableCollection}, поддерживающим свои элементы в определённом порядке, \ct{Dictionary} и его подклассами, которые поддерживают ассоциации ключ-значение, а также \ct{Set} и \ct{Bag}, элементы которых не имеют установленного порядка.
+%  \item You can convert most collections to another kind of collection by sending them the messages \ct{asArray}, \ct{asOrderedCollection} \etc.
+  \item Вы можете конвертировать большинство коллекций в коллекции других типов, посылая им сообщения \ct{asArray}, \ct{asOrderedCollection} \etc.
+%  \item To sort a collection, send it the message \ct{asSortedCollection}.
+  \item Чтобы отсортировать коллекцию, пошлите ей сообщение \ct{asSortedCollection}.
+%  \item Literal \ct{Array}s are created with the special syntax \ct{#( ... )}.  Dynamic \ct{Array}s are created with the syntax \ct|{ ... }|.
+  \item Литеральные массивы создаются с помощью специального синтаксиса \ct{#( ... )}. Динамические массивы создаются с помощью синтаксиса \ct|{ ... }|.
+%  \item A \ct{Dictionary} compares keys by equality. It is most useful when keys are instances of \ct{String}. An \ct{IdentityDictionary} instead uses object identity to compare keys.  It is more suitable when \ct{Symbol}s are used as keys, or when mapping object references to values.
+  \item Класс \ct{Dictionary} проверяет ключи на равенство. Он удобен, если ключи являются экземплярами класса \ct{String}. Класс \ct{IdentityDictionary}, напротив, использует проверку ключей на идентичность. Его лучше использовать, если ключи являются экземплярами класса \ct{Symbol}, или при отображении ссылок на объекты на их значения.
+%  \item \ct{String}s also understand the usual collection messages.  In addition, a \ct{String} supports a simple form of pattern-matching. For more advanced application, look instead at the RegEx package.
+  \item Строки тоже поддерживают сообщения коллекций. В дополнение к этому, строки поддерживают простейшие формы сопоставления с образцом. Для более сложных случаев используйте пакет RegEx.
+%  \item The basic iteration message is \ct{do:}. It is useful for imperative code, such as modifying each element of a collection, or sending each element a message.
+  \item Базовое сообщение для итераци -- \ct{do:}. Оно удобно для императивного кода, такого, как модификация каждого элемента коллекции, или посылка каждому элементу сообщения.
+%  \item Instead of using \ct{do:}, it is more common to use \ct{collect:}, \ct{select:}, \ct{reject:}, \ct{includes:}, \ct{inject:into:} and other higher-level messages to process collections in a uniform way.
+  \item Вместо использования \ct{do:}, часто лучше использовать \ct{collect:}, \ct{select:}, \ct{reject:}, \ct{includes:}, \ct{inject:into:} и другие более высокоуровневые сообщения для единообразной работы с коллекции.
+%  \item Never remove an element from a collection you are iterating over. If you must modify it, iterate over a copy instead.
+  \item Никогда не удаляйте элемент из коллекции во время итерации по ней. Если вам нужно модифицировать коллекцию, сделайте прежде копию и производите итерацию по ней.
+%  \item If you override \ct{=}, remember to override \ct{hash} as well!
+  \item Если вы переопределяете метод \ct{=}, не забудьте переопределить также и метод \ct{hash}!
 \end{itemize}
 
 %=========================================================
