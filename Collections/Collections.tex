@@ -1127,9 +1127,11 @@ colors includes: Color blue. --> true
 colors anySatisfy: [:c | c red > 0.5] --> true
 \end{code}
 %=========================================================
-\section{Some hints for using collections}
+%\section{Some hints for using collections}
+\section{Несколько советов по использованию коллекций}
 
-\paragraph{A common mistake with \mthind{OrderedCollection}{add:}} The following error is one of the most frequent \st mistakes.
+%\paragraph{A common mistake with \mthind{OrderedCollection}{add:}} The following error is one of the most frequent \st mistakes.
+\paragraph{Распространённая ошибка с \mthind{OrderedCollection}{add:}} Следующая ошибка является одной из наиболее часто встречающихся с \st.
 \index{Collection!common errors}
 
 \begin{code}{@TEST | collection | }
@@ -1137,23 +1139,28 @@ collection := OrderedCollection new add: 1; add: 2.
 collection --> 2
 \end{code}
 \noindent
-Here the variable \ct{collection} does not hold the newly created collection but rather the last number added. 
-This is because the method \ct{add:} returns the element added and not the receiver.
+%Here the variable \ct{collection} does not hold the newly created collection but rather the last number added. 
+Переменная \ct{collection} здесь содержит не созданную коллекцию, а последний добавленный элемент.
+%This is because the method \ct{add:} returns the element added and not the receiver.
+Это происходит потому, что метод \ct{add:} возвращает добавленный элемент, а не получателя.
 
-The following code yields the expected result:
+%The following code yields the expected result:
+Следующий код даёт ожидаемый результат:
 \begin{code}{@TEST | collection |}
 collection := OrderedCollection new.
 collection add: 1; add: 2.
 collection --> an OrderedCollection(1 2)
 \end{code}
 
-You can also use the message \mthind{Object}{yourself} to return the receiver of a \ind{cascade} of messages:
+%You can also use the message \mthind{Object}{yourself} to return the receiver of a \ind{cascade} of messages:
+Можно также использовать сообщение \mthind{Object}{yourself}, чтобы вернуть получателя каскада сообщений:
 
 \begin{code}{@TEST | collection |}
 collection := OrderedCollection new add: 1; add: 2; yourself --> an OrderedCollection(1 2)
 \end{code}
 
-\paragraph{Removing an element of the collection you are iterating on.} Another mistake you may make is to remove an element from a collection you are currently iterating over.
+%\paragraph{Removing an element of the collection you are iterating on.} Another mistake you may make is to remove an element from a collection you are currently iterating over.
+\paragraph{Удаление элемента коллекции во время итерации по ней.} Другой распространённой ошибкой является удаление элемента из коллекции, по которой в данный момент происходит итерация.
 \mthind{Collection}{remove:}
 \begin{code}{@TEST |range|}
 range := (2 to: 20) asOrderedCollection.
@@ -1161,22 +1168,30 @@ range do: [:aNumber | aNumber isPrime ifFalse: [ range remove: aNumber ] ].
 range --> an OrderedCollection(2 3 5 7 9 11 13 15 17 19)
 \end{code}
 \noindent
-This result is clearly incorrect since 9 and 15 should have been filtered out!
+%This result is clearly incorrect since 9 and 15 should have been filtered out!
+Полученный результат некорректен, ведь 9 и 15 должны были быть удалены из коллекции!
 
-The solution is to copy the collection before going over it.
+%The solution is to copy the collection before going over it.
+Решение заключается в копировании коллекции перед итерацией.
+
 \begin{code}{@TEST |range|}
 range := (2 to: 20) asOrderedCollection.
 range copy do: [:aNumber | aNumber isPrime ifFalse: [ range remove: aNumber ] ].
 range --> an OrderedCollection(2 3 5 7 11 13 17 19)
 \end{code}
 
-\paragraph{Redefining both \ct{=} and \ct{hash}.}
-A difficult error to spot is when you redefine \ct{=} but not \ct{hash}. The symptoms are that you will lose elements that you put in sets or other strange behaviour. One solution proposed by Kent Beck is to use \ct{xor:} to redefine \ct{hash}.
-Suppose that we want two books to be considered equal if their titles and authors are the same.
-Then we would redefine not only \ct{=} but also \ct{hash} as follows:
+%\paragraph{Redefining both \ct{=} and \ct{hash}.}
+\paragraph{Переопределение \ct{=} и \ct{hash}.}
+%A difficult error to spot is when you redefine \ct{=} but not \ct{hash}. The symptoms are that you will lose elements that you put in sets or other strange behaviour. One solution proposed by Kent Beck is to use \ct{xor:} to redefine \ct{hash}.
+Трудноуловимая ошибка возникает, если вы переопределяте \ct{=}, но забываете о \ct{hash}. Симптомом её может быть потеря элементов, помещённых в множество, или какое-либо другое странное поведение. Одно из решений, предложенное Кентом Беком (Kent Beck), заключается в использовании \ct{xor:} для переопределения \ct{hash}.
+%Suppose that we want two books to be considered equal if their titles and authors are the same.
+Предположим, что две книги должны считаться одинаковыми, если их названия и авторы идентичны.
+%Then we would redefine not only \ct{=} but also \ct{hash} as follows:
+В таком случае мы переопределяем \ct{=} и \ct{hash} следующим образом:
 \index{Dictionary!overriding \ct{=} and \ct{hash}}
 
-\begin{method}{Redefining \lct{=} and \lct{hash}.}
+%\begin{method}{Redefining \lct{=} and \lct{hash}.}
+\begin{method}{Переопределение \lct{=} и \lct{hash}.}
 Book>>>= aBook
    self class = aBook class ifFalse: [^ false].
    ^ title = aBook title and: [ authors = aBook authors]
@@ -1185,8 +1200,10 @@ Book>>>hash
    ^ title hash xor: authors hash
 \end{method}
 
-Another nasty problem arises if you use a mutable object, \ie an object that can change its hash value over time, as an element of a \ct{Set} or as a key to a \ct{Dictionary}.
-Don't do this unless you love debugging!
+%Another nasty problem arises if you use a mutable object, \ie an object that can change its hash value over time, as an element of a \ct{Set} or as a key to a \ct{Dictionary}.
+Другая противная ошибка возникает, если вы используете изменяемый объект, т.е. такой объект, который может менять значение своего хеша, в качестве элемента множества или ключа словаря.
+%Don't do this unless you love debugging!
+Не делайте этого, если вам не нравится проводить время в отладчике!
 
 %=========================================================
 \section{Chapter summary}
