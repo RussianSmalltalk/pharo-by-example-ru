@@ -1365,8 +1365,9 @@ Underfull \hbox (badness 2237) in paragraph at lines 90--91
 ила
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [80]
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1389) in paragraph at lines 149--156
+[]\T2A/ppl/m/sc/10 (+20) В Smalltalk два экземпляра одного класса не могут полу
+чить
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1379,7 +1380,9 @@ Underfull \hbox (badness 2237) in paragraph at lines 90--91
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/Color-Buttons.pdf, id=2318, 707.64375pt x 431.6125pt>
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [82]
+<Model/figures/Color-Buttons.pdf, id=2326, 707.64375pt x 431.6125pt>
 <use Model/figures/Color-Buttons.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1389,33 +1392,27 @@ Underfull \hbox (badness 2237) in paragraph at lines 90--91
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [82]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [83 <./Model/figur
+es/Color-Buttons.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \vbox (badness 5345) has occurred while \output is active [83 <./Mode
-l/figures/Color-Buttons.pdf>] <use figures/pharo.png>
+<use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 []\T2A/ppl/m/sc/10 (+20) You will see the effect of executing this method. (Sel
 ect
-Underfull \hbox (badness 1603) in paragraph at lines 249--251
+Underfull \hbox (badness 1603) in paragraph at lines 254--256
 \T2A/ppl/m/sc/10 (+20) that they are somewhat different: whereas Java static me
 thods are
-Underfull \hbox (badness 1009) in paragraph at lines 249--251
+Underfull \hbox (badness 1009) in paragraph at lines 254--256
 \T2A/ppl/m/sc/10 (+20) really just statically-resolved procedures, Smalltalk cl
 ass methods are
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [84]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1424,11 +1421,13 @@ ass methods are
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [85]
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1456,9 +1455,13 @@ ass methods are
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [87]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1495,19 +1498,14 @@ ass methods are
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 443--444
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
 [][][][][] \T2A/ppl/m/sc/10 (+20) is a subclass of [][][][]; it overrides the
-Underfull \hbox (badness 1158) in paragraph at lines 443--444
+Underfull \hbox (badness 1158) in paragraph at lines 448--449
 [][][][][] \T2A/ppl/m/sc/10 (+20) method for [][][][] with its own version of [
 ][][][] (see
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [89]
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1532,9 +1530,14 @@ Underfull \hbox (badness 1158) in paragraph at lines 443--444
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [91]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [92]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [91] [92]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1554,10 +1557,10 @@ Underfull \hbox (badness 1158) in paragraph at lines 443--444
 <use Model/figures/openInWorldLookup.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [93]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [94 <./Model/figur
 es/openInWorldLookup.pdf>]
@@ -1581,7 +1584,7 @@ es/openInWorldLookup.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/constructorStringLookup.pdf, id=2588, 707.64375pt x 332.24126pt>
+<Model/figures/constructorStringLookup.pdf, id=2587, 707.64375pt x 332.24126pt>
 <use Model/figures/constructorStringLookup.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1592,9 +1595,9 @@ es/openInWorldLookup.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 752--757
+Underfull \hbox (badness 10000) in paragraph at lines 757--762
 \T2A/ppl/m/sc/10 (+20) The method [][][][][][][][][] performs a self send of
-Underfull \hbox (badness 1521) in paragraph at lines 752--757
+Underfull \hbox (badness 1521) in paragraph at lines 757--762
 \T2A/ppl/m/sc/10 (+20) printConstructorOn:indent:. This message is also looked 
 up, starting
 [96 <./Model/figures/constructorStringLookup.pdf>]
@@ -1607,30 +1610,27 @@ up, starting
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/fooNotFound.pdf, id=2624, 717.68124pt x 449.68pt>
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [97]
+<Model/figures/fooNotFound.pdf, id=2635, 717.68124pt x 449.68pt>
 <use Model/figures/fooNotFound.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [97]
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [98 <./Model/figur
-es/fooNotFound.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+Underfull \vbox (badness 10000) has occurred while \output is active [98 <./Mod
+el/figures/fooNotFound.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 835--837
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 10000) in paragraph at lines 840--842
 \T2A/ppl/m/sc/10 (+20) Before you [][][][][][], open a transcript by selecting
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1654,12 +1654,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 835--837
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/privateSharedVarColor.pdf, id=2681, 514.92375pt x 263.98625pt>
-<use Model/figures/privateSharedVarColor.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [100]
+<Model/figures/privateSharedVarColor.pdf, id=2687, 514.92375pt x 263.98625pt>
+<use Model/figures/privateSharedVarColor.pdf>
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -1691,9 +1695,9 @@ res/privateSharedVarColor.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [103]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [103])
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def))
 (./Environment/Environment.tex [104]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 6.
 Underfull \vbox (badness 10000) has occurred while \output is active [105]
@@ -4319,15 +4323,29 @@ Underfull \hbox (badness 1715) in paragraph at lines 721--725
 Underfull \hbox (badness 1502) in paragraph at lines 760--770
 [][][][]\T2A/ppl/m/sc/10 (+20) , рассмотренный в Рис. [][]14.9[][] является к т
 ому же
-Underfull \hbox (badness 1527) in paragraph at lines 760--770
-[][][]\T2A/ppl/m/sc/10 (+20) , возвращающий результат [][][][]. В дополнение, W
-AMultiCounter -
+Underfull \hbox (badness 5847) in paragraph at lines 760--770
+\T2A/ppl/m/sc/10 (+20) - составной компонент. Seaside требует регистрации вложе
+нных
+Underfull \hbox (badness 3849) in paragraph at lines 760--770
+\T2A/ppl/m/sc/10 (+20) вложенных компонентов. Компонент сам прорисовывает кажды
+й
 <Seaside/figures/WAMultiCounter.pdf, id=6063, 741.77126pt x 231.86626pt>
 <use Seaside/figures/WAMultiCounter.pdf>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \vbox (badness 3792) has occurred while \output is active [299 <./Sea
+Underfull \hbox (badness 3735) in paragraph at lines 794--809
+\T2A/ppl/m/sc/10 (+20) Как Вы увидите из примеров, Seaside не использует шаблон
+ы
+Underfull \hbox (badness 2134) in paragraph at lines 794--809
+\T2A/ppl/m/sc/10 (+20) компоненту нужно переопределить метод [][][][][]; и это
+Underfull \hbox (badness 2486) in paragraph at lines 794--809
+\T2A/ppl/m/sc/10 (+20) который является []html-полотном, и где компоненты отобр
+ажают
+Underfull \hbox (badness 1122) in paragraph at lines 794--809
+\T2A/ppl/m/sc/10 (+20) себя. По соглашению html-полотно называется [][][][]. Ht
+ml-полотно
+Underfull \vbox (badness 1881) has occurred while \output is active [299 <./Sea
 side/figures/WAMultiCounter.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -4336,6 +4354,9 @@ side/figures/WAMultiCounter.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1852) in paragraph at lines 843--850
+\T2A/ppl/m/sc/10 (+20) просмотреть класс [][][][][] и его подклассы. Аргумент м
+етода
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 <Seaside/figures/RenderingDemo.png, id=6096, 689.57625pt x 783.92876pt>
 <use Seaside/figures/RenderingDemo.png>
@@ -4344,9 +4365,13 @@ side/figures/WAMultiCounter.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [300] [301 <./Seas
+Underfull \hbox (badness 10000) in paragraph at lines 877--884
+\T2A/ppl/m/sc/10 (+20) кистей Seaside. [] Корневой компонент [][][][] просто
+[300] (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [301 <./Seas
 ide/figures/RenderingDemo.png>]
+Underfull \hbox (badness 1953) in paragraph at lines 898--904
+\T2A/ppl/m/sc/10 (+20) Напомним, что корневой компонент обязан всегда деклариро
+вать
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -4428,7 +4453,7 @@ gures/dialogs.pdf>] (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 1776) in paragraph at lines 1294--1295
+Underfull \hbox (badness 1776) in paragraph at lines 1346--1347
 []\T2A/ppl/m/sc/10 (+20) A few further convenience methods, such as [][][][][],
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -4463,7 +4488,7 @@ G copy)>] (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-Underfull \hbox (badness 10000) in paragraph at lines 1480--1480
+Underfull \hbox (badness 10000) in paragraph at lines 1532--1532
 [] \T2A/ppl/m/sc/10 (+20) Go to [][]$http : / / localhost : 8080 / seaside / te
 sts / alltests$[][], select
 <Seaside/figures/stackMachine.pdf, id=6452, 638.385pt x 294.09875pt>
@@ -4519,7 +4544,7 @@ gures/stackMachine.pdf>] <use figures/pharo.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 1077) in paragraph at lines 1626--1626
+Underfull \hbox (badness 1077) in paragraph at lines 1678--1678
 []  \T2A/ppl/m/sc/10 (+20) Pass the shared instance of the stack machine to the
  keypad
 <use figures/pharo.png>
@@ -4560,16 +4585,16 @@ gures/firstStackDisplay.png>] <use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [320]
 <use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 3158) in paragraph at lines 1830--1836
+Underfull \hbox (badness 3158) in paragraph at lines 1882--1888
 []\T2A/ppl/m/sc/10 (+20) Two well-known JavaScript libraries are []Prototype ([
 ][]$http : / / www .
-Underfull \hbox (badness 2173) in paragraph at lines 1830--1836
+Underfull \hbox (badness 2173) in paragraph at lines 1882--1888
 \T2A/ppl/m/sc/10 (+20) prototypejs . org$[][]) and []script.aculo.us ([][]$http
  : / / script . aculo . us$[][]). Prototype
 <use figures/pharo.png>
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 2126) in paragraph at lines 1855--1855
+Underfull \hbox (badness 2126) in paragraph at lines 1907--1907
 [][]\T2A/phv/m/it/8 (+20) If you have not implementedthe tutorial example yours
 elf, you can simply
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [321]
@@ -4599,7 +4624,7 @@ de/figures/ajax-processing.pdf>]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 1968--1969
+Underfull \hbox (badness 10000) in paragraph at lines 2020--2021
 []\T2A/ppl/m/sc/10 (+20) Reset the administrator login and password by evaluati
 ng
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6155,10 +6180,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [444]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6241,7 +6264,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [446]
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6274,10 +6299,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [448]
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6416,16 +6438,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def) [451]
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.38199pt too wide) in paragraph at lines 1451--1453
+Overfull \hbox (10.38199pt too wide) in paragraph at lines 1456--1458
 []| [] 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (19.72897pt too wide) in paragraph at lines 1453--1455
+Overfull \hbox (19.72897pt too wide) in paragraph at lines 1458--1460
 []| [] 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6463,7 +6487,8 @@ Overfull \hbox (19.72897pt too wide) in paragraph at lines 1453--1455
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (9.32117pt too wide) in paragraph at lines 1611--1613
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (9.32117pt too wide) in paragraph at lines 1616--1618
 []| [] 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6479,7 +6504,7 @@ Overfull \hbox (9.32117pt too wide) in paragraph at lines 1611--1613
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (15.48357pt too wide) in paragraph at lines 1651--1653
+Overfull \hbox (15.48357pt too wide) in paragraph at lines 1656--1658
 []| [] 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def)
@@ -6595,5 +6620,5 @@ e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/
 helvetic/uhvro8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/palati
 no/uplr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/palatino/uplr
 i8a.pfb>
-Output written on PBE-Omnibus.pdf (476 pages, 11762018 bytes).
+Output written on PBE-Omnibus.pdf (476 pages, 11763384 bytes).
 Transcript written on PBE-Omnibus.log.
