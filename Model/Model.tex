@@ -76,7 +76,7 @@
 
 %\ruleref{everything}
 
-Мантра «все является объектом» очень заразная. Даже немного поработав с \st вы начнете удивляться, как это правило упрощает все, что вы делаете.
+Мантра \UTF{00AB}все является объектом\UTF{00BB} очень заразная. Даже немного поработав с \st вы начнете удивляться, как это правило упрощает все, что вы делаете.
 Целые числа, например, настоящие объекты, то есть вы можете посылать им сообщения точно так же как любому другому объекту.
 
 \begin{code}{@TEST}
@@ -113,7 +113,7 @@ Object new class --> Object
 
 Класс определяет \emph{структуру} его экземпляров через переменные экземпляра
 и \emph{поведение} через методы.
-Каждый метод имеет имя уникальное внутри класса называемое \emphsubind{селектор}{метода}.
+Каждый метод имеет имя уникальное внутри класса называемое \emphind{селектор метода}.
 %A class defines the \emph{structure} of its instances via instance variables,
 %and the \emph{behavior} of its instances via methods.
 %Each method has a name, called its \emphsubind{method}{selector}, which is unique within the class.
@@ -134,20 +134,25 @@ Object new class --> Object
 %---------------------------------------------------------
 \subsection{Переменные экземпляра}
 
-Instance variables in \st are private to the \emph{instance} itself.
-This is in contrast to \ind{Java} and \ind{C++}, which allow instance variables (also known as ``fields'' or ``member variables'') to be accessed by any other instance that happens to be of the same class.
-We say that the \emphind{encapsulation boundary} of objects in Java and C++ is the class, whereas in \st it is the instance.
+%TODO: Не нравится мне этот перевод.
+Переменные экземпляра в \st доступны для использования только внутри \emph{самого экземпляра},
+в отличие от \ind{Java} и \ind{C++}, которые позволяют получать доступ к переменным экземпляра (еще их называют <<полями>> или <<членами класса>>) из любого другого экземпляра того же класса. 
+%% We say that the \emphind{encapsulation boundary} of objects in Java and C++ is the class, whereas in \st it is the instance.
+Можно сказать, что \emphind{границы инкапсуляции} в Java и C++ проходят по классу, а в \st по экземпляру класса.
 \seeindex{variable!instance}{instance variable}
 \seeindex{field}{instance variable}
 \seeindex{attribute}{instance variable}
 \seeindex{slot}{instance variable}
 \index{instance variable}
 
-In \st, two instances of the same class cannot access each other's instance variables unless the class defines ``\ind{accessor} methods''.
-There is no language syntax that provides direct access to the instance variables of any other object.
-(Actually, a mechanism called \ind{reflection}
+%% In \st, two instances of the same class cannot access each other's instance variables unless the class defines ``\ind{accessor} methods''.
+В \st два экземпляра одного класса не могут получить доступ к внутренним переменным друг друга если не определены специальные методы доступа --- \ind{<<аксессоры>>}.
+%% There is no language syntax that provides direct access to the instance variables of any other object.
+%% (Actually, a mechanism called \ind{reflection}
+Не существует специальной синтаксической формы предоставляющей прямой доступ к переменным экземпляра любого объекта (хотя существует механизм \ind{Рефлексии}  
 %, discussed in \charef{metaprog},
-does provide a way to ask another object for the values of its instance variables; meta-programming is intended for writing tools like the object \ind{inspector}, whose sole purpose is to look inside other objects.)
+%% does provide a way to ask another object for the values of its instance variables; meta-programming is intended for writing tools like the object \ind{inspector}, whose sole purpose is to look inside other objects.)
+с помощью которого можно попросить другой объект показать значения внутренних переменных. Метапрограммирование как раз предназначено для написания инструментов типа Object \ind{inspector}, чья единственная задача --- заглядывать внутрь других объектов.
 
 Instance variables can be accessed by name in any of the instance methods of the class that defines them, and also in the methods defined in its subclasses. This means that \st instance variables are similar to \emph{protected} variables in C++ and Java. However, we prefer to say that they are private, because it is considered bad style in \st to access an instance variable directly from a subclass. 
 
