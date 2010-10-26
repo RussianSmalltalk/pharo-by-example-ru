@@ -90,7 +90,7 @@
 Современные веб-приложения взаимодействуют с пользователем и ведут себя как обычные приложения:
 они обращаются к пользователю с вопросами и отвечают на его запросы, используя при этом формы или нажатия на кнопки.
 Но работа в сети имеет и другие стороны: браузер пользователя делает запросы к серверу, и получает от него ответ в виде веб-страницы.
-Так \ind{среды разработки приложений} должны справлятся со множеством проблем,
+Так \ind{среды разработки приложений} должны справляться со множеством проблем,
 где главной проблемой является управление обратными потоками.
 Из-за этого многие приложения пытаются запретить использование кнопки <<предыдущая страница>> у браузера,
 чтобы не усложнять текущее состояние сессии.
@@ -758,11 +758,11 @@ But before we do, let's have a quick look at the \subind{Seaside}{multi-counter}
 % the multi-counter!
 
 \ct{WAMutliCounter}, рассмотренный в \figref{WAMultiCounter} является к тому же
-самостоятельным приложением,
+самостоятельным приложением, так как
 переопределяет метод класса \mthind{WAComponent}{canBeRoot},
 возвращающий результат \ct{true}.
 В дополнение, WAMultiCounter - составной компонент.
-Seaside требует регистрации вложенных компонентов осуществлением метода \ct{children},
+Seaside требует регистрации вложенных компонентов реализацией метода \ct{children},
 который отвечает массивом вложенных компонентов.
 Компонент сам прорисовывает каждый вложенный элемент, разделяя горизонтальной линией.
 Кроме экземпляра и инициализирующих методов со стороны класса,
@@ -780,42 +780,81 @@ Seaside требует регистрации вложенных компоне�
 % \subsection{More about Rendering XHTML}
 \subsection{Подробнее о создании XHTML}
 
-As you can see from these examples, Seaside does not use templates to generate web
-pages.Instead it generates XTHML programmatically.
-The basic idea is that every Seaside component should override the method
-\mthind{WAPresenter}{renderContentOn:}; this message will be sent by the framework to
-each component that needs to be rendered.
-This \ct{renderContentOn:} message will have argument that is an \seeindex{canvas}{html
-canvas} \emphind{html canvas} onto which the component should render itself. By
-convention, the html canvas parameter is called \ct{html}.
-An html canvas is analogous to the graphics canvas used by Morphic (and most other
-drawing frameworks) to abstract away from the device-dependent details of drawing.
- 
+% As you can see from these examples, Seaside does not use templates to generate web
+% pages.Instead it generates XTHML programmatically.
+% The basic idea is that every Seaside component should override the method
+% \mthind{WAPresenter}{renderContentOn:}; this message will be sent by the framework to
+% each component that needs to be rendered.
+% This \ct{renderContentOn:} message will have argument that is an \seeindex{canvas}{html
+% canvas} \emphind{html canvas} onto which the component should render itself. By
+% convention, the html canvas parameter is called \ct{html}.
+% An html canvas is analogous to the graphics canvas used by Morphic (and most other
+% drawing frameworks) to abstract away from the device-dependent details of drawing.
 
-Here are some of the most basic rendering methods:
+Как Вы увидите из примеров, Seaside не использует шаблоны для генерации веб-страниц.
+Вместо них используется программная генерация XHTML.
+Основная идея заключается в том,
+что каждому компоненту нужно переопределить метод
+\mthind{WAPresenter}{renderContentOn:};
+и это сообщение будет посылаться компонентам,
+когда их требуется отобразить на веб-странице.
+Сообщение \ct{renderContentOn:} имеет один аргумент,
+который является  \seeindex{canvas}{html canvas} html-полотном,
+и где компоненты отображают себя.
+По соглашению html-полотно называется \ct{html}.
+Html-полотно является аналогом графического полотна используемого в Morphic
+(и для большинства других графических систем),
+чтобы можно было абстрагироваться от устройство-зависимых
+деталей рисования.
+
+% Here are some of the most basic rendering methods:
+Ниже расположено несколько базовых способов прорисовки:
 \begin{code}{}
 html text: 'hello world'.  "render a plain text string"
 html html: '&ndash;'.     "render an XHTML incantation"
 html render: 1.              "render any object"
 \end{code}
 
-The message \ct{render: anyObject} can be sent to an html canvas to render
-\ct{anyObject}; it is normally used to render subcomponents. \lct{anyObject} will itself
-be sent the message \ct{renderContentOn:}
-this is what happens in the multi-counter (see \figref{WAMultiCounter}).
+% The message \ct{render: anyObject} can be sent to an html canvas to render
+% \ct{anyObject}; it is normally used to render subcomponents. \lct{anyObject} will itself
+% be sent the message \ct{renderContentOn:}
+% this is what happens in the multi-counter (see \figref{WAMultiCounter}).
 
-\subsection{Using Brushes}
+Сообщение \ct{render: anyObject} может быть отправлено html-полотну,
+для отображения \ct{anyObject};
+и это есть правильный способ прорисовки вложенных компонентов.
+Объекту anyObject будет отправленно сообщение \ct{renderContentOn:}.
+Такой способ будет использоваться в multi-counter (смотрите \figref{WAMultiCounter}).
+
+% \subsection{Using Brushes}
+% \seclabel{brushes}
+
+\subsection{Использование кистей}
 \seclabel{brushes}
 
-A canvas provides a number of \emphind{brushes} that can be used to render (\ie
-``paint'') content on the canvas.
-There are brushes for every kind of XHTML element\,---\,paragraphs, tables, lists, and soon.
-To see the full protocol of brushes and convenience methods, you should browse the class
-\clsind{WACanvas} and its subclasses.
-The argument to \ct{renderContentOn:} is actually an instance of the subclass
-\clsind{WARenderCanvas}.
+% A canvas provides a number of \emphind{brushes} that can be used to render (\ie
+% ``paint'') content on the canvas.
+% There are brushes for every kind of XHTML element\,---\,paragraphs, tables, lists, and soon.
+% To see the full protocol of brushes and convenience methods, you should browse the class
+% \clsind{WACanvas} and its subclasses.
+% The argument to \ct{renderContentOn:} is actually an instance of the subclass
+% \clsind{WARenderCanvas}.
 
-We have already seen the following brush used in the counter and multi-counter examples:
+Полотно имеет определенное количество \emphind{кистей},
+которые могут быть использованы при прорисовке его содержимого.
+Имеются кисти для каждого елемента XHTML --- абзацы, таблицы, списки и т.д.
+Чтобы ознакомиться с  протоколом кистей и необходимых методов,
+Вам следует просмотреть класс \clsind{WACanvas} и его подклассы.
+Аргумент метода \ct{renderContentOn:}
+является экземпляром подкласса \clsind{WARenderCanvas}.
+
+% We have already seen the following brush used in the counter and multi-counter examples:
+% \needlines{2}
+% \begin{code}{}
+% html horizontalRule.
+% \end{code}
+
+Мы уже готовы просмотреть использование кисти в примерах counter и multi-counter:
 \needlines{2}
 \begin{code}{}
 html horizontalRule.
@@ -829,11 +868,19 @@ html horizontalRule.
 \end{center}
 \end{figure}
 
-In \figref{RenderingDemo} we can see the output of many of the basic brushes offered by
-Seaside.\footnote{The source code for \mthref{renderdemo} is in the package
-\ct{PBE-SeasideDemo} in the project \url{http://www.squeaksource.com/PharoByExample}.}
-The root component \ct{SeasideDemo} simply renders its subcomponents, which are instancesof \ct{SeasideHtmlDemo}, \ct{SeasideFormDemo}, \ct{SeasideEditCallDemo} and
-\ct{SeasideDialogDemo}, as shown in \mthref{renderdemo}.
+% In \figref{RenderingDemo} we can see the output of many of the basic brushes offered by
+% Seaside.\footnote{The source code for \mthref{renderdemo} is in the package
+% \ct{PBE-SeasideDemo} in the project \url{http://www.squeaksource.com/PharoByExample}.}
+% The root component \ct{SeasideDemo} simply renders its subcomponents, which are instancesof \ct{SeasideHtmlDemo}, \ct{SeasideFormDemo}, \ct{SeasideEditCallDemo} and
+% \ct{SeasideDialogDemo}, as shown in \mthref{renderdemo}.
+
+На \figref{RenderingDemo} мы можем увидеть результат
+рисования базовых кистей Seaside.
+\footnote{Программный код для \mthref{renderdemo} расположен в пакете
+\ct{PBE-SeasideDemo} проекта \url{http://www.squeaksource.com/PharoByExample}.}
+Корневой компонент \ct{SeasideDemo} просто прорисовывает вложенные компоненты,
+которые являются экземплярами \ct{SeasideHtmlDemo}, \ct{SeasideFormDemo},
+\ct{SeasideDialogDemo}, показанные в \mthref{renderdemo}.
 
 \needspace{7ex}
 \begin{method}[renderdemo]{\lct{SeasideDemo>>renderContentOn:}}
@@ -849,8 +896,13 @@ SeasideDemo>>>renderContentOn: html
 \end{method}
 
 \noindent
-Recall that a root component must always declare its children, or Seaside will refuse to
-render them.
+% Recall that a root component must always declare its children, or Seaside will refuse to
+% render them.
+Напомним,
+что корневой компонент обязан всегда декларировать подкомпоненты,
+в противном случае Seaside не сможет отображать их.
+
+
 \begin{code}{}
 SeasideDemo>>>children
 	^ { htmlDemo . formDemo . editDemo . dialogDemo }

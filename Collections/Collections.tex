@@ -49,7 +49,7 @@
 \section{Введение}
 
 %The collection classes form a loosely-defined group of general-purpose subclasses of \clsindmain{Collection} and \clsind{Stream}. The group of classes that appears in the ``\ind{Blue Book}''~\cite{Gold83a} contains 17 subclasses of \ct{Collection} and 9 subclasses of \ct{Stream}, for a total of 28 classes, and had already been redesigned several times before the \st-80 system was released. This group of classes is often considered to be a paradigmatic example of object-oriented design.
-\ugh{Классы коллекций формируют нестрого определённую группу подклассов общего пользования классов \clsindmain{Collection} и \clsind{Stream}.} Группа классов, представленная в ``\ind{Blue Book}''~\cite{Gold83a}, содержит 17 подклассов класса \ct{Collection} и 9 подклассов класса \ct{Stream}, т.е всего 28 классов, и была к моменту выпуска \st-80-системы уже несколько раз переписана. Эта группа классов часто рассматривается как \ugh{парадигматический} пример объектно-ориентированного проектировавния.
+Классы коллекций представляют собой весьма размытую группу классов общего пользования, являющихся потомками \clsindmain{Collection} и \clsind{Stream}. Эта группа, представленная в ``\ind{Blue Book}''~\cite{Gold83a}, содержит 17 подклассов класса \ct{Collection} и 9 подклассов класса \ct{Stream}, т.е всего 28 классов, и была к моменту выпуска \st-80-системы уже несколько раз переписана. Эта группа классов часто рассматривается как \ugh{парадигматический} пример объектно-ориентированного проектировавния.
 
 %In \pharo, the abstract class \ct{Collection} has 101 subclasses, and the abstract class \ct{Stream} has 50 subclasses, but many of these (like \mbox{\clsind{Bitmap},} \clsind{FileStream} and \clsind{CompiledMethod}) are special-purpose classes crafted for use in other parts of the system or in applications, and hence not categorized as ``Collections'' by the system organization. For the purposes of this chapter, we use the term ``Collection Hierarchy'' to mean \ct{Collection} and its 47 subclasses that are \emph{also} in the categories labelled \scat{Collections-*}.
 В \pharo, абстрактный класс \ct{Collection} имеет 101 подкласс, а абстрактный класс \ct{Stream} -- 50. Но многие из них (как \mbox{\clsind{Bitmap},} \clsind{FileStream} и \clsind{CompiledMethod}) являются классами специального предназначения, созданные для использования в других частях системы или в приложениях, и поэтому не подпадающие в категорию ``Collections'' системы. Для целей этой главы мы используем термин <<иерархия коллекций>> (``Collection Hierarchy''), подразумевающий \ct{Collection} и 47 его подклассов, которые \emph{также} находятся в категориях, именуемых \scat{Collections-*}.
@@ -277,7 +277,7 @@ students select: [ :each | each gpa < threshold ]
 %Consequently, the internal array can be replaced with a larger one if the collection grows beyond its storage capacity.
 Следовательно, внутренний массив может быть замещён массивом большего размера, если коллекция выходит за границы первоначальной ёмкости.
   %\item The various kinds of set and dictionary also reference a subsidiary array for storage, but use the array as a hash table.  Bags use a subsidiary \ct{Dictionary}, with the elements of the bag as keys and the number of occurrences as values.
-  \item Различные виды множеств и словарей также используют дочерний массив для хранения, но в то же время в качестве хеш-таблицы используется массив. \ugh{Мешки} используют дочерний словарь (\ct{Dictionary}) с элементами \ugh{мешка} в качестве ключей и количеством вхождений в качестве значений.
+  \item Различные виды множеств и словарей также используют дочерний массив для хранения, но в то же время в качестве хеш-таблицы используется массив. Множества с повторяющимися (bags) элементами используют дочерний словарь (\ct{Dictionary}) с элементами этого множества в качестве ключей и количеством вхождений в качестве значений.
   \clsindex{Bag}
   %\item LinkedLists use a standard singly-linked representation.
   \item Связанные списки используют стандартную односвязную реализацию.
@@ -453,7 +453,7 @@ anArray at: 3 --> 33
 %The compiler tries to allocate space just once for literal arrays.
 Для литеральных массивов компилятор пытается выделить память лишь один раз.
 %Unless you copy the array, the second time you evaluate the code your ``literal'' array may not have the value you expect.
-Если вы не скопировали предварительно массив, результат повторного вычисления ``литерального'' массива может не совпасть с вашими ожиданиями.
+Если вы не скопировали предварительно массив, результат повторного вычисления <<литерального>> массива может не совпасть с вашими ожиданиями.
 %(Without cloning, the second time around, the literal \ct{#(1 2 3 4 5 6)} will actually be \ct{#(1 2 33 4 5 6)}!)
 (Без клонирования, при следующем вычислении литерал \ct{#(1 2 3 4 5 6)} на самом деле станет \ct{#(1 2 33 4 5 6)}!)
 %Dynamic arrays do not have this problem.
@@ -472,7 +472,7 @@ ordCol --> an OrderedCollection('Monticello' 'Seaside' 'SqueakSource')
 \end{code}
 
 %\paragraph{Removing Elements.} The method \mthind{OrderedCollection}{remove:} \ct{anObject} removes the first occurrence of an object from the collection. If the collection does not include such an object, it raises an error. 
-\paragraph{Removing Elements.} Метод \mthind{OrderedCollection}{remove:} \ct{anObject} удаляет первое вхождение объекта из коллекции.
+\paragraph{Removing Elements.} Метод \mthind{OrderedCollection}{remove:} \ct{anObject} удаляет первое вхождение объекта из коллекции. Если коллекция не содержит такого объекта, выдаётся ошибка.
 
 \begin{code}{@TEST | ordCol | ordCol := OrderedCollection with: 'Monticello' with: 'Seaside' with: 'SqueakSource'.}
 ordCol add: 'Monticello'.
@@ -651,7 +651,7 @@ s size --> 2
 Обратите внимание на то, что красный + синий + зелёный = белый.
 
 %A \clsindmain{Bag} is much like a \ct{Set} except that it does allow duplicates:
-Класс \clsindmain{Bag} (Мешок) практически тот же \ct{Set}, за исключением того, что допускает в себе наличие дубликатов.
+Класс \clsindmain{Bag} (Множество с повторяющимися элементами) практически тот же \ct{Set}, за исключением того, что допускает в себе наличие дубликатов.
 \begin{code}{@TEST}
 { Color black. Color white. (Color red + Color blue + Color green) } asBag size --> 3
 \end{code}
