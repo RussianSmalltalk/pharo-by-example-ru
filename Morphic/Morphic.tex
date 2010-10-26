@@ -41,19 +41,25 @@
 %Then we need a cookbook of how to do simple things in Morphic.
 %The observer pattern and its implementation with changed:  and update: messages could go here.  Or in ``Idiomatic design patterns'' later.}
 
-\indmain{Morphic} is the name given to \pharo's graphical interface.
-Morphic is written in \st, so it is fully portable between operating systems; as a consequence, \pharo looks exactly the same on Unix, MacOS and Windows.
-What distinguishes Morphic from most other user interface toolkits is that it does not have separate modes for ``composing'' and ``running'' the interface: all the graphical elements can be assembled and disassembled by the user, at any time.\footnote{We thank Hilaire Fernandes for permission to base this chapter on his original article in French.}
+%\indmain{Morphic} is the name given to \pharo's graphical interface.
+\indmain{Morphic} -- это название графического интерфейса \pharo.
+%Morphic is written in \st, so it is fully portable between operating systems; as a consequence, \pharo looks exactly the same on Unix, MacOS and Windows.
+Morphic написан на \st, и благодаря этому переносим между операционными системами. Как следствие, \pharo выглядит совершенно одинаково на Unix, MacOS, Windows.
+%What distinguishes Morphic from most other user interface toolkits is that it does not have separate modes for ``composing'' and ``running'' the interface: all the graphical elements can be assembled and disassembled by the user, at any time.\footnote{We thank Hilaire Fernandes for permission to base this chapter on his original article in French.}
+Отличие Morphic'а от большинства других фреймворков для построения GUI заключается в том, что в нём нет различия между режимами <<компоновки>> и <<запуска>> интерфейса. Все графические элементы могут быть собраны и разобраны пользователем в любое время.\footnote{Мы благодарим Hilaire Fernandes за разрешение использовать его статью на французском в качесте основы для этой главы (прим. авторов).}
 
 \ab{After the first printing, I took an editing pass, correcting some errors and grammatical infelicities.}
 
 \on{I have commented out the LabelstickerMorph and PyramidMorph examples, as they do not really add much over the other examples we have already. The source code is now available in the example subdirectory, in case someone would like to try and use them after all.}
 
 %=================================================================
-\section{The history of Morphic}
+%\section{The history of Morphic}
+\section{История Morpic'а}
 
-Morphic was developed by John Maloney and Randy Smith for the \ind{Self} programming language, staring around 1993. 
-Maloney later wrote a new version of Morphic for \squeak, but the basic ideas behind the Self version are still alive and well in \pharo Morphic: \emph{directness} and \emph{liveness}.
+%Morphic was developed by John Maloney and Randy Smith for the \ind{Self} programming language, staring around 1993. 
+Morphic был разработан Джоном Мэлони (John Maloney) и Ренди Смитом (Randy Smith) для языка программирования \ind{Self} приблизительно в 1993 году.
+%Maloney later wrote a new version of Morphic for \squeak, but the basic ideas behind the Self version are still alive and well in \pharo Morphic: \emph{directness} and \emph{liveness}.
+Мэлони позже написал новую версию Morphic'а для \squeak, сохранив основные идеи из версии для Self: 
 Directness means that the shapes on the screen are objects that can be examined or changed directly, that is, by pointing at them using the mouse.
 Liveness means that the user interface is always able to respond to user actions: information on the screen is continuously updated as the world that it describes changes.
 A simple example of this is that you can detach a menu item and keep it as a button.
