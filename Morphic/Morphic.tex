@@ -111,17 +111,25 @@ Now execute \ct{Color orange asMorph} \mthind{Morph}{openInWorld} in a workspace
 
 
 %=================================================================
-\section{Manipulating morphs}
+%\section{Manipulating morphs}
+\section{Манипулирование морфами}
 
-Morphs are objects, so we can manipulate them like any other object in \st: by sending messages, we can change their properties, create new subclasses of Morph, and so on.
+%Morphs are objects, so we can manipulate them like any other object in \st: by sending messages, we can change their properties, create new subclasses of Morph, and so on.
+Морфы -- это обычные объекты, поэтому мы можем манипулировать ими также, как и любыми другими объектами в \st. Посылая сообщения, мы можем менять их свойства, создавать наследников класса Morph и т.д.
 
-Every morph, even if it is not currently open on the screen, has a position and a size.  
-For convenience, all morphs are considered to occupy a rectangular region of the screen; if they are irregularly shaped, their position and size are those of the smallest rectangular ``box'' that surrounds them, which is known as the morph's bounding box, or just its ``bounds''.
-The \mthind{Morph}{position} method returns a \ct{Point} that describes the location of the morph's upper left corner (or the upper left corner of its bounding box). 
-The origin of the coordinate system is the screen's upper left corner, with $y$ coordinates increasing \emph{down} the screen and $x$ coordinates increasing to the right.
-The \ct{extent} method also returns a point, but this point specifies the width and height of the morph rather than a location.
+%Every morph, even if it is not currently open on the screen, has a position and a size.  
+Каждый морф, даже если он в данный момент не отображается на экране, имеет позицию и размер.
+%For convenience, all morphs are considered to occupy a rectangular region of the screen; if they are irregularly shaped, their position and size are those of the smallest rectangular ``box'' that surrounds them, which is known as the morph's bounding box, or just its ``bounds''.
+Для удобства принимается, что любой морф занимает прямоугольную область на экране. Если морф имеет неправильную форму, его позиция и размер определяются наименьшим прямоугольником в который вписывается морф. Этот прямоугольник называется <<обрамляющим>> прямоугольником, или просто <<рамкой>>.
+%The \mthind{Morph}{position} method returns a \ct{Point} that describes the location of the morph's upper left corner (or the upper left corner of its bounding box). 
+Метод \mthind{Morph}{position} возвращает объект \ct{Point} (точка), определяющий положение левого верхнего угла морфа (или верхнего левого угла его рамки).
+%The origin of the coordinate system is the screen's upper left corner, with $y$ coordinates increasing \emph{down} the screen and $x$ coordinates increasing to the right.
+Начало системы координат -- это левый верхний угол экрана. Координата $y$ увеличивает при движении по экрану сверху-вниз, а координата $x$ -- при движении слева-направо.
+%The \ct{extent} method also returns a point, but this point specifies the width and height of the morph rather than a location.
+Метод \ct{extent} также возвращает точку, но эта точка обозначает ширину и высоту морфа, а не его местоположение.
 
-\dothis{Type the following code into a workspace and \menu{do it}:}
+%\dothis{Type the following code into a workspace and \menu{do it}:}
+\dothis{Введите следующий код в рабочую область и выполните его (\menu{do it}):}
 \begin{code}{}
 joe := Morph new color: Color blue.
 joe openInWorld.
@@ -129,20 +137,28 @@ bill := Morph new color: Color red .
 bill openInWorld.
 \end{code}
 \noindent
-Then type \ct{joe position} and \menu{print it}.
-To move joe, execute \ct{joe position: (joe position + (10@3))} repeatedly.
+%Then type \ct{joe position} and \menu{print it}.
+Затем введите \ct{joe position} и напечатайте результат (\menu{print it}).
+%To move joe, execute \ct{joe position: (joe position + (10@3))} repeatedly.
+Чтобы переместить Джо, выполните \ct{joe position: (joe position + (10@3))} несколько раз.
 
-It is possible to do a similar thing with size.
-\ct{joe} \mthind{Morph}{extent} answers joe's size; to have joe grow, execute \ct{joe extent: (joe extent * 1.1)}.
-To change the color of a morph, send it the \mthind{Morph}{color:} message with the desired \ct{Color} object as argument, for instance, \ct{joe color: Color orange}.
-To add transparency, try \ct{joe color: (Color orange alpha: 0.5)}.
+%It is possible to do a similar thing with size.
+То же самое можно проделать и с размером.
+%\ct{joe} \mthind{Morph}{extent} answers joe's size; to have joe grow, execute \ct{joe extent: (joe extent * 1.1)}.
+\ct{joe} \mthind{Morph}{extent} возвращает размер Джо; чтобы заставить Джо расти, выполните \ct{joe extent: (joe extent * 1.1)}.
+%To change the color of a morph, send it the \mthind{Morph}{color:} message with the desired \ct{Color} object as argument, for instance, \ct{joe color: Color orange}.
+Чтобы изменить цвет морфа, пошлите сообщение \mthind{Morph}{color:} с желаемым цветом в качестве аргумента. Например, \ct{joe color: Color orange}.
+%To add transparency, try \ct{joe color: (Color orange alpha: 0.5)}.
+Чтобы добавить прозрачности, попробуйте \ct{joe color: (Color orange alpha: 0.5)}.
 
-\dothis{To make bill follow joe, you can repeatedly execute this code:}
+%\dothis{To make bill follow joe, you can repeatedly execute this code:}
+\dothis{Чтобы заставить Билла следовать за Джо, выполните несколько раз следующий код:}
 \begin{code}{}
 bill position: (joe position + (100@0))
 \end{code}
 \noindent
-If you move joe using the mouse and then execute this code, bill will move so that it is 100 pixels to the right of joe.
+%If you move joe using the mouse and then execute this code, bill will move so that it is 100 pixels to the right of joe.
+Если вы переместите Джо с помощью мыши, а потом выполните этот код, Билл передвинется в точку справа от Джо, отстоящую от него на 100 пикселей. 
 \ab{It would seem that this would be a good place to introduce the \ct{step} method}.
 
 %=================================================================
