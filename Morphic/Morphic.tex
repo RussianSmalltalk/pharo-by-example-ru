@@ -46,7 +46,7 @@
 %Morphic is written in \st, so it is fully portable between operating systems; as a consequence, \pharo looks exactly the same on Unix, MacOS and Windows.
 Morphic написан на \st, и благодаря этому переносим между операционными системами. Как следствие, \pharo выглядит совершенно одинаково на Unix, MacOS, Windows.
 %What distinguishes Morphic from most other user interface toolkits is that it does not have separate modes for ``composing'' and ``running'' the interface: all the graphical elements can be assembled and disassembled by the user, at any time.\footnote{We thank Hilaire Fernandes for permission to base this chapter on his original article in French.}
-Отличие Morphic'а от большинства других фреймворков для построения GUI заключается в том, что в нём нет различия между режимами <<компоновки>> и <<запуска>> интерфейса. Все графические элементы могут быть собраны и разобраны пользователем в любое время.\footnote{Мы благодарим Hilaire Fernandes за разрешение использовать его статью на французском в качесте основы для этой главы (прим. авторов).}
+Отличие Morphic'а от большинства других фреймворков для построения GUI заключается в том, что в нём нет различия между режимами <<компоновки>> и <<работы>> интерфейса. Все графические элементы могут быть собраны и разобраны пользователем в любое время.\footnote{Мы благодарим Hilaire Fernandes за разрешение использовать его статью на французском в качесте основы для этой главы (прим. авторов).}
 
 \ab{After the first printing, I took an editing pass, correcting some errors and grammatical infelicities.}
 
@@ -54,33 +54,41 @@ Morphic написан на \st, и благодаря этому перенос
 
 %=================================================================
 %\section{The history of Morphic}
-\section{История Morpic'а}
+\section{История Morpic}
 
 %Morphic was developed by John Maloney and Randy Smith for the \ind{Self} programming language, staring around 1993. 
-Morphic был разработан Джоном Мэлони (John Maloney) и Ренди Смитом (Randy Smith) для языка программирования \ind{Self} приблизительно в 1993 году.
+Morphic был разработан Джоном Мэлоуни (John Maloney) и Ренди Смитом (Randy Smith) для языка программирования \ind{Self} приблизительно в 1993 году.
 %Maloney later wrote a new version of Morphic for \squeak, but the basic ideas behind the Self version are still alive and well in \pharo Morphic: \emph{directness} and \emph{liveness}.
-Мэлони позже написал новую версию Morphic'а для \squeak, сохранив основные идеи из версии для Self: 
-Directness means that the shapes on the screen are objects that can be examined or changed directly, that is, by pointing at them using the mouse.
-Liveness means that the user interface is always able to respond to user actions: information on the screen is continuously updated as the world that it describes changes.
-A simple example of this is that you can detach a menu item and keep it as a button.
+Мэлоуни позже написал новую версию Morphic для \squeak, сохранив основные идеи из версии для Self: \ugh{\emph{directness} and \emph{liveness}}.
+%Directness means that the shapes on the screen are objects that can be examined or changed directly, that is, by pointing at them using the mouse.
+\ugh{Directness} означает, что графические элементы на экране являются объектами, которые, будучи выбраны с помощью мыши, могут быть исследованы или изменены напрямую.
+%Liveness means that the user interface is always able to respond to user actions: information on the screen is continuously updated as the world that it describes changes.
+\ugh{Liveness} означает, что пользовательский интерфейс всегда способен реагировать на действия пользователя: объекты на экране постоянно обновляются, когда меняется отображаемая ими информация.
+%A simple example of this is that you can detach a menu item and keep it as a button.
+Простым примером сказанного является то, что вы можете легко вытащить пункт из меню и сделать из него кнопку.
 
-\dothis{Bring up the world menu. \Metaclick once on the world menu to bring up its morphic halo\footnote{Recall that you should set \button{halosEnabled} in the Preferences browser. Alternatively, you can evaluate \ct{Preferences enable: \#halosEnabled} in a workspace.}, then \metaclick again on the menu item you want to detach to bring up its halo.  Now drag that item elsewhere on the screen by grabbing the black handle \grabHandle, as shown in \figref{detachingMenu}.}
+%\dothis{Bring up the world menu. \Metaclick once on the world menu to bring up its morphic halo\footnote{Recall that you should set \button{halosEnabled} in the Preferences browser. Alternatively, you can evaluate \ct{Preferences enable: \#halosEnabled} in a workspace.}, then \metaclick again on the menu item you want to detach to bring up its halo.  Now drag that item elsewhere on the screen by grabbing the black handle \grabHandle, as shown in \figref{detachingMenu}.}
+\dothis{Вызовите основное меню. Один \Metaclick на нём вызовет <<гало>> (halo)\footnote{В браузере настроек (Preference browser) должно быть установлено \button{halosEnabled}. Или вы можете выполнить \ct{Preferences enable: \#halosEnabled} в рабочей области (<<workspace>>).}, затем ещё один \metaclick на пункте меню, который вы хотите вытащить, чтобы вызвать его гало.  Теперь перетащите этот пункт в любое место на экране, <<потянув>> за чёрную ручку \grabHandle, как показано на \figref{detachingMenu}.}
 \index{Morphic!halo}
 \index{blue button}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=0.3\textwidth]{detachingMenu}}
-	\caption{Detaching a morph, here the \menu{Workspace} menu item, to make it an independent button.
+	%\caption{Detaching a morph, here the \menu{Workspace} menu item, to make it an independent button.
+	\caption{Вытаскивание морфа, в данном случае пункта меню \menu{Workspace}, и превращение его в отдельную кнопку.
 		\figlabel{detachingMenu}}
 \end{figure}
 
-All of the objects that you see on the screen when you run \pharo are \emph{Morphs}, that is, they are instances of subclasses of class \ct{Morph}.
-\mbox{\ct{Morph}} itself is a large class with many methods; this makes it possible for subclasses to implement interesting behaviour with little code.
-You can create a morph to represent any object, although how good a representation you get depends on the object!
+%All of the objects that you see on the screen when you run \pharo are \emph{Morphs}, that is, they are instances of subclasses of class \ct{Morph}.
+Все объекты, которые вы видите на экране, когда работает в \pharo являются \emph{морфами} (\emph{Morphs}), т.е. экземплярами подклассов класса \ct{Morph}.
+%\mbox{\ct{Morph}} itself is a large class with many methods; this makes it possible for subclasses to implement interesting behaviour with little code.
+Класс \mbox{\ct{Morph}} огромен, с множеством методов, позволяющих подклассам реализовать интересное поведение с помощью совсем небольших фрагметов кода.
+%You can create a morph to represent any object, although how good a representation you get depends on the object!
+Вы можете создать морф, представляющий любой объект, хотя, насколько хорошо будет представление, будет зависеть от самого объекта!
 
 \dothis{To create a morph to represent a string object, execute the following code in a workspace.} % , one line at a time.}
 \begin{code}{}
-'Morph' asMorph openInWorld
+'Morph' asMorph openInWorld 
 \end{code}
 \cmindex{Morph}{openInWorld}
 
