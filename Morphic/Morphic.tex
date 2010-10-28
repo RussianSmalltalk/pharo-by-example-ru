@@ -86,7 +86,8 @@ Morphic был разработан Джоном Мэлоуни (John Maloney) �
 %You can create a morph to represent any object, although how good a representation you get depends on the object!
 Вы можете создать морф, представляющий любой объект, хотя, насколько хорошо будет представление, будет зависеть от самого объекта!
 
-\dothis{To create a morph to represent a string object, execute the following code in a workspace.} % , one line at a time.}
+%\dothis{To create a morph to represent a string object, execute the following code in a workspace.} % , one line at a time.}
+\dothis{Чтобы создать морф, представляющий объект-строку, выполните следующий код в рабочей области.}
 \begin{code}{}
 'Morph' asMorph openInWorld 
 \end{code}
@@ -99,23 +100,32 @@ Morphic был разработан Джоном Мэлоуни (John Maloney) �
 %\cmindex{Morph}{openInWorld}
 % ON: openViewerForArgument is gone in pharo!
 
-This creates a Morph to represent the string \ct{'Morph'}, and then opens it (that is, displays it) in the ``world'', which is the name that \pharo gives to the screen.  
-You should obtain a graphical element\,---\,a Morph\,---\,which you can manipulate by \metaclick{ing}.
+%This creates a Morph to represent the string \ct{'Morph'}, and then opens it (that is, displays it) in the ``world'', which is the name that \pharo gives to the screen.  
+Этот код создаёт морф, представляющий строку \ct{'Morph'}, а затем открывает его (т.е. отображает) в <<мире>> (так в \pharo называется экран).
+%You should obtain a graphical element\,---\,a Morph\,---\,which you can manipulate by \metaclick{ing}.
+Таким образом вы получаете графический элемент, т.е. морф, которым можете манипулировать используя \metaclick.
 %The second line opens a ``viewer'' that shows you attributes of this Morph, such as its \ct{x} and \ct{y}  coordinates on the screen.  Clicking on one of the yellow exclamation marks sends a message to the Morph, which responds appropriately.
 
-Of course, it is possible to define morphs that are more interesting graphical representations than the one that you have just seen.
-The method \mthind{Object}{asMorph} has a default implementation in class \ct{Object} class that just creates a StringMorph.
-So, for example, \ct{Color tan asMorph} returns a StringMorph labeled with the result of \clsind{Color} \ct{tan printString}.
-Let's change this so that we get a coloured rectangle instead.
+%Of course, it is possible to define morphs that are more interesting graphical representations than the one that you have just seen.
+Конечно, можно определять и более интересные морфы, чем то графическое представление, которое вы только что видели.
+%The method \mthind{Object}{asMorph} has a default implementation in class \ct{Object} class that just creates a StringMorph.
+Метод \mthind{Object}{asMorph} имеет стандартную реализацию в классе \ct{Object}, которая просто создаёт экземпляр класса StringMorph.
+%So, for example, \ct{Color tan asMorph} returns a StringMorph labeled with the result of \clsind{Color} \ct{tan printString}.
+Так, например, \ct{Color tan asMorph} вернёт StringMorph с надписью, полученной вычислением \clsind{Color} \ct{tan printString}.
+%Let's change this so that we get a coloured rectangle instead.
+Давайте вместо этого попробуем получить цветной прямоугольник.
 
-\dothis{Open a browser on the \ct{Color} class and add the following method to it:}
+%\dothis{Open a browser on the \ct{Color} class and add the following method to it:}
+\dothis{Откройте браузер на классе \ct{Color} и добавьте следующий метод:}
 \needlines{3}
-\begin{method}{Getting a morph for an instance of \ct{Color}.}
+%\begin{method}{Getting a morph for an instance of \ct{Color}.}
+\begin{method}{Получение морфа для экземпляра класса \ct{Color}.}
 Color>>>asMorph
 	^ Morph new color: self
 \end{method}
 \noindent
-Now execute \ct{Color orange asMorph} \mthind{Morph}{openInWorld} in a workspace. Instead of the string-like morph, you get an orange rectangle!
+%Now execute \ct{Color orange asMorph} \mthind{Morph}{openInWorld} in a workspace. Instead of the string-like morph, you get an orange rectangle!
+Теперь выполните \ct{Color orange asMorph} \mthind{Morph}{openInWorld} в рабочей области. Вместо морфа-строки вы получите оранжевый прямоугольник!
 
 
 %=================================================================
