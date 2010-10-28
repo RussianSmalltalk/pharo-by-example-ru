@@ -180,10 +180,13 @@ bill position: (joe position + (100@0))
 \ab{It would seem that this would be a good place to introduce the \ct{step} method}.
 
 %=================================================================
-\section{Composing morphs}
+%\section{Composing morphs}
+\section{Композиция морфов}
 
-One way of creating new graphical representations is by placing one morph inside another.
-This is called \emph{composition}; morphs can be composed to any depth.
+%One way of creating new graphical representations is by placing one morph inside another.
+Один из способов создания нового графического представления -- размещение одного морфа внутри другого.
+%This is called \emph{composition}; morphs can be composed to any depth.
+Это называется \emph{композиция} (composition) -- морфы могут быть вложены друг в друга на бесконечную глубину.
 %
 %To create new morphs, there are two main techniques that you can combine:
 %\begin{enumerate}
@@ -192,9 +195,11 @@ This is called \emph{composition}; morphs can be composed to any depth.
 %\end{enumerate}
 %}
 \index{Morph!composing}
-You can place a morph inside another by sending the message \mthind{Morph}{addMorph:} to the container morph.
+%You can place a morph inside another by sending the message \mthind{Morph}{addMorph:} to the container morph.
+Вы можете расположить один морф внутри другого послав сообщение \mthind{Morph}{addMorph:} морфу-контейнеру.
 
-\dothis{Try adding a morph to another one:}
+%\dothis{Try adding a morph to another one:}
+\dothis{Попробуйте добавить один морф в другой:}
 \begin{code}{}
 star := StarMorph new color: Color yellow.
 joe addMorph: star.
@@ -202,21 +207,30 @@ star position: joe position.
 \end{code}
 
 \noindent
-The last line positions the star at the same coordinates as joe.
-Notice that the coordinates of the contained morph are still relative to the screen, not to the containing morph.
-There are many  methods available to position a morph; browse the \protind{geometry} protocol of class \ct{Morph} to see for yourself.
-For example, 
-to center the star inside joe, execute \ct{star} \mthind{Morph}{center:} \ct{joe center}.
+%The last line positions the star at the same coordinates as joe.
+Последняя строка располагает звезду в тех же координатах, что и Джо.
+%Notice that the coordinates of the contained morph are still relative to the screen, not to the containing morph.
+Заметьте, что координаты вложенного морфа определяются всё ещё по-отношению к экрану, а не к морфу-контейнеру.
+%There are many  methods available to position a morph; browse the \protind{geometry} protocol of class \ct{Morph} to see for yourself.
+Есть много методов установки позиции морфа -- посмотрите на протокол \protind{geometry} класса \ct{Morph}.
+%For example, 
+Например,
+%to center the star inside joe, execute \ct{star} \mthind{Morph}{center:} \ct{joe center}.
+чтобы поместить звезду в центр Джо, выполните \ct{star} \mthind{Morph}{center:} \ct{joe center}.
 
 \begin{figure}[ht]
 	\centerline{\includegraphics{joeStar}}
-	\caption{The star is contained inside joe, the translucent blue morph.
+	%\caption{The star is contained inside joe, the translucent blue morph.
+	\caption{Звезда, содержащаяся внутри Джо, -- полупрозрачный голубой морф. 
 		\figlabel{joeStar}}
 \end{figure}
 
-If you now try to grab the star with the mouse, you will find that you actually grab joe, and the two morphs move together: the star is \emph{embedded} inside joe.
-It is possible to embed more morphs inside joe.  
-In addition to doing this programmatically, you can also embed morphs by direct manipulation.
+%If you now try to grab the star with the mouse, you will find that you actually grab joe, and the two morphs move together: the star is \emph{embedded} inside joe.
+Если теперь вы попытаетесь ухватить звезду мышью, вы обнаружите, что на самом деле схватили Джо, и два морфа движутся вместе: звезда \emph{встроена} (embedded) внутрь Джо.
+%It is possible to embed more morphs inside joe.  
+В Джо можно встроить много других морфов.
+%In addition to doing this programmatically, you can also embed morphs by direct manipulation.
+В дополнение к возможности сделать это программно, вы можете встроить один морф в другой посредством прямых манипуляций.
 
 %=================================================================
 \section{Creating and drawing your own morphs}
