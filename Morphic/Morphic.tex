@@ -233,17 +233,23 @@ star position: joe position.
 В дополнение к возможности сделать это программно, вы можете встроить один морф в другой посредством прямых манипуляций.
 
 %=================================================================
-\section{Creating and drawing your own morphs}
+%\section{Creating and drawing your own morphs}
+\section{Создание новых морфов}
 
-While it is possible to make many interesting and useful graphical representations by composing morphs, sometimes you will need to create something completely different.
+%While it is possible to make many interesting and useful graphical representations by composing morphs, sometimes you will need to create something completely different.
+Хотя можно сделать много интересных и полезных графических представлений путём композиции морфов, иногда вам нужно создать что-то совершенно особенное.
 \index{Morph!subclassing}
-To do this you define a subclass of \ct{Morph} and override the \mthind{Morph}{drawOn:} method to change its appearance.
+%To do this you define a subclass of \ct{Morph} and override the \mthind{Morph}{drawOn:} method to change its appearance.
+Чтобы сделать это, вам нужно создать подкласс класса \ct{Morph} и переопределить метод \mthind{Morph}{drawOn:}, чтобы изменить вид нового морфа:
 
-The morphic framework sends the message \ct{drawOn:} to a morph when it needs to redisplay the morph on the screen.  The parameter to \ct{drawOn:}  is a kind of \clsind{Canvas}; the expected behaviour is that the morph will draw itself on that canvas, inside its bounds.
-Let's use this knowledge to create a cross-shaped morph.
+%The morphic framework sends the message \ct{drawOn:} to a morph when it needs to redisplay the morph on the screen.  The parameter to \ct{drawOn:}  is a kind of \clsind{Canvas}; the expected behaviour is that the morph will draw itself on that canvas, inside its bounds.
+Фреймворк посылает сообщение \ct{drawOn:} морфу, когда требуется перерисовать его на экране. Параметр метода \ct{drawOn:} -- объект типа \clsind{Canvas}, а ожидаемое поведение заключается в том, что морф будет перерисовывать себя на канве внутри своей рамки.
+%Let's use this knowledge to create a cross-shaped morph.
+Давайте попробуем использовать эти знания для создания крестообразного морфа.
 \index{Morph!subclassing}
 
-\dothis{Using the browser, define a new class \clsind{CrossMorph} inheriting from \ct{Morph}:}
+%\dothis{Using the browser, define a new class \clsind{CrossMorph} inheriting from \ct{Morph}:}
+\dothis{Используя браузер, определите новый класс \clsind{CrossMorph} унаследовавшись от \ct{Morph}:}
 \begin{classdef}{Defining \ct{CrossMorph}}
 Morph subclass: #CrossMorph
 	instanceVariableNames: ''
@@ -252,8 +258,10 @@ Morph subclass: #CrossMorph
 	category: 'PBE-Morphic'
 \end{classdef}
 
-We can define the \ct{drawOn:} method like this:
-\begin{method}[firstDrawOn]{Drawing a \ct{CrossMorph}.}
+%We can define the \ct{drawOn:} method like this:
+Мы можем определить метод \ct{drawOn:} следующим образом:
+%\begin{method}[firstDrawOn]{Drawing a \ct{CrossMorph}.}
+\begin{method}[firstDrawOn]{Рисование объкта \ct{CrossMorph}.}
 drawOn: aCanvas 
 	| crossHeight crossWidth horizontalBar verticalBar |
 	crossHeight := self height / 3.0 .
@@ -269,25 +277,35 @@ drawOn: aCanvas
 	\ifluluelse
 		{\centerline{\includegraphics[width=0.3\textwidth]{NewCross}}}
 		{\centerline{\includegraphics{NewCross}}}
-	\caption{A \ct{CrossMorph} with its halo; you can resize it as you wish.
+	%\caption{A \ct{CrossMorph} with its halo; you can resize it as you wish.
+	\caption{\ct{CrossMorph} и его гало; вы можете растягивать его, как хотите.
 		\figlabel{cross}}
 \end{figure}
 
 
-Sending the \mthind{Morph}{bounds} message to a morph answers its bounding box, which is an instance of \clsind{Rectangle}.  Rectangles understand many messages that create other rectangles of related geometry; here we use the \ct{insetBy:} message with a point as its argument to create first a rectangle with reduced height, and then another rectangle with reduced width.
+%Sending the \mthind{Morph}{bounds} message to a morph answers its bounding box, which is an instance of \clsind{Rectangle}.  Rectangles understand many messages that create other rectangles of related geometry; here we use the \ct{insetBy:} message with a point as its argument to create first a rectangle with reduced height, and then another rectangle with reduced width.
+Посылка собщения \mthind{Morph}{bounds} этому морфу возвращает ограничивающую его рамку, являющуюся объектом класса \clsind{Rectangle} (Прямоугольник). Объекты класса Rectangle понимают много сообщений, которые создают другие прямоугольники. Здесь мы используем сообщение \ct{insetBy:} с точкой в качестве аргумента, чтобы сначала создать прямоугольник уменьшеный по высоте, а потом ещё один уменьшеный по ширине.
 
-\dothis{To test your new morph, execute \ct{CrossMorph new} \mthind{Morph}{openInWorld}.}
-The result should look something like \figref{cross}.
-However, you will notice that the sensitive zone\,---\,where you can click to grab the morph\,---\,is still the whole bounding box.  Let's fix this.
+%\dothis{To test your new morph, execute \ct{CrossMorph new} \mthind{Morph}{openInWorld}.}
+\dothis{Чтобы посмотреть на новый морф \ct{CrossMorph new} \mthind{Morph}{openInWorld}.}
+%The result should look something like \figref{cross}.
+Результат должен походить на \figref{cross}.
+%However, you will notice that the sensitive zone\,---\,where you can click to grab the morph\,---\,is still the whole bounding box.  Let's fix this.
+Однако вы можете заметить, что чувствительная зона (зона, клик в которой приводит к захвату морфа) -- это вся рамка морфа. Давайте исправим это.
 
-When the Morphic framework needs to find out which Morphs lie under the cursor, it sends the message \ct{containsPoint:} to all the morphs whose bounding boxes lie under the mouse pointer.
-So, to limit the sensitive zone of the morph to the cross shape, we need to override the \ct{containsPoint:} method.
+%When the Morphic framework needs to find out which Morphs lie under the cursor, it sends the message \ct{containsPoint:} to all the morphs whose bounding boxes lie under the mouse pointer.
+Когда Morphic пытается определить, какие морфы расположены под курсором, он посылает сообщение \ct{containsPoint:} всем морфам, чьи рамки расположены под укзателем мыши.
+%So, to limit the sensitive zone of the morph to the cross shape, we need to override the \ct{containsPoint:} method.
+Поэтому, чтобы ограничить чувствительную зону морфа крестом, мы должны переоределить метод \ct{containsPoint:}.
 
 
-\dothis{Define the following method in class \ct{CrossMorph}:}
+%\dothis{Define the following method in class \ct{CrossMorph}:}
+\dothis{Определите следующий метод в классе \ct{CrossMorph}:}
+
 
 \needlines{4}
-\begin{method}[firstContains]{Shaping the sensitive zone of the \ct{CrossMorph}.}
+%\begin{method}[firstContains]{Shaping the sensitive zone of the \ct{CrossMorph}.}
+\begin{method}[firstContains]{Ограничение чувствительной зоны морфа \ct{CrossMorph}.}
 containsPoint: aPoint
 	| crossHeight crossWidth horizontalBar verticalBar |
 	crossHeight := self height / 3.0.
@@ -298,13 +316,19 @@ containsPoint: aPoint
 		or: [verticalBar containsPoint: aPoint]
 \end{method}
 
-This method uses the same logic as \ct{drawOn:}, so we can be confident that the points for which \ct{containsPoint:} answers \ct{true} are the same ones that will be colored in by \ct{drawOn}. 
-Notice how we leverage the \mthind{Rectangle}{containsPoint:} method in class \ct{Rectangle} to do the hard work.
+%This method uses the same logic as \ct{drawOn:}, so we can be confident that the points for which \ct{containsPoint:} answers \ct{true} are the same ones that will be colored in by \ct{drawOn}. 
+Этот метод использует ту же логику, что и \ct{drawOn:}, поэтому мы можем быть уверены, что точки, для которых \ct{containsPoint:} возвращает \ct{true}, те же самые, что и раскрашенные методом \ct{drawOn}. 
+%Notice how we leverage the \mthind{Rectangle}{containsPoint:} method in class \ct{Rectangle} to do the hard work.
+Обратите внимание на то, как мы использовали метод \mthind{Rectangle}{containsPoint:} в классе \ct{Rectangle}, чтобы сделать всю самую сложную работу.
 
-There are two problems with the code in \mthsref{firstDrawOn} and \ref{mth:firstContains}.
-The most obvious is that we have duplicated code.
-This is a cardinal error: if we find that we need to change the way that \ct{horizonatalBar} or \ct{verticalBar} are calculated, we are quite likely to forget to change one of the two occurrences.
-The solution is to factor out these calculations into two new methods, which we put in the \ct{private} protocol:
+%There are two problems with the code in \mthsref{firstDrawOn} and \ref{mth:firstContains}.
+Однако, в коде методов \mthsref{firstDrawOn} и \ref{mth:firstContains} существуют некоторые проблемы.
+%The most obvious is that we have duplicated code.
+Наиболее очевидна проблема дублирования кода.
+%This is a cardinal error: if we find that we need to change the way that \ct{horizonatalBar} or \ct{verticalBar} are calculated, we are quite likely to forget to change one of the two occurrences.
+Это серьёзная ошибка: если мы вдруг обнаружим, что требуется изменить способ вычисления \ct{horizonatalBar} или \ct{verticalBar}, то, вероятнее всего, мы забудем внести изменения в одно из двух мест.
+%The solution is to factor out these calculations into two new methods, which we put in the \ct{private} protocol:
+Решение заключается в том, чтобы вынести эти вычисления в два новых метода, которые мы поместим в протокол \ct{private}:
 
 \needlines{4}
 \begin{method}{\ct{horizontalBar}.}
@@ -323,7 +347,8 @@ verticalBar
 \end{method}
 
 \noindent
-We can then define both \ct{drawOn:} and \ct{containsPoint:} using these methods:
+%We can then define both \ct{drawOn:} and \ct{containsPoint:} using these methods:
+Теперь мы можем переписать и \ct{drawOn:} и \ct{containsPoint:} с использование этих двух методов:
 
 \needlines{4}
 \begin{method}{Refactored \ct{CrossMorph>>>drawOn:}.}
@@ -339,16 +364,20 @@ containsPoint: aPoint
 		or: [self verticalBar containsPoint: aPoint]
 \end{method}
 
-This code is much simpler to understand, largely because we have given meaningful names to the private methods.
-In fact, it is so simple that you may have noticed the second problem: the area in the center of the cross, which is under both the horizontal and the vertical bars, is drawn twice.  
-This doesn't matter when we fill the cross with an opaque colour, but the bug becomes apparent immediately if we draw a semi-transparent cross, as shown in \figref{overdrawBug}.
+%This code is much simpler to understand, largely because we have given meaningful names to the private methods.
+Такой код намного проще понять. Главным образом потому, что мы дали новым методам осмысленные имена.
+%In fact, it is so simple that you may have noticed the second problem: the area in the center of the cross, which is under both the horizontal and the vertical bars, is drawn twice.  
+Фактически, теперь всё стало настолько просто, что вы уже могли заметить вторую проблему: область в центре креста, являющаяся пересечением горизонтальной и вертикальной полос, прорисовывается дважды.
+%This doesn't matter when we fill the cross with an opaque colour, but the bug becomes apparent immediately if we draw a semi-transparent cross, as shown in \figref{overdrawBug}.
+Это не имеет значения, если мы окрасим крест непрозрачным цветом, но ошибка немедленно проявляется, если мы используем полупрозрачные цвета, как показано на \figref{overdrawBug}.
 
 \begin{figure}[t]
 \begin{minipage}{0.48\textwidth}
 	\ifluluelse
 		{\centerline{\includegraphics[scale=0.6]{overdrawBug}}}
 		{\centerline{\includegraphics{overdrawBug}}}
-	\caption{The center of the cross is filled twice with the colour.
+	%\caption{The center of the cross is filled twice with the colour.
+	\caption{Центр креста дважды заполняется одним и тем же цветом.
 		\figlabel{overdrawBug}}
 \end{minipage}
 \hfill
@@ -356,13 +385,15 @@ This doesn't matter when we fill the cross with an opaque colour, but the bug be
 	\ifluluelse
 		{\centerline{\includegraphics[scale=0.6]{hairlineBug}}}
 		{\centerline{\includegraphics{bug}}}
-	\caption{The cross-shaped morph, showing a row of unfilled pixels.
+	%\caption{The cross-shaped morph, showing a row of unfilled pixels.
+	\caption{Крестообразный морф с рядом незакрашенных пикселей.
 		\figlabel{bug}}
 \end{minipage}
 \end{figure}
 
 \needlines{4}
-\dothis{Execute the following code in  a workspace, line by line:}
+%\dothis{Execute the following code in  a workspace, line by line:}
+\dothis{Выполните следующий код в рабочей области, строку за строкой:}
 
 \begin{code}{}
 m := CrossMorph new bounds: (0@0 corner: 300@300).
@@ -371,11 +402,15 @@ m color: (Color blue alpha: 0.3).
 \end{code}
 
 \noindent
-The fix is to divide the vertical bar into three pieces, and to fill only the top and bottom.  
-Once again we find a method in class \ct{Rectangle} that does the hard work for us: \ct{r1 areasOutside: r2} answers an array of rectangles comprising the parts of \ct{r1} outside \ct{r2}.
-Here is the revised code:
+%The fix is to divide the vertical bar into three pieces, and to fill only the top and bottom.  
+Исправление ошибки заключается в том, чтобы разделить вертикальную полосу на три части и заполнять только верхнюю и нижнюю из них.
+%Once again we find a method in class \ct{Rectangle} that does the hard work for us: \ct{r1 areasOutside: r2} answers an array of rectangles comprising the parts of \ct{r1} outside \ct{r2}.
+И снова мы находим метод в классе \ct{Rectangle}, который сделает за нас всю грязную работу: \ct{r1 areasOutside: r2} возвращает массив прямоугольников, содержащий части прямоугольника \ct{r1} находящиеся вне прямоугольника \ct{r2}.
+%Here is the revised code:
+Вот что у нас получилось:
 
-\begin{method}{The revised \ct{drawOn:} method, which fills the center of the cross once.}
+%\begin{method}{The revised \ct{drawOn:} method, which fills the center of the cross once.}
+\begin{method}{Переработанный метод \ct{drawOn:}, заполняющий центр крест один раз.}
 drawOn: aCanvas 
 	| topAndBottom |
 	aCanvas fillRectangle: self horizontalBar color: self color.
@@ -383,13 +418,18 @@ drawOn: aCanvas
 	topAndBottom do: [ :each | aCanvas fillRectangle: each color: self color]
 \end{method}
 
-This code seems to work, but if you try it on some crosses and resize them, you may notice that at some sizes, a one-pixel wide line separates the bottom of the cross from the remainder, as shown in \figref{bug}.
-This is due to rounding: when the size of the rectangle to be filled is not an integer, \ct{fillRectangle: color:}
-seems to round inconsistently, leaving one row of pixels unfilled.
-We can work around this by rounding explicitly when we calculate the sizes of the bars.
+%This code seems to work, but if you try it on some crosses and resize them, you may notice that at some sizes, a one-pixel wide line separates the bottom of the cross from the remainder, as shown in \figref{bug}.
+Кажется, код работает, но если вы будете пробовать его на разных крестах и менять их размеры, вы скоро увидите, что на некоторых из них низ креста отделён от остальной части линией шириной в один пиксель, как показано на \figref{bug}.
+%This is due to rounding: when the size of the rectangle to be filled is not an integer, \ct{fillRectangle: color:}
+Эта ошибка возникает вследствие округления. Если размер закрашиваемого прямоугольника дробное число, метод \ct{fillRectangle: color:}, 
+%seems to round inconsistently, leaving one row of pixels unfilled.
+судя по всему округляет неправильно, оставляя один ряд пикселей незполненным.
+%We can work around this by rounding explicitly when we calculate the sizes of the bars.
+Мы можем обойти это, самостоятельно производя округление при вычислении размеров полос.
 
 \needlines{5}
-\begin{method}{\ct{CrossMorph>>>horizontalBar} with explicit rounding.}
+%\begin{method}{\ct{CrossMorph>>>horizontalBar} with explicit rounding.}
+\begin{method}{\ct{CrossMorph>>>horizontalBar} с явным округлением.}
 horizontalBar
 	| crossHeight |
 	crossHeight := (self height / 3.0) rounded.
@@ -397,7 +437,8 @@ horizontalBar
 \end{method}
 
 \needlines{5}
-\begin{method}{\ct{CrossMorph>>>verticalBar} with explicit rounding.}
+%\begin{method}{\ct{CrossMorph>>>verticalBar} with explicit rounding.}
+\begin{method}{\ct{CrossMorph>>>verticalBar} с явным округлением.}
 verticalBar
 	| crossWidth |
 	crossWidth := (self width / 3.0) rounded.
