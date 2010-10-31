@@ -487,32 +487,46 @@ verticalBar
 
 
 %=================================================================
-\section{Interaction and animation}
+%\section{Interaction and animation}
+\section{Взаимодействие и анимация}
 
-To build live user-interfaces using morphs, we need to be able to interact with them using the mouse and the keyboard.
-Moreover, the morphs need to be able respond to user input by changing their appearance and position\,---\,that is, by animating themselves.
+%To build live user-interfaces using morphs, we need to be able to interact with them using the mouse and the keyboard.
+Для построения <<живых>> пользовательских интерфейсов с использование морфов нам нужно уметь взаимодействовать с ними, используя мышь и клавиатуру.
+%Moreover, the morphs need to be able respond to user input by changing their appearance and position\,---\,that is, by animating themselves.
+Больше того, морфы должны реагировать на действия пользователя, изменяя свой внешний вид и местоположение, т.е. <<анимируя>> самих себя.
 
 
+%\subsection{Mouse events}
 \subsection{Mouse events}
 
-When a mouse button is pressed, Morphic sends each morph under the mouse pointer the message \ct{handlesMouseDown:}. If a morph answers \ct{true}, then Morphic immediately sends it the \mthind{Morph}{mouseDown:} message; it also sends the \mthind{Morph}{mouseUp:} message when the user releases the mouse button.
-If all morphs answer \ct{false}, then Morphic initiates a drag-and-drop operation.
-As we will discuss below, the \ct{mouseDown:} and \ct{mouseUp:} messages are sent with an argument\,---\,a \clsind{MouseEvent} object\,---\,that encodes the details of the mouse action.
+%When a mouse button is pressed, Morphic sends each morph under the mouse pointer the message \ct{handlesMouseDown:}. If a morph answers \ct{true}, then Morphic immediately sends it the \mthind{Morph}{mouseDown:} message; it also sends the \mthind{Morph}{mouseUp:} message when the user releases the mouse button.
+Когда нажата кнопка мыши, Morphic посылает каждому морфу под её указателем сообщение \ct{handlesMouseDown:}. Если морф возвращает \ct{true}, тогда Morphic немедленно посылает ему сообщение \mthind{Morph}{mouseDown:}. Он также посылает сообщение \mthind{Morph}{mouseUp:}, когда пользователь отпускает кнопку мыши.
+%If all morphs answer \ct{false}, then Morphic initiates a drag-and-drop operation.
+Если все морфы возвращают \ct{false}, Morphic начинает операцию drag-and-drop.
+%As we will discuss below, the \ct{mouseDown:} and \ct{mouseUp:} messages are sent with an argument\,---\,a \clsind{MouseEvent} object\,---\,that encodes the details of the mouse action.
+Как мы увидим ниже, сообщения \ct{mouseDown:} и \ct{mouseUp:} посылаются с аргументом, объектом класса \clsind{MouseEvent}, который содержит подробности произведённой мышью операции.
 
-Let's extend \ct{CrossMorph} to handle mouse events.  
-We start by ensuring that all crossMorphs answer \ct{true} to the \mthind{Morph}{handlesMouseDown:} message. 
+%Let's extend \ct{CrossMorph} to handle mouse events.  
+Давайте теперь научим \ct{CrossMorph} обрабатывать события мыши.
+%We start by ensuring that all crossMorphs answer \ct{true} to the \mthind{Morph}{handlesMouseDown:} message. 
+Мы начнём с того, что убедимся, что все наши морфы возвращают \ct{true} на сообщение \mthind{Morph}{handlesMouseDown:}.
 
-\dothis{Add this method to \ct{CrossMorph}:}
-\begin{method}{Declaring that \ct{CrossMorph} will react to mouse clicks.}
+%\dothis{Add this method to \ct{CrossMorph}:}
+\dothis{Добавить этот метод в класс \ct{CrossMorph}:}
+%\begin{method}{Declaring that \ct{CrossMorph} will react to mouse clicks.}
+\begin{method}{Сообщаем, что \ct{CrossMorph} реагирует на нажатия мыши.}
 CrossMorph>>>handlesMouseDown: anEvent
 	^true
 \end{method}
 
-Suppose that when we click on the cross, we want to change the color of the cross to red, and when we \actclick on it, we want to change the color to yellow.
-This can be accomplished by \mthref{mouseDown}.
+%Suppose that when we click on the cross, we want to change the color of the cross to red, and when we \actclick on it, we want to change the color to yellow.
+Предположим, что когда мы кликаем на кресте, мы хотим изменить его цвет на красный, а когда мы делаем на нём \actclick, мы хотим изменить цвет на жёлтый.
+%This can be accomplished by \mthref{mouseDown}.
+Мы реализуем это в методе \mthref{mouseDown}.
 
 \needlines{7}
-\begin{method}[mouseDown]{Reacting to mouse clicks by changing the morph's color.}
+%\begin{method}[mouseDown]{Reacting to mouse clicks by changing the morph's color.}
+\begin{method}[mouseDown]{Реагируем на нажатия мыши изменением цвета морфа.}
 CrossMorph>>>mouseDown: anEvent
 	anEvent redButtonPressed "click"
 		ifTrue: [self color: Color red].
@@ -522,90 +536,126 @@ CrossMorph>>>mouseDown: anEvent
 \end{method}
 
 \ab{I added this note:}
-Notice that in addition to changing the color of the morph, this method also sends \ct{self changed}.
-This makes sure that morphic sends \ct{drawOn:} in a timely fashion.
+%Notice that in addition to changing the color of the morph, this method also sends \ct{self changed}.
+Заметьте, что в дополение к изменению цвета морфа, этот метод посылает сообщение \ct{self changed}.
+%This makes sure that morphic sends \ct{drawOn:} in a timely fashion.
+Этим мы удостоверяемся, что Morphic своевременно пошлёт сообщение \ct{drawOn:}.
 \ab{However, the \ct{self changed} message seems to be entirely unnecessary; the colour changes instantly without it.}
-Note also that once the morph handles \ind{mouse events}, you can no longer grab it with the mouse and move it.
-Instead you have to use the halo: \metaclick on the morph to make the halo appear and grab either the brown move handle \moveHandle{} or the black pickup handle \grabHandle{} at the top of the morph.
+%Note also that once the morph handles \ind{mouse events}, you can no longer grab it with the mouse and move it.
+Обратите внимание также и на то, что т.к. теперь морф обрабатывает \ind{события мыши}, мы больше не можем перемещать его с помощью захвата мышью.
+%Instead you have to use the halo: \metaclick on the morph to make the halo appear and grab either the brown move handle \moveHandle{} or the black pickup handle \grabHandle{} at the top of the morph.
+Вместо этого мы вынуждены использовать гало: делаем \metaclick на морфе, чтобы гало появилось, а затем либо тянем за коричневую кнопку перемещения \moveHandle{} или за чёрную кнопку захвата \grabHandle{} наверху морфа.
 
-The \ct{anEvent} argument of \ct{mouseDown:} is an instance of \mbox{\clsind{MouseEvent},} which is a subclass of \lct{Mor\-phic\-Event}. \ct{MouseEvent} defines the \mthind{MouseEvent}{redButtonPressed} and \mthind{MouseEvent}{yellowButtonPressed} methods. Browse this class to see what other methods it provides to interrogate the mouse event.
+%The \ct{anEvent} argument of \ct{mouseDown:} is an instance of \mbox{\clsind{MouseEvent},} which is a subclass of \lct{Mor\-phic\-Event}. \ct{MouseEvent} defines the \mthind{MouseEvent}{redButtonPressed} and \mthind{MouseEvent}{yellowButtonPressed} methods. Browse this class to see what other methods it provides to interrogate the mouse event.
+Аргумент \ct{anEvent} метода \ct{mouseDown:} --- это экземпляр класса \mbox{\clsind{MouseEvent},} который является подклассом класса \lct{Mor\-phic\-Event}. \ct{MouseEvent} определяет методы \mthind{MouseEvent}{redButtonPressed} и \mthind{MouseEvent}{yellowButtonPressed}. Исследуйте этот класс, чтобы посмотреть, какие ещё методы он предоставляет для доступа к подробностям события.
 
-\subsection{Keyboard events}
+%\subsection{Keyboard events}
+\subsection{События клавиатуры}
 
-To catch \ind{keyboard events}, we need to take three steps.
+%To catch \ind{keyboard events}, we need to take three steps.
+Чтобы перехватывать \ind{события клавиатуры}, мы должны выполнить следующие шаги:
 \begin{enumerate}
-	\item Give the ``keyboard focus'' to a specific morph: for instance we can give focus to our morph when the mouse is over it.
-	\item Handle the keyboard event itself with the \mthind{Morph}{handleKeystroke:} method: this message is sent to the morph that has keyboard focus when the user presses a key.
-	\item Release the keyboard focus when the mouse is no longer over our morph.
+%	\item Give the ``keyboard focus'' to a specific morph: for instance we can give focus to our morph when the mouse is over it.
+	\item Передать <<фокус>> клавиатуры нужному морфу: например, мы можем передать фокус нашему морфу, когда указатель мыши находится над ним.
+%	\item Handle the keyboard event itself with the \mthind{Morph}{handleKeystroke:} method: this message is sent to the morph that has keyboard focus when the user presses a key.
+	\item Непосредственно обработать событие клавиатуры в методе \mthind{Morph}{handleKeystroke:}, это сообщение посылается морфу, на который установлен фокус, когда пользователь нажимает клавишу.
+%	\item Release the keyboard focus when the mouse is no longer over our morph.
+	\item Снять фокус, когда указатель мыши больше не находится над нашим морфом.
 \end{enumerate}
 
-Let's extend \ct{CrossMorph} so that it reacts to keystrokes.
-First, we need to arrange to be notified when the mouse is over the morph.
-This will happen if our morph answers \ct{true} to the \mthind{Morph}{handlesMouseOver:} message
+%Let's extend \ct{CrossMorph} so that it reacts to keystrokes.
+Давайте теперь реализуем в нашем \ct{CrossMorph} обработку нажатий клавиш.
+%First, we need to arrange to be notified when the mouse is over the morph.
+Сначала, нам нужно добиться того, чтобы морф как-то узнавал, что над ним находится указатель мыши.
+%This will happen if our morph answers \ct{true} to the \mthind{Morph}{handlesMouseOver:} message
+Это произодёт, если наш морф вернёт \ct{true} в ответ на сообщение \mthind{Morph}{handlesMouseOver:}
 
-\dothis{Declare that \ct{CrossMorph} will react when it is under the mouse pointer.}
-\begin{method}{We want to handle ``mouse over'' events.} 
+%\dothis{Declare that \ct{CrossMorph} will react when it is under the mouse pointer.}
+\dothis{Определяем, что \ct{CrossMorph} будет реагировать на нажатия клавиш, только если находится под указателем мыши.}
+%\begin{method}{We want to handle ``mouse over'' events.} 
+\begin{method}{Мы хотим обрабатывть собитие <<mouse over>>.} 
 CrossMorph>>>handlesMouseOver: anEvent
 	^true
 \end{method}
 
 \noindent
-This message is the equivalent of \mthind{Morph}{handlesMouseDown:} for the mouse position.
-When the mouse pointer enters or leaves the morph, the \mthind{Morph}{mouseEnter:} and \mthind{Morph}{mouseLeave:} messages are sent to it.
+%This message is the equivalent of \mthind{Morph}{handlesMouseDown:} for the mouse position.
+Это сообщение --- эквивалент сообщения \mthind{Morph}{handlesMouseDown:} для позиции указателя.
+%When the mouse pointer enters or leaves the morph, the \mthind{Morph}{mouseEnter:} and \mthind{Morph}{mouseLeave:} messages are sent to it.
+Когда указатель мыши оказывается над морфом или покидает его, ему посылаются сообщения \mthind{Morph}{mouseEnter:} and \mthind{Morph}{mouseLeave:}.
 
-\dothis{Define two methods so that \ct{CrossMorph} catches and releases the keyboard focus, and a third method to actually handle the keystrokes.}
-\begin{method}{Getting the keyboard focus when the mouse enters the morph.}
+%\dothis{Define two methods so that \ct{CrossMorph} catches and releases the keyboard focus, and a third method to actually handle the keystrokes.}
+\dothis{Опеределите два метода в классе \ct{CrossMorph}, чтобы он мог получать и отпускать фокус клавиатуры, и третий, чтобы непосредственно обрабатывать нажатия клавиш.}
+%\begin{method}{Getting the keyboard focus when the mouse enters the morph.}
+\begin{method}{Установка фокуса при появлении указателя мыши над морфом.}
 CrossMorph>>>mouseEnter: anEvent
 	anEvent hand newKeyboardFocus: self
 \end{method}
 
-\begin{method}{Handing back the focus when the pointer goes away.}
+%\begin{method}{Handing back the focus when the pointer goes away.}
+\begin{method}{Возвращение фокуса при отводе указателя с морфа.}
 CrossMorph>>>mouseLeave: anEvent
 	anEvent hand newKeyboardFocus: nil
 \end{method}
 
-\begin{method}[handleKeystroke]{Receiving and handling keyboard events.}
+%\begin{method}[handleKeystroke]{Receiving and handling keyboard events.}
+\begin{method}[handleKeystroke]{Получение и обработка событий клавиатуры.}
 CrossMorph>>>handleKeystroke: anEvent
 	| keyValue |
 	keyValue := anEvent keyValue.
-	keyValue = 30	 "up arrow"
+	keyValue = 30	 "стрелка вверх"
 		ifTrue: [self position: self position - (0 @ 1)].
-	keyValue = 31	 "down arrow"
+	keyValue = 31	 "стрелка вниз"
 		ifTrue: [self position: self position + (0 @ 1)].
-	keyValue = 29	 "right arrow"
+	keyValue = 29	 "срелка вправо"
 		ifTrue: [self position: self position + (1 @ 0)].
-	keyValue = 28	 "left arrow"
+	keyValue = 28	 "стрелка влево"
 		ifTrue: [self position: self position - (1 @ 0)]
 \end{method}
 
-We have written this method so that you can move the morph using the arrow keys.
-Note that when the mouse is no longer over the morph, the \mthind{Morph}{handleKeystroke:} message is not sent, so the morph stops responding to keyboard commands.
-To discover the key values, you can open a Transcript window and add \glbind{Transcript} \ct{show: anEvent keyValue} to \mthref{handleKeystroke}.
-The \ct{anEvent} argument of \ct{handleKeystroke:} is an instance of \clsind{KeyboardEvent}, another subclass of \clsind{MorphicEvent}. Browse this class to learn more about keyboard events.
+%We have written this method so that you can move the morph using the arrow keys.
+Мы написали этот метод таким образом, что мы можем двигать морф, используя клавиши со стрелками.
 
-\subsection{Morphic animations}
+%Note that when the mouse is no longer over the morph, the \mthind{Morph}{handleKeystroke:} message is not sent, so the morph stops responding to keyboard commands.
+Заметьте, когда мышь больше не находится над морфом, сообщение \mthind{Morph}{handleKeystroke:} не посылается, и морф перестаёт реагировать на команды клавиатуры.
+%To discover the key values, you can open a Transcript window and add \glbind{Transcript} \ct{show: anEvent keyValue} to \mthref{handleKeystroke}.
+Чтобы узнать числовые значения клавиш, вы можете открыть окно Transcript и добавить строку \glbind{Transcript} \ct{show: anEvent keyValue} в метод \mthref{handleKeystroke}.
+%The \ct{anEvent} argument of \ct{handleKeystroke:} is an instance of \clsind{KeyboardEvent}, another subclass of \clsind{MorphicEvent}. Browse this class to learn more about keyboard events.
+Аргумент \ct{anEvent} метода \ct{handleKeystroke:} --- это экземпляр класса \clsind{KeyboardEvent}, другой подкласс класса \clsind{MorphicEvent}. Исследуйте этот класс, чтобы больше узнать о событиях клавиатуры.
 
-Morphic provides a simple animation system with two main methods: \mthind{Morphic}{step} is sent to a morph at regular intervals of time, while \mthind{Morphic}{stepTime} specifies the time in milliseconds between \ct{step}s.\footnote{\ct{stepTime} is actually the \emph{minimum} time between \ct{step}s.   If you ask for a \ct{stepTime} of 1\,ms, don't be surprised if \pharo is too busy to step your morph that often.}
-In addition, 
-\mthind{Morphic}{startStepping} turns on the stepping mechanism, while \mthind{Morphic}{stopStepping} turns it off again;  \mthind{Morphic}{isStepping} can be used to find out whether a morph is currently being stepped.
+%\subsection{Morphic animations}
+\subsection{Анимация в Morphic}
+
+%Morphic provides a simple animation system with two main methods: \mthind{Morphic}{step} is sent to a morph at regular intervals of time, while \mthind{Morphic}{stepTime} specifies the time in milliseconds between \ct{step}s.\footnote{\ct{stepTime} is actually the \emph{minimum} time between \ct{step}s.   If you ask for a \ct{stepTime} of 1\,ms, don't be surprised if \pharo is too busy to step your morph that often.}
+Morphic предоставляет простую систему анимации с двумя основными сообщениями: \mthind{Morphic}{step} (шаг), посылаемым морфу через регулярные интервалы времени, и \mthind{Morphic}{stepTime} определяющее время в миллисекундах между шагами (посылками сообщения \ct{step}). \footnote{На самом деле \ct{stepTime} --- это \emph{минимальное} время между шагами.   Если вы зададите время \ct{stepTime} равное одной миллисекунде, не удивляйтесь, если \pharo будет слишком занят, чтобы возвращаться к вашему морфу так часто.}
+%In addition, 
+В дополнение,
+%\mthind{Morphic}{startStepping} turns on the stepping mechanism, while \mthind{Morphic}{stopStepping} turns it off again;  \mthind{Morphic}{isStepping} can be used to find out whether a morph is currently being stepped.
+метод \mthind{Morphic}{startStepping} включает механизм пошаговой анимации, а \mthind{Morphic}{stopStepping} выключает. Метод \mthind{Morphic}{isStepping} позволяет узнать, находится ли морф в режиме пошаговой анимации.
 \index{Morphic!animation}
 
-\dothis{Make \ct{CrossMorph} blink by defining these methods as follows:}
-\begin{method}{Defining the animation time interval.}
+%\dothis{Make \ct{CrossMorph} blink by defining these methods as follows:}
+\dothis{Заставьте \ct{CrossMorph} мигать, определив эти методы следующим образом:}
+%\begin{method}{Defining the animation time interval.}
+\begin{method}{Определяем интервал анимации.}
 CrossMorph>>>stepTime
 	^ 100
 \end{method}
-\begin{method}{Making a step in the animation.}
+%\begin{method}{Making a step in the animation.}
+\begin{method}{Производим шаг анимации.}
 CrossMorph>>>step
 	(self color diff: Color black) < 0.1
 		ifTrue: [self color: Color red]
 		ifFalse: [self color: self color darker]
 \end{method}
 \noindent
-To start things off, you can open an inspector on a \ct{CrossMorph} (using the debug handle \debugHandle{} in the morphic halo), type \ct{self startStepping} in the small workspace pane at the bottom, and  \menu{do it}.
-Alternatively, you can modify the \ct{handleKeystroke:} method so that you can use the $+$ and $-$ keys to start and stop stepping. 
+%To start things off, you can open an inspector on a \ct{CrossMorph} (using the debug handle \debugHandle{} in the morphic halo), type \ct{self startStepping} in the small workspace pane at the bottom, and  \menu{do it}.
+Чтобы запустить механизм анимации, вы можете открыть инспектор на экземпляре \ct{CrossMorph} (используя кнопку отладки \debugHandle{} в гало морфа), введите \ct{self startStepping} в маленькую панель рабочей области внизу, и выполните команду меню \menu{do it}.
+%Alternatively, you can modify the \ct{handleKeystroke:} method so that you can use the $+$ and $-$ keys to start and stop stepping. 
+Или вы можете изменить метод \ct{handleKeystroke:} так, что вы можете использовать клавиши $+$ и $-$ для включения и выключения анимации.
 
-\dothis{Add the following code to \mthref{handleKeystroke}:}
+%\dothis{Add the following code to \mthref{handleKeystroke}:}
+\dothis{Добавьте следующий код в метод \mthref{handleKeystroke}:}
 
 \begin{code}{}
 	keyValue = $+ asciiValue 
