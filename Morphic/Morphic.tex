@@ -723,13 +723,18 @@ UIManager default
 %\end{figure}
 
 %=================================================================
+%\section{Drag-and-drop}
 \section{Drag-and-drop}
 
-Morphic also supports drag-and-drop. Let's examine a simple example with two morphs, a receiver morph and a dropped morph. 
-The receiver will accept a morph only if the dropped morph matches a given condition: in our example,  the morph should be blue. If it is rejected, the dropped morph decides what to do.
+%Morphic also supports drag-and-drop. Let's examine a simple example with two morphs, a receiver morph and a dropped morph. 
+Morphic, кроме прочего, поддерживает и drag-and-drop. Давайте рассмотрим простой пример с двумя морфами, морфом-приёмником и перетаскиваемым морфом.
+%The receiver will accept a morph only if the dropped morph matches a given condition: in our example,  the morph should be blue. If it is rejected, the dropped morph decides what to do.
+Приёмник примет брошенный морф только если тот соответствует заданному условию: в нашем примере морф должен быть голубым. Если брошенный морф не принят, он сам решает, что делать дальше.
 
-\dothis{Let's first define the receiver morph:}
-\begin{classdef}{Defining a morph on which we can drop other morphs}
+%\dothis{Let's first define the receiver morph:}
+\dothis{Давайте сначала определим морф-приёмник:}
+%\begin{classdef}{Defining a morph on which we can drop other morphs}
+\begin{classdef}{Определяем морф, на который мы сможем перетаскивать другие морфы}
 Morph subclass: #ReceiverMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
@@ -737,7 +742,8 @@ Morph subclass: #ReceiverMorph
 	category: 'PBE-Morphic'
 \end{classdef}
 
-\dothis{Now define the initialization method in the usual way:}
+%\dothis{Now define the initialization method in the usual way:}
+\dothis{Определим теперь обычным способом метод инициализации:}
 \begin{method}{Initializing \ct{ReceiverMorph}.}
 ReceiverMorph>>>initialize
 	super initialize.
@@ -745,39 +751,52 @@ ReceiverMorph>>>initialize
 	bounds := 0 @ 0 extent: 200 @ 200
 \end{method}
 
-How do we decide if the receiver morph will accept or repel the dropped morph?
-In general, both of the morphs will have to agree to the interaction.
-The receiver does this by responding to \mthind{Morph}{wantsDroppedMorph:event:}; the first argument is the dropped morph, and the second the mouse event, so that the receiver can, for example, see if any modifier keys were held down at the time of the drop. 
-The dropped morph is also given the opportunity to check and see if it likes the morph onto which it is being dropped; it is sent the message \ct{wantsToBeDroppedInto:}.  The default implementation of  this method (in class \ct{Morph}) answers \ct{true}.
+%How do we decide if the receiver morph will accept or repel the dropped morph?
+Как же нам решить, должен ли морф-приёмник принять или отклонить брошенный морф?
+%In general, both of the morphs will have to agree to the interaction.
+В общем случае, оба морфа должны согласиться на это взаимодействие.
+%The receiver does this by responding to \mthind{Morph}{wantsDroppedMorph:event:}; the first argument is the dropped morph, and the second the mouse event, so that the receiver can, for example, see if any modifier keys were held down at the time of the drop. 
+Приёмник делает это, отвечая на сообщение \mthind{Morph}{wantsDroppedMorph:event:}, где первый аргумент -- это брошенный морф, а второй -- событие мыши, так что получатель может, например, видеть, удерживались ли клавиши-модификаторы, когда морф отпустили.
+%The dropped morph is also given the opportunity to check and see if it likes the morph onto which it is being dropped; it is sent the message \ct{wantsToBeDroppedInto:}.  The default implementation of  this method (in class \ct{Morph}) answers \ct{true}.
+Брошенному морфу также предоставляется возможность проверить, подходит ли ему морф, над которым его бросили, с помощью сообщения \ct{wantsToBeDroppedInto:}. Реализация по-умолчанию этого метода (в классе \ct{Morph}) возвращает \ct{true}.
 
-\begin{method}{Accept dropped morphs based on their color.}
+%\begin{method}{Accept dropped morphs based on their color.}
+\begin{method}{Принимает брошенный морф, основываясь на их цвете.}
 ReceiverMorph>>>wantsDroppedMorph: aMorph event: anEvent
 	^ aMorph color = Color blue
 \end{method}
 
-What happens to the dropped morph if the receiving morph doesn't want it?  The default behaviour is for it to do nothing, that is, to sit on top of the receiving morph, but without interacting with it.  A more intuitive behavior is for the dropped morph to go back to its original position.  This can be achieved by the receiver answering \ct{true} to the message \mthind{Morph}{repelsMorph:event:} when it doesn't want the dropped morph:
+%What happens to the dropped morph if the receiving morph doesn't want it?  The default behaviour is for it to do nothing, that is, to sit on top of the receiving morph, but without interacting with it.  A more intuitive behavior is for the dropped morph to go back to its original position.  This can be achieved by the receiver answering \ct{true} to the message \mthind{Morph}{repelsMorph:event:} when it doesn't want the dropped morph:
+Что случится с брошенным морфом, если принимающий морф не захочет его принять? По-умолчанию он ничего не будет делать. Т.е. он расположится сверху морфа-приёмника, но безо всякого взаимодействия. Но более интуитивное поведение заключалось бы в возвращении брошенного морфа на его исходную позицию. Этого можно достичь, если морф-приёмник ответит \ct{true} на сообщение \mthind{Morph}{repelsMorph:event:} если он не собирается принимать брошенный морф:
 
 \needlines{4}
-\begin{method}{Changing the behaviour of the dropped morph when it is rejected.}
+%\begin{method}{Changing the behaviour of the dropped morph when it is rejected.}
+\begin{method}{Изменение поведения брошенного морфа, если он не был принят.}
 ReceiverMorph>>>repelsMorph: aMorph event: ev
 	^ (self wantsDroppedMorph: aMorph event: ev) not
 \end{method}
 
-That's all we need as far as the receiver is concerned.
+%That's all we need as far as the receiver is concerned.
+Это всё что нам необходимо, касательно приёмника.
 
-\dothis{Create instances of \clsind{ReceiverMorph} and \clsind{EllipseMorph} in a workspace:}
+%\dothis{Create instances of \clsind{ReceiverMorph} and \clsind{EllipseMorph} in a workspace:}
+\dothis{Создайте экземпляры классов \clsind{ReceiverMorph} (приёмник) и \clsind{EllipseMorph} в рабочей области:}
 \begin{code}{}
 ReceiverMorph new openInWorld.
 EllipseMorph new openInWorld.
 \end{code}
 \noindent
-Try to drag-and-drop the yellow \ct{EllipseMorph} onto the receiver. It will be rejected and sent back to its initial position.
+%Try to drag-and-drop the yellow \ct{EllipseMorph} onto the receiver. It will be rejected and sent back to its initial position.
+Попробуйте перетащить жёлтый \ct{EllipseMorph} на приёмник. Он не будет принят и вернётся на исходную позицию.
 
-\dothis{To change this behaviour, change the color of the ellipse morph to \ct{Color blue} using an inspector.  Blue morphs should be accepted by the \ct{ReceiverMorph}.}
+%\dothis{To change this behaviour, change the color of the ellipse morph to \ct{Color blue} using an inspector.  Blue morphs should be accepted by the \ct{ReceiverMorph}.}
+\dothis{Чтобы изменить это поведение, смените цвет эллипса с жёлтого на голубой (\ct{Color blue}), используя инспектор.  Голубые морфы должны приниматься экземпляром \ct{ReceiverMorph}.}
 
-Let's create a specific subclass of \ct{Morph}, named \ct{DroppedMorph}, so we can experiment a bit more:
+%Let's create a specific subclass of \ct{Morph}, named \ct{DroppedMorph}, so we can experiment a bit more:
+Давайте создадим подкласс класса \ct{Morph} с именем \ct{DroppedMorph}, чтобы продолжить наш эксперимент:
 
-\begin{classdef}{Defining a morph we can drag-and-drop onto \ct{ReceiverMorph}}
+%\begin{classdef}{Defining a morph we can drag-and-drop onto \ct{ReceiverMorph}}
+\begin{classdef}{Определяем морф, который мы сможем перетащить на \ct{ReceiverMorph}}
 Morph subclass: #DroppedMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
@@ -786,15 +805,18 @@ Morph subclass: #DroppedMorph
 \end{classdef}
 
 \needlines{5}
-\begin{method}{Initializing \ct{DroppedMorph}.}
+%\begin{method}{Initializing \ct{DroppedMorph}.}
+\begin{method}{Инициализация экземпляра \ct{DroppedMorph}.}
 DroppedMorph>>>initialize
 	super initialize.
 	color := Color blue.
 	self position: 250@100
 \end{method}
 
-Now we can specify what the dropped morph should do when it is rejected by the receiver; here it will stay attached to the mouse pointer:
-\begin{method}{Reacting when the morph was dropped but rejected.}
+%Now we can specify what the dropped morph should do when it is rejected by the receiver; here it will stay attached to the mouse pointer:
+Теперь мы можем указать, что брошенный морф должен делать, когда он отклонён приёмником; в данном случае он останется <<приклеенным>> к указателю мыши:
+%\begin{method}{Reacting when the morph was dropped but rejected.}
+\begin{method}{Реагируем на отказ принять брошенный морф.}
 DroppedMorph>>>rejectDropMorphEvent: anEvent
 	| h |
 	h := anEvent hand.
@@ -803,17 +825,21 @@ DroppedMorph>>>rejectDropMorphEvent: anEvent
 	anEvent wasHandled: true
 \end{method}
 
-Sending the \mthind{MorphicEvent}{hand} message to an event answers the \emph{hand}, an instance of \ct{HandMorph} that represents the mouse pointer and whatever it holds.
-Here we tell the \ct{World} that the hand should grab \ct{self}, the rejected morph.
+%Sending the \mthind{MorphicEvent}{hand} message to an event answers the \emph{hand}, an instance of \ct{HandMorph} that represents the mouse pointer and whatever it holds.
+Посылка сообщения \mthind{MorphicEvent}{hand} объекту-событию возвращает \emph{указатель} (hand), экземпляр класса \ct{HandMorph}, представляющий указатель мыши и всё, что он удерживает.
+%Here we tell the \ct{World} that the hand should grab \ct{self}, the rejected morph.
+Здесь мы говорим \ugh{окружению} (\ct{World}), что указатель должен захватить текущий объект \ct{self}, т.е. отклонённый морф.
 
-\dothis{Create two instances of \ct{DroppedMorph}, and then drag-and-drop them onto the receiver.}
+%\dothis{Create two instances of \ct{DroppedMorph}, and then drag-and-drop them onto the receiver.}
+\dothis{Создайте два экземпляра класса \ct{DroppedMorph} и перетащите их на приёмник.}
 \begin{code}{}
 ReceiverMorph new openInWorld.
 (DroppedMorph new color: Color blue) openInWorld.
 (DroppedMorph new color: Color green) openInWorld.
 \end{code}
 \noindent
-The green morph is rejected and therefore stays attached to the mouse pointer.
+%The green morph is rejected and therefore stays attached to the mouse pointer.
+Зелёный морф будет отклонён и останется прикреплённым к указателю мыши.
 
 %=================================================================
 \section{A complete example}
