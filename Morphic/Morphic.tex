@@ -667,18 +667,22 @@ CrossMorph>>>step
 % \on{You can also \menu{debug \go inspect morph} and evaluate: \ct{self currentWorld startStepping: self}.}
 
 %=================================================================
-\section{Interactors}
+%\section{Interactors}
+\section{Взаимодействие с пользователем}
 
-To prompt the user for input, the \clsind{UIManager} class provides a large number of ready-to-use dialog boxes.
-For instance, the \mthind{UIManager}{request:initialAnswer:} method returns the string entered by the user (\figref{dialogName}).
+%To prompt the user for input, the \clsind{UIManager} class provides a large number of ready-to-use dialog boxes.
+Чтобы предложить пользователю ввести что-нибудь, класс \clsind{UIManager} предоставляет большой набор готовых к использованию диалогов.
+%For instance, the \mthind{UIManager}{request:initialAnswer:} method returns the string entered by the user (\figref{dialogName}).
+Например, метод \mthind{UIManager}{request:initialAnswer:} возвращает строку, введённыю пользователем (\figref{dialogName}).
 \begin{code}{}
-UIManager default request: 'What''s your name?' initialAnswer: 'no name'
+UIManager default request: 'Как ваше имя?' initialAnswer: 'нет имени'
 \end{code}
 
 \begin{figure}[htb]
 \begin{minipage}{0.48\textwidth}
 	\centerline{\includegraphics[width=0.8\textwidth]{dialog}}
-	\caption{An input dialog.}\figlabel{dialogName}
+	%\caption{An input dialog.}\figlabel{dialogName}
+	\caption{Диалог ввода.}\figlabel{dialogName}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
@@ -686,18 +690,21 @@ UIManager default request: 'What''s your name?' initialAnswer: 'no name'
 	\centerline{\includegraphics [width=0.8\textwidth]{popup}}
 	\vfill
 	\vspace{4ex}
-	\caption{Pop-up menu.}\figlabel{popup}
+	%\caption{Pop-up menu.}\figlabel{popup}
+	\caption{Всплывающее меню.}\figlabel{popup}
 \end{minipage}
 \end{figure}
 
-To display a popup menu, use one of the various \ct{chooseFrom:} methods (\figref{popup}):
+%To display a popup menu, use one of the various \ct{chooseFrom:} methods (\figref{popup}):
+Чтобы отобразить всплывающее меню, используйте один из нескольких методов \ct{chooseFrom:} (\figref{popup}):
 \begin{code}{}
 UIManager default
-	chooseFrom: #('circle' 'oval' 'square' 'rectangle' 'triangle')
-	lines: #(2 4) message: 'Choose a shape'
+	chooseFrom: #('круг' 'овал' 'квадрат' 'прямоугольник' 'треугольник')
+	lines: #(2 4) message: 'Выбирете фигуру'
 \end{code}
 
-\dothis{Browse the \clsind{UIManager} class and try out some of the interaction methods offered.}
+%\dothis{Browse the \clsind{UIManager} class and try out some of the interaction methods offered.}
+\dothis{Исследуйте класс \clsind{UIManager} и попробуйте некоторые из предоставляемых им методов взаимодействия с пользователем.}
 
 %\begin{figure}[ht]
 %	\centerline{\includegraphics[width=5cm]{dialog}}
