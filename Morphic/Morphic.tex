@@ -842,20 +842,25 @@ ReceiverMorph new openInWorld.
 Зелёный морф будет отклонён и останется прикреплённым к указателю мыши.
 
 %=================================================================
-\section{A complete example}
+%\section{A complete example}
+\section{Законченный пример}
 
-Let's design a morph to roll a die\footnote{NB: One die, two dice.}. Clicking on it will display the values of all sides of the die in a quick loop, and another click will stop the animation.
+%Let's design a morph to roll a die\footnote{NB: One die, two dice.}. Clicking on it will display the values of all sides of the die in a quick loop, and another click will stop the animation.
+Давайте сделаем морф, представляющий собой игральную кость. При клике на нём, быстро чередуясь, будут показываться значения на всех сторонах кости, а повторный клик будет останавливать анимацию.
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[scale=0.65]{die}}
-	\caption{The die in Morphic.
+	%\caption{The die in Morphic.
+	\caption{Игральная кость в Morphic.
 		\figlabel{dialogDie}}
 \end{figure}
 
-\dothis{Define the die as a subclass of \clsind{BorderedMorph} instead of \ct{Morph}, because we will make use of the border.}
+%\dothis{Define the die as a subclass of \clsind{BorderedMorph} instead of \ct{Morph}, because we will make use of the border.}
+\dothis{Определите игральную кость как подкласс класса \clsind{BorderedMorph}, а не \ct{Morph}, потому что нам понадобится обрамление.}
 
 \needlines{6}
-\begin{classdef}{Defining the die morph}
+%\begin{classdef}{Defining the die morph}
+\begin{classdef}{Определяем морф, представляющий игральную кость}
 BorderedMorph subclass: #DieMorph
 	instanceVariableNames: 'faces dieValue isStopped'
 	classVariableNames: ''
@@ -863,15 +868,20 @@ BorderedMorph subclass: #DieMorph
 	category: 'PBE-Morphic'
 \end{classdef}
 
-The instance variable \ct{faces} records the number of faces on the die; we allow dice with up to 9 faces! \ct{dieValue} records the value of the face that is currently displayed, and \ct{isStopped} is true if the die animation has stopped running.
-To create a die instance, we define the \ct{faces: n} method on the \emph{class} side of \clsind{DieMorph} to create a new die with \ct{n} faces.
-\begin{method}{Creating a new die with the number of faces we like.}
+%The instance variable \ct{faces} records the number of faces on the die; we allow dice with up to 9 faces! \ct{dieValue} records the value of the face that is currently displayed, and \ct{isStopped} is true if the die animation has stopped running.
+Переменная экземпляра \ct{faces} (грани игральной кости) содержит количество граней на кости. Мы будем допускать не больше девяти граней! Переменная \ct{dieValue} содержит число, которое нанесено на отображаемую в данный момент грань, а переменная \ct{isStopped} определяет, запущена анимация или нет.
+%To create a die instance, we define the \ct{faces: n} method on the \emph{class} side of \clsind{DieMorph} to create a new die with \ct{n} faces.
+Чтобы создать экземпляр игральной кости с \ct{n} гранями, мы определим метод \ct{faces: n} в \clsind{DieMorph} \emph{на стороне класса}. 
+%\begin{method}{Creating a new die with the number of faces we like.}
+\begin{method}{Создаём новую игральную кость с нужным нам количеством граней.}
 DieMorph class>>>faces: aNumber
 	^ self new faces: aNumber
 \end{method}
 
-The \ct{initialize} method is defined on the instance side in the usual way; remember that \ct{new} sends \ct{initialize} to the newly-created instance.
-\begin{method}{Initializing instances of \ct{DieMorph}.}
+%The \ct{initialize} method is defined on the instance side in the usual way; remember that \ct{new} sends \ct{initialize} to the newly-created instance.
+Метод \ct{initialize} определён совершенно обычным образмо на стороне экземпляра (вы ведь помните, что из метода \ct{new} вновь созданному экземпляру посылается сообщение \ct{initialize}).
+%\begin{method}{Initializing instances of \ct{DieMorph}.}
+\begin{method}{Инициализируем экземпляр класса \ct{DieMorph}.}
 DieMorph>>>initialize
 	super initialize.
 	self extent: 50 @ 50.
@@ -884,11 +894,13 @@ DieMorph>>>initialize
 	isStopped := false
 \end{method}
 
-We use a few methods of \ct{BorderedMorph} to give a nice appearance to the die: a thick border with a raised effect, rounded corners, and a color gradient on the visible face.
-We define the instance method \ct{faces:} to check for a valid parameter as follows:
+%We use a few methods of \ct{BorderedMorph} to give a nice appearance to the die: a thick border with a raised effect, rounded corners, and a color gradient on the visible face.
+Мы используем несколько методов класса \ct{BorderedMorph}, чтобы придать красивый вид нашей игральной кости: добавить ей рельефную рамку, скруглённые углы, цветной градиент на видимой грани.
+%We define the instance method \ct{faces:} to check for a valid parameter as follows:
+Мы определим метод экземпляра \ct{faces:} следующим образом, чтобы проверять преданный параметр:
 \begin{method}{Setting the number of faces of the die.}
 DieMorph>>>faces: aNumber
-	"Set the number of faces"
+	"Устанавливает количество граней"
 	(aNumber isInteger
 			and: [aNumber > 0]
 			and: [aNumber <= 9])
@@ -896,18 +908,27 @@ DieMorph>>>faces: aNumber
 \end{method}
 \on{Why not make this a pre-condition, \ie an assertion?}
 
-It may be good to review the order in which the messages are sent when a die is created. For instance, if we start by
-evaluating \ct{DieMorph faces: 9}:
+%It may be good to review the order in which the messages are sent when a die is created. For instance, if we start by
+Вероятно, будет полезным ещё раз проверить порядок, в котором сообщения будут посылаться вновь созданной игральной кости. Например, если мы начнём с 
+%evaluating \ct{DieMorph faces: 9}:
+вычисления \ct{DieMorph faces: 9}:
 \begin{enumerate}
-	\item The class method \ct{DieMorph class>>>faces:} sends \ct{new} to \ct{DieMorph class}.
-	\item The method for \ct{new} (inherited by \ct{DieMorph class} from \ct{Behavior}) creates the new instance and sends it the \ct{initialize} message.
-	\item The \ct{initialize} method in \ct{DieMorph} sets \ct{faces} to an initial value of 6.
-	\item \ct{DieMorph class>>>new} returns to the class method \ct{DieMorph class>>>faces:}, which then sends the message \ct{faces: 9} to the new instance.
-	\item The instance method \ct{DieMorph>>>faces:} now executes, setting the \ct{faces} instance variable to 9.
+%	\item The class method \ct{DieMorph class>>>faces:} sends \ct{new} to \ct{DieMorph class}.
+	\item Метод класса \ct{DieMorph class>>>faces:} посылает \ct{new} объекту \ct{DieMorph class}.
+%	\item The method for \ct{new} (inherited by \ct{DieMorph class} from \ct{Behavior}) creates the new instance and sends it the \ct{initialize} message.
+	\item Метод \ct{new} (унаследованный объектом \ct{DieMorph class} от класса \ct{Behavior}) создаёт новый экземпляр и посылает ему сообщение \ct{initialize}.
+%	\item The \ct{initialize} method in \ct{DieMorph} sets \ct{faces} to an initial value of 6.
+	\item Метод \ct{initialize} в классе \ct{DieMorph} устанавливает начальное значение \ct{faces} равным 6
+%	\item \ct{DieMorph class>>>new} returns to the class method \ct{DieMorph class>>>faces:}, which then sends the message \ct{faces: 9} to the new instance.
+	\item \ct{DieMorph class>>>new} возвращает управление методу \ct{DieMorph class>>>faces:}, который посылает сообщение \ct{faces: 9} новому экземпляру.
+%	\item The instance method \ct{DieMorph>>>faces:} now executes, setting the \ct{faces} instance variable to 9.
+	\item Выполняется метод экземпляра \ct{DieMorph>>>faces:}, устанавливающий переменную экземпляра \ct{faces} равной 9.
 \end{enumerate}
 
-Before defining \ct{drawOn:}, we need a few methods to place the dots on the displayed face:
-\begin{methods}{Nine methods for placing points on the faces of the die.}
+%Before defining \ct{drawOn:}, we need a few methods to place the dots on the displayed face:
+Перед определением метода \ct{drawOn:} нам нужно несколько методов, чтобы расположить точки на отображаемой грани:
+%\begin{methods}{Nine methods for placing points on the faces of the die.}
+\begin{methods}{Девять методов для расположения точек на гранях игральной кости.}
 DieMorph>>>face1
 	^{0.5@0.5}
 DieMorph>>>face2
@@ -929,20 +950,25 @@ DieMorph >>>face9
 \end{methods}
 \on{kind of ugly boilerplate code -- should be a nice way to map these more elegantly to coordinates.}
 
-These methods define collections of the coordinates of dots for each face. The coordinates are in a square of size $1\times1$; we will simply need to scale them to place the actual dots.
+%These methods define collections of the coordinates of dots for each face. The coordinates are in a square of size $1\times1$; we will simply need to scale them to place the actual dots.
+Эти методы определяют коллекции координат точек на каждой грани. Т.к. координаты заданы в квадратной области размером $1\times1$, нам потребуется только масштабировать их, чтобы разместить реальные точки.
 
-The \ct{drawOn:} method does two things: it draws the die background with the \ct{super}-send, and then draws the dots.
-\begin{method}{Drawing the die morph.}
+%The \ct{drawOn:} method does two things: it draws the die background with the \ct{super}-send, and then draws the dots.
+Метод \ct{drawOn:} выполняет две вещи: рисует фон игральной кости с помощью вызова метода суперкласса, а затем рисует точки.
+\begin{method}{Рисуем морф игральной кости.}
 DieMorph>>>drawOn: aCanvas
 	super drawOn: aCanvas.
 	(self perform: ('face' , dieValue asString) asSymbol)
 		do: [:aPoint | self drawDotOn: aCanvas at: aPoint]
 \end{method}
 
-The second part of this method uses the reflective capacities of \st.
-Drawing the dots of a face is a simple matter of iterating over the collection given by the \ct{faceX} method for that face, sending the \ct{drawDotOn:at:} message for each coordinate. To call the correct \ct{faceX} method, we use the \mthind{Object}{perform:} method which sends a message built from a string, here \lct{('face', dieValue asString) asSymbol}. You will encounter this use of \ct{perform:} quite regularly.
+%The second part of this method uses the reflective capacities of \st.
+Вторая часть этого метода использует рефлексивные возможности \st.
+%Drawing the dots of a face is a simple matter of iterating over the collection given by the \ct{faceX} method for that face, sending the \ct{drawDotOn:at:} message for each coordinate. To call the correct \ct{faceX} method, we use the \mthind{Object}{perform:} method which sends a message built from a string, here \lct{('face', dieValue asString) asSymbol}. You will encounter this use of \ct{perform:} quite regularly.
+Рисование точек на грани --- это просто вопрос итерации по коллекции, возвращаемой методом \ct{faceX} для данной грани, и посылка сообщения \ct{drawDotOn:at:} каждой координате. Чтобы вызвать нужный метод \ct{faceX}, мы используем метод \mthind{Object}{perform:}, который посылает сообщение, имя которого получается из строки \lct{('face', dieValue asString) asSymbol}. С таким использованием метода \ct{perform:} вы будете сталкиваться практически постоянно.
 \index{reflection}
-\begin{method}{Drawing a single dot on a face.}
+%\begin{method}{Drawing a single dot on a face.}
+\begin{method}{Рисуем одну точку на грани.}
 DieMorph>>>drawDotOn: aCanvas at: aPoint
 	aCanvas
 		fillOval: (Rectangle
@@ -952,15 +978,19 @@ DieMorph>>>drawDotOn: aCanvas at: aPoint
 \end{method}
 \ew{I would not use reflection to call faceX on p.234. A statically filled Dictionary would be more appropriate. Get the point set with "MyDict at: X".}
 
-Since the coordinates are normalized to the $[0{:}1]$ interval, we scale them to the dimensions of our die: \ct{self extent * aPoint}.
+%Since the coordinates are normalized to the $[0{:}1]$ interval, we scale them to the dimensions of our die: \ct{self extent * aPoint}.
+Т.к координаты нормированы по отрезку $[0{:}1]$, мы можем масштабировать их до размеров нашей игральной кости: \ct{self extent * aPoint}
 
-\dothis{We can already create a die instance from a workspace:}
+%\dothis{We can already create a die instance from a workspace:}
+\dothis{Мы уже можем создать экземпляр игральной кости из рабочей области:}
 \begin{code}{}
 (DieMorph faces: 6) openInWorld.
 \end{code}
 
-To change the displayed face, we create an accessor that we can use as \ct{myDie dieValue: 4}:
-\begin{method}{Setting the current value of the die.}
+%To change the displayed face, we create an accessor that we can use as \ct{myDie dieValue: 4}:
+Чтобы изменить отображаемую грань, мы создадим аксессор, который будем использовать как \ct{myDie dieValue: 4}:
+%\begin{method}{Setting the current value of the die.}
+\begin{method}{Установка текущего значения игральной кости.}
 DieMorph>>>dieValue: aNumber
 	(aNumber isInteger
 			and: [aNumber > 0]
@@ -970,22 +1000,28 @@ DieMorph>>>dieValue: aNumber
 			self changed]
 \end{method}
 
-Now we will use the animation system to show quickly all the faces:
+%Now we will use the animation system to show quickly all the faces:
+А теперь используем анимацию для быстрого показа всех граней:
 \needlines{3}
 \index{Morphic!animation}
-\begin{methods}{Animating the die.}
+%\begin{methods}{Animating the die.}
+\begin{methods}{Анимирование игральной кости.}
 DieMorph>>>stepTime
 	^ 100
 
 DieMorph>>>step
 	isStopped ifFalse: [self dieValue: (1 to: faces) atRandom]
 \end{methods}
-Now the die is rolling!
+%Now the die is rolling!
+Теперь наша игральная кость <<катится>>!
 
-To start or stop the animation by clicking, we will use what we learned previously about mouse events.
-First, activate the reception of mouse events:
+%To start or stop the animation by clicking, we will use what we learned previously about mouse events.
+Чтобы запустить или остановить анимацию с помощью клика, мы используем полученные ранее знания о событиях мыши.
+%First, activate the reception of mouse events:
+Для начала, сделаем возможным приём таких событий.
 
-\begin{methods}{Handling mouse clicks to start and stop the animation.}
+%\begin{methods}{Handling mouse clicks to start and stop the animation.}
+\begin{methods}{Обрабатываем клики мыши, чтобы запускать и останавливать анимацию.}
 DieMorph>>>handlesMouseDown: anEvent
 	^ true
 
@@ -993,7 +1029,8 @@ DieMorph>>>mouseDown: anEvent
 	anEvent redButtonPressed
 		ifTrue: [isStopped := isStopped not]
 \end{methods}
-Now the die will roll or stop rolling when we click on it.
+%Now the die will roll or stop rolling when we click on it.
+Теперь игральная кость будет <<катиться>> когда мы кликнем на ней.
 
 % That's all for the essentials of Morphic!
 
