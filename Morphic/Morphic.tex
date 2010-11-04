@@ -700,7 +700,7 @@ UIManager default request: 'Как ваше имя?' initialAnswer: 'нет им
 \begin{code}{}
 UIManager default
 	chooseFrom: #('круг' 'овал' 'квадрат' 'прямоугольник' 'треугольник')
-	lines: #(2 4) message: 'Выбирете фигуру'
+	lines: #(2 4) message: 'Выберите фигуру'
 \end{code}
 
 %\dothis{Browse the \clsind{UIManager} class and try out some of the interaction methods offered.}
@@ -1037,7 +1037,7 @@ DieMorph>>>mouseDown: anEvent
 % Most of the work on \ct{DieMorph} was done with an instance of it living in the environment; this is quite nice when to tweak programs.
 
 %=================================================================
-\section{More about the canvas}
+%\section{More about the canvas}
 \section{Ещё о канве}
 
 %The \ct{drawOn:} method has an instance of \clsindmain{Canvas} as its sole argument;
@@ -1075,12 +1075,13 @@ DieMorph>>>drawOn: aCanvas
 		do: [:aPoint | self drawDotOn: theCanvas at: aPoint]
 \end{method}
 \noindent
-That's all you need to do!
+%That's all you need to do!
+Это всё, что вам нужно сделать!
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[scale=0.7]{multiMorphs}}
 	%\caption{The die displayed with alpha-transparency.
-	\caption{Игральная кость отображаемая с альфа-прозрачностью.
+	\caption{Игральная кость, отображаемая с альфа-прозрачностью.
 		\figlabel{multiMorphs}}
 \end{figure}
 
