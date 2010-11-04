@@ -158,25 +158,25 @@ bill openInWorld.
 %Then type \ct{joe position} and \menu{print it}.
 Затем введите \ct{joe position} и напечатайте результат (\menu{print it}).
 %To move joe, execute \ct{joe position: (joe position + (10@3))} repeatedly.
-Чтобы переместить Джо, выполните \ct{joe position: (joe position + (10@3))} несколько раз.
+Чтобы переместить joe, выполните \ct{joe position: (joe position + (10@3))} несколько раз.
 
 %It is possible to do a similar thing with size.
 То же самое можно проделать и с размером.
 %\ct{joe} \mthind{Morph}{extent} answers joe's size; to have joe grow, execute \ct{joe extent: (joe extent * 1.1)}.
-\ct{joe} \mthind{Morph}{extent} возвращает размер Джо; чтобы заставить Джо расти, выполните \ct{joe extent: (joe extent * 1.1)}.
+\ct{joe} \mthind{Morph}{extent} возвращает размер joe; чтобы заставить joe расти, выполните \ct{joe extent: (joe extent * 1.1)}.
 %To change the color of a morph, send it the \mthind{Morph}{color:} message with the desired \ct{Color} object as argument, for instance, \ct{joe color: Color orange}.
 Чтобы изменить цвет морфа, пошлите сообщение \mthind{Morph}{color:} с желаемым цветом в качестве аргумента. Например, \ct{joe color: Color orange}.
 %To add transparency, try \ct{joe color: (Color orange alpha: 0.5)}.
 Чтобы добавить прозрачности, попробуйте \ct{joe color: (Color orange alpha: 0.5)}.
 
 %\dothis{To make bill follow joe, you can repeatedly execute this code:}
-\dothis{Чтобы заставить Билла следовать за Джо, выполните несколько раз следующий код:}
+\dothis{Чтобы заставить bill следовать за joe, выполните несколько раз следующий код:}
 \begin{code}{}
 bill position: (joe position + (100@0))
 \end{code}
 \noindent
 %If you move joe using the mouse and then execute this code, bill will move so that it is 100 pixels to the right of joe.
-Если вы переместите Джо с помощью мыши, а потом выполните этот код, Билл передвинется в точку справа от Джо, отстоящую от него на 100 пикселей. 
+Если вы переместите joe с помощью мыши, а потом выполните этот код, bill передвинется в точку справа от joe, отстоящую от него на 100 пикселей. 
 \ab{It would seem that this would be a good place to introduce the \ct{step} method}.
 
 %=================================================================
@@ -208,7 +208,7 @@ star position: joe position.
 
 \noindent
 %The last line positions the star at the same coordinates as joe.
-Последняя строка располагает звезду в тех же координатах, что и Джо.
+Последняя строка располагает звезду в тех же координатах, что и joe.
 %Notice that the coordinates of the contained morph are still relative to the screen, not to the containing morph.
 Заметьте, что координаты вложенного морфа определяются всё ещё по-отношению к экрану, а не к морфу-контейнеру.
 %There are many  methods available to position a morph; browse the \protind{geometry} protocol of class \ct{Morph} to see for yourself.
@@ -216,19 +216,19 @@ star position: joe position.
 %For example, 
 Например,
 %to center the star inside joe, execute \ct{star} \mthind{Morph}{center:} \ct{joe center}.
-чтобы поместить звезду в центр Джо, выполните \ct{star} \mthind{Morph}{center:} \ct{joe center}.
+чтобы поместить звезду в центр joe, выполните \ct{star} \mthind{Morph}{center:} \ct{joe center}.
 
 \begin{figure}[ht]
 	\centerline{\includegraphics{joeStar}}
 	%\caption{The star is contained inside joe, the translucent blue morph.
-	\caption{Звезда, содержащаяся внутри Джо, -- полупрозрачный голубой морф. 
+	\caption{Звезда, содержащаяся внутри joe (полупрозрачный голубой морф). 
 		\figlabel{joeStar}}
 \end{figure}
 
 %If you now try to grab the star with the mouse, you will find that you actually grab joe, and the two morphs move together: the star is \emph{embedded} inside joe.
-Если теперь вы попытаетесь ухватить звезду мышью, вы обнаружите, что на самом деле схватили Джо, и два морфа движутся вместе: звезда \emph{встроена} (embedded) внутрь Джо.
+Если теперь вы попытаетесь ухватить звезду мышью, вы обнаружите, что на самом деле схватили joe, и два морфа движутся вместе: звезда \emph{встроена} (embedded) внутрь joe.
 %It is possible to embed more morphs inside joe.  
-В Джо можно встроить много других морфов.
+В joe можно встроить много других морфов.
 %In addition to doing this programmatically, you can also embed morphs by direct manipulation.
 В дополнение к возможности сделать это программно, вы можете встроить один морф в другой посредством прямых манипуляций.
 
@@ -680,14 +680,14 @@ UIManager default request: 'Как ваше имя?' initialAnswer: 'нет им
 
 \begin{figure}[htb]
 \begin{minipage}{0.48\textwidth}
-	\centerline{\includegraphics[width=0.8\textwidth]{dialog}}
+	\centerline{\includegraphics[width=0.8\textwidth]{dialog-ru}}
 	%\caption{An input dialog.}\figlabel{dialogName}
 	\caption{Диалог ввода.}\figlabel{dialogName}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
 	\vfill
-	\centerline{\includegraphics [width=0.8\textwidth]{popup}}
+	\centerline{\includegraphics [width=0.8\textwidth]{popup-ru}}
 	\vfill
 	\vspace{4ex}
 	%\caption{Pop-up menu.}\figlabel{popup}
