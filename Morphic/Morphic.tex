@@ -1038,22 +1038,35 @@ DieMorph>>>mouseDown: anEvent
 
 %=================================================================
 \section{More about the canvas}
+\section{Ещё о канве}
 
-The \ct{drawOn:} method has an instance of \clsindmain{Canvas} as its sole argument;
-the canvas is the area on which the morph draws itself.
-By using the graphics methods of the canvas you are free to give the appearance you want to a morph.
-If you browse the inheritance hierarchy of the \ct{Canvas} class, you will see that it has several variants.
-The default variant of \ct{Canvas} is \clsind{FormCanvas}; you will find the key graphics methods in \ct{Canvas} and \ct{FormCanvas}.
-These methods can draw points, lines, polygons, rectangles, ellipses, text, and images with rotation and scaling.
+%The \ct{drawOn:} method has an instance of \clsindmain{Canvas} as its sole argument;
+Метод \ct{drawOn:} принимает экземпляр класса \clsindmain{Canvas} (Канва) в качестве единственного своего аргумента.
+%the canvas is the area on which the morph draws itself.
+Канва --- это область, на которой морф отрисовывает себя.
+%By using the graphics methods of the canvas you are free to give the appearance you want to a morph.
+Используя графические методы канвы вы можете придать своему морфу совершенно произвольный вид.
+%If you browse the inheritance hierarchy of the \ct{Canvas} class, you will see that it has several variants.
+Если вы посмотрите на иерархию наследования класса \ct{Canvas}, вы увидите, что канва имеет несколько разновидностей.
+%The default variant of \ct{Canvas} is \clsind{FormCanvas}; you will find the key graphics methods in \ct{Canvas} and \ct{FormCanvas}.
+Используемый по-умолчанию вид канвы --- это \clsind{FormCanvas}, здесь (и в классе \ct{Canvas}) вы найдёте ключевые графические методы.
+%These methods can draw points, lines, polygons, rectangles, ellipses, text, and images with rotation and scaling.
+Эти методы могут рисовать точки, линии, многоугольники, прямоугольники, текст и изображения с вращением и масштабированием.
 
-It is also possible to use other kinds of canvas, to obtain transparent morphs, more graphics methods, antialiasing, and so on.
-To use these features you will need an \clsind{AlphaBlendingCanvas} or a \clsind{BalloonCanvas}.
-But how can you obtain such a canvas in a \ct{drawOn:} method, when \ct{drawOn:} receives an instance of \ct{FormCanvas} as its argument?
-Fortunately, you can transform one kind of canvas into another.
+%It is also possible to use other kinds of canvas, to obtain transparent morphs, more graphics methods, antialiasing, and so on.
+Возможно использовать другие разновидности канвы, чтобы получить прозрачные морфы, больше графических методов, сглаживание и т.д.
+%To use these features you will need an \clsind{AlphaBlendingCanvas} or a \clsind{BalloonCanvas}.
+Чтобы использовать эти возможности, вам потребуются \clsind{AlphaBlendingCanvas} или \clsind{BalloonCanvas}.
+%But how can you obtain such a canvas in a \ct{drawOn:} method, when \ct{drawOn:} receives an instance of \ct{FormCanvas} as its argument?
+Но как получить нужную канву в методе \ct{drawOn:}, если он уже получает экземпляр класса \ct{FormCanvas} в качестве аргумента?
+%Fortunately, you can transform one kind of canvas into another.
+К счастью, вы можете преобразовать один вид канвы в другой.
 
-\dothis{To use a canvas with a 0.5 alpha-transparency in \ct{DieMorph}, redefine \ct{drawOn:} like this:}
+%\dothis{To use a canvas with a 0.5 alpha-transparency in \ct{DieMorph}, redefine \ct{drawOn:} like this:}
+\dothis{Чтобы использовать канву с альфа-прозрачностью равной 0.5 в \ct{DieMorph}, переопределите метод \ct{drawOn:} следующим образом:}
 \needlines{7}
-\begin{method}{Drawing a translucent die.}
+%\begin{method}{Drawing a translucent die.}
+\begin{method}{Рисуем полупрозрачную игральную кость.}
 DieMorph>>>drawOn: aCanvas
 	| theCanvas |
 	theCanvas := aCanvas asAlphaBlendingCanvas: 0.5.
@@ -1066,7 +1079,8 @@ That's all you need to do!
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[scale=0.7]{multiMorphs}}
-	\caption{The die displayed with alpha-transparency.
+	%\caption{The die displayed with alpha-transparency.
+	\caption{Игральная кость отображаемая с альфа-прозрачностью.
 		\figlabel{multiMorphs}}
 \end{figure}
 
@@ -1095,18 +1109,27 @@ That's all you need to do!
 %\end{methods}
 
 %=================================================================
-\section{Chapter summary}
+%\section{Chapter summary}
+\section{Итоги главы}
 
-Morphic is a graphical framework in which graphical interface elements can be dynamically composed.
+%Morphic is a graphical framework in which graphical interface elements can be dynamically composed.
+Морфик --- это графический фреймворк, в котором элементы графического элемента могут компоноваться динамическим образом.
 
 \begin{itemize}
-  \item You can convert an object into a morph and display that morph on the screen by sending it the messages \ct{asMorph openInWorld}.
-  \item You can manipulate a morph by \metaclick{ing} on it and using the handles that appear. (Handles have help balloons that explain what they do.)
-  \item You can compose morphs by embedding one onto another, either by drag and drop or by sending the message \ct{addMorph:}.
-  \item You can subclass an existing morph class and redefine key methods, like \ct{initialize} and \ct{drawOn:}.
-  \item You can control how a morph reacts to mouse and keyboard events by redefining the methods \ct{handlesMouseDown:}, \ct{handlesMouseOver:}, \etc
-  \item You can animate a morph by defining the methods \ct{step} (what to do) and \ct{stepTime} (the number of milliseconds between steps).
-  \item Various pre-defined morphs, like \ct{PopUpMenu} and \ct{FillInTheBlank}, are available for interacting with users.
+%  \item You can convert an object into a morph and display that morph on the screen by sending it the messages \ct{asMorph openInWorld}.
+  \item Вы можете преобразовать объект в морф и отобразить его на экране, послав этому объекту сообщения \ct{asMorph openInWorld}.
+%  \item You can manipulate a morph by \metaclick{ing} on it and using the handles that appear. (Handles have help balloons that explain what they do.)
+  \item Вы можете манипулировать морфом, сделав на нём \metaclick, и используя появившиеся кнопки, к каждой из которых прилагается появляющееся облачко с подсказкой.
+%  \item You can compose morphs by embedding one onto another, either by drag and drop or by sending the message \ct{addMorph:}.
+  \item Вы можете компоновать морфы, встраивая один в другой, либо с помощью drag-and-drop'а, либо послав сообщение \ct{addMorph:}.
+%  \item You can subclass an existing morph class and redefine key methods, like \ct{initialize} and \ct{drawOn:}.
+  \item Вы можете наследоваться от существующих классов морфов и переопределять их ключевые методы, как, например, \ct{initialize} и \ct{drawOn:}.
+%  \item You can control how a morph reacts to mouse and keyboard events by redefining the methods \ct{handlesMouseDown:}, \ct{handlesMouseOver:}, \etc
+  \item Вы можете контролировать то, каким образом морф реагирует на события мыши и клавиатуры, переопределяя методы \ct{handlesMouseDown:}, \ct{handlesMouseOver:}, \etc
+%  \item You can animate a morph by defining the methods \ct{step} (what to do) and \ct{stepTime} (the number of milliseconds between steps).
+  \item Вы можете анимировать морф, определив методы \ct{step}, определяющий, что делать на данном шаге анимации, и \ct{stepTime}, определяющий количество миллисекунд между шагами.
+%  \item Various pre-defined morphs, like \ct{PopUpMenu} and \ct{FillInTheBlank}, are available for interacting with users.
+  \item Имеется большой набор морфов, таких, как \ct{PopUpMenu} и \ct{FillInTheBlank}, предназначенных для взаимодействия с пользователем.
 \end{itemize}
 
 %=================================================================
