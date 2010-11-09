@@ -40,16 +40,22 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{A first application}
+%\chapter{A first application}
+\chapter{Первое приложение}
 \chalabel{firstApp}
 
-In this chapter, we will develop a simple game: \ind{Lights Out}.\footnote{\url{http://en.wikipedia.org/wiki/Lights_Out_(game)}}
-Along the way we will demonstrate most of the tools that \pharo programmers use to construct and debug their programs, and show how programs are exchanged with other developers. We will see the browser, the object inspector, the debugger and the \ind{Monticello} \ind{package} browser. 
-Development in Smalltalk is efficient: you will find that you spend far more time actually writing code and far less managing the development process. 
-This is partly because the Smalltalk language is very simple, and partly because the tools that make up the programming environment are very well integrated with the language.
+%In this chapter, we will develop a simple game: \ind{Lights Out}.\footnote{\url{http://en.wikipedia.org/wiki/Lights_Out_(game)}}
+В этой главе мы займёмся разработкой простой игры <<\ind{Lights Out}>>.\footnote{\url{http://en.wikipedia.org/wiki/Lights_Out_(game)}}
+%Along the way we will demonstrate most of the tools that \pharo programmers use to construct and debug their programs, and show how programs are exchanged with other developers. We will see the browser, the object inspector, the debugger and the \ind{Monticello} \ind{package} browser. 
+По ходу разработки мы будем демонстрировать инструменты, которые программисты \pharo используют для написания и отладки своих программ, а также способы обмена программами с другими разработчиками. Вы познакомитесь с браузером, инспектором объектов, отладчиком и браузером \ind{пакет}ов \ind{Monticello}.
+%Development in Smalltalk is efficient: you will find that you spend far more time actually writing code and far less managing the development process. 
+Разработка в среде \st весьма эффективна: вы вскоре обнаружите, что тратите б'ольшую часть времени непосредственно на написание кода, а не на управление процессом разработки.
+%This is partly because the Smalltalk language is very simple, and partly because the tools that make up the programming environment are very well integrated with the language.
+Частично это происходит из-за необычайной простоты языка \st, и частично потому, что инструменты, составляющие окружение разработчика, очень тесно интегрированы с языком.
 
 %=================================================================
-\section{The Lights Out game}
+%\section{The Lights Out game}
+\section{Игра <<Lights Out>>}
 
 % DON'T USE WRAPFIGURE CLOSE TOO A PAGE BREAK!!! (ON)
 %\begin{wrapfigure}[13]{r}{0.35\linewidth}%
@@ -62,32 +68,42 @@ This is partly because the Smalltalk language is very simple, and partly because
 \begin{figure}[ht]
 	\vskip -\baselineskip
 	\centerline{\includegraphics[width=.3\linewidth]{GameBoard}}
-	\caption{The Lights Out game board. The user has just clicked the mouse as shown by the cursor.
+	%\caption{The Lights Out game board. The user has just clicked the mouse as shown by the cursor.
+	\caption{Поле игры <<Lights Out>>. Пользователь только что кликнул мышью в месте, на которое указывает курсор.
 	\figlabel{gameBoard}}
 \end{figure}
 
-To show you how to use \pharo's programming tools, we will build a simple game called \emph{Lights Out}.  The game board is shown in \figref{gameBoard}; it consists of rectangular array of light yellow \emph{cells}.  When you click on one of the cells with the mouse, the four surrounding cells turn blue.  \Click again, and they toggle back to light yellow.  The object of the game is to turn blue as many cells as possible.
+%To show you how to use \pharo's programming tools, we will build a simple game called \emph{Lights Out}.  The game board is shown in \figref{gameBoard}; it consists of rectangular array of light yellow \emph{cells}.  When you click on one of the cells with the mouse, the four surrounding cells turn blue.  \Click again, and they toggle back to light yellow.  The object of the game is to turn blue as many cells as possible.
+Чтобы показать вам, как использовать инструменты программирования \pharo, мы разработаем простую игру <<\emph{Lights Out}>>. Поле игры показано на \figref{gameBoard}. Оно состоит из прямоугольного набора светложёлтых \emph{ячеек}. Когда вы кликаете мышью на одной из них, четыре ячейки, располагающиеся по её сторонам становятся голубыми. Повторный клик возвращает ячейкам прежний цвет. Цель игры --- сделать как можно больше ячеек голубыми.
 
-The Lights Out game shown in \figref{gameBoard} is made up of two kinds of objects: the game board itself, and 100 individual cell objects.  The \pharo code to implement the game will contain two classes: one for the game and one for the cells.
-We will now show you how to define these classes using the \pharo programming tools.
+%The Lights Out game shown in \figref{gameBoard} is made up of two kinds of objects: the game board itself, and 100 individual cell objects.  The \pharo code to implement the game will contain two classes: one for the game and one for the cells.
+Игра <<Lights Out>>, показанная на \figref{gameBoard}, состоит из объектов двух типов: собственно игрового поля и ста объектов-ячеек.  Реализация этой игры в \pharo будет содержать два класса: один для игры и один для ячеек.
+%We will now show you how to define these classes using the \pharo programming tools.
+Далее мы покажем вам, как определить эти классы, используя инструменты для программирования, доступные в \pharo.
 
 %=================================================================
-\section{Creating a new Package}
+%\section{Creating a new Package}
+\section{Создание нового пакета}
 
-We have already seen the \ind{browser} in \charef{quick}, where we learned how to navigate to classes and methods, and saw how to define new methods.
-Now we will see how to create packages, categories and classes.
+%We have already seen the \ind{browser} in \charef{quick}, where we learned how to navigate to classes and methods, and saw how to define new methods.
+Мы уже видели \ind{браузер} в \charef{quick}, в которой мы изучили, как осуществлять навигация по классам и методам, а также узнали, как определять новые методы.
+%Now we will see how to create packages, categories and classes.
+Теперь мы рассмотрим создание пакетов, категорий и классов.
 \index{category!creating}
 \index{package!creating}
 
-\dothis{Open a browser and \actclick in the package pane.
-Select \menu{create package}.\footnote{We are assuming that the Package Browser is installed as the default browser, which should normally be the case. If the browser you get does not look like the one shown in \figref{addPackage}, then you may need to change the default browser.  See \faqref{packagebrowser}.}}
+%\dothis{Open a browser and \actclick in the package pane.
+\dothis{Откройте браузер и сделайте \actclick на панели пакетов.
+%Select \menu{create package}.\footnote{We are assuming that the Package Browser is installed as the default browser, which should normally be the case. If the browser you get does not look like the one shown in \figref{addPackage}, then you may need to change the default browser.  See \faqref{packagebrowser}.}}
+Выберите \menu{create package}.\footnote{Мы предполагаем, что браузер пакетов (Package Browser) установлен в качестве браузера по-умолчанию (как и должно быть в норме). Если браузер, который вы видите, не похож на изображённый на \figref{addPackage}, вам будет нужно поменять его (см. \faqref{packagebrowser}).}}
 
 \begin{figure}[htb]
 \begin{minipage}[b]{0.48\textwidth}
 \ifluluelse
 	{\centerline {\includegraphics[width=0.9\textwidth]{AddPackage}}}
 	{\centerline {\includegraphics[scale=0.7]{AddPackage}}}
-	\caption{Adding a package.
+	%\caption{Adding a package.
+	\caption{Добавление пакета.
 	\figlabel{addPackage}}
 \end{minipage}
 \hfill
@@ -95,47 +111,68 @@ Select \menu{create package}.\footnote{We are assuming that the Package Browser 
 \ifluluelse
 	{\centerline {\includegraphics[width=0.8\textwidth]{ClassTemplate}}}
 	{\centerline {\includegraphics[scale=0.6]{ClassTemplate}}}
-	\caption{The class template.
+	%\caption{The class template.
+	\caption{Шаблон класса.
 	\figlabel{classTemplate}}
 \end{minipage}
 \end{figure}
 
-Type the name of the new package (we will use \scat{PBE-LightsOut}) in the dialog box and click \menu{accept} (or just press the return key); the new package is created, and positioned alphabetically in the list of packages.
+%Type the name of the new package (we will use \scat{PBE-LightsOut}) in the dialog box and click \menu{accept} (or just press the return key); the new package is created, and positioned alphabetically in the list of packages.
+Введите имя нового пакета (мы используем \scat{PBE-LightsOut}) в окне диалога и нажмите \menu{accept} (принять) или просто нажмите клавишу <<ввод>>. Всё, новый пакет создан и располагается согласно алфавиту в списке пакетов.
 
 %=================================================================
-\section{Defining the class LOCell}
+%\section{Defining the class LOCell}
+\section{Определение класса LOCell}
 
-As yet there are  of course no classes in the new package. However, the main editing pane displays a template to make it easy to create a new class (see \figref{classTemplate}).
+%As yet there are  of course no classes in the new package. However, the main editing pane displays a template to make it easy to create a new class (see \figref{classTemplate}).
+Разумеется, пока в новом пакете нет никаких классов. Однако в главной панели редактирования отображается шаблон, облегчающий создание нового класса (см. \figref{classTemplate}).
 
-This template shows us a \st expression that sends a message to a class called \ct{Object}, asking it to create a subclass called \ct{NameOfSubClass}.  The new class has no variables, and should belong to the category \scat{PBE-LightsOut}.
+%This template shows us a \st expression that sends a message to a class called \ct{Object}, asking it to create a subclass called \ct{NameOfSubClass}.  The new class has no variables, and should belong to the category \scat{PBE-LightsOut}.
+Этот шаблон представляет собой выражение на языке \st, посылающее сообщение классу \ct{Object} с тем, чтобы создать его подкласс с названием \ct{NameOfSubClass}. Новый класс не имеет переменных, и относится к категории \scat{PBE-LightsOut}.
 
-\subsection{On Categories and Packages}
+%\subsection{On Categories and Packages}
+\subsection{О категориях и пакетах}
 \seclabel{categoriesPackages}
 
-Historically, \st only knows about \emph{categories}, not packages.
-You may well ask, what is the difference?
-A category is simply a collection of related classes in a \st image.
-A \emph{package} is a collection of related classes \emph{and extension methods} that may be versioned using the Monticello versioning tool.
-By convention, package names and category names are the same.
-For most purposes we do not care about the difference, but we will be careful to use the correct terminology in this book since there are points where the difference is crucial.
-We will learn more when we start working with Monticello.
+%Historically, \st only knows about \emph{categories}, not packages.
+Исторически сложилось так, что \st знает только о \emph{категориях}, но не о пакетах.
+%You may well ask, what is the difference?
+Вы спросите, а в чём же разница?
+%A category is simply a collection of related classes in a \st image.
+Категория -- это просто совокупность связнных классов в образе \st.
+%A \emph{package} is a collection of related classes \emph{and extension methods} that may be versioned using the Monticello versioning tool.
+\emph{Пакет} же представляет собой набор связанных классов и \emph{методов-расширений}, которые могут быть версионированы с использованием систему управления версиями Monticello.
+%By convention, package names and category names are the same.
+По принятому соглашению, имена пакетов и категорий совпадают.
+%For most purposes we do not care about the difference, but we will be careful to use the correct terminology in this book since there are points where the difference is crucial.
+В большинстве случаев нам не важна эта разница, но в этой книге мы будем последовательно применять правильную терминологию, т.к. иногда разница между этими двумя понятиями становится очень важной.
+%We will learn more when we start working with Monticello.
+Мы узнаем о них больше, когда начнём работать с Monticello.
 \index{package}
 \index{category}
 
-\subsection{Creating a new class}
+%\subsection{Creating a new class}
+\subsection{Создание нового класса}
 
-We simply modify the template to create the class that we really want.
+%We simply modify the template to create the class that we really want.
+Мы просто модифицирем шаблон, чтобы создать тот класс, который нам действительно нужен.
 
-\dothis{Modify the class creation template as follows:}
+%\dothis{Modify the class creation template as follows:}
+\dothis{Измените шаблон создания класса следующим образом:}
 \begin{itemize}
-  \item Replace \clsind{Object} by \clsind{SimpleSwitchMorph}.
-  \item Replace \ct{NameOfSubClass} by \clsind{LOCell}.
-  \item Add \ct{mouseAction} to the list of instance variables.
+%  \item Replace \clsind{Object} by \clsind{SimpleSwitchMorph}.
+  \item Замените \clsind{Object} на \clsind{SimpleSwitchMorph}.
+%  \item Replace \ct{NameOfSubClass} by \clsind{LOCell}.
+  \item Замените \ct{NameOfSubClass} на \clsind{LOCell}.
+%  \item Add \ct{mouseAction} to the list of instance variables.
+  \item Добавьте \ct{mouseAction} в список переменных экземпляра.
 \end{itemize}
-The result should look like \clsref{firstClassDef}.
+%The result should look like \clsref{firstClassDef}.
+Результат должен выглядеть как на \clsref{firstClassDef}.
 
 \needlines{5}
-\begin{classdef}[firstClassDef]{Defining the class \ct| LOCell|}
+%\begin{classdef}[firstClassDef]{Defining the class \ct| LOCell|}
+\begin{classdef}[firstClassDef]{Определение класса \ct| LOCell|}
 SimpleSwitchMorph subclass: #LOCell
    instanceVariableNames: 'mouseAction'
    classVariableNames: ''
@@ -146,40 +183,56 @@ SimpleSwitchMorph subclass: #LOCell
 \index{class!creation}
 \index{Morphic}
 
-This new definition consists of a \st expression that sends a message to the existing class \ct{SimpleSwitchMorph}, asking it to create a subclass called \ct{LOCell}.
-(Actually, since \ct{LOCell} does not exist yet, we passed as an argument the \emphind{symbol} \ct{#LOCell} which stands for the name of the class to create.)
-We also tell it that instances of the new class should have a \ct{mouseAction} instance variable, which we will use to define what action the cell should take if the mouse should click over it.
+%This new definition consists of a \st expression that sends a message to the existing class \ct{SimpleSwitchMorph}, asking it to create a subclass called \ct{LOCell}.
+Это новое определение состоит из \st-выражения, посылающего сообщение существующему классу \ct{SimpleSwitchMorph} с целью создания подкласса, названного \ct{LOCell}.
+%(Actually, since \ct{LOCell} does not exist yet, we passed as an argument the \emphind{symbol} \ct{#LOCell} which stands for the name of the class to create.)
+(На самом деле, т.к. класс \ct{LOCell} ещё не существует, мы передаём в качестве параметра \emphind{символ} \ct{#LOCell} обозначающий имя создаваемого класса.)
+%We also tell it that instances of the new class should have a \ct{mouseAction} instance variable, which we will use to define what action the cell should take if the mouse should click over it.
+Мы также указываем, что экземпляры нового класса должны иметь переменную экземпляра \ct{mouseAction}, которую мы будем использовать, чтобы определить, какое действие должна совершить ячейка при клике по ней мышью.
 
-\emph{At this point you still have not created anything.}
-Note that the border of the class template pane has changed to red (\figref{acceptClassDef}).
-This means that there are \emph{unsaved changes}.
-To actually send this message, you must \menu{accept} it.
+%\emph{At this point you still have not created anything.}
+\emph{В этот момент вы ещё ничего не создали.}
+%Note that the border of the class template pane has changed to red (\figref{acceptClassDef}).
+Обратите внимание на то, что обрамление панели шаблона класса стало красным (\figref{acceptClassDef}).
+%This means that there are \emph{unsaved changes}.
+Это означает, что имеютя \emph{несохранённые изменения}.
+%To actually send this message, you must \menu{accept} it.
+Чтобы, наконец, послать упомянутое сообщение, вы должны принять (\menu{accept}) их.
 
 \begin{figure}[h!t]
 \ifluluelse
 	{\centerline {\includegraphics[width=\textwidth]{AcceptClassDef}}}
 	{\centerline {\includegraphics[scale=0.7]{AcceptClassDef}}}
-\caption{The class-creation Template.
+%\caption{The class-creation Template.
+\caption{Шаблон создания класса.
 \figlabel{acceptClassDef}}
 \end{figure}
 
-\dothis{Accept the new class definition.}
-Either \actclick and select \menu{accept}, or use the shortcut \short{s} (for ``save'').
-The message will be sent to \ct{SimpleSwitchMorph}, which will cause the new class to be compiled.
+%\dothis{Accept the new class definition.}
+\dothis{Примите новое определение класса.}
+%Either \actclick and select \menu{accept}, or use the shortcut \short{s} (for ``save'').
+Либо сделайте \actclick и выберите \menu{accept}, либо используйте сочетание клавиш \short{s} (от <<save>> -- сохранить).
+%The message will be sent to \ct{SimpleSwitchMorph}, which will cause the new class to be compiled.
+Сообщение будет послано классу \ct{SimpleSwitchMorph}, который скомпилирует новый класс.
 \index{keyboard shortcut!accept}
 
-Once the class definition is accepted, the class will be created and appear in the classes pane of the browser (\figref{LOCell}).
-The editing pane now shows the class definition, and a small pane below it will remind you to write a few words describing the purpose of the class. This is called a \emph{class comment}, and it is quite important to write one that will give other programmers a high-level overview of the purpose of this class.
-Smalltalkers put a very high value on the readability of their code, and detailed comments in methods are unusual: the philosophy is that the code should speak for itself. (If it doesn't, you should refactor it until it does!) A class \subind{class}{comment} need not contain a detailed description of the class, but a few words describing its overall purpose are vital if programmers who come after you are to know whether to spend time looking at this class.
+%Once the class definition is accepted, the class will be created and appear in the classes pane of the browser (\figref{LOCell}).
+После того, как было принято определение класса, он создаётся и отображается в браузере на панели классов (\figref{LOCell}).
+%The editing pane now shows the class definition, and a small pane below it will remind you to write a few words describing the purpose of the class. This is called a \emph{class comment}, and it is quite important to write one that will give other programmers a high-level overview of the purpose of this class.
+Панель редактирования показывает определение класса, а небольшая панель под ней напоминает вам о необходимости написать пару слов о назначении этого класса. Это называется \emph{комментарий класса} (\emph{class comment}), и он важен, т.к. даёт другим программистам общее представление о предназначении класса.
+%Smalltalkers put a very high value on the readability of their code, and detailed comments in methods are unusual: the philosophy is that the code should speak for itself. (If it doesn't, you should refactor it until it does!) A class \subind{class}{comment} need not contain a detailed description of the class, but a few words describing its overall purpose are vital if programmers who come after you are to know whether to spend time looking at this class.
+Программисты на \st придают большое значение читабельности своего кода, и подробные комментарии в методах --- вещь весьма необычная, ведь их философия заключается в том, что код должен говорить сам за себя. (Если это не так, сделайте рефакторинг!) \subind{class}{Комментарий} класса не обязан содержать детальное его описание, но несколько слов о его общем назначении могут очень помочь программистам, которые потом будут иметь дело с вашим классом.
 \index{refactoring}
 
-\dothis{Type a class comment for \ct{LOCell} and accept it; you can always improve it later.}
+%\dothis{Type a class comment for \ct{LOCell} and accept it; you can always improve it later.}
+\dothis{Напишите комментарий для класса \ct{LOCell} и примите его. Позже вы всегда сможете вернуться и дополнить его.}
 
 \begin{figure}[h!t]
 \ifluluelse
 	{\centerline {\includegraphics[width=\textwidth]{LOCell}}}
 	{\centerline {\includegraphics[scale=0.7]{LOCell}}}
-\caption{The newly-created class \ct{LOCell}\figlabel{LOCell}}
+%\caption{The newly-created class \ct{LOCell}\figlabel{LOCell}}
+\caption{Вновь созданный класс \ct{LOCell}\figlabel{LOCell}}
 \end{figure}
 
 %=================================================================
