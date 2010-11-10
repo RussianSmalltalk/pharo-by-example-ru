@@ -236,19 +236,25 @@ SimpleSwitchMorph subclass: #LOCell
 \end{figure}
 
 %=================================================================
-\section{Adding methods to a class}
+%\section{Adding methods to a class}
+\section{Добавление новых методов}
 
-Now let's add some methods to our class.
+%Now let's add some methods to our class.
+Давайте теперь добавим несколько методов в наш класс.
 
-\dothis{Select the protocol \prot{-{}-all-{}-} in the protocol pane.}
-You will see a template for method creation in the editing pane.
-Select it, and replace it by the text of \mthref{scbecellinitialize}.
+%\dothis{Select the protocol \prot{-{}-all-{}-} in the protocol pane.}
+\dothis{Выберите протокол \prot{-{}-all-{}-} на панели протоколов.}
+%You will see a template for method creation in the editing pane.
+На панели редактирования вы увидите шаблон создания метода.
+%Select it, and replace it by the text of \mthref{scbecellinitialize}.
+Выделите его и замените его текстом \mthref{scbecellinitialize}.
 \protindex{all}
 \index{method!creation}
 \index{browser!defining a method}
 
 \needlines{10}
-\begin{numMethod}[scbecellinitialize]{Initializing instances of \ct{LOCell}}
+%\begin{numMethod}[scbecellinitialize]{Initializing instances of \ct{LOCell}}
+\begin{numMethod}[scbecellinitialize]{Инициализация переменных экземпляра \ct{LOCell}}
 initialize
    super initialize.
    self label: ''.
@@ -262,31 +268,47 @@ initialize
 \index{initialization}
 
 \noindent
-Note that the characters \ct{''} on line 3 are two separate single quotes with nothing between them, not a double quote!  \ct{''} denotes the empty string.
+%Note that the characters \ct{''} on line 3 are two separate single quotes with nothing between them, not a double quote!  \ct{''} denotes the empty string.
+Заметьте, что знак \ct{''} в третьей строке --- это две, идущие подряд, одинарные кавычки, а не двойная кавычка! \ct{''} означает пустую строку.
 
-\dothis{\menu{Accept} this method definition.}
+%\dothis{\menu{Accept} this method definition.}
+\dothis{Примите (\menu{Accept}) это определение метода.}
 
-What does the above code do?  We won't go into all of the details here (that's what the rest of the book is for!), but we will give you a quick preview.  Let's take it line by line.
+%What does the above code do?  We won't go into all of the details here (that's what the rest of the book is for!), but we will give you a quick preview.  Let's take it line by line.
+Что же делает этот код? Мы не будем вдаваться во все подробности (этим мы займёмся в остальной части книги!), а вместо этого сделаем небольшой обзор, пройдясь по коду строка за строкой.
 
-Notice that the method is called \mthind{LOCell}{initialize}.
-The name is very significant!
-By convention, if a class defines a method named \ct{initialize}, it will be called right after the object is created.
-So, when we evaluate \ct{LOCell new}, the message \ct{initialize} will be sent automatically to this newly created object.
-Initialize methods are used to set up the state of objects, typically to set their instance variables; this is exactly what we are doing here.
+%Notice that the method is called \mthind{LOCell}{initialize}.
+Обратите внимание, метод называется \mthind{LOCell}{initialize}.
+%The name is very significant!
+Это очень важно!
+%By convention, if a class defines a method named \ct{initialize}, it will be called right after the object is created.
+По соглашению, если класс определяет метод \ct{initialize}, он будет вызван сразу после создания объекта.
+%So, when we evaluate \ct{LOCell new}, the message \ct{initialize} will be sent automatically to this newly created object.
+Поэтому, когда мы выполняем \ct{LOCell new}, сообщение \ct{initialize} будет послано автоматически вновь созданному объекту.
+%Initialize methods are used to set up the state of objects, typically to set their instance variables; this is exactly what we are doing here.
+Методы инициализации используются для задания начального состояния объекта, в частности его переменных экземпляра. Так мы и поступаем в нашем примере.
 \seeindex{Object!initialization}{initialization}
 \index{initialization}
 
-The first thing that this method does (line 2) is to execute the \ct{initialize} method of its superclass, \ct{SimpleSwitchMorph}.
-The idea here is that any inherited state will be properly initialized by the \ct{initialize} method of the superclass.
-It is always a good idea to initialize inherited state by sending \ct{super initialize} before doing anything else; we don't know exactly what \ct{SimpleSwitchMorph}'s \ct{initialize} method will do, and we don't care, but it's a fair bet that it will set up some instance variables to hold reasonable default values, so we had better call it, or we risk starting in an unclean state.
+%The first thing that this method does (line 2) is to execute the \ct{initialize} method of its superclass, \ct{SimpleSwitchMorph}.
+Первое, что делает этот метод (вторая строка), --- это выполнение метода \ct{initialize} суперкласса \ct{SimpleSwitchMorph}.
+%The idea here is that any inherited state will be properly initialized by the \ct{initialize} method of the superclass.
+Идея здесь заключается в том, что любое унаследованное состояние должно быть правильно проинициализировано с помощью метода \ct{initialize} суперкласса.
+%It is always a good idea to initialize inherited state by sending \ct{super initialize} before doing anything else; we don't know exactly what \ct{SimpleSwitchMorph}'s \ct{initialize} method will do, and we don't care, but it's a fair bet that it will set up some instance variables to hold reasonable default values, so we had better call it, or we risk starting in an unclean state.
+Это хорошая идея, инициализировать унаследованное состояние, посылая \ct{super initialize} перед тем, как сделать что-либо ещё. Мы не знаем точно, что будет делать метод \ct{initialize} класса \ct{SimpleSwitchMorph}, и нас это мало интересует. Главное, что он присвоит некоторым переменным экземпляра осмысленные значения по-умолчанию. Поэтому мы и должны его вызвать, а иначе рискуем начать работу в несогласованном состоянии.
 
-The rest of the method sets up the state of this object.
-Sending \ct{self label: ''}, for example, sets the label of this object to the empty string.
+%The rest of the method sets up the state of this object.
+Остаток метода инициализирует состояние вновь созданного объекта.
+%Sending \ct{self label: ''}, for example, sets the label of this object to the empty string.
+Посылка \ct{self label: ''}, например, установит метку этого объекта равной пустой строке.
 \pvindex{self}
 
-The expression \ct{0@0 corner: 16@16} probably needs some explanation. 
-\lct{0@0} represents a \clsind{Point} object with $x$ and $y$ coordinates both set to 0.
-In fact, \ct{0@0} sends the message \ct{@}
+%The expression \ct{0@0 corner: 16@16} probably needs some explanation. 
+Выражение \ct{0@0 corner: 16@16}, вероятно, нуждается в некоторых пояснениях.
+%\lct{0@0} represents a \clsind{Point} object with $x$ and $y$ coordinates both set to 0.
+\lct{0@0} представляет собой экземпляр класса \clsind{Point} (точка) с координатами $x$ и $y$ равными нулю.
+%In fact, \ct{0@0} sends the message \ct{@}
+Фактически, \ct{0@0} посылает сообщение \ct{@}
 % Yuck... the following should be \mthind{Number}{@} 
 %%% THIS IS BROKEN -- don't do it! (on)
 %\def\atsign{\textsf{@}}%
@@ -296,31 +318,44 @@ In fact, \ct{0@0} sends the message \ct{@}
 %	\protected@write\@indexfile{}%
 %    {\string\indexentry{Number!\string\atsign|hyperpage}{\thepage}}%
 %	\makeatother}
-to the number \ct{0} with argument \ct{0}.
-The effect will be that the number \ct{0} will ask the \ct{Point} class to create a new instance with coordinates (0,0).
-Now we send this newly created point the message \ct{corner: 16@16}, which causes it to create a \clsind{Rectangle} with corners \ct{0@0} and \ct{16@16}.
-This newly created rectangle will be assigned to the \ct{bounds} variable, inherited from the superclass.
+%to the number \ct{0} with argument \ct{0}.
+числу \ct{0} с аргументом \ct{0}.
+%The effect will be that the number \ct{0} will ask the \ct{Point} class to create a new instance with coordinates (0,0).
+Результатом этого станет то, что число \ct{0} <<попросит>> класс \ct{Point} создать новый экземпляр с координатами (0,0).
+%Now we send this newly created point the message \ct{corner: 16@16}, which causes it to create a \clsind{Rectangle} with corners \ct{0@0} and \ct{16@16}.
+Затем мы посылаем созданному объекту-точке сообщение \ct{corner: 16@16}, получая таким образом прямоугольник (\clsind{Rectangle}) с углами \ct{0@0} и \ct{16@16}.
+%This newly created rectangle will be assigned to the \ct{bounds} variable, inherited from the superclass.
+Этот прямоугольник будет присвоен переменной \ct{bounds}, унаследованной от суперкласса.
 
-Note that the origin of the \pharo screen is the \emph{top left}, and the $y$ coordinate increases \emph{downwards}.
+%Note that the origin of the \pharo screen is the \emph{top left}, and the $y$ coordinate increases \emph{downwards}.
+Имейте ввиду, что начало координат экрана в \pharo --- это \emph{верхний левый угол} и координата $y$ увеличивается \emph{сверху вниз}.
 
-The rest of the method should be self-explanatory.
-Part of the art of writing good \st code is to pick good method names so that \st code can be read like a kind of pidgin English.
-You should be able to imagine the object talking to itself and saying ``\ct{Self use square corners!}'', ``\ct{Self turn off!}''.
+%The rest of the method should be self-explanatory.
+Остаток метода вполне самоочевиден.
+%Part of the art of writing good \st code is to pick good method names so that \st code can be read like a kind of pidgin English.
+Одной из составляющих искусства написания качественного \st кода является выбор хороших имён методов, так чтобы код можно было читать словно некий гибридный вариант английского.
+%You should be able to imagine the object talking to itself and saying ``\ct{Self use square corners!}'', ``\ct{Self turn off!}''.
+Просто попробуйте вообразить объект, говорящий себе <<Я должен использовать острые углы! \ct{Self use square corners!}>>, <<Я должен выключиться! \ct{Self turn off!}>>.
 
 %=================================================================
-\section{Inspecting an object}
+%\section{Inspecting an object}
+\section{Инспектирование объекта}
 
-You can test the effect of the code you have written by creating a new \ct{LOCell} object and inspecting it.
+%You can test the effect of the code you have written by creating a new \ct{LOCell} object and inspecting it.
+Вы можете посмотреть на результат кода, который только что написали, создав новый объект \ct{LOCell} и проинспектировав его.
 
-\dothis{Open a workspace. Type the expression \ct{LOCell new} and \menu{inspect it}.}
+%\dothis{Open a workspace. Type the expression \ct{LOCell new} and \menu{inspect it}.}
+\dothis{Откройте окно рабочей области. Введите выражение \ct{LOCell new} и выберите пункт меню \menu{inspect it}.}
 
 \begin{figure}[htbp]
    \centering
    \includegraphics[width=\textwidth]{LOCellInspector} 
-   \caption{The inspector used to examine a LOCell object.\figlabel{LOCellInspector}}
+   %\caption{The inspector used to examine a LOCell object.\figlabel{LOCellInspector}}
+   \caption{Инспектор, используемый для исследования объекта класса LOCell.\figlabel{LOCellInspector}}
 \end{figure}
 
-The left-hand pane of the \ind{inspector} shows a list of instance variables; if you select one (try \mbox{\ct{bounds}),} the value of the \ind{instance variable} is shown in the right pane.
+%The left-hand pane of the \ind{inspector} shows a list of instance variables; if you select one (try \mbox{\ct{bounds}),} the value of the \ind{instance variable} is shown in the right pane.
+Левая панель \ind{инспектора} отображает список переменных экземпляра. Если вы выберете одну из них (попробуйте \mbox{\ct{bounds}),} значение \ind{переменной экземпляра} отобразится на правой панели.
 
 %  You can also use the inspector to change the value of an instance variable.
 %\dothis{Change the value of \ct{bounds} to \ct{0@0 corner: 50@50} and \menu{accept} it.}
@@ -328,27 +363,38 @@ The left-hand pane of the \ind{inspector} shows a list of instance variables; if
 %\ct{OTNamedVariableNode(Object)>>doesNotUnderstand: #selectedClass}
 %\on{should use the mini workspace instead to send bounds: ?}
 
-The bottom pane of the inspector is a mini-workspace.  It's useful because in this workspace the pseudo-variable \self is bound to the object selected. 
+%The bottom pane of the inspector is a mini-workspace.  It's useful because in this workspace the pseudo-variable \self is bound to the object selected. 
+Нижняя панель инспектора представляет собой небольшую рабочую область. Это удобно, поскольку здесь псевдопеременная \self связывается с выбранным в данный момент объектом.
 
 \dothis{
-Select the LOCell at the root of the inspector window.
-Type the text \ct{self bounds: (200@200 corner: 250@250)} in the bottom pane and \menu{do it}. The \ct{bounds} variable should change in the inspector.
-Now type the text \ct{self openInWorld} in the mini-workspace and \menu{do it}.}
-The cell should appear near the top left-hand corner of the screen, indeed, exactly where its \ct{bounds} say that it should appear.
-\metaclick on the cell to bring up the morphic \subind{Morphic}{halo}.
-Move the cell with the brown (next to top-right) handle and resize it with the yellow (bottom-right) handle.
-Notice how the bounds reported by the inspector also change.
-(You may have to \actclick{} \menu{refresh} to see the new bounds value.)
+%Select the LOCell at the root of the inspector window.
+Выберите LOCell в корне окна инспектора.
+%Type the text \ct{self bounds: (200@200 corner: 250@250)} in the bottom pane and \menu{do it}. The \ct{bounds} variable should change in the inspector.
+Введите текст \ct{self bounds: (200@200 corner: 250@250)} в нижней панели и выполните (\menu{do it}) его. Переменная \ct{bounds} в инспекторе должна измениться.
+%Now type the text \ct{self openInWorld} in the mini-workspace and \menu{do it}.}
+Теперь введите текст \ct{self openInWorld} в этой малой рабочей области и выполните его тоже.
+%The cell should appear near the top left-hand corner of the screen, indeed, exactly where its \ct{bounds} say that it should appear.
+Ячейка должна появиться вблизи верхнего левого угла экрана, где ей и велят находиться её границы (\ct{bounds}).
+%\metaclick on the cell to bring up the morphic \subind{Morphic}{halo}.
+\metaclick на ячейке, чтобы появилось гало (\subind{Morphic}{halo}).
+%Move the cell with the brown (next to top-right) handle and resize it with the yellow (bottom-right) handle.
+Передвиньте ячейку с помощью коричневой кнопки (возле верхнего правого угла) и измените её размер с помощью жёлтой кнопки (справа снизу).
+%Notice how the bounds reported by the inspector also change.
+Обратите внимание на то, что границы, отображаемые в инспекторе также меняются.
+%(You may have to \actclick{} \menu{refresh} to see the new bounds value.)
+(Вам может понадобится выбрать в меню (\actclick{}) команду \menu{refresh}, чтобы обновить значение границ.)
 
 \begin{figure}[htbp]
 \centering
 \ifluluelse
 	{\includegraphics[width=\textwidth]{LOCellResize} }
 	{\includegraphics[scale=0.7]{LOCellResize} }
-\caption{Resizing the cell.\figlabel{cellresize}}
+%\caption{Resizing the cell.\figlabel{cellresize}}
+\caption{Изменение размеров ячейки.\figlabel{cellresize}}
 \end{figure}
 
-\dothis{Delete the cell by clicking on the \ct{x} in the pink handle.}
+%\dothis{Delete the cell by clicking on the \ct{x} in the pink handle.}
+\dothis{Удалите ячейку, кликнув на \ct{x} (розовая кнопка).}
 
 %=================================================================
 \section{Defining the class LOGame}
