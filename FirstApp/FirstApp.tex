@@ -397,16 +397,22 @@ initialize
 \dothis{Удалите ячейку, кликнув на \ct{x} (розовая кнопка).}
 
 %=================================================================
-\section{Defining the class LOGame}
+%\section{Defining the class LOGame}
+\section{Создание класса LOGame}
 
-Now let's create the other class that we need for the game, which we will call \clsind{LOGame}.
+%Now let's create the other class that we need for the game, which we will call \clsind{LOGame}.
+Теперь давайте создадим класс, который будет представлять игру, и назовём его \clsind{LOGame}.
 
-\dothis{Make the class definition template visible in the browser main window.}
-Do this by clicking on the package name.
-Edit the code so that it reads as follows, and \menu{accept} it.
+%\dothis{Make the class definition template visible in the browser main window.}
+\dothis{Перейдите к шаблону определения класса в браузере.}
+%Do this by clicking on the package name.
+Для этого кликните на имени пакета.
+%Edit the code so that it reads as follows, and \menu{accept} it.
+Теперь отредактируйте код как показано ниже и примите его.
 
 \needlines{6}
-\begin{classdef}[sbegame]{Defining the \ct{LOGame} class}
+%\begin{classdef}[sbegame]{Defining the \ct{LOGame} class}
+\begin{classdef}[sbegame]{Определение класса \ct{LOGame}}
 BorderedMorph subclass: #LOGame
    instanceVariableNames: ''
    classVariableNames: ''
@@ -414,14 +420,19 @@ BorderedMorph subclass: #LOGame
    category: 'PBE-LightsOut'
 \end{classdef}
 
-Here we subclass \clsind{BorderedMorph}; \clsind{Morph} is the superclass of all of the graphical shapes in \pharo, and (surprise!) a \ct{BorderedMorph} is a \ct{Morph} with a border.  
-We could also insert the names of the instance variables between the quotes on the second line, but for now, let's just leave that list empty.
+%Here we subclass \clsind{BorderedMorph}; \clsind{Morph} is the superclass of all of the graphical shapes in \pharo, and (surprise!) a \ct{BorderedMorph} is a \ct{Morph} with a border.  
+Мы наследуемся от класса \clsind{BorderedMorph}. \clsind{Morph} (Морф) --- это базовый класс всех графических объектов в \pharo, а \ct{BorderedMorph} --- это морф с рамкой.
+%We could also insert the names of the instance variables between the quotes on the second line, but for now, let's just leave that list empty.
+Мы можем вставить имена переменных экземпляра между кавычек во второй строке, но пока давайте оставим всё без изменений.
 
-Now let's define an \mthind{LOGame}{initialize} method for \ct{LOGame}.
+%Now let's define an \mthind{LOGame}{initialize} method for \ct{LOGame}.
+Теперь перейдём к определнию метода \mthind{LOGame}{initialize} класса \ct{LOGame}.
 
-\dothis{Type the following into the browser as a method for \ct{LOGame} and try to \menu{accept} it:}
+%\dothis{Type the following into the browser as a method for \ct{LOGame} and try to \menu{accept} it:}
+\dothis{Введите следующий код метода \ct{LOGame} в окно браузера и попробуйте принять его:}
 
-\begin{numMethod}[sbegameinitialize]{Initializing the game}
+%\begin{numMethod}[sbegameinitialize]{Initializing the game}
+\begin{numMethod}[sbegameinitialize]{Инициализируем игру}
 initialize
    | sampleCell width height n |
    super initialize.
@@ -436,8 +447,10 @@ initialize
 %\sd{it would be nicer if we would not have to create an instance of LOCell for nothing}
 %\on{yes}
 
-\pharo will complain that it doesn't know the meaning of some of the terms.
-\pharo tells you that it doesn't know of a message \ct{cellsPerSide}, and suggests a number of corrections, in case it was a spelling mistake.
+%\pharo will complain that it doesn't know the meaning of some of the terms.
+\pharo пожалуется на то, что ему незнакомо значение некоторых терминов.
+%\pharo tells you that it doesn't know of a message \ct{cellsPerSide}, and suggests a number of corrections, in case it was a spelling mistake.
+\pharo предупредит, что ничего не знает о сообщении \ct{cellsPerSide} и предоставит на выбор несколько подходящих вариантов исправления, как в случае, если бы это слово было бы написано с ошибкой.
 
 
 \begin{figure}[htb]
@@ -446,7 +459,8 @@ initialize
 	\ifluluelse
 		{\includegraphics[width=\textwidth]{UnknownSelector}}
 		{\includegraphics[scale=0.7]{UnknownSelector}}
-	\caption{\pharo detecting an unknown selector.\figlabel{unknownSelector}}
+	%\caption{\pharo detecting an unknown selector.\figlabel{unknownSelector}}
+	\caption{\pharo определяет неизвестный селектор.\figlabel{unknownSelector}}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
@@ -454,51 +468,75 @@ initialize
 	\ifluluelse
 		{\includegraphics[width=\textwidth]{DeclareInstanceVar}}
 		{\includegraphics[scale=0.7]{DeclareInstanceVar}}
-	\caption{Declaring a new instance variable.\figlabel{declareInstance}}
+	%\caption{Declaring a new instance variable.\figlabel{declareInstance}}
+	\caption{Определение новой переменной экземпляра.\figlabel{declareInstance}}
 \end{minipage}
 \end{figure}
 
-But \ct{cellsPerSide} is not a mistake\,---\,it is just a method that we haven't yet defined\,---\,we will do so in a minute or two.
+%But \ct{cellsPerSide} is not a mistake\,---\,it is just a method that we haven't yet defined\,---\,we will do so in a minute or two.
+Но \ct{cellsPerSide} --- это не ошибка, а метод, который мы ещё не определили, но обязательно сделаем это через пару минут.
 
-\dothis{So just select the first item from the menu, which confirms that we really meant \ct{cellsPerSide}.}
+%\dothis{So just select the first item from the menu, which confirms that we really meant \ct{cellsPerSide}.}
+\dothis{Просто выберите первый пункт в меню, подтвердив таким образом, что мы действительно имели в виду \ct{cellsPerSide}.}
 
-Next, \pharo will complain that it doesn't know the meaning of \ct{cells}.  It offers you a number of ways of fixing this.
+%Next, \pharo will complain that it doesn't know the meaning of \ct{cells}.  It offers you a number of ways of fixing this.
+Далее \pharo пожалуется, что ему незнакомо имя \ct{cells}, и предложит несколько вариантов его исправления.
 
-\dothis{Choose \menu{declare instance} because we want \ct{cells} to be an instance variable.}
-Finally, \pharo will complain about the message \ct{newCellAt:at:} sent on the last line; this is also not a mistake, so confirm that message too.
+%\dothis{Choose \menu{declare instance} because we want \ct{cells} to be an instance variable.}
+\dothis{Выберите пункт меню \menu{declare instance}, т.к. мы хотим определить переменную экземпляра \ct{cells}.}
+%Finally, \pharo will complain about the message \ct{newCellAt:at:} sent on the last line; this is also not a mistake, so confirm that message too.
+Наконец, \pharo предупредит вас о сообщении \ct{newCellAt:at:}, посылаемом в последней строке. Это тоже не ошибка, поэтому подтвердите и это сообщение.
 \index{on the fly variable definition}
 \index{instance variable definition} 
 
-If you now look at the class definition once again (which you can do by clicking on the \button{instance} button), you will see that the browser has modified it to include the instance variable \ct{cells}.
+%If you now look at the class definition once again (which you can do by clicking on the \button{instance} button), you will see that the browser has modified it to include the instance variable \ct{cells}.
+Теперь, если вы снова посмотрите на определение класса, кликнув по кнопке \button{instance} (экземпляр), вы увидите, что браузер его модифицировал, добавив определение переменной \ct{cells} (ячейки).
 
-Let's look at this \ct{initialize} method.
-The line \ct{| sampleCell width height n |}  declares 4 temporary variables. They are called temporary variables because their scope and lifetime are limited to this method.  Temporary variables with explanatory names are helpful in making code more readable.  Smalltalk has no special syntax to distinguish constants and variables, and in fact all four of these ``variables'' are really constants. 
-Lines 4--7 define these constants.
+%Let's look at this \ct{initialize} method.
+Посмотрим же на метод \ct{initialize} повнимательнее.
+%The line \ct{| sampleCell width height n |}  declares 4 temporary variables. They are called temporary variables because their scope and lifetime are limited to this method.  Temporary variables with explanatory names are helpful in making code more readable.  Smalltalk has no special syntax to distinguish constants and variables, and in fact all four of these ``variables'' are really constants. 
+Строка \ct{| sampleCell width height n |} определяет четыре вр'еменных переменных. Они называются временными, потому что их область видимости и время жизни ограничены методом, в котором они определены. Временные переменные с понятными, поясняющими именами всегда помогают сделать код более легкочитаемым. В \st не предусмотрен отличающийся синтаксис для констант и переменных, но все четыре упомянутые переменные являются константами.
+%Lines 4--7 define these constants.
+Строки с четвёртой по седьмую определяют эти константы.
 
-How big should our game board be?  Big enough to hold some integral number of cells, and big enough to draw a border around them.
-How many cells is the right number?  5? 10? 100? We don't know yet, and if we did, we would probably change our minds later.  So we delegate the responsibility for knowing that number to another method, which we will call \ct{cellsPerSide}, and which we will write in a minute or two.
-It's because we are sending the \ct{cellsPerSide} message before we define a method with that name that \pharo asked us to ``confirm, correct, or cancel'' when we accepted the method body for \ct{initialize}.
-Don't be put off by this: it is actually good practice to write in terms of other methods that we haven't yet defined.
-Why?  Well, it wasn't until we started writing the \ct{initialize} method that we realized that we needed it, and at that point, we can give it a meaningful name, and move on, without interrupting our flow.
+%How big should our game board be?  Big enough to hold some integral number of cells, and big enough to draw a border around them.
+Насколько большим должно быть поле для игры? Достаточно большим, чтобы вмещать в себя целое число ячеек, и достаточно большим, чтобы иметь возможность нарисовать рамку вокруг них.
+%How many cells is the right number?  5? 10? 100? We don't know yet, and if we did, we would probably change our minds later.  So we delegate the responsibility for knowing that number to another method, which we will call \ct{cellsPerSide}, and which we will write in a minute or two.
+Сколько ячеек будет достаточно? Пять? Десять? Сто? Пока мы этого не знаем, а если бы даже и знали, то позже могли бы изменить своё мнение. Поэтому мы делегируем ответственность за это методу определяющему количество ячеек, приходящихся на одну сторону поля. Назовём этот метод \ct{cellsPerSide}, а реализацию его рассмотрим чуть позже.
+%It's because we are sending the \ct{cellsPerSide} message before we define a method with that name that \pharo asked us to ``confirm, correct, or cancel'' when we accepted the method body for \ct{initialize}.
+Вот почему \pahro просил нас <<подтвердить, исправить или отменить>> (<<confirm, correct or cancel>>), когда мы приняли тело метода \ct{initialize}: мы посылали сообщение \ct{cellsPerSide}, но метода с таким именем ещё не существовало.
+%Don't be put off by this: it is actually good practice to write in terms of other methods that we haven't yet defined.
+Не пугайтесь --- это нормальная практика, писать код в терминах методов, которые ещё не были определены.
+%Why?  Well, it wasn't until we started writing the \ct{initialize} method that we realized that we needed it, and at that point, we can give it a meaningful name, and move on, without interrupting our flow.
+Почему? Просто, когда мы начинали писать метод \ct{initialize} мы не знали, что этот метод может нам понадобиться. Но в то же время мы могли дать ему осмысленное имя и продолжить, не прерывая работы над текущим методом.
  
-The fourth line uses this method: 
-the Smalltalk \ct{self cellsPerSide} sends the message \ct{cellsPerSide} to \pvind{self}, i.e., to this very object.  
-The response, which will be the number of cells per side of the game board, is assigned to \ct{n}.
+%The fourth line uses this method: 
+Четвёртая строка использует этот метод:
+%the Smalltalk \ct{self cellsPerSide} sends the message \ct{cellsPerSide} to \pvind{self}, i.e., to this very object.  
+выражение \ct{self cellsPerSide} посылает сообщение \ct{cellsPerSide} объекту \pvind{self}, т.е. этому самому объекту.
+%The response, which will be the number of cells per side of the game board, is assigned to \ct{n}.
+Результат выражения, обозначающий количество ячеек, приходящихся на одну сторону игрового поля, присваивается переменной \ct{n}.
 
-The next three lines create a new \ct{LOCell} object, and assign its width and height to the appropriate temporary variables. 
+%The next three lines create a new \ct{LOCell} object, and assign its width and height to the appropriate temporary variables. 
 
 %The eighth line sends the message \ct{bounds:} to \self.
 %\ct{bounds:} is a method that we inherit from our superclass; it is used to define the space on the screen that this Morph will occupy.  
 %The single colon (\ct{:}) at the end of the name says that \ct{bounds:} expects a single parameter, which should be a rectangle object.
-Line 8 sets the \ct{bounds} of the new object.
-Without worrying too much about the details just yet, just believe us that the expression in parentheses creates a square with its origin (\ie its top-left corner) at the point (5,5) and its bottom-right corner far enough away to allow space for the right number of cells.
+%Line 8 sets the \ct{bounds} of the new object.
+Восьмая строка устанавливает границы (\ct{bounds}) нового объекта.
+%Without worrying too much about the details just yet, just believe us that the expression in parentheses creates a square with its origin (\ie its top-left corner) at the point (5,5) and its bottom-right corner far enough away to allow space for the right number of cells.
+Не беспокоясь здесь о деталях, просто знайте, что выражение в скобках, создаёт квадрат с началом координат (т.е. верхним левым углом) в точке (5, 5) и правым нижним углом, достаточно удалённым от него, чтобы вместить нужное количество ячеек.
 
-The last line sets the \ct{LOGame} object's instance variable \ct{cells} to a newly created \clsind{Matrix} with the right number of rows and columns.   We do this by sending the message \ct{new:tabulate:} to the \ct{Matrix} class (classes are objects too, so we can send them messages).  We know that \mthind{Matrix class}{new:tabulate:} takes two arguments because it has two colons (\ct{:}) in its name.   The arguments go right after the colons.
-If you are used to languages that put all of the arguments together inside parentheses, this may seem weird at first.  Don't panic, it's only syntax!
-It turns out to be a very good syntax because the name of the method can be used to explain the roles of the arguments.  For example, it is pretty clear that \ct{Matrix rows: 5 columns: 2} has 5 rows and 2 columns, and not 2 rows and 5 columns.
+%The last line sets the \ct{LOGame} object's instance variable \ct{cells} to a newly created \clsind{Matrix} with the right number of rows and columns.   We do this by sending the message \ct{new:tabulate:} to the \ct{Matrix} class (classes are objects too, so we can send them messages).  We know that \mthind{Matrix class}{new:tabulate:} takes two arguments because it has two colons (\ct{:}) in its name.   The arguments go right after the colons.
+Последняя строка присваивает переменной \ct{cells} класса \ct{LOGame} вновь созданную матрицу (объект класса \clsind{Matrix}) с нужным количеством строк и столбцов. Мы делаем это с помощью сообщения \ct{new:tabulate:} посылаемого классу \ct{Matrix} (классы ведь тоже объекты и мы можем точно так же посылать им сообщения). Мы знаем, что \mthind{Matrix class}{new:tabulate:} принимает два аргумента, потому что в его имени присутствуют два двоеточия (\ct{:}), а аргументы при посылке указываются прямо за ними.
+%If you are used to languages that put all of the arguments together inside parentheses, this may seem weird at first.  Don't panic, it's only syntax!
+Если вы привыкли к языкам, которые сваливают все аргументы в кучу, огороженную скобками, это может сперва показаться странным. Но не паникуйте,
+%It turns out to be a very good syntax because the name of the method can be used to explain the roles of the arguments.  For example, it is pretty clear that \ct{Matrix rows: 5 columns: 2} has 5 rows and 2 columns, and not 2 rows and 5 columns.
+вскоре вам это синтаксическое решение покажется очень хорошим, т.к. имя метода может пояснить роли его аргументов. Например, моментально становится ясно, что \ct{Matrix rows: 5 columns: 2} имеет пять строк и два столбца, а не наоборот.
 \cmindex{Matrix class}{rows:columns:}
 
-\ct{Matrix new: n tabulate: [ :i :j | self newCellAt: i at: j ]} creates a new \ct{n}{$\times$}\ct{n} matrix and initializes its elements.  The initial value of each element will depend on its coordinates.  The \ct{(i,j)}\textsuperscript{th} element will be initialized to the result of evaluating \ct{self newCellAt: i at: j}.  
+%\ct{Matrix new: n tabulate: [ :i :j | self newCellAt: i at: j ]} creates a new \ct{n}{$\times$}\ct{n} matrix and initializes its elements.  The initial value of each element will depend on its coordinates.  The \ct{(i,j)}\textsuperscript{th} element will be initialized to the result of evaluating \ct{self newCellAt: i at: j}.  
+\ct{Matrix new: n tabulate: [ :i :j | self newCellAt: i at: j ]} создаёт новую матрицу \ct{n}{$\times$}\ct{n} и инициализирует её элементы. Начальное значение каждого элемента будет зависеть от его координат. \ct{(i,j)}\textsuperscript{й} элемент будет инициализирован результатом вычисления \ct{self newCellAt: i at: j}.
 
 %:===> Pretty-print is broken! (how to pretty-print?)
 
