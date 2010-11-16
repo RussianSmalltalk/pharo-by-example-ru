@@ -550,55 +550,71 @@ initialize
 %If you find yourself using \menu{more\,\ldots} a lot, it's useful to know that you can hold down the {\sc shift} key when you click to directly bring up the \menu{more \ldots} menu.
 
 %=================================================================
-\section{Organizing methods into protocols}
+%\section{Organizing methods into protocols}
+\section{Объединение методов в протоколы}
 
-Before we define any more methods, let's take a quick look at the third pane at the top of the browser.
-In the same way that the first pane of the browser lets us categorize classes into packages so we are not overwhelmed by a very long list of class names in the second pane, so the third pane lets us categorize methods so that we are not overwhelmed by a very long list of method names in the fourth pane.   
-These categories of methods are called ``protocols''.
+%Before we define any more methods, let's take a quick look at the third pane at the top of the browser.
+Перед тем, как мы определим ещё методы, давайте взглянем на третью слева панель в верхней части браузера.
+%In the same way that the first pane of the browser lets us categorize classes into packages so we are not overwhelmed by a very long list of class names in the second pane, so the third pane lets us categorize methods so that we are not overwhelmed by a very long list of method names in the fourth pane.   
+Точно так же, как первая панель браузера позволяет нам организовать классы в пакеты, так, чтобы мы не оказались один на один с бесконечно длинным списком имён классов во второй панели, третья панель позволяет категоризировать методы, так что нам не придётся столкнуться с длинным списком имён методов в четвёртой панели.
+%These categories of methods are called ``protocols''.
+Категории методов называются <<протоколы>> (protocols).
 \index{protocol}
 
-If there are only a few methods in a class, the extra level of hierarchy provided by protocols is not really necessary.
-This is why the browser also offers us the \prot{-{}-all-{}-} virtual protocol, which, you will not be surprised to learn, contains all of the methods in the class.
+%If there are only a few methods in a class, the extra level of hierarchy provided by protocols is not really necessary.
+Если класс содержит всего несколько методов, дополнительный уровень иерархии, предоставляемый протоколами отнюдь не обязателен.
+%This is why the browser also offers us the \prot{-{}-all-{}-} virtual protocol, which, you will not be surprised to learn, contains all of the methods in the class.
+Вот почему браузер позволяет использовать виртуальный протокол \prot{-{}-all-{}-}, который содержит все методы класса.
 \protindex{all}
 
 \begin{figure}[htbp]
    \centering
    \includegraphics[width=\textwidth]{Categorize} 
-   \caption{Automatically categorize all uncategorized methods.\figlabel{categorize}}
+   %\caption{Automatically categorize all uncategorized methods.\figlabel{categorize}}
+   \caption{Автоматическая категоризация всех методов, не относящихся к какой-либо категории}
 \end{figure}
 
-If you have followed along with this example, the third pane may well contain the protocol \protind{as yet unclassified}.
+%If you have followed along with this example, the third pane may well contain the protocol \protind{as yet unclassified}.
+Если вы всё это время точно следовали нашим действиям, третья панель в вашем браузере должна содержить протокол \protind{as yet unclassified} (<<ещё не классифицированы>>).
 
-\dothis{\Actclick in the protocol pane and select \menu{various \go categorize automatically} to fix this, and move the \ct{initialize} methods to a new protocol called \protind{initialization}.}
-How does \pharo{} know that this is the right protocol?  Well, in general \pharo{} can't know, but in this case there is also an \ct{initialize} method in a superclass, and \pharo assumes that our \ct{initialize} method should go in the same category as the one that it overrides.
+%\dothis{\Actclick in the protocol pane and select \menu{various \go categorize automatically} to fix this, and move the \ct{initialize} methods to a new protocol called \protind{initialization}.}
+\dothis{Сделайте \Actclick на панели протоколов и выберите пункт меню \menu{various \go categorize automatically} (категоризировать автоматически) чтобы исправить это, поместив метод \ct{initialize} в новый протокол \protind{initialization}.}
+%How does \pharo{} know that this is the right protocol?  Well, in general \pharo{} can't know, but in this case there is also an \ct{initialize} method in a superclass, and \pharo assumes that our \ct{initialize} method should go in the same category as the one that it overrides.
+Как \pharo узнаёт, что это именно тот протокол, который нам нужен? Конечно, \pharo не может этого знать, но в данном случае, в суперклассе уже определён метод \ct{initialize}, и \pharo предполагает, что наш метод \ct{initialize} должен находиться в той же категории, что и тот, который он переопределяет.
 \index{method!categorize}
 
 %You may find that \pharo has already put your \ct{initialize} method into the \protind{initialization} protocol.
 %If so, it's probably because you have loaded a package called \ct{AutomaticMethodCategorizer} into your image.
 
-\paragraph{A typographic convention.} Smalltalkers frequently use the notation ``\verb|>>|'' to identify the class to which a method belongs, so, for example, the \ct{cellsPerSide} method in class \ct{LOGame} would be referred to as \ct{LOGame>>cellsPerSide}.
-To indicate that this is \emph{not} \st syntax, we will use the special symbol \ct{>>>} instead, so this method will appear in the text as \ct{LOGame>>>cellsPerSide}
+%\paragraph{A typographic convention.} Smalltalkers frequently use the notation ``\verb|>>|'' to identify the class to which a method belongs, so, for example, the \ct{cellsPerSide} method in class \ct{LOGame} would be referred to as \ct{LOGame>>cellsPerSide}.
+\paragraph{Типографское соглашение.} Программисты на \st часто используют нотацию `\verb|>>|'', чтобы обозначать класс, которому принадлежит метод. Так, например, на метод \ct{cellsPerSide} в классе \ct{LOGame} будут ссылаться как на \ct{LOGame>>cellsPerSide}.
+%To indicate that this is \emph{not} \st syntax, we will use the special symbol \ct{>>>} instead, so this method will appear in the text as \ct{LOGame>>>cellsPerSide}
+Чтобы показать, что это \emph{не} \st синтаксис, мы будем использовать специальный символ \ct{>>>}, и ссылка на этот метод будет выглядеть в тексте как \ct{LOGame>>>cellsPerSide}.
 \cmindex{Behavior}{>>}
 
-From now on, when we show a method in this book, we will write the name of the method in this form.  Of course, when you actually type the code into the browser, you don't have to type the class name or the \ct{>>>}; instead, you just make sure that the appropriate class is selected in the class pane.  
+%From now on, when we show a method in this book, we will write the name of the method in this form.  Of course, when you actually type the code into the browser, you don't have to type the class name or the \ct{>>>}; instead, you just make sure that the appropriate class is selected in the class pane.  
+С этого момента, когда мы захотим сослаться на метод в книге, мы будем писать его имя именно в этой форме. Разумеется, когда вы вводите код в браузере, вам не нужно набирать имя класса или \ct{>>>}. Вместо этого, просто убедитесь, что нужный клас выбран на панели классов.
 
-Now let's define the other two methods that are used by the \ct{LOGame>>>initialize} method. Both of them can go in the \prot{initialization} protocol.
+%Now let's define the other two methods that are used by the \ct{LOGame>>>initialize} method. Both of them can go in the \prot{initialization} protocol.
+Давайте теперь определим остальные два метода, использумых в методе \ct{LOGame>>>initialize}. Оба они будут относиться к протоколу \prot{initialization}.
 
-\begin{method}[sbegamecellsperside]{A constant method.}
+%\begin{method}[sbegamecellsperside]{A constant method.}
+\begin{method}[sbegamecellsperside]{Метод-константа.}
 LOGame>>>cellsPerSide
-   "The number of cells along each side of the game"
+   "Количество ячеек, приходящееся на одну сторону игрового поля"
    ^ 10
 \end{method}
 \cmindex{LOGame}{cellsPerSide}
 \index{constant methods}
 
-This method could hardly be simpler: it answers the constant 10.  One advantage of representing constants as methods is that if the program evolves so that the constant then depends on some other features, the method can be changed to calculate this value.
+%This method could hardly be simpler: it answers the constant 10.  One advantage of representing constants as methods is that if the program evolves so that the constant then depends on some other features, the method can be changed to calculate this value.
+Вряд ли этот метод можно сделать ещё проще: он всего лишь возвращает константу <<10>>. Преимущество представления констант с помощью методов заключается в том, что если программа эволюционирует, константа может начать зависеть от других свойств системы, поэтому метод может измениться, чтобы вычислять значение.
 
 \needlines{10}
-\begin{method}[newCellAt:at:]{An initialization helper method}
+%\begin{method}[newCellAt:at:]{An initialization helper method}
+\begin{method}[newCellAt:at:]{Вспомогательный метод для инициализации}
 LOGame>>>newCellAt: i at: j
-   "Create a cell for position (i,j) and add it to my on-screen
-   representation at the appropriate screen position.  Answer the new cell"
+   "Создаёт ячейку в позиции (i,j) и добавляет её на экран. Возвращает новую ячейку."
    | c origin |
    c := LOCell new.
    origin := self innerBounds origin.
@@ -609,16 +625,23 @@ LOGame>>>newCellAt: i at: j
 \cmindex{LOGame}{newCellAt:at:}
 %   ^ c      "omit this final line to create a bug"
 
-\dothis{Add the methods \ct{LOGame>>>cellsPerSide} and \ct{LOGame>>>newCellAt:at:}.}
-Confirm the spelling of the new selectors \ct{toggleNeighboursOfCellAt:at:} and \ct{mouseAction:}.
+%\dothis{Add the methods \ct{LOGame>>>cellsPerSide} and \ct{LOGame>>>newCellAt:at:}.}
+\dothis{Добавьте методы \ct{LOGame>>>cellsPerSide} и \ct{LOGame>>>newCellAt:at:}.}
+%Confirm the spelling of the new selectors \ct{toggleNeighboursOfCellAt:at:} and \ct{mouseAction:}.
+Подтвердите правильность написания селекторов \ct{toggleNeighboursOfCellAt:at:} и \ct{mouseAction:}.
 
-\Mthref{newCellAt:at:} answers a new LOCell, specialized to position \ct{(i, j)} in the \clsind{Matrix} of cells.
-The last line defines the new cell's \ct{mouseAction} to be the \emph{block}
+%\Mthref{newCellAt:at:} answers a new LOCell, specialized to position \ct{(i, j)} in the \clsind{Matrix} of cells.
+\Mthref{newCellAt:at:} возвращает новый экземпляр LOCell, предназначенный для позиции \ct{(i, j)} в матрице ячеек (класс \clsind{Matrix}).
+%The last line defines the new cell's \ct{mouseAction} to be the \emph{block}
+Последняя строка определяет свойство \ct{mouseAction} новой ячейки. Как видите --- это блок.
 \mbox{\lct{[self toggleNeighboursOfCellAt: i at: j ]}.}
- In effect, this defines the callback behaviour to perform when the mouse is clicked.
-The corresponding method also needs to be defined.
+% In effect, this defines the callback behaviour to perform when the mouse is clicked.
+ В сущности, это определяет поведение при обратном вызове, который произойдёт при клике мышью.
+%The corresponding method also needs to be defined.
+Соответствующий метод также должен быть определён.
 
-\begin{method}[toggleNeighboursOfCellAt:at:]{The callback method}
+%\begin{method}[toggleNeighboursOfCellAt:at:]{The callback method}
+\begin{method}[toggleNeighboursOfCellAt:at:]{Метод обратного вызова}
 LOGame>>>toggleNeighboursOfCellAt: i at: j
    (i > 1) ifTrue: [ (cells at: i - 1 at: j ) toggleState].
    (i < self cellsPerSide) ifTrue: [ (cells at: i + 1 at: j) toggleState].
@@ -627,59 +650,79 @@ LOGame>>>toggleNeighboursOfCellAt: i at: j
 \end{method}
 \cmindex{LOGame}{toggleNeighboursOfCellAt:at:}
 
-\Mthref{toggleNeighboursOfCellAt:at:} toggles the state of the four cells to the north, south, west and east of cell (\ct{i}, \ct{j}).  The only complication is that the board is finite, so we have to make sure that a neighboring cell exists before we toggle its state.
+%\Mthref{toggleNeighboursOfCellAt:at:} toggles the state of the four cells to the north, south, west and east of cell (\ct{i}, \ct{j}).  The only complication is that the board is finite, so we have to make sure that a neighboring cell exists before we toggle its state.
+\Mthref{toggleNeighboursOfCellAt:at:} переключает состояние четырёх ячеек с северной, южной, западной и восточной сторон ячейки (\ct{i}, \ct{j}). Единственная сложность заключается в том, что игровое поле конечно, и поэтому нам придётся проверять, что соседние ячейки существуют, перед тем, как мы изменим их состояние.
 
-\dothis{Place this method in a new protocol called \prot{game logic}. (\Actclick in the protocol pane to add a new protocol.)}
-To move the method, you can simply click on its name and drag it to the newly-created protocol (\figref{dragMethod}).
+%\dothis{Place this method in a new protocol called \prot{game logic}. (\Actclick in the protocol pane to add a new protocol.)}
+\dothis{Разместите метод в новм протоколе \prot{game logic} (игровая логика). (Чтобы добавить новый протокол, сделайте \Actclick на панели протоколов.)}
+%To move the method, you can simply click on its name and drag it to the newly-created protocol (\figref{dragMethod}).
+Чтобы переместить метод, вы можете просто кликнуть на его имени и перетащить во вновь созданный протокол (\figref{dragMethod}).
 
 \begin{figure}[htbp]
    \centering
    \ifluluelse
 		{\includegraphics[width=\textwidth]{DragMethod} }
 		{\includegraphics[scale=0.7]{DragMethod} }
-   \caption{Drag a method to a protocol.\figlabel{dragMethod}}
+   %\caption{Drag a method to a protocol.\figlabel{dragMethod}}
+   \caption{Перемещение метода в протокол.\figlabel{dragMethod}}
 \end{figure}
 
-To complete the Lights Out game, we need to define two more methods in class \ct{LOCell} to handle mouse events.
-\begin{method}[mouseAction:]{A typical setter method}
+%To complete the Lights Out game, we need to define two more methods in class \ct{LOCell} to handle mouse events.
+Чтобы закончить игру Lights Out, нам нужно определить ещё два метода для обработки событий мыши в классе \ct{LOCell}.
+%\begin{method}[mouseAction:]{A typical setter method}
+\begin{method}[mouseAction:]{Типичный метод, устанавливающий значение}
 LOCell>>>mouseAction: aBlock
    ^ mouseAction := aBlock
 \end{method}
 \cmindex{LOCell}{mouseAction:}
 
-\Mthref{mouseAction:} does nothing more than set the cell's \ct{mouseAction} variable to the argument, and then answers the new value.
-Any method that \emph{changes} the value of an instance variable in this way is called a \emph{setter method}; a method that \emph{answers} the current value of an instance variable is called a \emph{getter method}.
+%\Mthref{mouseAction:} does nothing more than set the cell's \ct{mouseAction} variable to the argument, and then answers the new value.
+\Mthref{mouseAction:} всего лишь устанавливает значение переменной ячейки \ct{mouseAction} равным переданному аргументу и возвращает её новое значение.
+%Any method that \emph{changes} the value of an instance variable in this way is called a \emph{setter method}; a method that \emph{answers} the current value of an instance variable is called a \emph{getter method}.
+Любой метод, который \emph{изменяет} значение переменной экземпляра описанным способом называется \emph{метод установки значения} (setter method). Метод, который \emph{возвращает} текущее значение переменной называется \emph{метод получения значения} (getter method).
 \seeindex{setter method}{accessor}
 \seeindex{getter method}{accessor}
 
-If you are used to getters and setters in other programming languages, you might expect these methods to be called \ct{setmouseAction} and \ct{getmouseAction}.
-The \st convention is different.
-A getter always has the same name as the variable it gets, and a setter is named similarly, but with a trailing ``\ct{:}'', hence \ct{mouseAction} and \ct{mouseAction:}.
+%If you are used to getters and setters in other programming languages, you might expect these methods to be called \ct{setmouseAction} and \ct{getmouseAction}.
+Если вы привыкли к подобным методам в других языках программирования, вы можете ожидать, что они будут называться \ct{setMouseAction} и \ct{getМouseAction}.
+%The \st convention is different.
+В \st принято другое соглашение.
+%A getter always has the same name as the variable it gets, and a setter is named similarly, but with a trailing ``\ct{:}'', hence \ct{mouseAction} and \ct{mouseAction:}.
+Метод получения всегда называется также, как и переменная, значение которой он возвращает. Имя метода установки тоже совпадает с именем переменной, но оканчивается двоеточием (\ct{:}). То есть у нас получаются \ct{mouseAction} и \ct{mouseAction:}.
 
-Collectively, setters and getters are called  \emphind{accessor} methods, and by convention they should be placed in the \protind{accessing} protocol.
-In Smalltalk, \emph{all} instance variables are private to the object that owns them, so the only way for another object to read or write those variables in the Smalltalk language is through accessor methods like this one\footnote{In fact, the instance variables can be accessed in subclasses too.}.
+%Collectively, setters and getters are called  \emphind{accessor} methods, and by convention they should be placed in the \protind{accessing} protocol.
+В совокупности методы установки и получения значения называются \emph{методами доступа}, и по соглашению должны располагаться в протоколе \protind{accessing}.
+%In Smalltalk, \emph{all} instance variables are private to the object that owns them, so the only way for another object to read or write those variables in the Smalltalk language is through accessor methods like this one\footnote{In fact, the instance variables can be accessed in subclasses too.}.
+В \st \emph{все} переменные экземпляра приватные по отношению к объекту-владельцу. Поэтому единственный способ в \st, с помощью которого другой объект может прочитать или записать значение этих переменных, --- это использование методов доступа\footnote{На самом деле, переменные экземпляра доступны и в подклассах.}.
 
-\dothis{Go to the class \ct{LOCell}, define \ct{LOCell>>>mouseAction:} and put it in the \prot{accessing} protocol.}
+%\dothis{Go to the class \ct{LOCell}, define \ct{LOCell>>>mouseAction:} and put it in the \prot{accessing} protocol.}
+\dothis{Перейдите к классу \ct{LOCell}, определите метод \ct{LOCell>>>mouseAction:} и поместите его в протокол \prot{accessing}.}
 
-Finally, we need to define a method \ct{mouseUp:}; this will be called automatically by the GUI framework if the mouse button is released while the mouse is over this cell on the screen.
+%Finally, we need to define a method \ct{mouseUp:}; this will be called automatically by the GUI framework if the mouse button is released while the mouse is over this cell on the screen.
+Наконец, мы должны определить метод \ct{mouseUp:}, который будет вызван автоматически графическим фреймворком, если кнопка мыши будет отпущена пока указатель находится над данной ячейкой.
 
-\begin{method}[sbecellmouseup]{An event handler}
+%\begin{method}[sbecellmouseup]{An event handler}
+\begin{method}[sbecellmouseup]{Обработчик события}
 LOCell>>>mouseUp: anEvent
    mouseAction value
 \end{method}
 \cmindex{LOCell}{mouseUp:}
 
-\dothis{Add the method \ct{LOCell>>>mouseUp:} and then
-  \menu{categorize automatically} methods.}
+%\dothis{Add the method \ct{LOCell>>>mouseUp:} and then
+\dothis{Добавьте метод \ct{LOCell>>>mouseUp:} и 
+  категоризируйте методы автоматически (пункт меню \menu{categorize automatically}).}
 \index{method!categorize}
 
-What this method does is to send the message \ct{value} to the object stored in the instance variable \ct{mouseAction}. 
-Recall that in \ct{LOGame>>>newCellAt: i at: j} we assigned the following code fragment to \ct{mouseAction}:
+%What this method does is to send the message \ct{value} to the object stored in the instance variable \ct{mouseAction}. 
+Всё, что делает этот метод --- это посылает сообщение \ct{value} объекту, хранящемуся в переменной экземпляра \ct{mouseAction}. 
+%Recall that in \ct{LOGame>>>newCellAt: i at: j} we assigned the following code fragment to \ct{mouseAction}:
+Напомним, что в методе \ct{LOGame>>>newCellAt: i at: j} мы присвоили следующий фрагмент кода переменной \ct{mouseAction}:
 
 \ct{[self toggleNeighboursOfCellAt: i at: j ]} 
 
 \noindent
-Sending the \ct{value} message causes this code fragment to be evaluated, and consequently the state of the cells will toggle.
+%Sending the \ct{value} message causes this code fragment to be evaluated, and consequently the state of the cells will toggle.
+Посылка сообщения \ct{value} приводит к тому, что этот фрагмент кода будет выполнен и, как следствие, изменится состояние соседних ячеек.
 
 %=================================================================
 \section{Let's try our code}
