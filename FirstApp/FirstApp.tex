@@ -849,27 +849,39 @@ LOGame>>>newCellAt: i at: j
 %\on{I think that is too much for this chapter. It will come soon enough.}
 
 %=================================================================
-\section{Saving and sharing Smalltalk code}
+%\section{Saving and sharing Smalltalk code}
+\section{Хранение и совместный доступ к Smalltalk коду}
 \seclabel{Monticello}
 
-Now that you have the Lights Out game working, you probably want to save it somewhere so that you can share it with your friends. Of course, you can save your whole \pharo image, and show off your first program by running it, but your friends probably have their own code in their images, and don't want to give that up to use your image.
-What you need is a way of getting source code out of your \pharo image so that other programmers can bring it into theirs.
+%Now that you have the Lights Out game working, you probably want to save it somewhere so that you can share it with your friends. Of course, you can save your whole \pharo image, and show off your first program by running it, but your friends probably have their own code in their images, and don't want to give that up to use your image.
+Теперь, когда у вас есть работающая программа (игра Lights Out), вы, возможно, захотите сохранить её где-нибудь, чтобы иметь возможность поделиться ей с друзьями. Конечно, вы можете сохранить образ \pharo целиком, и показать свою первую программу, запустив его позже, но у ваших друзей, возможно, есть собственный код в их образах, и они из-за этого не захотят использовать ваш образ.
+%What you need is a way of getting source code out of your \pharo image so that other programmers can bring it into theirs.
+Что вам нужно --- так это способ извлечь исходный код из вашего образа \pharo, так что другие программисты смогли загрузить его в свои образы.
 
-The simplest way of doing this is by \emph{filing out} the code.  The \actclick menu in the Package pane will give you the option to \menu{various \go{} file out} the whole of package \scat{PBE-LightsOut}.
-The resulting file is more or less human readable, but is really intended for computers, not humans.
-You can email this file to your friends, and they can file it into their own \pharo images using the file list browser.
+%The simplest way of doing this is by \emph{filing out} the code.  The \actclick menu in the Package pane will give you the option to \menu{various \go{} file out} the whole of package \scat{PBE-LightsOut}.
+Простейший способ сделать это --- \emph{выгрузить код в файл} (file out). Сделайте \actclick на панели пакетов и воспользуйтесь опцией меню \menu{various \go{} file out} чтобы выгрузить весь пакет \scat{PBE-LightsOut}.
+%The resulting file is more or less human readable, but is really intended for computers, not humans.
+Полученный в результате файл более-менее человекочитаем, но на самом деле предназначен для компьютероа, а не для людей.
+%You can email this file to your friends, and they can file it into their own \pharo images using the file list browser.
+Вы можете отправить этот файл по электронной почте своим друзьям, которые затем могут загрузить его в свои образы \pharo через браузер файлов.
 \seeindex{saving code}{categories}
 \seeindex{category!filing out}{file, filing out}
 \seeindex{class!filing out}{file, filing out}
 \seeindex{method!filing out}{file, filing out}
 \index{file!filing out}
 
-\dothis{\Actclick on the \scat{PBE-LightsOut} package and \menu{various \go{} file out} the contents.}
-You should now find a file called ``PBE-LightsOut.st'' in the same folder on disk where your image is saved.
-Have a look at this file with a text editor.
+%\dothis{\Actclick on the \scat{PBE-LightsOut} package and \menu{various \go{} file out} the contents.}
+\dothis{Сделайте \Actclick на пакете \scat{PBE-LightsOut} и выгрузите его содержимое с помощью пункта меню \menu{various \go{} file out}.}
+%You should now find a file called ``PBE-LightsOut.st'' in the same folder on disk where your image is saved.
+Теперь вы можете обнаружить в папке с вашим образом файл PBE-LightsOut.st.
+%Have a look at this file with a text editor.
+Просмотрите содержимое этого файла в текстовом редакторе.
 
-\dothis{Open a fresh \pharo image and use the File Browser tool (\menu{Tools \ldots {\go} File Browser}) to \menu{file in} the PBE-LightsOut.st fileout.
-Verify that the game now works in the new image.}
+%\dothis{Open a fresh \pharo image and use the File Browser tool (\menu{Tools \ldots {\go} File Browser}) to \menu{file in} the PBE-LightsOut.st fileout.
+\dothis{Откройте свежий образ \pharo и с помощью браузера файлов (File Browser) (пункт меню \menu{Tools \ldots {\go} File Browser}) загрузите (пункт меню \menu{file in}) файл PBE-LightsOut.st.
+
+%Verify that the game now works in the new image.}
+Проверьте, что игра продолжает работать и в новом образе.}
 \seeindex{category!filing in}{file, filing in}
 \seeindex{class!filing in}{file, filing in}
 \seeindex{method!filing in}{file, filing in}
@@ -877,74 +889,104 @@ Verify that the game now works in the new image.}
 
 \begin{figure}[ht]
 \centerline {\includegraphics[width=\textwidth]{FileIn}}
-\caption{Filing in \pharo source code.
+%\caption{Filing in \pharo source code.
+\caption{Загрузка исходного кода \pharo.
 \figlabel{filein}}
 \end{figure}
 
-\subsection{Monticello packages}
-Although fileouts are a convenient way of making a snapshot of the code you have written, they are decidedly ``old school''.
-Just as most open-source projects find it much more convenient to maintain their code in a repository using \ind{CVS}\footnote{\url{http://www.nongnu.org/cvs}} or \ind{Subversion}\footnote{\url{http://subversion.tigris.org}},
-so \pharo programmers find it more convenient to manage their code using \ind{Monticello} packages. 
-These packages are represented as files with names ending in \ct{.mcz}; they are actually zip-compressed bundles that contain the complete code of your \ind{package}.
+%\subsection{Monticello packages}
+\subsection{Пакеты Monticello}
+%Although fileouts are a convenient way of making a snapshot of the code you have written, they are decidedly ``old school''.
+Хотя выгрузка кода в файл является удобным способом сделать <<снимок>> кода, который вы только что написали, --- это определённо <<прошлый век>>.
+%Just as most open-source projects find it much more convenient to maintain their code in a repository using \ind{CVS}\footnote{\url{http://www.nongnu.org/cvs}} or \ind{Subversion}\footnote{\url{http://subversion.tigris.org}},
+Также, как множество других проектов с открытым кодом используют для хранения исходного кода репозитории \ind{CVS}\footnote{\url{http://www.nongnu.org/cvs}} или \ind{Subversion}\footnote{\url{http://subversion.tigris.org}},
+%so \pharo programmers find it more convenient to manage their code using \ind{Monticello} packages. 
+программисты в \pharo используют для управления кодом пакеты \ind{Monticello}.
+%These packages are represented as files with names ending in \ct{.mcz}; they are actually zip-compressed bundles that contain the complete code of your \ind{package}.
+Эти пакеты, представляют собой файлы с расширением \ct{.mcz}, и являются по сути весь код \ind{пакет}а, собранный воедино, и сжатый с помощью zip-алгоритма.
 
-Using the Monticello package browser, you can save packages to repositories on various types of server, including FTP and HTTP servers; you can also just write the packages to a repository in a local file system directory.
-A copy of your package is also always cached on your local hard-disk in the \emph{package-cache} folder. 
-Monticello lets you save multiple versions of your program, merge versions, go back to an old version, and browse the differences between versions. 
-In fact, Monticello is a distributed revision control system; this means it allows developers to save their work on different places, not on a single repository as it is the case with CVS or Subversion.\damien{Mercurial, Git are examples of distributed revision control system; not sure it's worth mentioning them.}
+%Using the Monticello package browser, you can save packages to repositories on various types of server, including FTP and HTTP servers; you can also just write the packages to a repository in a local file system directory.
+Используя браузер пакетов Monticello, вы можете сохранять пакеты в репозитории различных типов, включая FTP и HTTP сервера. Вы также можете сохранять пакеты в репозитории, расположенном в каталоге вашей локальной файловой системы.
+%A copy of your package is also always cached on your local hard-disk in the \emph{package-cache} folder. 
+Копия пакет всегда сохраняется в кеше на вашем жёстком диске в папке \emph{package-cache}.
+%Monticello lets you save multiple versions of your program, merge versions, go back to an old version, and browse the differences between versions. 
+Monticello позволяет вам хранить версии вашей программы, сливать их, откатываться к более старой версии, смотреть между ними разницу. 
+%In fact, Monticello is a distributed revision control system; this means it allows developers to save their work on different places, not on a single repository as it is the case with CVS or Subversion.\damien{Mercurial, Git are examples of distributed revision control system; not sure it's worth mentioning them.}
+Фактически, Monticello --- это распределённая система управления версиями. Это означает, что разработчики могут хранить свою работу в разных местах, а не в едином репозитории, как в случае с CVS или Subversion.
 \seeindex{package browser}{Monticello}
 
-You can also send a \ct{.mcz} file by email. 
-The recipient will have to place it in her \emph{package-cache} folder; she will then be able to use Monticello to browse and load it. 
+%You can also send a \ct{.mcz} file by email. 
+Можно даже отправить файл \ct{.mcz} по электронной почте.
+%The recipient will have to place it in her \emph{package-cache} folder; she will then be able to use Monticello to browse and load it. 
+Адресат должен будет поместить этот файл в своей папке \emph{package-cache}, после чего получит возможность просмотреть и загрузить его с помощью Monticello.
 %(It is also possible to load it using the file list, but there is a difference between loading a \ct{.mcz} file using a file list and using Monticello \sd{check}.)
 
-\dothis{Open the Monticello browser from the \menu{World} menu.}
-In the right-hand pane of the browser (see \figref{monticello1}) is a list of Monticello repositories, which will include all of the repositories from which code has been loaded into the image that you are using.  
+%\dothis{Open the Monticello browser from the \menu{World} menu.}
+\dothis{Откройте браузер Monticello из главного (\menu{World}) меню.}
+%In the right-hand pane of the browser (see \figref{monticello1}) is a list of Monticello repositories, which will include all of the repositories from which code has been loaded into the image that you are using.  
+На правой панели браузера (см. \figref{monticello1}) находится список репозиториев Monticello, в который входят все репозитории из которых в ваш текущий образ загружался код.
 %In addition to \sqsrc servers, Monticello repositories can live in a variety of other places, the simplest being a directory on your local disk.
 
 \begin{figure}[hbt]
 \ifluluelse
 	{\centerline {\includegraphics[width=\textwidth]{MonticelloBrowser}}}
 	{\centerline {\includegraphics[scale=0.7]{MonticelloBrowser}}}
-\caption{The Monticello browser.
+%\caption{The Monticello browser.
+\caption{Браузер Monticello.
 \figlabel{monticello1}}
 \end{figure}
 
-At the top of the list in the Monticello browser is a repository in a local directory called the \emphind{package cache}, which caches copies of the packages that you have loaded or published over the network. This local cache is really handy because it lets you keep your own local history; it also allows you to work in places where you do not have internet access, or where access is slow enough that you do not want to save to a remote repository very frequently.
+%At the top of the list in the Monticello browser is a repository in a local directory called the \emphind{package cache}, which caches copies of the packages that you have loaded or published over the network. This local cache is really handy because it lets you keep your own local history; it also allows you to work in places where you do not have internet access, or where access is slow enough that you do not want to save to a remote repository very frequently.
+В верхней части списка находится репозиторий \emphind{package cache}, расположенный в локальном каталоге. В этом репозитории кешируются копии пакетов, которые вы загрузили или опубликовали в сети. Локальный кеш удобен, т.к. позволяет вам хранить историю локально. Он также позволяет вам полноценно работать в местах, где нет доступа к интернету, или где интернет-соединение слишком медленное и вы не хотите часто сохранять пакет в удалённый репозиторий.
 
 
-\subsection{Saving and loading code with Monticello.}
-On the left-hand side of the Monticello browser is a list of packages that have a version loaded into the image; packages that have been modified since they were loaded are marked with an asterisk.  (These are sometimes referred to as \subind{package}{dirty} packages.)  If you select a package, the list of repositories is restricted to just those repositories that contain a copy of the selected package.
+%\subsection{Saving and loading code with Monticello.}
+\subsection{Сохранение и загрузка кода с помощью Monticello.}
+%On the left-hand side of the Monticello browser is a list of packages that have a version loaded into the image; packages that have been modified since they were loaded are marked with an asterisk.  (These are sometimes referred to as \subind{package}{dirty} packages.)  If you select a package, the list of repositories is restricted to just those repositories that contain a copy of the selected package.
+В левой части браузера Monticello находится список пакетов, загруженных в образ. Пакеты, в которые после загрузки были внесены изменения помечены звёздочкой (их иногда называют <<грязными>> (\subind{package}{dirty}). Если вы выберете пакет, список репозиториев справа сократится до тех, которые содержат копию выбранного пакета.
 \seeindex{*}{package, dirty}
 \seeindex{dirty package}{package, dirty}
 
 %What is a package?  For now, you can think of a package as a group of  class and method categories that share the same prefix.  Since we put all of the code for the Lights Out game into the category called \scat{PBE-LightsOut}, we can refer to it as the \ct{PBE-LightsOut} package.
 
-\dothis{Add the \ct{PBE-LightsOut} package to your Monticello browser using the \button{+Package} button and type \ct{PBE-LightsOut}.}
+%\dothis{Add the \ct{PBE-LightsOut} package to your Monticello browser using the \button{+Package} button and type \ct{PBE-LightsOut}.}
+\dothis{Добавьте пакет \ct{PBE-LightsOut} в ваш браузер Monticello, используя кнопку \button{+Package} и введя \ct{PBE-LightsOut}.}
 
-\subsection{\ind{\sqsrc}: a \ind{SourceForge} for \pharo.} 
-We think that the best way to save your code and share it is to create an account for your project on a \sqsrc server. 
-\sqsrc is like SourceForge\footnote{\url{http://sourceforge.net}}: it is a web front-end to a HTTP Monticello server that lets you manage your projects.
-There is a public \sqsrc server at \url{http://www.squeaksource.com}, and a copy of the code related to this book is stored there at \url{http://www.squeaksource.com/PharoByExample.html}. You can look at this project with a web browser, but it's a lot more productive to do so from inside \pharo, using the Monticello browser, which lets you manage your packages.
+%\subsection{\ind{\sqsrc}: a \ind{SourceForge} for \pharo.} 
+\subsection{\ind{\sqsrc} --- \ind{SourceForge} для \pharo.} 
+%We think that the best way to save your code and share it is to create an account for your project on a \sqsrc server. 
+Мы считаем, что лучший способ хранить код и организовывать к нему совместный доступ, --- это создать аккаунт для вашего проекта на сервере \sqsrc.
+%\sqsrc is like SourceForge\footnote{\url{http://sourceforge.net}}: it is a web front-end to a HTTP Monticello server that lets you manage your projects.
+\sqsrc --- это что-то вроде SourceForge\footnote{\url{http://sourceforge.net}}, --- интерфейс к HTTP серверу Monticello, позволяющий вам управлять своими проектами.
+%There is a public \sqsrc server at \url{http://www.squeaksource.com}, and a copy of the code related to this book is stored there at \url{http://www.squeaksource.com/PharoByExample.html}. You can look at this project with a web browser, but it's a lot more productive to do so from inside \pharo, using the Monticello browser, which lets you manage your packages.
+Существует публичный \sqsrc-сервер, расположенный по адресу \url{http://www.squeaksource.com}. Кстати, там хранится копия кода, входящего в эту книгу: \url{http://www.squeaksource.com/PharoByExample.html}. Вы можете изучать этот проект через веб-браузер, но гораздо продуктивнее делать это из \pharo с помощью браузера Monticello.
 
-\dothis{Open a web browser to \url{http://www.squeaksource.com}.
-Create an account for yourself and then create (\ie ``register'') a project for the Lights Out game.}
-\sqsrc will show you the information that you should use when adding a repository using the Monticello browser. 
+%\dothis{Open a web browser to \url{http://www.squeaksource.com}.
+\dothis{Откройте в веб-браузере страницу \url{http://www.squeaksource.com}.
+%Create an account for yourself and then create (\ie ``register'') a project for the Lights Out game.}
+Создайте собственный аккаунт, и зарегистрируйте проект для нашей игры Lights Out.}
+%\sqsrc will show you the information that you should use when adding a repository using the Monticello browser. 
+\sqsrc предоставит вам информацию, которую вы должны использовать для добавления репозитория в браузер Monticello.
 
-Once your project has been created on \sqsrc, you have to tell your \pharo system to use it. 
+%Once your project has been created on \sqsrc, you have to tell your \pharo system to use it. 
+После того, как проект на \sqsrc был создан, вы должны сказать \pharo, как его использовать.
 
-\dothis{With the \ct{PBE-LightsOut} package selected, click the \button{+Repository} button in the Monticello browser.}  You will see a list of the different types of Repository that are available; to add a \sqsrc repository select \menu{HTTP}. You will be presented with a dialog in which you can provide the necessary information about the server.
+%\dothis{With the \ct{PBE-LightsOut} package selected, click the \button{+Repository} button in the Monticello browser.}  You will see a list of the different types of Repository that are available; to add a \sqsrc repository select \menu{HTTP}. You will be presented with a dialog in which you can provide the necessary information about the server.
+\dothis{Выберите пакет \ct{PBE-LightsOut}, а затем кликните по кнопке \button{+Repository} в браузере Monticelo.} Вы увидите список различных типов доступных репозиториев. Чтобы добавить репозиторий \sqsrc выберите пункт \menu{HTTP}; откроется диалог, в котором вам нужно предоставить необходимую информацию о сервере.
 You should copy the presented template to identify your \sqsrc project, paste it into Monticello and supply your initials and password:
+Скопируйте шаблон подключения проекта с его странички на \sqsrc, вставьте этот шаблон в Monticello и введите свои инициалы и пароль:
 
 \needlines{5}
 \begin{code}{}
 MCHttpRepository 
-    location: 'http://www.squeaksource.com/!\emph{YourProject}!'
-    user: '!\emph{yourInitials}!' 
-    password: '!\emph{yourPassword}!'
+    location: 'http://www.squeaksource.com/!\emph{ваш проект}!'
+    user: '!\emph{ваши инициалы}!' 
+    password: '!\emph{ваш пароль}!'
 \end{code}   
 
 \noindent
-If you provide empty initials and password strings, you can still load the project, but you will not be able to update it:
+%If you provide empty initials and password strings, you can still load the project, but you will not be able to update it:
+Если вы оставите строки инициалов и пароля пустыми, вы всё же сможете загрузить проект, но не сможете обновлять его:
 
 \needlines{5}
 \begin{code}{}
@@ -955,24 +997,31 @@ MCHttpRepository
 \end{code}   
 
 %You can then load the code in your image by selecting the version you want. You can browse the code without loading it, using the \button{Browse} button.
-Once you have accepted this template, your new repository should be listed on the right-hand side of the Monticello browser.
+%Once you have accepted this template, your new repository should be listed on the right-hand side of the Monticello browser.
+После того, как вы приняли этот шаблон, ваш новый репозиторий должен быть представлен на правой панели браузера Monticello.
 
 \begin{figure}[hbt]
 \ifluluelse
 	{\centerline {\includegraphics[width=\textwidth]{BrowseRepository}}}
 	{\centerline {\includegraphics[scale=0.7]{BrowseRepository}}}
-\caption{Browsing a Monticello Repository
+%\caption{Browsing a Monticello Repository
+\caption{Просмотр репозитория Monticello
 \figlabel{monticello3}}
 \end{figure}
 
-\dothis{Click on the \button{Save} button to save a first version of your Lights Out game on \sqsrc.}
+%\dothis{Click on the \button{Save} button to save a first version of your Lights Out game on \sqsrc.}
+\dothis{Нажмите на кнопку \button{Save} чтобы сохранить первую версию вашей игры Lights Out на \sqsrc.}
 
-To load a package into your image, you must first select a particular version.  You can do this in the repository browser, which you can open using the \button{Open} button or the \actclick menu.  Once you have selected a version, you can load it onto your image.
+%To load a package into your image, you must first select a particular version.  You can do this in the repository browser, which you can open using the \button{Open} button or the \actclick menu.  Once you have selected a version, you can load it onto your image.
+Чтобы загрузить пакет в свой образ, выберите его определённую версию. Вы можете сделать это в браузере репозитория, открыть который можно нажав на кнопку \button{Open} или посредством меню по \actclick. После того, как вы выбрали верию пакета, вы можете загрузить его в образ.
 
-\dothis{Open the \ct{PBE-LightsOut} repository you have just saved.}
+%\dothis{Open the \ct{PBE-LightsOut} repository you have just saved.}
+\dothis{Откройте репозиторий \ct{PBE-LightsOut}, который только что создали.}
 
-Monticello has many more capabilities, which will be discussed in depth in \charef{env}.
-You can also look at the on-line documentation for Monticello at \url{http://www.wiresong.ca/Monticello/}.
+%Monticello has many more capabilities, which will be discussed in depth in \charef{env}.
+У Monticello имеется гораздо больше возможностей, которые будут подробно рассмотрены в \charef{env}.
+%You can also look at the on-line documentation for Monticello at \url{http://www.wiresong.ca/Monticello/}.
+Вы также можете обратиться к on-line документации Monticello по адресу \url{http://www.wiresong.ca/Monticello/}.
 
 %=================================================================
 \section{Chapter summary}
