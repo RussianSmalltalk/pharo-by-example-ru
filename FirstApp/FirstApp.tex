@@ -1024,20 +1024,32 @@ MCHttpRepository
 Вы также можете обратиться к on-line документации Monticello по адресу \url{http://www.wiresong.ca/Monticello/}.
 
 %=================================================================
-\section{Chapter summary}
-In this chapter you have seen how to create categories, classes and methods.  You have see how to use the browser, the inspector, the debugger and the Monticello browser.
+%\section{Chapter summary}
+\section{Итоги главы}
+%In this chapter you have seen how to create categories, classes and methods.  You have see how to use the browser, the inspector, the debugger and the Monticello browser.
+Из этой главы вы узнали, как создавать категории, классы и методы, как использовать браузер, инспектор, отладчик и браузер Monticello.
 
 \begin{itemize}
-  \item Categories are groups of related classes.
-  \item A new class is created by sending a message to its superclass.
-  \item Protocols are groups of related methods.
-  \item A new method is created or modified by editing its definition in the browser and then \emph{accepting} the changes.
-  \item The inspector offers a simple, general-purpose GUI for inspecting and interacting with arbitrary objects.
-  \item The browser detects usage of undeclared methods and variables, and offers possible corrections.
-  \item The \ct{initialize} method is automatically executed after an object is created in \pharo. You can put any initialization code there.
-  \item The debugger provides a high-level GUI to inspect and modify the state of a running program.
-  \item You can share source code \emph{filing out} a category.
-  \item A better way to share code is to use Monticello to manage an external repository, for example defined as a \sqsrc project.
+%  \item Categories are groups of related classes.
+  \item Категории --- это группы связанных между собой классов.
+%  \item A new class is created by sending a message to its superclass.
+  \item Новый класс создаётся посредством посылки сообщения его суперклассу.
+%  \item Protocols are groups of related methods.
+  \item Протоколы --- это группы связанных методов.
+%  \item A new method is created or modified by editing its definition in the browser and then \emph{accepting} the changes.
+  \item Новый метод создаётся или модифицируется посредством изменения его определения в браузере и \emph{принятия} изменений.
+%  \item The inspector offers a simple, general-purpose GUI for inspecting and interacting with arbitrary objects.
+  \item Инспектор предоставляет простой графический интерфейс для просмотра и взаимодействия с любыми объектами.
+%  \item The browser detects usage of undeclared methods and variables, and offers possible corrections.
+  \item Браузер распознаёт использование не определённых методов и переменных, и предлагает возможные исправления.
+%  \item The \ct{initialize} method is automatically executed after an object is created in \pharo. You can put any initialization code there.
+  \item Метод \ct{initialize} автоматически выполняется после создания объекта в \pharo. Вы можете размещать там свой код инициализации.
+%  \item The debugger provides a high-level GUI to inspect and modify the state of a running program.
+  \item Отладчик предоставляет высокоуровневый графический интерфейс для инспектирования и изменения состояния запущеной программы.
+%  \item You can share source code \emph{filing out} a category.
+  \item Вы можете делиться кодом, \emph{выгружая} (file out) категорию в файл. 
+%  \item A better way to share code is to use Monticello to manage an external repository, for example defined as a \sqsrc project.
+  \item Лучший способ обеспечить совместный доступ к коду --- это использовать Monticello для управления внешним репозиторием, размещённым, например, на \sqsrc.
 \end{itemize}
 
 %=================================================================
