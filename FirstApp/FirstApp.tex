@@ -372,7 +372,7 @@ initialize
 %Type the text \ct{self bounds: (200@200 corner: 250@250)} in the bottom pane and \menu{do it}. The \ct{bounds} variable should change in the inspector.
 Введите текст \ct{self bounds: (200@200 corner: 250@250)} в нижней панели и выполните (\menu{do it}) его. Переменная \ct{bounds} в инспекторе должна измениться.
 %Now type the text \ct{self openInWorld} in the mini-workspace and \menu{do it}.}
-Теперь введите текст \ct{self openInWorld} в этой малой рабочей области и выполните его тоже.
+Теперь введите текст \ct{self openInWorld} в этой малой рабочей области и выполните его тоже.}
 %The cell should appear near the top left-hand corner of the screen, indeed, exactly where its \ct{bounds} say that it should appear.
 Ячейка должна появиться вблизи верхнего левого угла экрана, где ей и велят находиться её границы (\ct{bounds}).
 %\metaclick on the cell to bring up the morphic \subind{Morphic}{halo}.
@@ -495,7 +495,7 @@ initialize
 %Let's look at this \ct{initialize} method.
 Посмотрим же на метод \ct{initialize} повнимательнее.
 %The line \ct{| sampleCell width height n |}  declares 4 temporary variables. They are called temporary variables because their scope and lifetime are limited to this method.  Temporary variables with explanatory names are helpful in making code more readable.  Smalltalk has no special syntax to distinguish constants and variables, and in fact all four of these ``variables'' are really constants. 
-Строка \ct{| sampleCell width height n |} определяет четыре вр'еменных переменных. Они называются временными, потому что их область видимости и время жизни ограничены методом, в котором они определены. Временные переменные с понятными, поясняющими именами всегда помогают сделать код более легкочитаемым. В \st не предусмотрен отличающийся синтаксис для констант и переменных, но все четыре упомянутые переменные являются константами.
+Строка \ct{| sampleCell width height n |} определяет четыре вр\textit{е}менных переменных. Они называются временными, потому что их область видимости и время жизни ограничены методом, в котором они определены. Временные переменные с понятными, поясняющими именами всегда помогают сделать код более легкочитаемым. В \st не предусмотрен отличающийся синтаксис для констант и переменных, но все четыре упомянутые переменные являются константами.
 %Lines 4--7 define these constants.
 Строки с четвёртой по седьмую определяют эти константы.
 
@@ -504,7 +504,7 @@ initialize
 %How many cells is the right number?  5? 10? 100? We don't know yet, and if we did, we would probably change our minds later.  So we delegate the responsibility for knowing that number to another method, which we will call \ct{cellsPerSide}, and which we will write in a minute or two.
 Сколько ячеек будет достаточно? Пять? Десять? Сто? Пока мы этого не знаем, а если бы даже и знали, то позже могли бы изменить своё мнение. Поэтому мы делегируем ответственность за это методу определяющему количество ячеек, приходящихся на одну сторону поля. Назовём этот метод \ct{cellsPerSide}, а реализацию его рассмотрим чуть позже.
 %It's because we are sending the \ct{cellsPerSide} message before we define a method with that name that \pharo asked us to ``confirm, correct, or cancel'' when we accepted the method body for \ct{initialize}.
-Вот почему \pahro просил нас <<подтвердить, исправить или отменить>> (<<confirm, correct or cancel>>), когда мы приняли тело метода \ct{initialize}: мы посылали сообщение \ct{cellsPerSide}, но метода с таким именем ещё не существовало.
+Вот почему \pharo просил нас <<подтвердить, исправить или отменить>> (<<confirm, correct or cancel>>), когда мы приняли тело метода \ct{initialize}: мы посылали сообщение \ct{cellsPerSide}, но метода с таким именем ещё не существовало.
 %Don't be put off by this: it is actually good practice to write in terms of other methods that we haven't yet defined.
 Не пугайтесь --- это нормальная практика, писать код в терминах методов, которые ещё не были определены.
 %Why?  Well, it wasn't until we started writing the \ct{initialize} method that we realized that we needed it, and at that point, we can give it a meaningful name, and move on, without interrupting our flow.
@@ -879,7 +879,6 @@ LOGame>>>newCellAt: i at: j
 
 %\dothis{Open a fresh \pharo image and use the File Browser tool (\menu{Tools \ldots {\go} File Browser}) to \menu{file in} the PBE-LightsOut.st fileout.
 \dothis{Откройте свежий образ \pharo и с помощью браузера файлов (File Browser) (пункт меню \menu{Tools \ldots {\go} File Browser}) загрузите (пункт меню \menu{file in}) файл PBE-LightsOut.st.
-
 %Verify that the game now works in the new image.}
 Проверьте, что игра продолжает работать и в новом образе.}
 \seeindex{category!filing in}{file, filing in}
