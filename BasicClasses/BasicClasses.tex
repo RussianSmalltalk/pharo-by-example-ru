@@ -605,30 +605,38 @@ Multiplying a \ct{Fraction} by an \ct{Integer} or another \ct{Fraction} may yiel
 \lr{Maybe mention to avoid fractions in results that one of the operands has to be a float, e.g. 6.0 / 8 or 6 asFloat / 8. (p. 213)}
 
 %-----------------------------------------------------------------
-\subsection{Integer}
+%\subsection{Integer}
+\subsection{Целые числа}
 
-\clsindmain{Integer} is the abstract parent of three concrete integer implementations. In addition to providing concrete implementations of many abstract \ct{Number} methods, it also adds a few methods specific to integers, such as \mthind{Integer}{factorial}, \mthind{Integer}{atRandom}, \mthind{Integer}{isPrime}, \mthind{Integer}{gcd:} and many others.
+%\clsindmain{Integer} is the abstract parent of three concrete integer implementations. In addition to providing concrete implementations of many abstract \ct{Number} methods, it also adds a few methods specific to integers, such as \mthind{Integer}{factorial}, \mthind{Integer}{atRandom}, \mthind{Integer}{isPrime}, \mthind{Integer}{gcd:} and many others.
+Класс \clsindmain{Integer} является абстрактным родителем трёх конкретных реализаций целого числа. В дополнение к обеспечению конкретными реализациями многих абстрактных методов класса \ct{Number}, данный класс так же добавляет несколько методов, специфичных только для целых чисел: \mthind{Integer}{factorial}, \mthind{Integer}{atRandom}, \mthind{Integer}{isPrime}, \mthind{Integer}{gcd:} и многие другие.
 
-\clsindmain{SmallInteger} is special in that its instances are represented compactly --- instead of being stored as a reference, a \ct{SmallInteger} is represented directly using the bits that would otherwise be used to hold a reference.  The first bit of an object reference indicates whether the object is a \ct{SmallInteger} or not.
+%\clsindmain{SmallInteger} is special in that its instances are represented compactly --- instead of being stored as a reference, a \ct{SmallInteger} is represented directly using the bits that would otherwise be used to hold a reference.  The first bit of an object reference indicates whether the object is a \ct{SmallInteger} or not.
+Класс \clsindmain{SmallInteger} примечателен тем, что его экземпляры представлены в системе компактно --- вместо использования ссылок, объекты класса \ct{SmallInteger} представлены прямо, используя фактические биты, которые в других случаях и используются для хранения тех самых ссылок.  Первый бит ссылки на объект указывает, является ли объект экземпляром класса \ct{SmallInteger} или нет.
 
-The class methods \mthind{SmallInteger}{minVal} and \mthind{SmallInteger}{maxVal} tell us the range of a \ct{SmallInteger}:
+%The class methods \mthind{SmallInteger}{minVal} and \mthind{SmallInteger}{maxVal} tell us the range of a \ct{SmallInteger}:
+Методы класса \mthind{SmallInteger}{minVal} и \mthind{SmallInteger}{maxVal} скажут нам диапазон значений, которые могут принять объекты класса \ct{SmallInteger}:
 
 \begin{code}{@TEST}
 SmallInteger maxVal = ((2 raisedTo: 30) - 1)      --> true
 SmallInteger minVal = (2 raisedTo: 30) negated --> true
 \end{code}
 
-When a \ct{SmallInteger} goes out of this range, it is automatically converted to a \clsind{LargePositiveInteger} or a \clsind{LargeNegativeInteger}, as needed:
+%When a \ct{SmallInteger} goes out of this range, it is automatically converted to a \clsind{LargePositiveInteger} or a \clsind{LargeNegativeInteger}, as needed:
+Когда объект класса \ct{SmallInteger} выходит за рамки диапазона, он автоматически конвертируется в объект класса \clsind{LargePositiveInteger} либо \clsind{LargeNegativeInteger}, в зависимости от ситуации:
 
 \begin{code}{@TEST}
 (SmallInteger maxVal + 1) class --> LargePositiveInteger
 (SmallInteger minVal - 1) class  --> LargeNegativeInteger
 \end{code}
 
-Large integers are similarly converted back to small integers when appropriate.
+%Large integers are similarly converted back to small integers when appropriate.
+Большие целые числа так же автоматически конвертируются назад в маленькие, когда потребуется.
 
-As in most programming languages, integers can be useful for specifying iterative behaviour.  There is a dedicated method \mthind{Integer}{timesRepeat:} for evaluating a block repeatedly.
+%As in most programming languages, integers can be useful for specifying iterative behaviour.  There is a dedicated method \mthind{Integer}{timesRepeat:} for evaluating a block repeatedly.
 We have already seen a similar example in \charef{syntax}:
+Как и в большинстве языков программирования, целые числа могут быть полезны для определения итерационного поведения. Для этого существует метод \mthind{Integer}{timesRepeat:}, который позволяет вычислить блок кода несколько раз. Мы уже сталкивались с подобным примером в главе \charef{syntax}:
+
 \begin{code}{@TEST | n |}
 n := 2.
 3 timesRepeat: [ n := n*n ].
