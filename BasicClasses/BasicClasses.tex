@@ -536,49 +536,77 @@ Magnitude>>> > aMagnitude
 \cmindex{Magnitude}{>}
 
 %-----------------------------------------------------------------
-\subsection{Number}
+%\subsection{Number}
+\subsection{Числа}
 
-Similarly, \clsindmain{Number} defines \mthind{Number}{+}, \mthind{Number}{-}, \mthind{Number}{*} and \mthind{Number}{/} to be abstract, but all other arithmetic operators are generically defined.
+%Similarly, \clsindmain{Number} defines \mthind{Number}{+}, \mthind{Number}{-}, \mthind{Number}{*} and \mthind{Number}{/} to be abstract, but all other arithmetic operators are generically defined.
+Подобно предыдущему рассмотренному классу, класс \clsindmain{Number} объявляет методы \mthind{Number}{+}, \mthind{Number}{-}, \mthind{Number}{*} и \mthind{Number}{/} как абстрактные, а все остальные арифметические операторы определены обобщённо.
 
-All \ct{Number} objects support various \emph{converting} operators, such as \mthind{Number}{asFloat} and \mthind{Number}{asInteger}. There are also numerous \emphind{shortcut constructor methods}, such as \mthind{Number}{i}, which converts a \ct{Number} to an instance of \clsind{Complex} with a zero real component, and others which generate \clsindplural{Duration}, such as \mthind{Number}{hour}, \mthind{Number}{day} and \mthind{Number}{week}.
+%All \ct{Number} objects support various \emph{converting} operators, such as \mthind{Number}{asFloat} and \mthind{Number}{asInteger}. There are also numerous \emphind{shortcut constructor methods}, such as \mthind{Number}{i}, which converts a \ct{Number} to an instance of \clsind{Complex} with a zero real component, and others which generate \clsindplural{Duration}, such as \mthind{Number}{hour}, \mthind{Number}{day} and \mthind{Number}{week}.
+Все объекты класса \ct{Number} поддерживают различные операторы преобразования, такие как \mthind{Number}{asFloat} и \mthind{Number}{asInteger}. Так же доступно множество конструкторов, таких как \mthind{Number}{i}, который преобразует число в комплексное (класс \clsind{Complex}) с нулевой реальной составляющей, и других, которые генерируют продолжительность, например \mthind{Number}{hour}, \mthind{Number}{day} и \mthind{Number}{week}.
 
-\ct{Numbers} directly support common \emph{math functions} such as \mthind{Number}{sin}, \mthind{Number}{log}, \mthind{Number}{raiseTo:}, \mthind{Number}{squared}, \mthind{Number}{sqrt} and so on.
+%\ct{Numbers} directly support common \emph{math functions} such as \mthind{Number}{sin}, \mthind{Number}{log}, \mthind{Number}{raiseTo:}, \mthind{Number}{squared}, \mthind{Number}{sqrt} and so on.
+Числа напрямую поддерживают различные \emph{математические функции}, такие как \mthind{Number}{sin}, \mthind{Number}{log}, \mthind{Number}{raiseTo:}, \mthind{Number}{squared}, \mthind{Number}{sqrt} и пр.
 
-\cmind{Number}{printOn:} is implemented in terms of the abstract method \ct{Number>>>printOn:base:}. (The default base is 10.)
+%\cmind{Number}{printOn:} is implemented in terms of the abstract method \ct{Number>>>printOn:base:}. (The default base is 10.)
+Метод \cmind{Number}{printOn:} реализован в терминах абстрактного метода \ct{Number>>>printOn:base:}. (Счисление по умолчанию -- 10).
 
-Testing methods include \mthind{Number}{even}, \mthind{Number}{odd}, \mthind{Number}{positive} and \mthind{Number}{negative}. Unsurprisingly \ct{Number} overrides \lct{is\-Num\-ber}. More interesting, \mthind{Number}{isInfinite} is defined to return \ct{false}.
+%Testing methods include \mthind{Number}{even}, \mthind{Number}{odd}, \mthind{Number}{positive} and \mthind{Number}{negative}. Unsurprisingly \ct{Number} overrides \lct{is\-Num\-ber}. More interesting, \mthind{Number}{isInfinite} is defined to return \ct{false}.
+Методы тестирования включают в себя \mthind{Number}{even}, \mthind{Number}{odd}, \mthind{Number}{positive} и \mthind{Number}{negative}. Неудивительно, что в классе \ct{Number} переопределяется метод \lct{is\-Num\-ber}. Так же интересно то, что в метод \mthind{Number}{isInfinite} определён всегда возвращать \ct{false}.
 
-\emph{Truncation} methods include \mthind{Number}{floor}, \mthind{Number}{ceiling}, \mthind{Number}{integerPart}, \mthind{Number}{fractionPart} and so on.
+%\emph{Truncation} methods include \mthind{Number}{floor}, \mthind{Number}{ceiling}, \mthind{Number}{integerPart}, \mthind{Number}{fractionPart} and so on.
+Методы \emph{округления} включают в себя \mthind{Number}{floor}, \mthind{Number}{ceiling}, \mthind{Number}{integerPart}, \mthind{Number}{fractionPart} и так далее.
 
-\begin{code}{@TEST}
-1 + 2.5     --> 3.5             "Addition of two numbers"
-3.4 * 5      --> 17.0           "Multiplication of two numbers"
-8 / 2         --> 4                 "Division of two numbers"
-10 - 8.3   --> 1.7              "Subtraction of two numbers"
-12 = 11    --> false           "Equality between two numbers"
-12 ~= 11 --> true            "Test if two numbers are different"
-12 > 9      --> true            "Greater than"
-12 >= 10  --> true            "Greater or equal  than"
-12 < 10    --> false           "Smaller than"
-100@10   --> 100@10    "Point creation"
-\end{code}
+%% \begin{code}{@TEST}
+%% 1 + 2.5     --> 3.5             "Addition of two numbers"
+%% 3.4 * 5      --> 17.0           "Multiplication of two numbers"
+%% 8 / 2         --> 4                 "Division of two numbers"
+%% 10 - 8.3   --> 1.7              "Subtraction of two numbers"
+%% 12 = 11    --> false           "Equality between two numbers"
+%% 12 ~= 11 --> true            "Test if two numbers are different"
+%% 12 > 9      --> true            "Greater than"
+%% 12 >= 10  --> true            "Greater or equal  than"
+%% 12 < 10    --> false           "Smaller than"
+%% 100@10   --> 100@10    "Point creation"
+%% \end{code}
 \on{Should check how tabbing works in the listings package ...}
 
-The following example works surprisingly well in \st:
+\begin{code}{@TEST}
+1 + 2.5     --> 3.5             "Сумма двух чисел"
+3.4 * 5      --> 17.0           "Произведение двух чисел"
+8 / 2         --> 4                 "Частное двух чисел"
+10 - 8.3   --> 1.7              "Разность двух чисел"
+12 = 11    --> false           "Равентсно двух чисел"
+12 ~= 11 --> true            "Проверка, являются ли числа различными"
+12 > 9      --> true            "Больше, чем"
+12 >= 10  --> true            "Больше либо равно"
+12 < 10    --> false           "Меньше, чем"
+100@10   --> 100@10    "Создание точки"
+\end{code}
+
+
+
+%The following example works surprisingly well in \st:
+Следующий пример работает на удивление нормально \st:
 \begin{code}{@TEST}
 1000 factorial / 999 factorial --> 1000
 \end{code}
-Note that \ct{1000 factorial} is really calculated which in many other languages can be quite difficult to compute. This is an excellent example of automatic coercion and exact handling of a number.
+%Note that \ct{1000 factorial} is really calculated which in many other languages can be quite difficult to compute. This is an excellent example of automatic coercion and exact handling of a number.
+Примите во внимание, что \ct{1000 factorial}, реально вычисляемый во множестве языков, мог бы потребовать много времени и ресурсов. Это -- прекрасный пример автоматического приведения типов и управления числами.
 \cmindex{Integer}{factorial}
 
-\dothis{Try to display the result of \ct{1000 factorial}. It takes more time to display it than to calculate it!}
+%\dothis{Try to display the result of \ct{1000 factorial}. It takes more time to display it than to calculate it!}
+\dothis{Попробуйте вывести результат \ct{1000 factorial} на экран. Для того, чтобы вывести число на экран, потребуется больше времени, чем для того, чтобы вычислить его!}
 
 %-----------------------------------------------------------------
-\subsection{Float}
+%\subsection{Float}
+\subsection{Числа с плавающей точкой}
 
-\clsindmain{Float} implements the abstract \ct{Number} methods for floating point numbers.
+%\clsindmain{Float} implements the abstract \ct{Number} methods for floating point numbers.
+Класс \clsindmain{Float} реализует абстрактные методы класса \ct{Number} для чисел с плавающей точкой.
 
-More interestingly, \ct{Float class} (\ie the class-side of \ct{Float}) provides methods to return the following \emph{constants}: \mthind{Float class}{e}, \mthind{Float class}{infinity}, \mthind{Float class}{nan} and \mthind{Float class}{pi}.
+%More interestingly, \ct{Float class} (\ie the class-side of \ct{Float}) provides methods to return the following \emph{constants}: \mthind{Float class}{e}, \mthind{Float class}{infinity}, \mthind{Float class}{nan} and \mthind{Float class}{pi}.
+Дополнительно, сам \ct{Float class} (т.е. сторона класса \ct{Float}) предоставляет методы для получения следующих \emph{констант}: \mthind{Float class}{e}, \mthind{Float class}{infinity}, \mthind{Float class}{nan} and \mthind{Float class}{pi}.
 
 \begin{code}{@TEST}
 Float pi                      --> 3.141592653589793
@@ -587,16 +615,20 @@ Float infinity isInfinite --> true
 \end{code}
 
 %-----------------------------------------------------------------
-\subsection{Fraction}
+%\subsection{Fraction}
+\subsection{Дроби}
 
-\clsind{Fractions} are represented by instance variables for the numerator and denominator, which should be \ct{Integer}s. \ct{Fractions} are normally created by \ct{Integer} division (rather than using the constructor method \cmind{Fraction}{numerator:denominator:}):
+%\clsind{Fractions} are represented by instance variables for the numerator and denominator, which should be \ct{Integer}s. \ct{Fractions} are normally created by \ct{Integer} division (rather than using the constructor method \cmind{Fraction}{numerator:denominator:}):
+Дроби (класс \clsind{Fraction}) представлены двумя переменными объекта для числителя и знаменателя, которые должны быть целыми числами (\ct{Integer}). Дроби обычно создаются путём целочисленного деления (реже --
+с использованием конструктора \cmind{Fraction}{numerator:denominator:}):
 
 \begin{code}{@TEST}
 6/8             --> (3/4)
 (6/8) class --> Fraction
 \end{code}
 
-Multiplying a \ct{Fraction} by an \ct{Integer} or another \ct{Fraction} may yield an \ct{Integer}:
+%Multiplying a \ct{Fraction} by an \ct{Integer} or another \ct{Fraction} may yield an \ct{Integer}:
+В результате умножения дроби на целое число или другую дробь может получится целое число:
 
 \begin{code}{@TEST}
 6/8 * 4 --> 3
