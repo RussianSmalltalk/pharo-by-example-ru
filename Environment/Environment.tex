@@ -235,8 +235,7 @@ Smalltalk и графические интерфейсы развивались 
    \ifluluelse
 	   {\includegraphics [width=\textwidth]{SystemBrowserMethodTemplate}}
 	   {\includegraphics[width=0.7\textwidth]{SystemBrowserMethodTemplate}}
-   \caption{Шаблон создания метода в браузере
-   \figlabel{SystemBrowserMethodTemplate}}
+   \caption{Шаблон создания метода в браузере \figlabel{SystemBrowserMethodTemplate}}
 \end{figure}
 
 %---------------------------------------------------------
@@ -248,7 +247,7 @@ Smalltalk и графические интерфейсы развивались 
 
 Браузер предоставляет несколько инструментов для поиска и анализа кода. Эти инструменты можно вызвать из соответствующего контекстного меню или, в случае частого использования, с помощью горячих клавиш.
 
-\subsubsection{Opening a new browser window}
+%\subsubsection{Opening a new browser window}
 \subsubsection{Открытие нового окна браузера}
 \seclabel{browsing}
 
@@ -302,7 +301,7 @@ Smalltalk и графические интерфейсы развивались 
 
 %If you look at the senders of \ct{drawOn:} in \ct{AtomMorph>>>drawOn:}, you will see that it is a super \subind{super}{send}.  So we know that the method that will be executed will be in \ct{AtomMorph}'s superclass.  What class is that?  \Actclick ~ \menu{browse \go hierarchy implementors} and you will see that it is \ct{EllipseMorph}. 
 
-Если вы взглянете на отправителей сообщения \ct{drawOn:} в \ct{AtomMorph>>>drawOn:}, вы увидите, что вызывается метод родительского класса (\subind{super}{send}).  Так что мы знаем, что выполняемый метод будет в родительском классе класса \ct{AtomMorph}. Что это за класс?  Нажмите ~ \menu{browse \go hierarchy implementors} и вы увидите, что это класс \ct{EllipseMorph}.
+Если вы взглянете на отправителей сообщения \ct{drawOn:} в \ct{AtomMorph>>>drawOn:}, вы увидите, что вызывается метод родительского класса. Так что мы знаем, что выполняемый метод будет в родительском классе класса \ct{AtomMorph}. Что это за класс?  Нажмите ~ \menu{browse \go hierarchy implementors} и вы увидите, что это класс \ct{EllipseMorph}.
 \index{browser!hierarchy button}
 
 %Now look at the sixth sender in the list, \ct{Canvas>>>draw}, shown in \figref{CanvasDraw}. You can see that this method sends \ct{drawOn:} to whatever object is passed to it as an argument, which could potentially be an instance of any class at all.  
@@ -311,7 +310,7 @@ Smalltalk и графические интерфейсы развивались 
 
 %Dataflow analysis can help figure out the class of the receiver of some messages, but in general, there is no simple way for the browser to know which message-sends might cause which methods to be executed. For this reason,  the ``senders'' browser shows exactly what its name suggests: all of the senders of the message with the chosen selector.  The senders browser is nevertheless extremely useful when you need to understand how you can \emph{use} a method: it lets you navigate quickly through example uses.  Since all of the methods with the same selector ought to be used in the same way, all of the uses of a given message ought to be similar.
 
-Анализ вызова сообщений может помочь выяснить класс получателя некоторых сообщений, но, в целом, нет простого способа выяснить отправка какого сообщения вызывает исполнение какого метода. Поэтому браузер ``отправителей'' показывает именно то, что подразумевает его название: всех отправителей сообщения с выбранным селектором. Браузер отправителей сообщения незаменим, в случае, когда вам нужно понять, как именно вы можете \emph{использовать} метод: он позволяет вам быстро просматривать примеры использования метода.  Так как все методы с одинаковыми селекторами могут быть использованы схожим образом, то все вызовы исходного сообщения должны быть похожими.
+Анализ вызова сообщений может помочь выяснить класс получателя некоорых сообщений, но, в целом, нет простого способа выяснить отправка какого сообщения вызывает исполнение какого метода. Поэтому браузер ``отправителей'' показывает именно то, что подразумевает его название: всех отправителей сообщения с выбранным селектором. Браузер отправителей сообщения незаменим, в случае, когда вам нужно понять, как именно вы можете \emph{использовать} метод: он позволяет вам быстро просматривать примеры использования метода.  Так как все методы с одинаковыми селекторами могут быть использованы схожим образом, то все вызовы исходного сообщения должны быть похожими.
 \index{browser!senders}
 
 \index{browser!implementors}
@@ -425,9 +424,9 @@ Smalltalk и графические интерфейсы развивались 
 
 %Note that selecting \menu{prettyPrint} in the ``how to show'' menu is \emph{not} the same as pretty printing a method before you save it\footnote{\menu{pretty print (r)} is the first menu item in the method pane, or half-way down in the code pane.}. The menu controls only how the browser displays, and has no effect on the code stored in the system. You can verify this  by opening two browsers, and selecting \menu{prettyPrint} in one and \menu{source} in the other. In fact, focussing two browsers on the same method and selecting \menu{byteCode} in one and \menu{decompile} in another is a good way to learn about the \pharo virtual machine's byte-coded instruction set.
 
-Обратите внимание, что вышеупомянутая опция \menu{prettyPrint} - это тоже самое, что отформатировать метод перед его сохранением\footnote{Элемент \menu{pretty print (r)} стоит первым в контекстном меню панели методов, и в середине контекстного меню панели исходного кода.}. Эти настройки влияют только на отображение кода в браузере, но не влияют на хранение в системе. Чтобы проверить это, просто откройте два браузера, в одном из которых выберите \menu{prettyPrint}, а в другом \menu{source}. Кстати, вы можете лучше узнать про инструкции байт-кода виртуальной машины \pharo, если откроете один метод в двух браузерах: в одном выберите \menu{byteCode}, а в другом \menu{decompile}.
+Обратите внимание, что вышеупомянутая опция \menu{prettyPrint} - это тоже самое, что отформатировать метод перед его сохранением\footnote{Элемент \menu{pretty print (r)} стоит первым в контекстном меню панели методов, и в середине контекстного меню панели исходного кода.}. Эти настройки влияют только на отображение кода в браузере, но не влияют на хранение в системе. Чтобы проверить это, просто откройте два браузера, в одном из которых выберите \menu{prettyPrint}, а в другом \menu{source}. Кстати, вы можете лучше узнать про инструкции байт-кода виртуальной машины \pharo, если откроете одн метод в двух браузерах: в одном выберите \menu{byteCode}, а в другом \menu{decompile}.
 
-\subsubsection{Refactoring}
+%\subsubsection{Refactoring}
 \subsubsection{Рефакторинг}
 
 %The contextual menus offer a large number of standard refactorings. Simply \actclick in any of the four panes to see the currently available refactoring operations. See \figref{refactoring}. Refactoring was formerly available only in a special browser called the refactoring browser, but it can now be accessed from any browser.
@@ -458,62 +457,82 @@ Smalltalk и графические интерфейсы развивались 
 \index{file!filing in}
 \index{file!filing out}
 
-Possibly the most useful menu item is \menu{find class\ldots (f)} in the package pane.  Although the categories are useful for the code that we are actively developing, most of us do not know the categorization of the whole system, and it is much faster to type \short{f} followed by the first few characters of the name of a class than to guess which package it might be in.  \menu{recent classes\ldots} can also help you quickly go back to a class that you have browsed recently, even if you have forgotten its name.
+%Possibly the most useful menu item is \menu{find class\ldots (f)} in the package pane.  Although the categories are useful for the code that we are actively developing, most of us do not know the categorization of the whole system, and it is much faster to type \short{f} followed by the first few characters of the name of a class than to guess which package it might be in.  \menu{recent classes\ldots} can also help you quickly go back to a class that you have browsed recently, even if you have forgotten its name.
+
+Возможно, самый полезный элемент - это \menu{find class\ldots (f)} в контекстном меню на панели пакетов. Хотя категории полезны при разработке кода, большинство из нас не знает всех категорий в системе, поэтому намного быстрее нажать \short{f} и набрать начало имени искомого класса, чем угадывать в каком пакете находится этот класс. 
+Элемент меню \menu{recent classes\ldots} поможет вам вернуться к классу, который вы только что просматривали.
 \index{class!finding}
 \index{class!recent}
 
-You can also search for a specific class or method by typing the name into the query box at the top left of the browse.  When you enter return, a query will be posed on the system, and the query results will be displayed.  Note that by prefixing your query with \ct{#}, you can search for references to a class or senders of a message. This will usually scroll the pane so that the sought-for method name is visible.
+%You can also search for a specific class or method by typing the name into the query box at the top left of the browse.  When you enter return, a query will be posed on the system, and the query results will be displayed.  Note that by prefixing your query with \ct{#}, you can search for references to a class or senders of a message. This will usually scroll the pane so that the sought-for method name is visible.
+
+Также чтобы найти класс или метод, вы можете написать его имя в строке вверху браузера. После того, как вы нажмёте "ввод", результаты вашего запроса появятся на экране. Обратите внимание, что если вы поставите символ \ct{#} перед запросом, то вы сможете искать ссылки на класс или отправителей сообщения.
 \index{method!finding}
 \protindex{all}
 
-\dothis{Try both ways of navigating to \cmind{OrderedCollection}{removeAt:}}
+%\dothis{Try both ways of navigating to \cmind{OrderedCollection}{removeAt:}}
+\dothis{Попробуйте поискать \cmind{OrderedCollection}{removeAt:}}
 
-There are many other options available in the menus.  It pays to spend a few minutes working with the browser and seeing what is there.   
+%There are many other options available in the menus.  It pays to spend a few minutes working with the browser and seeing what is there.   
+Вам доступно множество опций в контекстных меню. Имеет смысл поэкспериментировать с ними в браузере.
 
-\dothis{Compare the result of \menu{Browse Protocol}, \menu{Browse Hierarchy},  and \menu{Show Hierarchy} in the class pane menu.}
+%\dothis{Compare the result of \menu{Browse Protocol}, \menu{Browse Hierarchy},  and \menu{Show Hierarchy} in the class pane menu.}
+\dothis{Сравните результаты действия \menu{Browse Protocol}, \menu{Browse Hierarchy} и \menu{Show Hierarchy} в контекстном меню панели классов.}
 
 %---------------------------------------------------------
-\subsection{Browsing programmatically}
+%\subsection{Browsing programmatically}
+\subsection{Запуск браузера из кода}
 
-The class \glbind{SystemNavigation} provides a number of utility methods that are useful for navigating around the system.
-Many of the functions offered by the classic browser are implemented by \ct{SystemNavigation}.
+%The class \glbind{SystemNavigation} provides a number of utility methods that are useful for navigating around the system. Many of the functions offered by the classic browser are implemented by \ct{SystemNavigation}.
+
+Класс \glbind{SystemNavigation} предоставляет методы для навигации по системе. Многие функции, представленные в классическом браузере, реализованы в \ct{SystemNavigation}.
 \index{browsing programmatically}
 
-\dothis{
-Open a workspace and evaluate the following code to browse the senders of \ct{drawOn:}:}
+%\dothis{Open a workspace and evaluate the following code to browse the senders of \ct{drawOn:}:}
+\dothis{Чтобы вывести на экран отправителей сообщения \ct{drawOn:}, откройте окно workspace и запустите на выполнение (evaluate) следующий код:}
+
 \begin{code}{}
 SystemNavigation default browseAllCallsOn: #drawOn:
 \end{code}
-To restrict the search for senders to the methods of a specific class:
+
+%To restrict the search for senders to the methods of a specific class:
+Провести поиск только по методам одного класса можно следующим образом:
+
 \begin{code}{}
 SystemNavigation default browseAllCallsOn: #drawOn: from: ImageMorph
 \end{code}
-Because the development tools are objects, they are completely accessible from programs and you can develop your own tools or adapt the existing tools to your needs.
 
-The programmatic equivalent to the \menu{implementors} menu item is:
+%Because the development tools are objects, they are completely accessible from programs and you can develop your own tools or adapt the existing tools to your needs. The programmatic equivalent to the \menu{implementors} menu item is:
+
+Так как инструменты разработки являются объектами, то вы можете получить к ним доступ из своего кода, а также создать свои или переделать их по необходимости. Эквивалентом для меню  \menu{implementors} является следующий код:
+
 \begin{code}{}
 SystemNavigation default browseAllImplementorsOf: #drawOn:
 \end{code}
 
-To learn more about what is available, explore the class \ct{SystemNavigation} with the browser.
-Further navigation examples can be found in the FAQ (\appref{faq}).
+%To learn more about what is available, explore the class \ct{SystemNavigation} with the browser. Further navigation examples can be found in the FAQ (\appref{faq}).
+
+Дальнейшие исследования можете начать с класса \ct{SystemNavigation}. Примеры навигации также указаны в FAQ (\appref{faq}).
 
 %=========================================================
 \section{Monticello}
 
-We gave you a quick overview of \ind{Monticello}, \pharo's packaging tool, in \secref{Monticello}.  
-However, Monticello has many more features than were discussed there.  
-Because Monticello manages \emph{packages}, before telling you more about Monticello, it's important that we first explain exactly what a \ind{package} is.
+%We gave you a quick overview of \ind{Monticello}, \pharo's packaging tool, in \secref{Monticello}. However, Monticello has many more features than were discussed there. Because Monticello manages \emph{packages}, before telling you more about Monticello, it's important that we first explain exactly what a \ind{package} is.
+
+Мы уже касались инструмента управления пакетами \ind{Monticello} в \secref{Monticello}. Однако, Monticello имеет намного больше особенностей. Monticello управляет \emph{пакетами}, поэтому перед тем, как описать его подробнее, необходимо объяснить что такое \ind{пакет}.
 
 %---------------------------------------------------------
-\subsection{Packages: declarative categorization of \pharo code}\seclabel{packages}
+%\subsection{Packages: declarative categorization of \pharo code}
+\subsection{Пакеты: категоризация кода в \pharo}
+\seclabel{packages}
 
-We have pointed out earlier, in \secref{categoriesPackages} that packages are more or less equivalent to categories. Now we will see exactly what the relationship is.
-The package system is a simple, lightweight way of organizing Smalltalk source code that exploits a simple naming convention for categories and protocols.
+%We have pointed out earlier, in \secref{categoriesPackages} that packages are more or less equivalent to categories. Now we will see exactly what the relationship is. The package system is a simple, lightweight way of organizing Smalltalk source code that exploits a simple naming convention for categories and protocols.
 
-Let's explain this using an example.
-Suppose that you are developing a framework named to facilitate the use of relational databases from \pharo. You have decided to call your framework \ct{PharoLink}, and have created a series of categories to contain all of the classes that you have written, \eg
-category \ct{'PharoLink-Connections'} contains \ct{OracleConnection MySQLConnection PostgresConnection} and category \ct{'PharoLink-Model'} contains \ct{DBTable DBRow DBQuery}, and so on. However, not all of your code will reside in these classes. For example, you may also have a series of methods to convert objects into an SQL-friendly format:
+Как мы указывали ранее в \secref{categoriesPackages}, пакет - это почти то же самое, что и категория. Система пакетов - это простой способ организации исходного кода, который использует соглашения по наименованию категорий и протоколов.
+
+%Let's explain this using an example. Suppose that you are developing a framework named to facilitate the use of relational databases from \pharo. You have decided to call your framework \ct{PharoLink}, and have created a series of categories to contain all of the classes that you have written, \eg category \ct{'PharoLink-Connections'} contains \ct{OracleConnection MySQLConnection PostgresConnection} and category \ct{'PharoLink-Model'} contains \ct{DBTable DBRow DBQuery}, and so on. However, not all of your code will reside in these classes. For example, you may also have a series of methods to convert objects into an SQL-friendly format:
+
+Поясним на примере. Предположим, что вы разрабатываете фреймворк, который осуществляет взаимодействие с внешней базой данных. Вы решили назвать его \ct{PharoLink} и создали категории для всех классов: категория \ct{'PharoLink-Connections'} содержит классы \ct{OracleConnection MySQLConnection PostgresConnection}, категория \ct{'PharoLink-Model'} содержит \ct{DBTable DBRow DBQuery} и так далее. Однако не весь ваш код будет находиться в этих классах. Например, вам могут понадобиться методы для конвертирования объектов в формат SQL:
 
 \begin{code}{}
 Object>>>asSQL
@@ -522,53 +541,65 @@ Date>>>asSQL
 \end{code}
 
 \noindent
-These methods belong in
-% \damien{don't we say 'belong to'?}
-% \on{no -- belong in = they should be there; belong to = they are there}
-the same package as the classes in the 
-categories \ct{PharoLink-Connections} and \ct{PharoLink-Model}. 
-But clearly the whole of class \ct{Object} does not belong in your package! 
-So you need a way of putting certain \emph{methods} in a package, even though the rest of the class is in another package.
+%These methods belong in the same package as the classes in the categories \ct{PharoLink-Connections} and \ct{PharoLink-Model}. But clearly the whole of class \ct{Object} does not belong in your package!  So you need a way of putting certain \emph{methods} in a package, even though the rest of the class is in another package.
+
+Эти методы принадлежат вашему пакету, как и классы в категориях \ct{PharoLink-Connections} и \ct{PharoLink-Model}. Но сам класс \ct{Object} не входит в ваш пакет! Так что вам нужен способ, чтобы включить конкретные \emph{методы} в пакет, даже если остальная часть класса находится в другом пакете.
 \index{package!extension}
 \seeindex{extension package}{package, extension}
 
-The way that you do this is by placing those methods in a protocol (of \ct{Object}, \ct{String}, \ct{Date}, and so on) named \prot{*PharoLink} (note the initial asterisk). The combination of the \scat{PharoLink-\ldots} categories and the \prot{*PharoLink} protocols form a package named \ct{PharoLink}.
-To be precise, the rules for what goes in a package are as follows.
+%The way that you do this is by placing those methods in a protocol (of \ct{Object}, \ct{String}, \ct{Date}, and so on) named \prot{*PharoLink} (note the initial asterisk). The combination of the \scat{PharoLink-\ldots} categories and the \prot{*PharoLink} protocols form a package named \ct{PharoLink}. To be precise, the rules for what goes in a package are as follows.
 
-A package named \ct{Foo} contains:
+Этот способ заключается в следующем: вам необходимо поместить ваши методы в протокол (в классе \ct{Object}, \ct{String}, \ct{Date} и т.д.) с названием \prot{*PharoLink} (начинается со звёздочки). Пакет \ct{PharoLink} содержит все категории \scat{PharoLink-\ldots} и протоколы \prot{*PharoLink}. Далее идут точные правила формирования пакета.
+
+%A package named \ct{Foo} contains:
+Пакет с названием \ct{Foo} содержит:
+
+%\begin{enumerate}		\seclabel{packageRules}
+%	\item{} all \emph{class definitions} of classes in the category \scat{Foo}, or in categories with names starting with \scat{Foo-}, and
+%	\item{} \label{env:extensions} all \emph{methods} in \emph{any class} in protocols named \prot{*Foo} or \prot{*foo}\footnote{When performing this comparison, the case of the letters in the names is ignored.}, or whose name starts with \prot{*Foo-} or \prot{*foo-}, and
+%	\item{} all \emph{methods} in classes in the category \scat{Foo}, or in a category whose name starts with \scat{Foo-}, \emph{except} for those methods in protocols whose names start with \prot{*}.	
+%\end{enumerate}
 
 \begin{enumerate}		\seclabel{packageRules}
-	\item{} all \emph{class definitions} of classes in the category \scat{Foo}, or in categories with names starting with \scat{Foo-}, and
-	\item{} \label{env:extensions} all \emph{methods} in \emph{any class} in protocols named \prot{*Foo} or \prot{*foo}\footnote{When performing this comparison, the case of the letters in the names is ignored.}, or whose name starts with \prot{*Foo-} or \prot{*foo-}, and
-	\item{} all \emph{methods} in classes in the category \scat{Foo}, or in a category whose name starts with \scat{Foo-}, \emph{except} for those methods in protocols whose names start with \prot{*}.
-	
+	\item{} все \emph{определения классов} в категории \scat{Foo}, или в категориях, начинающихся с \scat{Foo-};
+	\item{} \label{env:extensions} все \emph{методы} в \emph{любом классе}, содержащиеся в протоколе с именем \prot{*Foo} или \prot{*foo}\footnote{Регистр букв в наименовании не учитывается.}, или начинающиеся с \prot{*Foo-} или \prot{*foo-};
+	\item{} все \emph{методы} в классах категории \scat{Foo} или в категории, начинающейся с \scat{Foo-}, \emph{кроме} методов в протоколе, наименование которого начинается с \prot{*}.
 \end{enumerate}
+
 \noindent
-A consequence of these rules is that each class definition and each method belongs to exactly one package. The \emph{except} in the last rule has to be there because those methods must belong to other packages.   The reason for ignoring case in rule \ref{env:extensions} is that, by convention, protocol names are typically (but not necessarily) lower case (and may include spaces), while category names use CamelCase (and don't include spaces).
+%A consequence of these rules is that each class definition and each method belongs to exactly one package. The \emph{except} in the last rule has to be there because those methods must belong to other packages.   The reason for ignoring case in rule \ref{env:extensions} is that, by convention, protocol names are typically (but not necessarily) lower case (and may include spaces), while category names use CamelCase (and don't include spaces).
+
+Следствием этих правил является то, что каждое определение класса или метод принадлежит только одному пакету. Регистр букв в правиле \ref{env:extensions} игнорируется, так как наименование протокола обычно (но не обязательно) пишется малыми буквами (и может содержать пробелы), в то же время для наименования категорий используется стиль регистра CamelCase (пробелы запрещены).
 \index{camelCase}
 
-The class \ct{PackageInfo} implements these rules, and one way to get a feel for them is to experiment with this class.
+%The class \ct{PackageInfo} implements these rules, and one way to get a feel for them is to experiment with this class.
+Класс \ct{PackageInfo} реализует эти правила, вы можете поэскпериментировать с ним.
 
-\dothis{Evalute the following expression in a workspace:}
+%\dothis{Evalute the following expression in a workspace:}
+\dothis{Запустите на исполнение следуещее выражение в окне workspace:}
 
 \begin{code}{}
 mc := PackageInfo named: 'Monticello'
 \end{code}
 
-It is now possible to introspect on this package. 
-For example, printing \ct{mc classes} in the workspace pane will return the long list of classes that make up the Monticello package.  
-\ct{mc coreMethods}
-will return a list of \ct{MethodReference}s for all of the methods in those classes. \ct{mc extensionMethods} is perhaps one of the most interesting queries: it will return a list of all methods contained in the \ct{Monticello} package but not contained within a \lct{Monticello} class.
+%It is now possible to introspect on this package.  For example, printing \ct{mc classes} in the workspace pane will return the long list of classes that make up the Monticello package. \ct{mc coreMethods} will return a list of \ct{MethodReference}s for all of the methods in those classes. \ct{mc extensionMethods} is perhaps one of the most interesting queries: it will return a list of all methods contained in the \ct{Monticello} package but not contained within a \lct{Monticello} class.
 
-Packages are a relatively new addition to \pharo, but since the package naming conventions were based on those already in use, it is possible to use \ct{PackageInfo} to analyze older code that has not been explicitly adapted to work with it.
+Теперь мы можем исследовать этот пакет. Например, результатом команды \ct{mc classes} в workspace будет список классов из которых состоит пакет Monticello. Команда \ct{mc coreMethods} вернёт список ссылок на методы (\ct{MethodReference}) этих классов. Возможно, самая интересная команда \ct{mc extensionMethods} вернёт  список методов, которые присутствуют в пакете \ct{Monticello}, но не принадлежат классу \lct{Monticello}.
 
-\dothis{Print \ct{(PackageInfo named: 'Collections') externalSubclasses}; this expression will answer a list of all subclasses of  \ct{Collection} that are \emph{not} in the \ct{Collections} package. }
+%Packages are a relatively new addition to \pharo, but since the package naming conventions were based on those already in use, it is possible to use \ct{PackageInfo} to analyze older code that has not been explicitly adapted to work with it.
+
+Пакеты являются относительно новым дополнением в \pharo. Так как соглашение о наименовании пакетов выводилось из предыдущего, то вы можете использовать класс \ct{PackageInfo} для анализа старого кода, который не был явно адаптирован для работы с ним.
+
+%\dothis{Print \ct{(PackageInfo named: 'Collections') externalSubclasses}; this expression will answer a list of all subclasses of  \ct{Collection} that are \emph{not} in the \ct{Collections} package. }
+
+\dothis{Выполните код \ct{(PackageInfo named: 'Collections') externalSubclasses}; это выражение вернёт список подклассов класса \ct{Collection}, которые \emph{не} включены в пакет \ct{Collections}. }
 
 %---------------------------------------------------------
 \subsection{Basic Monticello}
 
-\ind{Monticello} is named after the mountaintop home of Thomas Jefferson, third president of the United States and author of the Statute of Virginia for Religious Freedom.  The name means ``little mountain'' in Italian, and so it is always pronounced with an Italian ``c'', which sounds like the ``ch'' in chair: Mont-y'-che-llo.
+%\ind{Monticello} is named after the mountaintop home of Thomas Jefferson, third president of the United States and author of the Statute of Virginia for Religious Freedom.  The name means ``little mountain'' in Italian, and so it is always pronounced with an Italian ``c'', which sounds like the ``ch'' in chair: Mont-y'-che-llo.
 
+\ind{Monticello} именован в честь родового дома Томаса Джеферсона (Thomas Jefferson - третий президент США и автор статуи Вирджиния за религиозную свободу). Имя означает ``маленькая гора'' по итальянски, поэтому произносится обычно через ``ч'': Монтичелло.
 
 \begin{figure}[btp]
 	\begin{center}
@@ -576,25 +607,25 @@ Packages are a relatively new addition to \pharo, but since the package naming c
 		{\includegraphics[width=\textwidth]{freshMonticello}}
 		{\includegraphics[width=0.7\textwidth]{freshMonticello}}
 	\end{center}
-	\caption{The Monticello browser.}
+	\caption{Браузер Monticello.}
 	\figlabel{freshMonticello}
 \end{figure}
 
-When you open the Monticello browser, you will see two list panes and a row of buttons, as shown in \figref{freshMonticello}.
-The left-hand pane lists all of the packages that have been loaded into the image that you are running; the particular version of the package is shown in parentheses after the name.
+%When you open the Monticello browser, you will see two list panes and a row of buttons, as shown in \figref{freshMonticello}. The left-hand pane lists all of the packages that have been loaded into the image that you are running; the particular version of the package is shown in parentheses after the name. The right-hand pane lists all of the source-code repositories that Monticello knows about, usually because it has loaded code from them.  If you select a package in the left pane, the right pane is filtered to show only those repositories that contain versions of the selected package.
 
-The right-hand pane lists all of the source-code repositories that Monticello knows about, usually because it has loaded code from them.  If you select a package in the left pane, the right pane is filtered to show only those repositories that contain versions of the selected package.
+Открыв Monticello браузер, вы увидите две панели со списками и строку с кнопками (\figref{freshMonticello}). Слева отображается список всех пакетов, загруженных в текущий образ; версия пакета указана в скобках. Справа располагается список всех репозиториев, которые знает Monticello, обычно потому что оттуда уже скачивался код.
 
-One of the repositories is a directory named \emph{package-cache}, which is a sub-directory of the directory in which your image is running.  
-When you load code from or write code to a remote repository, a copy is also saved in the package cache.  This can be useful if the network is not available and you need to access a package.  Also, if you are given a Monticello (.mcz) file directly, for example as an email attachment, the most convenient way to access it is to place it in the package-cache directory.
+%One of the repositories is a directory named \emph{package-cache}, which is a sub-directory of the directory in which your image is running. When you load code from or write code to a remote repository, a copy is also saved in the package cache.  This can be useful if the network is not available and you need to access a package.  Also, if you are given a Monticello (.mcz) file directly, for example as an email attachment, the most convenient way to access it is to place it in the package-cache directory.
+
+Одним из репозиториев является директория с именем \emph{package-cache}, которая находится в той же директории что и текущий образ. При загрузке или выгрузке кода из удаленного репозитория, копия сохраняется в этой директории. При отсутствии сети вы можете загрузить пакет из неё. Также если вы получили файл  Monticello (.mcz) напрямую, например, по электронной почте, то наиболее подходящий способ подгрузить его - поместить его в директорию package-cache.
 \index{package!cache}
 
-To add a new repository to the list, click the \button{+Repository}, and choose the kind of repository from the pop-up menu.  Let's add an HTTP repository.
+%To add a new repository to the list, click the \button{+Repository}, and choose the kind of repository from the pop-up menu.  Let's add an HTTP repository.
+Чтобы добавить новый репозиторий, нажмите \button{+Repository} и выберите его тип из выпавшего веню. Попробуем добавить HTTP репозиторий.
 
-\dothis{Open Monticello, click on \button{+Repository}, and select \menu{HTTP}.
-Edit the dialog to read:}
-%\ab{How does one continue the $\backslash$dothis to include the code?}
-%\on{Don't.  Just close the \dothis{} and follow with the code.}
+%\dothis{Open Monticello, click on \button{+Repository}, and select \menu{HTTP}. Edit the dialog to read:}
+\dothis{Откройте Monticello, нажмите кнопку \button{+Repository} и выберите \menu{HTTP}. Приведите текст к следующему виду:}
+
 \needlines{4}
 \begin{code}{}
 MCHttpRepository
@@ -609,19 +640,22 @@ MCHttpRepository
 		{\includegraphics[width=0.7\textwidth]{SqueakSource-PBE}}
 		{\includegraphics[width=0.7\textwidth]{SqueakSource-PBE}}
 	\end{center}
-	\caption{A Repository browser.}
+	\caption{Браузер репозитория}
 	\figlabel{SqueakSource:PBE}
 \end{figure}
 \noindent
-Then click on \button{Open} to open a repository browser on this repository.  You should see something like \figref{SqueakSource:PBE}.  On the left is a list of all of the packages in the repository; if you select one, then the pane on the right will show all of the versions of the selected package in this repository. 
 
-If you select one of the versions, you can \button{Browse} it (without loading it into your image), \button{Load} it, or look at the \button{Changes} that will be made to your image by loading the selected version.  You can also make a \button{Copy} of a version of a package, which you can then write to another repository.
+%Then click on \button{Open} to open a repository browser on this repository.  You should see something like \figref{SqueakSource:PBE}.  On the left is a list of all of the packages in the repository; if you select one, then the pane on the right will show all of the versions of the selected package in this repository. If you select one of the versions, you can \button{Browse} it (without loading it into your image), \button{Load} it, or look at the \button{Changes} that will be made to your image by loading the selected version.  You can also make a \button{Copy} of a version of a package, which you can then write to another repository.
 
-As you can see, the names of versions contain the name of the package, the initials of the author of the version, and a version number.  The version name is also the name of the file in the repository.  Never change these names; correct operation of Monticello depends on them!   Monticello version files are just zip archives, and if you are curious you can unpack them with a zip tool, but the best way to look at their contents is using Monticello itself.  
+Теперь нажмите \button{Open}. Вы должны увидеть что-то вроде \figref{SqueakSource:PBE}. Слева находится список всех пакетов в репозитории; если вы выберете один, то справа появится список версий этого пакета в репозитории. Выбрав одну из версий, вы можете просмотреть его (кнопка \button{Browse}) без загрузки в свой образ, загрузить его (кнопка \button{Load}) или просмотреть изменения (кнопка \button{Changes}), которые произойдут, если вы загрузите эту версию в свой образ. Также вы можете скопировать (кнопка \button{Copy}) версию пакета и записать в другой репозиторий.
 
-To create a package with Monticello, you have to do two things: write some code, and tell Monticello about it.
+%As you can see, the names of versions contain the name of the package, the initials of the author of the version, and a version number.  The version name is also the name of the file in the repository.  Never change these names; correct operation of Monticello depends on them!   Monticello version files are just zip archives, and if you are curious you can unpack them with a zip tool, but the best way to look at their contents is using Monticello itself. To create a package with Monticello, you have to do two things: write some code, and tell Monticello about it.
 
-\dothis{Create a package called \scat{PBE-Monticello}, and put a couple of classes in it, as shown in \figref{MCnewcategory}.  Also, create a method in an existing class, such as \ct{Object}, and put it in the same package as your classes, using the rules from page \pageref{sec:packageRules}\,---\,see \figref{MCnewmethod}.}
+Как вы видите, имя версии состоит из имени пакета, инициалов автора и номера версии. Такое же имя имеет и файл в репозитории. Никогда не изменяйте эти имена, так как от них зависит корректная работа Monticello! Файлы версий в Monticello - это просто zip архивы, вы можете распаковать их из любопытства, но лучше всего использовать их только в Monticello. Если вы хотите создать пакет с помощью Monticello, то вам нужно сделать две вещи: написать какой-нибудь код и сказать об этом Monticello.
+
+%\dothis{Create a package called \scat{PBE-Monticello}, and put a couple of classes in it, as shown in \figref{MCnewcategory}.  Also, create a method in an existing class, such as \ct{Object}, and put it in the same package as your classes, using the rules from page \pageref{sec:packageRules}\,---\,see \figref{MCnewmethod}.}
+
+\dothis{Создайте пакет \scat{PBE-Monticello} и определите в нём пару классов (\figref{MCnewcategory}). Создайте метод в существующем классе, например, в классе \ct{Object}, и поместите его в этот же пакет с помощью правил со страницы \pageref{sec:packageRules}\,---\, см. \figref{MCnewmethod}.}
 
 \begin{figure}[btp]
 	\begin{center}
@@ -629,7 +663,7 @@ To create a package with Monticello, you have to do two things: write some code,
 		{\includegraphics[width=\textwidth]{MCnewcategory}}
 		{\includegraphics[width=0.7\textwidth]{MCnewcategory}}
 	\end{center}
-	\caption{Two classes in the ``PBE'' package.}
+	\caption{Два класса в в пакете ``PBE''.}
 	\figlabel{MCnewcategory}
 \end{figure}
 
@@ -639,25 +673,28 @@ To create a package with Monticello, you have to do two things: write some code,
 		{\includegraphics[width=\textwidth]{MCnewmethod}}
 		{\includegraphics[width=0.7\textwidth]{MCnewmethod}}
 	\end{center}
-	\caption{An extension method that will also be in the ``PBE'' package.}
+	\caption{Эти два метода тоже включены в пакет ``PBE''.}
 	\figlabel{MCnewmethod}
 \end{figure}
 
-To tell Monticello about your package, click on \button{+Package}, and type the name of the package, in this case ``PBE''.  Monticello will add \ct{PBE} to its list of packages; the package entry will be marked with an asterisk to show that the version in the image has not yet been written to any repository. Note that you now should have two packages in Monticello, one called \ct{PBE} and another called \ct{PBE-Monticello}. That's alright because \ct{PBE} will contain \ct{PBE-Monticello}, and any other packages starting with \ct{PBE-}.
+%To tell Monticello about your package, click on \button{+Package}, and type the name of the package, in this case ``PBE''.  Monticello will add \ct{PBE} to its list of packages; the package entry will be marked with an asterisk to show that the version in the image has not yet been written to any repository. Note that you now should have two packages in Monticello, one called \ct{PBE} and another called \ct{PBE-Monticello}. That's alright because \ct{PBE} will contain \ct{PBE-Monticello}, and any other packages starting with \ct{PBE-}.
 
-Initially, the only repository associated with this package will be your package cache, as shown in \figref{MC+PBE}.  That's OK: you can still save the code, which will cause it to be written to the package cache.  
-Just click \button{Save} and you will be invited to provide a log message for the version of the package that you are about to save, as shown in \figref{PBE-on}; when you accept the message, Monticello will save your package.
-To indicate this, the asterisk decorating the name in Monticello's package pane will be removed, and the version number added.
+Для того чтобы рассказать Monticello о вашем пакете, нажмите \button{+Package} и напишите имя пакета, в нашем случае ``PBE''.  Monticello добавит \ct{PBE} к своему списку пакетов; пакет будет отмечен звёздочкой, что означает, что версия пакета в текущем образе не записана в репозиторий. Обратите внимание, что у вас  должно быть два пакета в списке: один \ct{PBE}, другой \ct{PBE-Monticello}. Не обращайте внимания, пакет \ct{PBE} содержит в себе \ct{PBE-Monticello}, а также любой другой пакет, начинающийся с \ct{PBE-}.
 
-If you then make a change to the package\,---\,say by adding a method to one of the classes\,---\,the asterisk will re-appear, showing that you have unsaved changes.  If you open a repository browser on the package cache, you can select the saved version, and use \button{Changes} and the other buttons.  
-You can of course save the new version to the repository too; once you \button{Refresh} the repository view, it should look like \figref{package-cache-browser}.
+%Initially, the only repository associated with this package will be your package cache, as shown in \figref{MC+PBE}.  That's OK: you can still save the code, which will cause it to be written to the package cache. Just click \button{Save} and you will be invited to provide a log message for the version of the package that you are about to save, as shown in \figref{PBE-on}; when you accept the message, Monticello will save your package. To indicate this, the asterisk decorating the name in Monticello's package pane will be removed, and the version number added.
+
+Сначала только один репозиторий будет доступен для вашего пакета (\figref{MC+PBE}). Ничего страшного, вы по прежнему можете сохранять код, и он будет попадать в кеш пакетов (package cache). Нажмите \button{Save} и введите описание версии пакета, которую вы хотите сохранить (\figref{PBE-on}). После сохранения пакета в репозиторий, звёздочка рядом с его именем исчезнет, и появится номер версии.
+
+%If you then make a change to the package\,---\,say by adding a method to one of the classes\,---\,the asterisk will re-appear, showing that you have unsaved changes.  If you open a repository browser on the package cache, you can select the saved version, and use \button{Changes} and the other buttons. You can of course save the new version to the repository too; once you \button{Refresh} the repository view, it should look like \figref{package-cache-browser}.
+
+Если вы изменили содержание пакета\,---\,например, добавили метод в класс\,---\, звёздочка опять появится, указывая на несохранённые изменения. Если вы откроете браузер репозитория, то вы сможете выбрать сохранённую версию и использовать соответствующие кнопки. Естественно, вы можете сохранить новую версию пакета в репозиторий. После обновления (кнопка \button{Refresh}) репозитория, он должен выглядеть так \figref{package-cache-browser}.
 \index{package!cache}
 
 \begin{figure}[tbp]
 	\begin{center}
 		\includegraphics[width=\textwidth]{MC+PBE}
 	\end{center}
-	\caption{The as-yet-unsaved PBE package in Monticello.}
+	\caption{Не сохранённый в репозиторий пакет PBE.}
 	\figlabel{MC+PBE}
 \end{figure}
 
@@ -665,7 +702,7 @@ You can of course save the new version to the repository too; once you \button{R
 	\begin{center}
 	\includegraphics[width=0.8\textwidth]{PBE-on}
 	\end{center}
-	\caption{Providing a log message for a new version of a package.}
+	\caption{Описание новой версии пакета.}
 	\figlabel{PBE-on}
 \end{figure}
 
@@ -673,29 +710,29 @@ You can of course save the new version to the repository too; once you \button{R
 	\begin{center}
 	\includegraphics[width=\textwidth]{package-cache-browser}
 	\end{center}
-	\caption{Two versions of our package are now in the package cache.}
+	\caption{Две версии пакета в кеше (package-cache).}
 	\figlabel{package-cache-browser}
 \end{figure}
 
-To save the new package to a repository other than the package cache, you need to first make sure that Monticello knows about the repository, adding it if necessary.  
-Then you can use the \button{Copy} in the package-cache repository browser, and select the repository to which the package should be copied.  
-You can also associate the desired repository with the package by \actclick{ing} on the repository and selecting \menu{add to package \ldots}, as shown in \figref{associateRepository}.  
-Once the package knows about a repository, you can save a new version by selecting the repository and the package in the Monticello Browser, and clicking \button{Save}.  
-Of course, you must have permission to write to a repository.  
-The \ct{PharoByExample} repository on \emphind{\sqsrc} is world readable but not world writable, so if you try and save there, you will see an error message.  
-However, you can create your own repository on \sqsrc by using the web interface at \url{http://www.squeaksource.com}, and use this to save your work. 
-This is especially useful as a mechanism to share your code with friends, or if you use multiple computers.
+%To save the new package to a repository other than the package cache, you need to first make sure that Monticello knows about the repository, adding it if necessary.  Then you can use the \button{Copy} in the package-cache repository browser, and select the repository to which the package should be copied.  You can also associate the desired repository with the package by \actclick{ing} on the repository and selecting \menu{add to package \ldots}, as shown in \figref{associateRepository}.  Once the package knows about a repository, you can save a new version by selecting the repository and the package in the Monticello Browser, and clicking \button{Save}.  Of course, you must have permission to write to a repository.  
+
+Если вы хотите сохранить пакет в другой репозиторий, то вам нужно сначала добавить его в Monticello. Теперь вы можете нажать \button{Copy} в браузере репозитория package-cache и выбрать репозиторий куда поместить копию. Также вы можете указывать нужный репозиторий для пакета из контекстного меню (\menu{add to package \ldots}) репозитория (\figref{associateRepository}). Теперь когда пакет знает о новом репозитории, вы можете сохранить (\button{Save}) туда новую версию. Конечно, у вас должны быть права на запись в репозиторий.
+
+%The \ct{PharoByExample} repository on \emphind{\sqsrc} is world readable but not world writable, so if you try and save there, you will see an error message.  However, you can create your own repository on \sqsrc by using the web interface at \url{http://www.squeaksource.com}, and use this to save your work. This is especially useful as a mechanism to share your code with friends, or if you use multiple computers.
+
+Репозиторий \ct{PharoByExample} на \emphind{\sqsrc} имеет права на чтение для всех, но не на запись. Если попытаетесь сохранить туда свой код, то увидите ошибку. Однако вы можете создать свой репозиторий на \sqsrc, используя сайт \url{http://www.squeaksource.com} и сохранять туда свой код. Таким образом вы можете обмениваться кодом с друзьями или работать с кодом с разных компьютеров.
 
 \begin{figure}[tbp]
 	\begin{center}
 		\includegraphics[width=\textwidth]{MCaddToPackage}
 	\end{center}
-	\caption{Adding a repository to the set of repositories associated with a package.}
+	\caption{Добавление репозитория ко множеству репозиториев, связанных с текущим пакетом.}
 	\figlabel{associateRepository}
 \end{figure}
 
-If you do try and save to a repository where you don't have write permission, a version will nevertheless be written to the package-cache.  
-So you can recover by editing the repository information (\actclick in the Monticello Browser) or choosing a different repository, and then using \button{Copy} from the package-cache browser.
+%If you do try and save to a repository where you don't have write permission, a version will nevertheless be written to the package-cache.  So you can recover by editing the repository information (\actclick in the Monticello Browser) or choosing a different repository, and then using \button{Copy} from the package-cache browser.
+
+Если вы попытаетесь сохранить код в репозиторий без права записи, то у вас ничего не получится, но, тем не менее, версия сохранится в кэше (package-cache). Так что вы можете восстановить её редактируя информацию в репозитории (контекстное в браузере Monticello) или с помощью кнопки \button{Copy} из браузера кэша пакетов (package-cache).
 
 %=========================================================
 %=========================================================
