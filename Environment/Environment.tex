@@ -60,7 +60,7 @@
 %\seeindex{change set}{file, filing out}
 %\index{file!filing out}
 
-Так как вы программируете в мире живых объектов, а не работаете с файлами в тектовом редакторе, то вам нужно предпринять какие-то действия, чтобы экспортировать код из вашего Smalltalk образа.
+Так как вы программируете в мире живых объектов, а не работаете с файлами в текcтовом редакторе, то вам нужно предпринять какие-то действия, чтобы экспортировать код из вашего Smalltalk образа.
 Устаревший подход (но он до сих пор поддерживается всеми диалектами Smalltalk) заключается в выгрузке файла-кода или файла-изменений, которые затем можно импортировать в другой образ.
 Современный подход в \pharo состоит в загрузке вашего кода в репозитарий версий на сервере. Это можно сделать с помощью \ind{Monticello}. Такой подход является более эффективным способом работы, особенно когда вы работаете в команде.
 \seeindex{change set}{file, filing out}
@@ -740,19 +740,27 @@ MCHttpRepository
 %=========================================================
 %=========================================================
 %=========================================================
-\section{The Inspector and the Explorer}
+%\section{The Inspector and the Explorer}
+\section{Инспектор и Эксплорер}
 \seclabel{inspector} % (fold)
 
-One of the things that makes \st so different from many other programming environments is that it is provides you with a window onto a world of live objects, not a world of static code.
-Any of those objects can be examined by the programmer, and even changed\,---\,although some care is necessary when changing the basic objects that support the system.  
-By all means experiment, but save your image first!
+%One of the things that makes \st so different from many other programming environments is that it is provides you with a window onto a world of live objects, not a world of static code.
+Одна из вещей, отличающих \st от многих других сред программирования, заключается в том, что \st предоставляет вам окно в мир живых объектов, а не не в мир статичного кода.
+%Any of those objects can be examined by the programmer, and even changed\,---\,although some care is necessary when changing the basic objects that support the system.  
+Любой объект в \st может быть исследован программистом и даже изменён (хотя немного осторожности при изменении базовых объектов, поддерживающих систему, вам не помешает).
+%By all means experiment, but save your image first!
+Экспериментируйте на здоровье, только сохраните сперва образ!
 
 %---------------------------------------------------------
-\subsection{The Inspector}
+%\subsection{The Inspector}
+\subsection{Инспектор}
 
-\dothis{As an illustration of what you can do with an \ind{inspector}, type  \ct{TimeStamp now} in a workspace, and then \actclick and choose \menu{inspect it}.} 
-(It's not necessary to select the text before using the menu; if no text is selected, the menu operations work on the whole of the current line.
-You can also type \short{i} for \menu{\textbf{i}nspect it}.)
+%\dothis{As an illustration of what you can do with an \ind{inspector}, type  \ct{TimeStamp now} in a workspace, and then \actclick and choose \menu{inspect it}.} 
+\dothis{В качестве иллюстрации того, что вы можете делать с помощью \ind{инспектор}а введите \ct{TimeStamp now} в окне рабочей области, а затем вызовите с помощью \actclick меню и выберите \menu{inspect it}.}
+%(It's not necessary to select the text before using the menu; if no text is selected, the menu operations work on the whole of the current line.
+(Вовсе не обязательно выделять текст перед вызовом меню; если он не был выделен, все операции, доступные через меню, будут применяться ко всей текущей строке.
+%You can also type \short{i} for \menu{\textbf{i}nspect it}.)
+Вы также можете нажать \short{i} для вызова меню \menu{\textbf{i}nspect it}.)
 \clsindex{TimeStamp}
 \index{keyboard shortcut!inspect it}
 
@@ -760,37 +768,52 @@ You can also type \short{i} for \menu{\textbf{i}nspect it}.)
 	\begin{center}
 		\includegraphics[width=\textwidth]{inspectTimeNow1}
 	\end{center}
-	\caption{Inspecting \ct{TimeStamp now}}
+	%\caption{Inspecting \ct{TimeStamp now}}
+	\caption{Инспектируем \ct{TimeStamp now}}
 	\figlabel{inspectTimeNow1}
 \end{figure}
 
-A window like that shown in \figref{inspectTimeNow1} will appear.   
-This is an inspector, and can be thought of as a window onto the internals of a particular object\,---\,in this case, the particular instance of \mbox{\ct{TimeStamp}} 
-% the \mbox is here because without it, the listings macros puts a space between TimeStamp 
-% and the following word, and that space happens to come out at the start of a line.
-that was created when you evaluated the expression \ct{TimeStamp now}.
-The title bar of the window shows the printable representation of the object that is being inspected.
-If you select \menu{self} at the top of the left pane, the right pane will show the printstring of the object.
-% If you select \menu{all inst vars} in the left pane, the right pane will show a list of the instance variables in the object, and the printstring for each one.  
-% The remaining items in the left pane represent the instance variables; this makes it easy to examine them one at a time, and also to change them.
-The left pane shows a tree view of the object, with \self at the root.
-Instance variables can be explored by expanding the triangles next to their names.
+%A window like that shown in \figref{inspectTimeNow1} will appear.   
+Появится окно вроде того, что изображено на \figref{inspectTimeNow1}.
+%This is an inspector, and can be thought of as a window onto the internals of a particular object\,---\,in this case, the particular instance of \mbox{\ct{TimeStamp}} 
+Это инспектор, своего рода окно во внутренний мир выбранного объекта, в данном случае экземпляра класса \mbox{\ct{TimeStamp}},
+%% the \mbox is here because without it, the listings macros puts a space between TimeStamp 
+%% and the following word, and that space happens to come out at the start of a line.
+%that was created when you evaluated the expression \ct{TimeStamp now}.
+который был создан, когда вы выполнили выражение \ct{TimeStamp now}.
+%The title bar of the window shows the printable representation of the object that is being inspected.
+Заголовок окна показывает <<печатное>> представление инспектируемого объекта.
+%If you select \menu{self} at the top of the left pane, the right pane will show the printstring of the object.
+Если вы выберите \menu{self} вверху левой панели, на правой отобразится printstring-представление объекта.
+%% If you select \menu{all inst vars} in the left pane, the right pane will show a list of the instance variables in the object, and the printstring for each one.  
+%% The remaining items in the left pane represent the instance variables; this makes it easy to examine them one at a time, and also to change them.
+%The left pane shows a tree view of the object, with \self at the root.
+На левой панели показывается древовидное представление объекта с \self в качестве корня.
+%Instance variables can be explored by expanding the triangles next to their names.
+Переменные экземпляра можно исследовав, кликнув на треугольничках рядом с их именами.
 
-The horizontal pane at the bottom of the inspector is a small workspace window.  It is useful because in this window, the pseudo-variable \ct{self} is bound to the object that you have selected in the left pane.
-So, if you \menu{inspect it} on
+%The horizontal pane at the bottom of the inspector is a small workspace window.  It is useful because in this window, the pseudo-variable \ct{self} is bound to the object that you have selected in the left pane.
+Горизонтальная панель внизу инспектора --- это маленькая рабочая область. Это может оказаться полезным, потому что в этом окошке псевдопеременная \ct{self} связана с текущим выбранным объектом на левой панели.
+%So, if you \menu{inspect it} on
+Поэтому, если вы выполните команду меню \menu{inspect it} на
 \begin{code}{}
 self - TimeStamp today
 \end{code}
-in the workspace pane, the result will be a \clsind{Duration} object that represents the time interval between midnight today and the instant at which you evaluated  \ct{TimeStamp now} and created the \ct{TimeStamp} object that you are inspecting.
-You can also try evaluating \ct{TimeStamp now - self}; this will tell you how long you have spent reading this section of this book!
+%in the workspace pane, the result will be a \clsind{Duration} object that represents the time interval between midnight today and the instant at which you evaluated  \ct{TimeStamp now} and created the \ct{TimeStamp} object that you are inspecting.
+на рабочей панели, вы получите объект \clsind{Duration}, который представляет собой временной интервал между сегодняшней полночью и моментом времени в который вы выполнили \ct{TimeStamp now}, представленным в виде экземпляра класса \ct{TimeStamp}, который вы инспектируете.
+%You can also try evaluating \ct{TimeStamp now - self}; this will tell you how long you have spent reading this section of this book!
+Можете также попробовать вычислить \ct{TimeStamp now - self}, чтобы узнать, как долго вы читали этот раздел книги!
 
-In addition to \ct{self}, all the instance variables of the object are in scope in the workspace pane, so you can use them in expressions or even assign to them.  For example, if you select the root object in the left pane and evaluate \ct{jdn  := jdn - 1} in the workspace pane, you will see that the value of the \ct{jdn} instance variable will indeed change, and the value of \ct{TimeStamp now - self} will increase by one day.
+%In addition to \ct{self}, all the instance variables of the object are in scope in the workspace pane, so you can use them in expressions or even assign to them.  For example, if you select the root object in the left pane and evaluate \ct{jdn  := jdn - 1} in the workspace pane, you will see that the value of the \ct{jdn} instance variable will indeed change, and the value of \ct{TimeStamp now - self} will increase by one day.
+В дополнение к \ct{self}, все переменные экземпляра текущего объекта включены в область видимости панели рабочей области, так что вы можете использовать их в выражениях и даже присваивать им новые значения. Например, если вы выберете корневой объект на левой панели и выполните \ct{jdn  := jdn - 1} в панели рабочей области, вы увидите, что значение переменной экземпляра \ct{jdn} изменится, а значение выражения \ct{TimeStamp now - self} увеличится на один день.
 
 % ON: Does not work anymore
 %You can change instance variables directly by selecting them, replacing the old value in the right-hand  pane by a \pharo expression, and accepting.  
 %\pharo will evaluate the expression and assign the result to the instance variable.
 
-There are special variants of the inspector for Dictionaries, OrderedCollections, CompiledMethods and a few other classes that make it easier to examine the contents of these special objects.
+%There are special variants of the inspector for Dictionaries, OrderedCollections, CompiledMethods and a few other classes that make it easier to examine the contents of these special objects.
+Имеются специфические варианты инспектора для словарей (Dictionary), упорядоченных коллекций (OrderedCollection), методов (CompiledMethod) и некоторых других классов, которые облегчают изучение содержимого этих специфических объектов.
+
 
 %---------------------------------------------------------
 \subsection{The Object Explorer}
