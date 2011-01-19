@@ -816,10 +816,13 @@ self - TimeStamp today
 
 
 %---------------------------------------------------------
-\subsection{The Object Explorer}
+%\subsection{The Object Explorer}
+\subsection{Исследователь объектов (Object Explorer)}
 
-The \emph{object explorer} is conceptually similar to the inspector, but presents its information in a different way.
-To see the difference, we'll \emph{explore} the same object that we were just inspecting.
+%The \emph{object explorer} is conceptually similar to the inspector, but presents its information in a different way.
+\emph{Исследователь объектов} концептуально близок инспектору, но представляет информацию несколько по-другому.
+%To see the difference, we'll \emph{explore} the same object that we were just inspecting.
+Чтобы увидеть разницу, мы будем \emph{исследовать} (explore) тот же самый объект, который только что инспектировали.
 
 \begin{figure}[tbp]
 \begin{minipage}{0.48\textwidth}
@@ -828,7 +831,8 @@ To see the difference, we'll \emph{explore} the same object that we were just in
 		{\includegraphics[width=\textwidth]{exploreTimeStampNow}}
 		{\includegraphics[width=0.7\textwidth]{exploreTimeStampNow}}
 	\end{center}
-	\caption{Exploring \ct{TimeStamp now}}
+	%\caption{Exploring \ct{TimeStamp now}}
+	\caption{Исследуем \ct{TimeStamp now}}
 	\figlabel{exploreTimeStampNow}
 \end{minipage}
 \hfill
@@ -838,32 +842,45 @@ To see the difference, we'll \emph{explore} the same object that we were just in
 		{\includegraphics[width=\textwidth]{exploreTimeStampNow2}}
 		{\includegraphics[width=0.7\textwidth]{exploreTimeStampNow2}}
 	\end{center}
-	\caption{Exploring the instance variables}
+	%\caption{Exploring the instance variables}
+	\caption{Исследование переменных экземпляра}
 	\figlabel{exploreTimeStampNow2}
 \end{minipage}
 \end{figure}
 
-\dothis{Select \menu{self} in the inspector's left-hand pane, then \actclick and choose \menu{explore (I)}.}
-The \ind{explorer} window looks like \figref{exploreTimeStampNow}.
-If you click on the small triangle next to \ct{root}, the view will change to \figref{exploreTimeStampNow2}, which shows the instance variables of object that you are exploring.
-Click on the triangle next to \ct{offset}, and you will see \emph{its} instance variables.  
-The explorer is really useful when you need to explore a complex hierarchic structure\,---\,hence the name.
+%\dothis{Select \menu{self} in the inspector's left-hand pane, then \actclick and choose \menu{explore (I)}.}
+\dothis{Выберите \menu{self} в левой панели инспектора, затем сделайте \actclick и выберите \menu{explore (I)}.}
+%The \ind{explorer} window looks like \figref{exploreTimeStampNow}.
+Окно \ind{исследователя} выглядит как на \figref{exploreTimeStampNow}.
+%If you click on the small triangle next to \ct{root}, the view will change to \figref{exploreTimeStampNow2}, which shows the instance variables of object that you are exploring.
+Если вы кликните на маленьком треугольничке рядом с \ct{root}, содержимое окна изменится и станет таким, как на \figref{exploreTimeStampNow2}, где показаны переменные исследуемого объекта.
+%Click on the triangle next to \ct{offset}, and you will see \emph{its} instance variables.  
+Кликните на треугольничек рядом с \ct{offset} (смещение), и вы увидите \emph{его} переменные.
+%The explorer is really useful when you need to explore a complex hierarchic structure\,---\,hence the name.
+Исследователь действительно полезен, когда вам нужно изучить сложную иерархическую структуру объектов.
 \index{keyboard shortcut!explore it}
 
-The workspace pane of the object explorer works slightly differently from that of the inspector.
-\ct{self} is not bound to the root object, but rather to the object that is currently selected; the instance variables of the selected object are also in scope.
+%The workspace pane of the object explorer works slightly differently from that of the inspector.
+Поведение панели рабочей области исследователя слегка отличается от такового в инспекторе.
+%\ct{self} is not bound to the root object, but rather to the object that is currently selected; the instance variables of the selected object are also in scope.
+Псевдопеременная \ct{self} связана не с корневым объектом, а с выбранным в данный момент. В область видимости также попадают переменные экземпляра выбранного объекта.
 
-To see the value of the explorer, let's use it to explore a deeply-nested structure of objects.
+%To see the value of the explorer, let's use it to explore a deeply-nested structure of objects.
+Чтобы понять ценность исследователя, давайте используем его для изучения глубоко вложенных структур объетов.
 
-\dothis{Evaluate \ct{Object explore} in a workspace.}
-This is the object that represents the class \ct{Object} in \pharo.
-Note that you can navigate directly to the objects representing the method dictionary and even the compiles methods of this class (see \figref{ExploreObject}).
+%\dothis{Evaluate \ct{Object explore} in a workspace.}
+\dothis{Выполните \ct{Object explore} в окне рабочей области}
+%This is the object that represents the class \ct{Object} in \pharo.
+Вы получите объект, который представляет класс \ct{Object}.
+%Note that you can navigate directly to the objects representing the method dictionary and even the compiles methods of this class (see \figref{ExploreObject}).
+Обратите внимание, что вы можете переходить напрямую к объектам, представляющим словарь методов и даже скомпилированным методам этого класса (см. \figref{ExploreObject}).
 
 \begin{figure}[tbp]
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{ExploreObject}
 	\end{center}
-	\caption{Exploring a \ct{ExploreObject}}
+	%\caption{Exploring a \ct{ExploreObject}}
+	\caption{Исследование \ct{ExploreObject}}
 	\figlabel{ExploreObject}
 \end{figure}
 
@@ -881,41 +898,56 @@ Note that you can navigate directly to the objects representing the method dicti
 %\end{figure}
 
 %=========================================================
-\section{The Debugger}
+%\section{The Debugger}
+\section{Отладчик (Debugger)}
 \seclabel{debugger} % (fold)
 
-The \ind{debugger} is arguably the most powerful tool in the \pharo tool suite.  It is used not just for debugging, but also for writing new code.
-To demonstrate the debugger, let's start by creating a bug!
+%The \ind{debugger} is arguably the most powerful tool in the \pharo tool suite.  It is used not just for debugging, but also for writing new code.
+\ind{Отладчик} --- это, вероятно, наиболее мощный инструмент в \pharo! Он используется не только для отладки, но также и для написания нового кода.
+%To demonstrate the debugger, let's start by creating a bug!
+Чтобы продемонстрировать его работу, давайте создадим ошибку!
 
-\dothis{Using the browser, add the following method to the class \ct{String}:}
+%\dothis{Using the browser, add the following method to the class \ct{String}:}
+\dothis{Используя браузер, добавьте следующий метод в класс \ct{String}:}
 
 \needlines{7}
-\begin{method}[buggy]{A buggy method}
+%\begin{method}[buggy]{A buggy method}
+\begin{method}[buggy]{Метод с ошибкой}
 suffix
 	"assumes that I'm a file name, and answers my suffix, the part after the last dot"
+	"предполагает, что я представляю собой имя файла и возвращает мой суффикс, часть после точки"
 	| dot dotPosition |
 	dot := FileDirectory dot.
 	dotPosition := (self size to: 1 by: -1) detect: [ :i | (self at: i) = dot ].
 	^ self copyFrom: dotPosition to: self size 
 \end{method}
 
-Of course, we are sure that such a trivial method will work, so instead of writing an SUnit test, we just type
-\ct{'readme.txt' suffix} in a workspace and \menu{print it (p)}.
-What a surprise!  Instead of getting the expected answer \ct{'txt'}, a \clsind{PreDebugWindow} pops up, as shown in \figref{PreDebugWindow}.
+%Of course, we are sure that such a trivial method will work, so instead of writing an SUnit test, we just type
+Конечно, мы уверены, что такой тривиальный метод будет работать, поэтому, вместо того, чтобы написать SUnit-тест, мы просто введём
+%\ct{'readme.txt' suffix} in a workspace and \menu{print it (p)}.
+\ct{'readme.txt' suffix} в рабочей области и выберите в меню \menu{print it (p)}.
+%What a surprise!  Instead of getting the expected answer \ct{'txt'}, a \clsind{PreDebugWindow} pops up, as shown in \figref{PreDebugWindow}.
+Вот так сюрприз! Вместо того, чтобы напечатать ожидаемый ответ \ct{'txt'}, появилось предотладочное окно (\clsind{PreDebugWindow}), как показано на \figref{PreDebugWindow}.
 
 \begin{figure}[btp]
 	\begin{center}
 	\includegraphics[width=0.8\textwidth]{PreDebugWindow}
 	\end{center}
-	\caption{A \ct{PreDebugWindow} notifies us of a bug.}
+	%\caption{A \ct{PreDebugWindow} notifies us of a bug.}
+	\caption{Предотладочное окно (\ct{PreDebugWindow}) сообщает нам об ошибке.}
 	\figlabel{PreDebugWindow}
 \end{figure}
 
-The \ct{PreDebugWindow} has a title-bar that tells us what error occurred, and shows us a \emphind{stack trace} of the messages that led up to the error. 
-Starting from the bottom of the trace, \ct{UndefinedObject>>>DoIt} represents the code that was compiled and run when we selected \ct{'readme.txt' suffix} in the workspace and asked \pharo to \menu{print it}.
-This code, of course, sent the message \ct{suffix} to a \clsind{ByteString} object (\ct{'readme.txt'}). 
-This caused the inherited \ct{suffix} method in class \ct{String} to execute; all this information is encoded in the next line of the stack trace, \ct{ByteString(String)>>>suffix}.  
-Working up the stack, we can see that \ct{suffix} sent \ct{detect:}\ldots and eventually \ct{detect:ifNone} sent \ct{errorNotFound}.
+%The \ct{PreDebugWindow} has a title-bar that tells us what error occurred, and shows us a \emphind{stack trace} of the messages that led up to the error. 
+Предотладочное окно (\ct{PreDebugWindow}) имеет заголовок, сообщающий нам, что за ошибка произошла, и показывает \emphind{трассировку стека} (\emphind{stack trace}) сообщений, которые привели к ошибке.
+%Starting from the bottom of the trace, \ct{UndefinedObject>>>DoIt} represents the code that was compiled and run when we selected \ct{'readme.txt' suffix} in the workspace and asked \pharo to \menu{print it}.
+Начиная снизу стека находится \ct{UndefinedObject>>>DoIt}, представляющий собой код, который был скомпилирован и запущен, когда мы выделили выражение \ct{'readme.txt' suffix} в рабочей области и попросили \pharo напечать его результат.
+%This code, of course, sent the message \ct{suffix} to a \clsind{ByteString} object (\ct{'readme.txt'}). 
+Этот код, разумеется, послал сообщение \ct{suffix} объекту класса \clsind{ByteString} (\ct{'readme.txt'}).
+%This caused the inherited \ct{suffix} method in class \ct{String} to execute; all this information is encoded in the next line of the stack trace, \ct{ByteString(String)>>>suffix}.  
+Это привело к выполнению метода \ct{suffix}, унаследованного от класса \ct{String}. Эта информация закодирована в следующей строке трассировки: \ct{ByteString(String)>>>suffix}.  
+%Working up the stack, we can see that \ct{suffix} sent \ct{detect:}\ldots and eventually \ct{detect:ifNone} sent \ct{errorNotFound}.
+Внимательно рассмотрев стек, мы увидим, что метод \ct{suffix} посылает сообщение \ct{detect:}\ldots и в конечном счёте \ct{detect:ifNone} посылает \ct{errorNotFound}.
 \clsindex{UndefinedObject}
 
 \begin{figure}[btp]
