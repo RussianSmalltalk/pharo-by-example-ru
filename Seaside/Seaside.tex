@@ -90,7 +90,7 @@
 Современные веб-приложения взаимодействуют с пользователем и ведут себя как обычные приложения:
 они обращаются к пользователю с вопросами и отвечают на его запросы, используя при этом формы или нажатия на кнопки.
 Но работа в сети имеет и другие стороны: браузер пользователя делает запросы к серверу, и получает от него ответ в виде веб-страницы.
-Так \ind{среды разработки приложений} должны справляться со множеством проблем,
+Так \ind{среды разработки приложений} должны справлятся со множеством проблем,
 где главной проблемой является управление обратными потоками.
 Из-за этого многие приложения пытаются запретить использование кнопки <<предыдущая страница>> у браузера,
 чтобы не усложнять текущее состояние сессии.
@@ -908,28 +908,52 @@ SeasideDemo>>>children
 	^ { htmlDemo . formDemo . editDemo . dialogDemo }
 \end{code}
 
-Notice that there are two different ways of instantiating the \ct{heading} brush.
-The first way is to set the text directly by sending the message \ct{heading:}.
-The second way is instantiate the brush by sending \ct{heading}, and then to send a
-cascade of messages to the brush to set its properties and render it.
-Many of the available brushes can be used in these two ways.
+% Notice that there are two different ways of instantiating the \ct{heading} brush.
+% The first way is to set the text directly by sending the message \ct{heading:}.
+% The second way is instantiate the brush by sending \ct{heading}, and then to send a
+% cascade of messages to the brush to set its properties and render it.
+% Many of the available brushes can be used in these two ways.
 
-\important{If you send a \ind{cascade} of messages to a brush including the message
-\mthind{WABrush}{with:}, then \ct{with:} should be the \emph{final} message.
-\ct{with:}  both sets the content and renders the result.}
+Обращаем внимание, что существуют два различных способа создания кисти заголовка.
+Первый способ использует посылку сообщения \ct{heading:}.
+Второй, созданием экземпляра кисти, путем посылки сообщения \ct{heading},
+и далее отправка каскадных сообщений, для установки свойств заголовка.
+Большинство из доступных кистей могут использовать эти способы.
+
+%\important{If you send a \ind{cascade} of messages to a brush including the message
+% \mthind{WABrush}{with:}, then \ct{with:} should be the \emph{final} message.
+% \ct{with:}  both sets the content and renders the result.}
+
+\important{Если Вы отправляете каскадные сообщения для кисти,
+то последним должно быть сообщение \mthind{WABrush}{with:},
+которое прорисовывает на основе изменных свойств.}
 
 
-In \mthref{renderdemo}, the first heading is at level 1, since this is the default.
-We explicitly set the level of the second heading to 2.
-The subcomponent is rendered as an XHTML \emph{div} with the \ind{CSS} class
-``subcomponent''.
-(More on CSS in \secref{css}.)
-Also note that the argument to the \ct{with:} keyword message need not be a literal
-string: it can be another component, or even\,---\,as in the next example\,---\,a block
-containing further rendering actions.
+% In \mthref{renderdemo}, the first heading is at level 1, since this is the default.
+% We explicitly set the level of the second heading to 2.
+% The subcomponent is rendered as an XHTML \emph{div} with the \ind{CSS} class
+% ``subcomponent''.
+% (More on CSS in \secref{css}.)
+% Also note that the argument to the \ct{with:} keyword message need not be a literal
+% string: it can be another component, or even\,---\,as in the next example\,---\,a block
+% containing further rendering actions.
 
-The \ct{SeasideHtmlDemo} component demonstrates many of the most basic brushes.
-Most of the code should be self-explanatory.
+У метода \mthref{renderdemo}, первый заголовок имеет уровень 1,
+установленный по умолчанию.
+Явно установлен 2 уровень у второго заголовка.
+Вложенные компоненты прорисовываются как XHTML \emph{div} контейнер
+с использованием каскадной таблицы стилей (\ind{CSS}).
+(Более подробно о CSS в \secref{css}.)
+Обращаем внимание, что аргумент ключевого сообщения \ct{with:}
+не должен быть литеральной строкой, а может быть другим компонентом,
+или даже \,---\, (как в следующем примере) блоком с инструкциями
+прорисовки веб-страницы.
+
+% The \ct{SeasideHtmlDemo} component demonstrates many of the most basic brushes.
+% Most of the code should be self-explanatory.
+
+Компонент \ct{SeasideHtmlDemo} демонстрирует много базовых кистей.
+И построен по принципу самокомментируемости.
 
 \begin{code}{}
 SeasideHtmlDemo>>>renderContentOn: html 
@@ -939,20 +963,41 @@ SeasideHtmlDemo>>>renderContentOn: html
 	self renderLinkWithCallbackOn: html
 \end{code}
 
-It is common practice to break up long rendering methods into many helper methods, as we
-have done here.
+% It is common practice to break up long rendering methods into many helper methods,
+% as we
+% have done here.
 
-\important{Don't put all your rendering code into a single method. 
-Split it into helper methods named using the pattern \ct{render*On:}.
-All rendering methods go in the \prot{rendering} protocol.
-Don't send \ct{renderContentOn:} from your own code, use \ct{render:} instead.}
+Это обычная практика,
+когда метод прорисовки компонента разбивается на несколько вспомогательных.
 
-Look at the following code.  
-The first helper method, \ct{SeasideHtmlDemo>>>renderParagraphsOn:}, shows you how to
-generate XHTML paragraphs, plain and emphasized text, and images.
-Note that in Seaside simple elements are rendered by specifying the text they contain
-directly, whereas complex elements are specified using blocks.
-This is a simple convention to help you structure your rendering code.
+% \important{Don't put all your rendering code into a single method. 
+% Split it into helper methods named using the pattern \ct{render*On:}.
+% All rendering methods go in the \prot{rendering} protocol.
+% Don't send \ct{renderContentOn:} from your own code, use \ct{render:} instead.}
+
+\important{Не надо распологать программный код в одном методе.
+Лучше разделить его на несколько вспомогательных
+и назвать каждый метод по принципу \ct{render*On:}.
+Все методы прорисовки входят в протокол \prot{rendering}.
+Не используйте сообщение \ct{renderContentOn:} в вашем программном коде,
+правильнее будет \ct{render:}}
+
+% Look at the following code.  
+% The first helper method, \ct{SeasideHtmlDemo>>>renderParagraphsOn:}, shows you how to
+% generate XHTML paragraphs, plain and emphasized text, and images.
+% Note that in Seaside simple elements are rendered by specifying the text they contain
+% directly, whereas complex elements are specified using blocks.
+% This is a simple convention to help you structure your rendering code.
+
+Посмотрите на нижерасположенный код.
+Первый вспомогательный метод, \ct{SeasideHtmlDemo>>>renderParagraphsOn:},
+показывает нам как генерировать XHTML абзацы,
+обычный и подчеркнутый текст и изображения.
+Обращаем внимание, что в Seaside простые элементы прорисовывают себя,
+указавая содержимое непосредственно,
+а комплексные элементы используют блоки.
+Придерживаясь этих простых правил,
+вы упростите структуру программного кода прорисовки.
 
 \begin{code}{}
 SeasideHtmlDemo>>>renderParagraphsOn: html 
@@ -970,10 +1015,16 @@ SeasideHtmlDemo>>>renderParagraphsOn: html
 			width: '50']
 \end{code}
 
-The next helper method, \ct{SeasideHtmlDemo>>>renderListsAndTablesOn:}, shows you how to
-generate lists and tables.
-A table uses two levels of blocks to display each of its rows and the cells within the
-rows.
+% The next helper method, \ct{SeasideHtmlDemo>>>renderListsAndTablesOn:}, shows you how to
+% generate lists and tables.
+% A table uses two levels of blocks to display each of its rows and the cells within the
+% rows.
+
+Следующий вспомогательный метод,
+\ct{SeasideHtmlDemo>>>renderListsAndTablesOn:},
+показывает нам, как гегерировать списки и таблицы.
+Таблицы используют двухуровневые блоки,
+чтобы показывать каждую строку с ячейками.
 
 \begin{code}{}
 SeasideHtmlDemo>>>renderListsAndTablesOn: html 
@@ -986,12 +1037,20 @@ SeasideHtmlDemo>>>renderListsAndTablesOn: html
 			html tableData: 'A table with one data cell.']]
 \end{code}
 
-The next example shows how we can specify CSS \emph{div}s and \emph{span}s with
-\emph{class} or \emph{id} attributes.
-Of course, the messages \ct{class:} and \ct{id:} can also be sent to the other brushes,
-not just to \emph{div}s and \emph{span}s.
-The method \ct{SeasideDemoWidget>>>style} defines how these XHTML elements should be
-displayed (see \secref{css}).
+% The next example shows how we can specify CSS \emph{div}s and \emph{span}s with
+% \emph{class} or \emph{id} attributes.
+% Of course, the messages \ct{class:} and \ct{id:} can also be sent to the other brushes,
+% not just to \emph{div}s and \emph{span}s.
+% The method \ct{SeasideDemoWidget>>>style} defines how these XHTML elements should be
+% displayed (see \secref{css}).
+
+Следующий пример объясняет как использовать CSS в \emph{div} и
+\emph{span} контейнерах с аттрибутами \emph{class} и \emph{id}.
+Конечно, сообщения \ct{class:} и \ct{id:} можно отправлять любой кисти,
+и все-таки лучше и правильнее использовать
+для \emph{div} и \emph{span} контейнеров.
+Метод \ct{SeasideDemoWidget>>>style} определяет как эти XHTML-элементы
+будут изображены.
 
 \begin{code}{}
 SeasideHtmlDemo>>>renderDivsAndSpansOn: html 
@@ -1004,10 +1063,15 @@ SeasideHtmlDemo>>>renderDivsAndSpansOn: html
 				with: 'A span with class ''highlight''.']
 \end{code}
 
-Finally we see a simple example of a link, created by binding a simple
-\subind{Seaside}{callback} to an ``anchor'' (\ie a link).
-Clicking on the link will cause the subsequent text to toggle between ``true'' and
-``false'' by toggling the instance variable \ct{toggleValue}.
+% Finally we see a simple example of a link, created by binding a simple
+% \subind{Seaside}{callback} to an ``anchor'' (\ie a link).
+% Clicking on the link will cause the subsequent text to toggle between ``true'' and
+% ``false'' by toggling the instance variable \ct{toggleValue}.
+
+И в заключении мы покажем простой пример со ссылками,
+созданные при помощи \subind{Seaside}{callback} (блок обратного вызова).
+Активизация ссылки будет переключать значение переменной toggleValue
+из <<true>> на <<false>> и обратно, которое отображается после ссылки.
 
 \needlines{3}
 \begin{code}{}
@@ -1024,8 +1088,15 @@ SeasideHtmlDemo>>>renderLinkWithCallbackOn: html
 			with: toggleValue ]
 \end{code}
 
-\important{Note that actions should appear only in callbacks.
-The code executed while rendering should not change the state of the application!}
+% \important{Note that actions should appear only in callbacks.
+% The code executed while rendering should not change the state of the application!}
+
+\important{Обратите внимание,
+что все действия со стороны веб-страницы, 
+нужно распологать в блоках обратного вызова.
+Код выполняемый при прорисовке html-страницы не должен
+изменять состояние приложения.
+}
 
 %-----------------------------------------------------------------
 \subsection{Forms}
