@@ -154,8 +154,7 @@ Object new class --> Object
 %% does provide a way to ask another object for the values of its instance variables; meta-programming is intended for writing tools like the object \ind{inspector}, whose sole purpose is to look inside other objects.)
 с помощью которого можно попросить другой объект показать значения внутренних переменных. Метапрограммирование как раз предназначено для написания инструментов типа Object \ind{inspector}, чья единственная задача --- заглядывать внутрь других объектов.
 
-Переменные экземпляра доступны для всех методов класса и его потомков, где они были определены.
-This means that \st instance variables are similar to \emph{protected} variables in C++ and Java. However, we prefer to say that they are private, because it is considered bad style in \st to access an instance variable directly from a subclass. 
+Переменные экземпляра доступны для всех методов класса и его потомков, где они были определены. Это означает, что в \st переменные экземпляра похожи на \emph{protected} переменные в C++ и Java. Но постарайтесь думать, что они приватные, в \st не принято напрямую обращаться к переменным экземпляра из потомка.
 
 \subsubsection{Example}
 Method \cmind{Point}{dist:} (\mthref{dist:}) computes the distance between the receiver and another point. The instance variables \ct{x} and \ct{y} of the receiver are accessed directly by the method body.  However, the instance variables of the other point must be accessed by sending it the messages \ct{x} and \ct{y}.
