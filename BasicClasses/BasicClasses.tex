@@ -806,23 +806,28 @@ Character characterTable size                               --> 256
 %=================================================================
 \section{Booleans}
 
-The class \clsindmain{Boolean} offers a fascinating insight into how much of the Smalltalk language has been pushed into the class library. \ct{Boolean} is the \subind{class}{abstract} superclass of the \patind{Singleton} classes \clsindmain{True} and \clsindmain{False}.
+%The class \clsindmain{Boolean} offers a fascinating insight into how much of the Smalltalk language has been pushed into the class library. \ct{Boolean} is the \subind{class}{abstract} superclass of the \patind{Singleton} classes \clsindmain{True} and \clsindmain{False}.
+
+Класс \clsindmain{Boolean} представляет собой ярчайший пример того, как сильно базовый язык Smalltalk был вынесен в библиотеку классов. \ct{Boolean} -- это \subind{class}{abstract} родитель классов-синглтонов \clsindmain{True} и \clsindmain{False}.
 
 \begin{figure}[ht]
 	{\centerline {\includegraphics[width=0.5\textwidth]{BooleanHierarchy}}}
-\caption{The Boolean Hierarchy \figlabel{booleans}}
+\caption{Иерархия классов Boolean \figlabel{booleans}}
 \end{figure}
 
-Most of the behaviour of \ct{Boolean}s can be understood by considering the method \mthind{Boolean}{ifTrue:ifFalse:}, which takes two \ct{Blocks} as arguments.
+%Most of the behaviour of \ct{Boolean}s can be understood by considering the method \mthind{Boolean}{ifTrue:ifFalse:}, which takes two \ct{Blocks} as arguments.
+Большую часть поведения \ct{Boolean}'ов можно понять, рассмотрев метод \mthind{Boolean}{ifTrue:ifFalse:}, который принимает два \ct{Blocks} как аргументы.
 
 \begin{code}{@TEST}
 (4 factorial > 20) ifTrue: [ 'bigger' ] ifFalse: [ 'smaller' ] --> 'bigger'
 \end{code}
 
-The method is abstract in \ct{Boolean}.
-The implementations in its concrete subclasses are both trivial:
+%The method is abstract in \ct{Boolean}.
+Данный метод является абстрактным в классе \ct{Boolean}.
+%The implementations in its concrete subclasses are both trivial:
+Реализации этого метода в наследниках класса являются тривиальными:
 
-\begin{method}{Implementations of \lct{ifTrue:ifFalse:}}
+\begin{method}{Реализации \lct{ifTrue:ifFalse:}}
 True>>>ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock 
     ^trueAlternativeBlock value
 
@@ -832,25 +837,30 @@ False>>>ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
 \cmindex{True}{ifTrue:}
 \cmindex{False}{ifTrue:}
 
-In fact, this is the essence of OOP: when a message is sent to an object, the object itself determines which method will be used to respond. In this case an instance of \ct{True} simply evaluates the \emph{true} alternative, while an instance of \ct{False} evaluates the \emph{false} alternative.  All the abstract \ct{Boolean} methods are implemented in this way for \ct{True} and \ct{False}. For example:
+%In fact, this is the essence of OOP: when a message is sent to an object, the object itself determines which method will be used to respond. In this case an instance of \ct{True} simply evaluates the \emph{true} alternative, while an instance of \ct{False} evaluates the \emph{false} alternative.  All the abstract \ct{Boolean} methods are implemented in this way for \ct{True} and \ct{False}. For example:
+Фактически, в этом вся суть ООП: когда сообщение приходит к объекту, объект сам решает, который именно метод будет использован при ответе. В этом случае экземпляр класса\ct{True} просто вычислит альтернативу \emph{true}, в то время как экземпляр класса \ct{False} вычислит соответственно альтернативу \emph{false}. Все абстрактные методы класса \ct{Boolean} реализованы этим путём для \ct{True} и \ct{False}. Например:
 
-\begin{method}{Implementing negation}
+\begin{method}{Реализуем отрицание}
 True>>>not
     "Negation--answer false since the receiver is true."
     ^false
 \end{method}
 \cmindex{True}{not}
 
-\ct{Booleans} offer several useful convenience methods, such as \mthind{Boolean}{ifTrue:}, \mthind{Boolean}{ifFalse:}, \mthind{Boolean}{ifFalse:ifTrue}. You also have the choice between eager and lazy conjunctions and disjunctions.
+%\ct{Booleans} offer several useful convenience methods, such as \mthind{Boolean}{ifTrue:}, \mthind{Boolean}{ifFalse:}, \mthind{Boolean}{ifFalse:ifTrue}. You also have the choice between eager and lazy conjunctions and disjunctions.
+
+Объекты класса \ct{Boolean} предоставляют несколько вспомогательных методов для удобства, таких как \mthind{Boolean}{ifTrue:}, \mthind{Boolean}{ifFalse:}, \mthind{Boolean}{ifFalse:ifTrue}. Так же у вас есть выбор между срочной и отложенной формами конъюнкции и дизъюнкции.
 
 \begin{code}{@TEST}
-(1>2) & (3<4)              --> false    "must evaluate both sides"
-(1>2) and: [ 3<4 ]        --> false    "only evaluate receiver"
-(1>2) and: [ (1/0) > 0 ] --> false    "argument block is never evaluated, so no exception"
+(1>2) & (3<4)              --> false    "должно вычислить обе стороны"
+(1>2) and: [ 3<4 ]        --> false    "вычислит только получателя"
+(1>2) and: [ (1/0) > 0 ] --> false    "блок-аргумент не будет вычислен, поэтому не произойдёт исключения"
 \end{code}
 
-In the first example, both \ct{Boolean} subexpressions are evaluated, since \mthind{Boolean}{&} takes a \ct{Boolean} argument.
-In the second and third examples, only the first is evaluated, since \mthind{Boolean}{and:} expects a \ct{Block} as its argument.  The \ct{Block} is evaluated only if the first argument is \pvind{true}.
+%In the first example, both \ct{Boolean} subexpressions are evaluated, since \mthind{Boolean}{&} takes a \ct{Boolean} argument.
+В первом примере оба логических подвыражения будут вычислены, так как \mthind{Boolean}{&} принимает экземпляр \ct{Boolean} как аргумент.
+%In the second and third examples, only the first is evaluated, since \mthind{Boolean}{and:} expects a \ct{Block} as its argument.  The \ct{Block} is evaluated only if the first argument is \pvind{true}.
+Во втором и третьем примерах только первое подвыражение будет вычислено, так как \mthind{Boolean}{and:} ожидает получить \ct{Block} в качестве аргумента. \ct{Block} будет вычислен только в том случае, если первый первый операнд будет \pvind{true}.
 
 \dothis{Try to imagine how \ct{and:} and \ct{or:} are implemented.
 Check the implementations in \ct{Boolean}, \ct{True} and \ct{False}.}
