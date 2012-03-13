@@ -18,7 +18,7 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2012-03-13T22:08:09+06:00
+Last update: 2012-03-13T22:35:55+06:00
 
 ===== CHAPTER: Preface ==========
 
@@ -910,9 +910,9 @@ True>>not
  "Negation--answer false since the receiver is true."
     ^false
 -----
-(1>2) & (3<4) "--> false    must evaluate both sides"
-(1>2) and: [ 3<4 ] "--> false    only evaluate receiver"
-(1>2) and: [ (1/0) > 0 ] "--> false    argument block is never evaluated, so no exception"
+(1>2) & (3<4) "--> false    должно вычислить обе стороны"
+(1>2) and: [ 3<4 ] "--> false    вычислит только получателя"
+(1>2) and: [ (1/0) > 0 ] "--> false    блок-аргумент не будет вычислен, поэтому не произойдёт исключения"
 -----
 
 ===== CHAPTER: Коллекции ==========

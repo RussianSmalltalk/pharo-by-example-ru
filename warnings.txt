@@ -158,7 +158,7 @@ LaTeX Font Warning: Font shape `T2A/phv/m/n' undefined
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 (/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ts1ppl.fd)
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
-<figures/CreativeCommons-BY-SA.pdf, id=768, 124.465pt x 45.16875pt>
+<figures/CreativeCommons-BY-SA.pdf, id=771, 124.465pt x 45.16875pt>
 <use figures/CreativeCommons-BY-SA.pdf> [2 <./figures/CreativeCommons-BY-SA.pdf
 >] (./PBE-Omnibus.toc
 (/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1ppl.fd) [3] [4]
@@ -171,23 +171,23 @@ pdfTeX warning (font expansion): font should be expanded before its first use
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 LaTeX Font Warning: Font shape `T2A/phv/m/it' undefined
 (Font)              using `T2A/phv/m/n' instead on input line 128.
-<figures/pharo.png, id=1229, 198.7425pt x 200.75pt> <use figures/pharo.png>
+<figures/pharo.png, id=1234, 198.7425pt x 200.75pt> <use figures/pharo.png>
 <use figures/pharo.png> [13 <./figures/pharo.png>])
 (./Preface/Preface-Omnibus.tex [14]) [15] [16] [1] [2]
 (./QuickTour/QuickTour.tex
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
 <use figures/pharo.png>
-<QuickTour/figures/annotatedDownload-flat.pdf, id=1264, 669.50125pt x 86.3225pt
+<QuickTour/figures/annotatedDownload-flat.pdf, id=1269, 669.50125pt x 86.3225pt
 > <use QuickTour/figures/annotatedDownload-flat.pdf> [3 <./QuickTour/figures/an
 notatedDownload-flat.pdf>] <use figures/pharo.png>
-<QuickTour/figures/startup.png, id=1296, 1319.93124pt x 853.1875pt>
+<QuickTour/figures/startup.png, id=1301, 1319.93124pt x 853.1875pt>
 <use QuickTour/figures/startup.png> <use figures/pharo.png> [4]
 <use figures/pharo.png>
-<QuickTour/figures/worldMenu.png, id=1308, 317.185pt x 314.17375pt>
+<QuickTour/figures/worldMenu.png, id=1313, 317.185pt x 314.17375pt>
 <use QuickTour/figures/worldMenu.png>
-<QuickTour/figures/yellowButtonMenuOnWorkspace.png, id=1309, 463.7325pt x 368.3
+<QuickTour/figures/yellowButtonMenuOnWorkspace.png, id=1314, 463.7325pt x 368.3
 7625pt> <use QuickTour/figures/yellowButtonMenuOnWorkspace.png>
-<QuickTour/figures/morphicHaloOnWorkspace.png, id=1310, 496.85625pt x 261.97874
+<QuickTour/figures/morphicHaloOnWorkspace.png, id=1315, 496.85625pt x 261.97874
 pt> <use QuickTour/figures/morphicHaloOnWorkspace.png> [5 <./QuickTour/figures/
 startup.png>]
 LaTeX Font Warning: Font shape `T2A/ppl/m/sc' undefined
@@ -196,7 +196,7 @@ LaTeX Font Warning: Font shape `T2A/ppl/m/sc' undefined
 orkspace.png> <./QuickTour/figures/morphicHaloOnWorkspace.png>]
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/cloverleafKey.pdf, id=1327, 14.0525pt x 17.06375pt>
+<QuickTour/figures/cloverleafKey.pdf, id=1332, 14.0525pt x 17.06375pt>
 <use QuickTour/figures/cloverleafKey.pdf>
 Underfull \hbox (badness 6204) in paragraph at lines 198--203
 []\T2A/ppl/m/sc/10 (+20) You can configure your mouse to work the way you want
@@ -211,12 +211,12 @@ Underfull \hbox (badness 3118) in paragraph at lines 198--203
 owser
 Underfull \hbox (badness 10000) in paragraph at lines 198--203
 \T2A/ppl/m/sc/10 (+20) ([][][][][][]), the [][][][][][]
-<QuickTour/figures/PreferenceBrowser.png, id=1328, 627.34375pt x 448.67625pt>
+<QuickTour/figures/PreferenceBrowser.png, id=1333, 627.34375pt x 448.67625pt>
 <use QuickTour/figures/PreferenceBrowser.png> <use figures/pharo.png>
 <use figures/pharo.png> <use figures/pharo.png> [7 <./QuickTour/figures/cloverl
 eafKey.pdf>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-<QuickTour/figures/Doit.png, id=1347, 463.7325pt x 369.38pt>
+<QuickTour/figures/Doit.png, id=1352, 463.7325pt x 369.38pt>
 <use QuickTour/figures/Doit.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -224,9 +224,9 @@ eafKey.pdf>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [8 <./QuickTour/fi
 gures/PreferenceBrowser.png>] <use figures/pharo.png>
-<QuickTour/figures/atoms.png, id=1356, 401.5pt x 250.9375pt>
+<QuickTour/figures/atoms.png, id=1361, 401.5pt x 250.9375pt>
 <use QuickTour/figures/atoms.png>
-<QuickTour/figures/saveAs.png, id=1357, 203.76125pt x 175.65625pt>
+<QuickTour/figures/saveAs.png, id=1362, 203.76125pt x 175.65625pt>
 <use QuickTour/figures/saveAs.png> <use figures/pharo.png> [9 <./QuickTour/figu
 res/Doit.png> <./QuickTour/figures/atoms.png> <./QuickTour/figures/saveAs.png>]
 <use figures/pharo.png> <use figures/pharo.png>
@@ -234,7 +234,7 @@ res/Doit.png> <./QuickTour/figures/atoms.png> <./QuickTour/figures/saveAs.png>]
 <use figures/pharo.png> <use figures/pharo.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-<QuickTour/figures/HelloWorld.png, id=1371, 646.415pt x 393.47pt>
+<QuickTour/figures/HelloWorld.png, id=1376, 646.415pt x 393.47pt>
 <use QuickTour/figures/HelloWorld.png> [11] <use figures/pharo.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -246,7 +246,7 @@ res/Doit.png> <./QuickTour/figures/atoms.png> <./QuickTour/figures/saveAs.png>]
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [12 <./QuickTour/f
 igures/HelloWorld.png>]
-<QuickTour/figures/PrintIt.png, id=1384, 309.155pt x 129.48375pt>
+<QuickTour/figures/PrintIt.png, id=1389, 309.155pt x 129.48375pt>
 <use QuickTour/figures/PrintIt.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -256,7 +256,7 @@ igures/HelloWorld.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/InspectIt.png, id=1386, 597.23125pt x 299.1175pt>
+<QuickTour/figures/InspectIt.png, id=1391, 597.23125pt x 299.1175pt>
 <use QuickTour/figures/InspectIt.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -264,7 +264,7 @@ igures/HelloWorld.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/ExploreIt.png, id=1388, 430.60875pt x 387.4475pt>
+<QuickTour/figures/ExploreIt.png, id=1393, 430.60875pt x 387.4475pt>
 <use QuickTour/figures/ExploreIt.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [13 <./QuickTour/f
@@ -272,7 +272,7 @@ igures/PrintIt.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active [14 <./Qui
 ckTour/figures/InspectIt.png> <./QuickTour/figures/ExploreIt.png>]
 <use figures/pharo.png>
-<QuickTour/figures/ClassBrowser1.pdf, id=1405, 753.81625pt x 427.5975pt>
+<QuickTour/figures/ClassBrowser1.pdf, id=1410, 753.81625pt x 427.5975pt>
 <use QuickTour/figures/ClassBrowser1.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -287,25 +287,25 @@ igures/ClassBrowser1.pdf>] <use figures/pharo.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/Kernel-objects-boolean.png, id=1432, 818.05624pt x 464.73625
+<QuickTour/figures/Kernel-objects-boolean.png, id=1437, 818.05624pt x 464.73625
 pt> <use QuickTour/figures/Kernel-objects-boolean.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/classComment.png, id=1435, 818.05624pt x 464.73625pt>
+<QuickTour/figures/classComment.png, id=1440, 818.05624pt x 464.73625pt>
 <use QuickTour/figures/classComment.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png> [16]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/FindIt.png, id=1443, 503.8825pt x 389.455pt>
+<QuickTour/figures/FindIt.png, id=1448, 503.8825pt x 389.455pt>
 <use QuickTour/figures/FindIt.png>
-<QuickTour/figures/TimeClasses.png, id=1444, 498.86375pt x 435.6275pt>
+<QuickTour/figures/TimeClasses.png, id=1449, 498.86375pt x 435.6275pt>
 <use QuickTour/figures/TimeClasses.png> [17 <./QuickTour/figures/Kernel-objects
 -boolean.png> <./QuickTour/figures/classComment.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/methodFinder-now.png, id=1451, 416.55624pt x 314.17375pt>
+<QuickTour/figures/methodFinder-now.png, id=1456, 416.55624pt x 314.17375pt>
 <use QuickTour/figures/methodFinder-now.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -320,7 +320,7 @@ pt> <use QuickTour/figures/Kernel-objects-boolean.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [18 <./QuickTour/f
 igures/FindIt.png> <./QuickTour/figures/TimeClasses.png>]
-<QuickTour/figures/MethodFinder-example1.png, id=1459, 497.86pt x 304.13625pt>
+<QuickTour/figures/MethodFinder-example1.png, id=1464, 497.86pt x 304.13625pt>
 <use QuickTour/figures/MethodFinder-example1.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [19 <./QuickTour/f
 igures/methodFinder-now.png>]
@@ -329,7 +329,7 @@ igures/methodFinder-now.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/StringTest-newMethodTemplate.png, id=1467, 818.05624pt x 464
+<QuickTour/figures/StringTest-newMethodTemplate.png, id=1472, 818.05624pt x 464
 .73625pt> <use QuickTour/figures/StringTest-newMethodTemplate.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
@@ -337,23 +337,23 @@ igures/methodFinder-now.png>]
 igures/MethodFinder-example1.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/name.png, id=1480, 469.755pt x 526.96875pt>
+<QuickTour/figures/name.png, id=1485, 469.755pt x 526.96875pt>
 <use QuickTour/figures/name.png>
-<QuickTour/figures/testShoutConfirm.png, id=1481, 875.27pt x 471.7625pt>
+<QuickTour/figures/testShoutConfirm.png, id=1486, 875.27pt x 471.7625pt>
 <use QuickTour/figures/testShoutConfirm.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [21 <./QuickTour/f
 igures/StringTest-newMethodTemplate.png>]
-<QuickTour/figures/testRunnerOnStringTest.png, id=1488, 657.45625pt x 494.84875
+<QuickTour/figures/testRunnerOnStringTest.png, id=1493, 657.45625pt x 494.84875
 pt> <use QuickTour/figures/testRunnerOnStringTest.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<QuickTour/figures/Predebugger.png, id=1492, 490.83376pt x 199.74625pt>
+<QuickTour/figures/Predebugger.png, id=1497, 490.83376pt x 199.74625pt>
 <use QuickTour/figures/Predebugger.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [22 <./QuickTour/f
 igures/name.png>] <use figures/pharo.png>
@@ -363,7 +363,7 @@ igures/name.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-<QuickTour/figures/String-Shout.png, id=1501, 818.05624pt x 464.73625pt>
+<QuickTour/figures/String-Shout.png, id=1506, 818.05624pt x 464.73625pt>
 <use QuickTour/figures/String-Shout.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -372,12 +372,12 @@ kTour/figures/testShoutConfirm.png>] [24 <./QuickTour/figures/testRunnerOnStrin
 gTest.png> <./QuickTour/figures/Predebugger.png>] [25 <./QuickTour/figures/Stri
 ng-Shout.png>]) (./FirstApp/FirstApp.tex [26]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
-<FirstApp/figures/GameBoard.png, id=1523, 166.6225pt x 166.6225pt>
+<FirstApp/figures/GameBoard.png, id=1528, 166.6225pt x 166.6225pt>
 <use FirstApp/figures/GameBoard.png> [27 <./FirstApp/figures/GameBoard.png>]
 <use figures/pharo.png>
-<FirstApp/figures/AddPackage.png, id=1536, 341.275pt x 464.73625pt>
+<FirstApp/figures/AddPackage.png, id=1541, 341.275pt x 464.73625pt>
 <use FirstApp/figures/AddPackage.png>
-<FirstApp/figures/ClassTemplate.png, id=1537, 293.095pt x 464.73625pt>
+<FirstApp/figures/ClassTemplate.png, id=1542, 293.095pt x 464.73625pt>
 <use FirstApp/figures/ClassTemplate.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [28]
@@ -395,12 +395,12 @@ gures/AddPackage.png> <./FirstApp/figures/ClassTemplate.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/AcceptClassDef.png, id=1553, 512.91624pt x 351.3125pt>
+<FirstApp/figures/AcceptClassDef.png, id=1558, 512.91624pt x 351.3125pt>
 <use FirstApp/figures/AcceptClassDef.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [30 <./FirstApp/fi
 gures/AcceptClassDef.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/LOCell.png, id=1566, 818.05624pt x 464.73625pt>
+<FirstApp/figures/LOCell.png, id=1571, 818.05624pt x 464.73625pt>
 <use FirstApp/figures/LOCell.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png> [31 <./FirstApp/figures/LOCell.png>]
@@ -438,7 +438,7 @@ gures/AcceptClassDef.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/LOCellInspector.png, id=1588, 767.86874pt x 463.7325pt>
+<FirstApp/figures/LOCellInspector.png, id=1593, 767.86874pt x 463.7325pt>
 <use FirstApp/figures/LOCellInspector.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
@@ -446,7 +446,7 @@ gures/AcceptClassDef.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/LOCellResize.png, id=1589, 801.99625pt x 281.05pt>
+<FirstApp/figures/LOCellResize.png, id=1594, 801.99625pt x 281.05pt>
 <use FirstApp/figures/LOCellResize.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [33]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -463,9 +463,9 @@ p/figures/LOCellResize.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/UnknownSelector.png, id=1601, 441.65pt x 298.11375pt>
+<FirstApp/figures/UnknownSelector.png, id=1606, 441.65pt x 298.11375pt>
 <use FirstApp/figures/UnknownSelector.png>
-<FirstApp/figures/DeclareInstanceVar.png, id=1602, 417.56pt x 185.69376pt>
+<FirstApp/figures/DeclareInstanceVar.png, id=1607, 417.56pt x 185.69376pt>
 <use FirstApp/figures/DeclareInstanceVar.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
@@ -503,7 +503,7 @@ gures/UnknownSelector.png> <./FirstApp/figures/DeclareInstanceVar.png>]
 Underfull \hbox (badness 4621) in paragraph at lines 539--540
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][] \T2A/ppl/m/sc/10 (+20) со-зда-јт но-вую
-<FirstApp/figures/Categorize.png, id=1629, 596.2275pt x 464.73625pt>
+<FirstApp/figures/Categorize.png, id=1634, 596.2275pt x 464.73625pt>
 <use FirstApp/figures/Categorize.png> [37] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -537,7 +537,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 631--632
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-<FirstApp/figures/DragMethod.png, id=1663, 818.05624pt x 260.975pt>
+<FirstApp/figures/DragMethod.png, id=1668, 818.05624pt x 260.975pt>
 <use FirstApp/figures/DragMethod.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -569,11 +569,11 @@ Underfull \hbox (badness 5316) in paragraph at lines 687--692
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [41]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/Error.png, id=1685, 528.97626pt x 164.615pt>
+<FirstApp/figures/Error.png, id=1690, 528.97626pt x 164.615pt>
 <use FirstApp/figures/Error.png> <use figures/pharo.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/Debugger.png, id=1687, 617.30624pt x 514.92375pt>
+<FirstApp/figures/Debugger.png, id=1692, 617.30624pt x 514.92375pt>
 <use FirstApp/figures/Debugger.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 1215) in paragraph at lines 788--791
@@ -605,7 +605,7 @@ Underfull \hbox (badness 2318) in paragraph at lines 835--838
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png> [44] <use figures/pharo.png>
-<FirstApp/figures/FileIn.png, id=1714, 767.86874pt x 514.92375pt>
+<FirstApp/figures/FileIn.png, id=1719, 767.86874pt x 514.92375pt>
 <use FirstApp/figures/FileIn.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 1466) in paragraph at lines 899--906
@@ -617,7 +617,7 @@ Underfull \hbox (badness 1466) in paragraph at lines 899--906
 Underfull \hbox (badness 2057) in paragraph at lines 926--928
 []\T2A/ppl/m/sc/10 (+20) На правой панели браузера (см. Рис. [][]2.15[][]) нахо
 дится список
-<FirstApp/figures/MonticelloBrowser.png, id=1725, 825.0825pt x 331.2375pt>
+<FirstApp/figures/MonticelloBrowser.png, id=1730, 825.0825pt x 331.2375pt>
 <use FirstApp/figures/MonticelloBrowser.png>
 Underfull \hbox (badness 1783) in paragraph at lines 939--940
 []\T2A/ppl/m/sc/10 (+20) В верхней части списка находится репозиторий []package
@@ -633,7 +633,7 @@ Underfull \hbox (badness 1389) in paragraph at lines 974--974
 -те по кноп-ке
 [47] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/BrowseRepository.png, id=1741, 730.73pt x 482.80376pt>
+<FirstApp/figures/BrowseRepository.png, id=1746, 730.73pt x 482.80376pt>
 <use FirstApp/figures/BrowseRepository.png> <use figures/pharo.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [48 <./FirstApp/fi
@@ -980,9 +980,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 1068--1073
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [63]
-<Messages/figures/message.pdf, id=1920, 311.1625pt x 223.83624pt>
+<Messages/figures/message.pdf, id=1925, 311.1625pt x 223.83624pt>
 <use Messages/figures/message.pdf>
-<Messages/figures/uKeyUnOne.pdf, id=1921, 284.06125pt x 129.48375pt>
+<Messages/figures/uKeyUnOne.pdf, id=1926, 284.06125pt x 129.48375pt>
 <use Messages/figures/uKeyUnOne.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1158,7 +1158,7 @@ Underfull \hbox (badness 1112) in paragraph at lines 273--275
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/uKeyUn.pdf, id=1991, 750.805pt x 130.4875pt>
+<Messages/figures/uKeyUn.pdf, id=1996, 750.805pt x 130.4875pt>
 <use Messages/figures/uKeyUn.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1219,11 +1219,11 @@ Underfull \hbox (badness 1490) in paragraph at lines 360--363
 вой (1): сообщение [][][]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/uKeyBin.pdf, id=2036, 231.86626pt x 129.48375pt>
+<Messages/figures/uKeyBin.pdf, id=2041, 231.86626pt x 129.48375pt>
 <use Messages/figures/uKeyBin.pdf>
 Underfull \hbox (badness 5036) in paragraph at lines 378--378
 []\T2A/ppl/m/sc/10 (+20) Рис. 4.4: []Бинарные сообщения
-<Messages/figures/uunKeyBin.pdf, id=2037, 263.98625pt x 130.4875pt>
+<Messages/figures/uunKeyBin.pdf, id=2042, 263.98625pt x 130.4875pt>
 <use Messages/figures/uunKeyBin.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1257,7 +1257,7 @@ Underfull \hbox (badness 1509) in paragraph at lines 460--462
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/ucompoUn.pdf, id=2101, 428.60126pt x 103.38625pt>
+<Messages/figures/ucompoUn.pdf, id=2106, 428.60126pt x 103.38625pt>
 <use Messages/figures/ucompoUn.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 1577) in paragraph at lines 504--505
@@ -1273,7 +1273,7 @@ Underfull \hbox (badness 1577) in paragraph at lines 504--505
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/ucompoNoBracketPar.pdf, id=2120, 446.67978pt x 104.39pt>
+<Messages/figures/ucompoNoBracketPar.pdf, id=2125, 446.67978pt x 104.39pt>
 <use Messages/figures/ucompoNoBracketPar.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1284,15 +1284,15 @@ Underfull \hbox (badness 1215) in paragraph at lines 533--536
 [73 <./Messages/figures/ucompoUn.pdf> <./Messages/figures/ucompoNoBracketPar.pd
 f>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/ucompoNumberBracket.pdf, id=2165, 446.67978pt x 108.405pt>
+<Messages/figures/ucompoNumberBracket.pdf, id=2170, 446.67978pt x 108.405pt>
 <use Messages/figures/ucompoNumberBracket.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Messages/figures/uKeyUnBinPar.pdf, id=2166, 1009.96321pt x 143.53523pt>
+<Messages/figures/uKeyUnBinPar.pdf, id=2171, 1009.96321pt x 143.53523pt>
 <use Messages/figures/uKeyUnBinPar.pdf>
-<Messages/figures/uunKeyBinPar.pdf, id=2167, 930.46222pt x 152.56898pt>
+<Messages/figures/uunKeyBinPar.pdf, id=2172, 930.46222pt x 152.56898pt>
 <use Messages/figures/uunKeyBinPar.pdf> [74 <./Messages/figures/ucompoNumberBra
 cket.pdf> <./Messages/figures/uKeyUnBinPar.pdf> <./Messages/figures/uunKeyBinPa
 r.pdf>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1396,7 +1396,7 @@ Underfull \hbox (badness 1389) in paragraph at lines 149--156
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/Color-Buttons.pdf, id=2318, 707.64375pt x 431.6125pt>
+<Model/figures/Color-Buttons.pdf, id=2323, 707.64375pt x 431.6125pt>
 <use Model/figures/Color-Buttons.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1566,7 +1566,7 @@ Underfull \hbox (badness 1158) in paragraph at lines 448--449
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/openInWorldLookup.pdf, id=2516, 546.04pt x 374.39874pt>
+<Model/figures/openInWorldLookup.pdf, id=2521, 546.04pt x 374.39874pt>
 <use Model/figures/openInWorldLookup.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1597,7 +1597,7 @@ es/openInWorldLookup.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/constructorStringLookup.pdf, id=2588, 707.64375pt x 332.24126pt>
+<Model/figures/constructorStringLookup.pdf, id=2593, 707.64375pt x 332.24126pt>
 <use Model/figures/constructorStringLookup.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1624,7 +1624,7 @@ up, starting
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/fooNotFound.pdf, id=2624, 717.68124pt x 449.68pt>
+<Model/figures/fooNotFound.pdf, id=2629, 717.68124pt x 449.68pt>
 <use Model/figures/fooNotFound.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1670,7 +1670,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 840--842
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Model/figures/privateSharedVarColor.pdf, id=2681, 514.92375pt x 263.98625pt>
+<Model/figures/privateSharedVarColor.pdf, id=2686, 514.92375pt x 263.98625pt>
 <use Model/figures/privateSharedVarColor.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1727,18 +1727,18 @@ Underfull \hbox (badness 1708) in paragraph at lines 106--109
 nit.
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [108]
-<Environment/figures/SystemBrowser0.png, id=2770, 818.05624pt x 464.73625pt>
+<Environment/figures/SystemBrowser0.png, id=2775, 818.05624pt x 464.73625pt>
 <use Environment/figures/SystemBrowser0.png>
-<Environment/figures/SystemBrowser1.png, id=2771, 818.05624pt x 464.73625pt>
+<Environment/figures/SystemBrowser1.png, id=2776, 818.05624pt x 464.73625pt>
 <use Environment/figures/SystemBrowser1.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/SystemBrowserMyDependents.png, id=2774, 818.05624pt x 464.
+<Environment/figures/SystemBrowserMyDependents.png, id=2779, 818.05624pt x 464.
 73625pt> <use Environment/figures/SystemBrowserMyDependents.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [109 <./Environmen
 t/figures/SystemBrowser0.png>] [110 <./Environment/figures/SystemBrowser1.png> 
 <./Environment/figures/SystemBrowserMyDependents.png>]
-<Environment/figures/SystemBrowserClassCreation.png, id=2786, 818.05624pt x 464
+<Environment/figures/SystemBrowserClassCreation.png, id=2791, 818.05624pt x 464
 .73625pt> <use Environment/figures/SystemBrowserClassCreation.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1747,7 +1747,7 @@ t/figures/SystemBrowser0.png>] [110 <./Environment/figures/SystemBrowser1.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [111 <./Environmen
 t/figures/SystemBrowserClassCreation.png>]
-<Environment/figures/SystemBrowserMethodTemplate.png, id=2797, 772.8875pt x 461
+<Environment/figures/SystemBrowserMethodTemplate.png, id=2802, 772.8875pt x 461
 .725pt> <use Environment/figures/SystemBrowserMethodTemplate.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1757,12 +1757,12 @@ t/figures/SystemBrowserClassCreation.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \vbox (badness 1442) has occurred while \output is active [112 <./Env
 ironment/figures/SystemBrowserMethodTemplate.png>]
-<Environment/figures/SendersOfDrawOn.png, id=2808, 865.2325pt x 371.3875pt>
+<Environment/figures/SendersOfDrawOn.png, id=2813, 865.2325pt x 371.3875pt>
 <use Environment/figures/SendersOfDrawOn.png>
-<Environment/figures/SendersOfDrawOn2.png, id=2809, 277.035pt x 183.68625pt>
+<Environment/figures/SendersOfDrawOn2.png, id=2814, 277.035pt x 183.68625pt>
 <use Environment/figures/SendersOfDrawOn2.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/CanvasDraw.png, id=2810, 767.86874pt x 394.47375pt>
+<Environment/figures/CanvasDraw.png, id=2815, 767.86874pt x 394.47375pt>
 <use Environment/figures/CanvasDraw.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1790,7 +1790,7 @@ Underfull \hbox (badness 3428) in paragraph at lines 319--320
 \T2A/ppl/m/sc/10 (+20) открыть его, выберите drawOn: на панели методов и нажмит
 е
 [114 <./Environment/figures/CanvasDraw.png>]
-<Environment/figures/Versions.png, id=2825, 767.86874pt x 394.47375pt>
+<Environment/figures/Versions.png, id=2830, 767.86874pt x 394.47375pt>
 <use Environment/figures/Versions.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1802,17 +1802,17 @@ t/figures/Versions.png>]
 Underfull \hbox (badness 2837) in paragraph at lines 363--364
 \T2A/ppl/m/sc/10 (+20) в подклассах. (Если вы нажмјте на треугольник, то перейд
 јте
-<Environment/figures/OBInheritanceOverriding.png, id=2836, 847.165pt x 513.92pt
+<Environment/figures/OBInheritanceOverriding.png, id=2841, 847.165pt x 513.92pt
 > <use Environment/figures/OBInheritanceOverriding.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/hierarchyBrowser.png, id=2838, 818.05624pt x 464.73625pt>
+<Environment/figures/hierarchyBrowser.png, id=2843, 818.05624pt x 464.73625pt>
 <use Environment/figures/hierarchyBrowser.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/chasingBrowser.png, id=2840, 767.86874pt x 394.47375pt>
+<Environment/figures/chasingBrowser.png, id=2845, 767.86874pt x 394.47375pt>
 <use Environment/figures/chasingBrowser.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [116] [117 <./Envi
 ronment/figures/OBInheritanceOverriding.png> <./Environment/figures/hierarchyBr
@@ -1820,7 +1820,7 @@ owser.png>]
 Underfull \hbox (badness 1917) in paragraph at lines 434--435
 \T2A/ppl/m/sc/10 (+20) В контекстном меню предлагается широкий выбор действий д
 ля
-<Environment/figures/refactoring.png, id=2857, 818.05624pt x 524.96124pt>
+<Environment/figures/refactoring.png, id=2862, 818.05624pt x 524.96124pt>
 <use Environment/figures/refactoring.png>
 Underfull \vbox (badness 8094) has occurred while \output is active [118 <./Env
 ironment/figures/chasingBrowser.png>]
@@ -1885,17 +1885,17 @@ Underfull \hbox (badness 2653) in paragraph at lines 587--588
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/freshMonticello.png, id=2896, 744.7825pt x 298.11375pt>
+<Environment/figures/freshMonticello.png, id=2901, 744.7825pt x 298.11375pt>
 <use Environment/figures/freshMonticello.png> [122] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/SqueakSource-PBE.png, id=2906, 621.32124pt x 472.76625pt>
+<Environment/figures/SqueakSource-PBE.png, id=2911, 621.32124pt x 472.76625pt>
 <use Environment/figures/SqueakSource-PBE.png> [123 <./Environment/figures/fres
 hMonticello.png> <./Environment/figures/SqueakSource-PBE.png>]
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/MCnewcategory.png, id=2922, 818.05624pt x 464.73625pt>
+<Environment/figures/MCnewcategory.png, id=2927, 818.05624pt x 464.73625pt>
 <use Environment/figures/MCnewcategory.png>
-<Environment/figures/MCnewmethod.png, id=2923, 818.05624pt x 464.73625pt>
+<Environment/figures/MCnewmethod.png, id=2928, 818.05624pt x 464.73625pt>
 <use Environment/figures/MCnewmethod.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1907,17 +1907,17 @@ t/figures/MCnewcategory.png>]
 Underfull \hbox (badness 1565) in paragraph at lines 690--692
 \T2A/ppl/m/sc/10 (+20) в класс--- звјздочка опять появится, указывая на несохра
 нјнные
-<Environment/figures/MC+PBE.png, id=2933, 752.8125pt x 227.85126pt>
+<Environment/figures/MC+PBE.png, id=2938, 752.8125pt x 227.85126pt>
 <use Environment/figures/MC+PBE.png>
-<Environment/figures/PBE-on.png, id=2934, 483.8075pt x 208.78pt>
+<Environment/figures/PBE-on.png, id=2939, 483.8075pt x 208.78pt>
 <use Environment/figures/PBE-on.png>
-<Environment/figures/package-cache-browser.png, id=2935, 766.865pt x 399.4925pt
+<Environment/figures/package-cache-browser.png, id=2940, 766.865pt x 399.4925pt
 > <use Environment/figures/package-cache-browser.png>
 Underfull \vbox (badness 4479) has occurred while \output is active [125 <./Env
 ironment/figures/MCnewmethod.png>] [126 <./Environment/figures/MC+PBE.png> <./E
 nvironment/figures/PBE-on.png> <./Environment/figures/package-cache-browser.png
 >] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/MCaddToPackage.png, id=2950, 611.28375pt x 292.09125pt>
+<Environment/figures/MCaddToPackage.png, id=2955, 611.28375pt x 292.09125pt>
 <use Environment/figures/MCaddToPackage.png>
 Underfull \hbox (badness 3930) in paragraph at lines 748--753
 \T2A/ppl/m/sc/10 (+20) Одна из вещей, отличающих Smalltalk от многих других сре
@@ -1925,7 +1925,7 @@ Underfull \hbox (badness 3930) in paragraph at lines 748--753
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [127 <./Environmen
 t/figures/MCaddToPackage.png>]
-<Environment/figures/inspectTimeNow1.png, id=2955, 656.4525pt x 297.11pt>
+<Environment/figures/inspectTimeNow1.png, id=2960, 656.4525pt x 297.11pt>
 <use Environment/figures/inspectTimeNow1.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -1949,11 +1949,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 823--826
 Underfull \hbox (badness 3343) in paragraph at lines 823--826
 \T2A/ppl/m/sc/10 (+20) представляет информацию несколько по-другому. Чтобы увид
 еть
-<Environment/figures/exploreTimeStampNow.png, id=2965, 349.305pt x 320.19624pt>
+<Environment/figures/exploreTimeStampNow.png, id=2970, 349.305pt x 320.19624pt>
 <use Environment/figures/exploreTimeStampNow.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/exploreTimeStampNow2.png, id=2966, 349.305pt x 320.19624pt
+<Environment/figures/exploreTimeStampNow2.png, id=2971, 349.305pt x 320.19624pt
 > <use Environment/figures/exploreTimeStampNow2.png>
 Underfull \hbox (badness 10000) in paragraph at lines 846--846
 []\T2A/ppl/m/sc/10 (+20) Рис. 6.24: []Исследование
@@ -1967,7 +1967,7 @@ png>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 10000) in paragraph at lines 874--877
 \T2A/ppl/m/sc/10 (+20) внимание, что вы можете переходить напрямую к объектам,
-<Environment/figures/ExploreObject.png, id=2978, 371.3875pt x 502.87875pt>
+<Environment/figures/ExploreObject.png, id=2983, 371.3875pt x 502.87875pt>
 <use Environment/figures/ExploreObject.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \vbox (badness 10000) has occurred while \output is active [130 <./En
@@ -1977,7 +1977,7 @@ vironment/figures/ExploreObject.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/PreDebugWindow.png, id=2985, 497.86pt x 214.8025pt>
+<Environment/figures/PreDebugWindow.png, id=2990, 497.86pt x 214.8025pt>
 <use Environment/figures/PreDebugWindow.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2000,7 +2000,7 @@ Underfull \hbox (badness 1253) in paragraph at lines 942--952
 [][][][][] \T2A/ppl/m/sc/10 (+20) ([][][][][][][][][][][][]). Это привело к вып
 олнению метода [][][][],
 [131 <./Environment/figures/PreDebugWindow.png>]
-<Environment/figures/debuggerDetectIfNone.png, id=2999, 646.415pt x 558.085pt>
+<Environment/figures/debuggerDetectIfNone.png, id=3004, 646.415pt x 558.085pt>
 <use Environment/figures/debuggerDetectIfNone.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [132 <./En
 vironment/figures/debuggerDetectIfNone.png>]
@@ -2016,7 +2016,7 @@ vironment/figures/debuggerDetectIfNone.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/RestartDetectIfNone.png, id=3009, 646.415pt x 558.085pt>
+<Environment/figures/RestartDetectIfNone.png, id=3014, 646.415pt x 558.085pt>
 <use Environment/figures/RestartDetectIfNone.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2037,7 +2037,7 @@ t/figures/RestartDetectIfNone.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/steppingIntoValue.png, id=3022, 646.415pt x 558.085pt>
+<Environment/figures/steppingIntoValue.png, id=3027, 646.415pt x 558.085pt>
 <use Environment/figures/steppingIntoValue.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2050,12 +2050,12 @@ t/figures/RestartDetectIfNone.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/dotIsAString.png, id=3024, 646.415pt x 558.085pt>
+<Environment/figures/dotIsAString.png, id=3029, 646.415pt x 558.085pt>
 <use Environment/figures/dotIsAString.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/revertDialog.png, id=3025, 632.3625pt x 546.04pt>
+<Environment/figures/revertDialog.png, id=3030, 632.3625pt x 546.04pt>
 <use Environment/figures/revertDialog.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2072,7 +2072,7 @@ t/figures/steppingIntoValue.png>]
 t/figures/dotIsAString.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/fixOffByOne.png, id=3044, 867.24pt x 666.49pt>
+<Environment/figures/fixOffByOne.png, id=3049, 867.24pt x 666.49pt>
 <use Environment/figures/fixOffByOne.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2094,29 +2094,29 @@ t/figures/fixOffByOne.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/processBrowser.png, id=3066, 767.86874pt x 394.47375pt>
+<Environment/figures/processBrowser.png, id=3071, 767.86874pt x 394.47375pt>
 <use Environment/figures/processBrowser.png> [139]
-<Environment/figures/methodNamesRandom.png, id=3079, 550.055pt x 409.53pt>
+<Environment/figures/methodNamesRandom.png, id=3084, 550.055pt x 409.53pt>
 <use Environment/figures/methodNamesRandom.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [140 <./Environmen
 t/figures/processBrowser.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/changeSorter.png, id=3086, 767.86874pt x 409.53pt>
+<Environment/figures/changeSorter.png, id=3091, 767.86874pt x 409.53pt>
 <use Environment/figures/changeSorter.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [141 <./En
 vironment/figures/methodNamesRandom.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active [142 <./En
 vironment/figures/changeSorter.png>]
-<Environment/figures/fileList.png, id=3099, 767.86874pt x 394.47375pt>
+<Environment/figures/fileList.png, id=3104, 767.86874pt x 394.47375pt>
 <use Environment/figures/fileList.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [143 <./En
 vironment/figures/fileList.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Environment/figures/fileContentsBrowser.png, id=3107, 767.86874pt x 394.47375p
+<Environment/figures/fileContentsBrowser.png, id=3112, 767.86874pt x 394.47375p
 t> <use Environment/figures/fileContentsBrowser.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [144]
 <use figures/pharo.png>
@@ -2127,7 +2127,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1353--1355
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [145 <./Environmen
 t/figures/fileContentsBrowser.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [146]
-<figures/debugHandle.png, id=3124, 20.075pt x 20.075pt>
+<figures/debugHandle.png, id=3129, 20.075pt x 20.075pt>
 <use figures/debugHandle.png>) (./SUnit/SUnit.tex [147 <./figures/debugHandle.p
 ng>] [148]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 7.
@@ -2205,12 +2205,12 @@ Underfull \hbox (badness 2460) in paragraph at lines 363--370
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<SUnit/figures/browser-tests.png, id=3181, 818.05624pt x 464.73625pt>
+<SUnit/figures/browser-tests.png, id=3186, 818.05624pt x 464.73625pt>
 <use SUnit/figures/browser-tests.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<SUnit/figures/test-runner.png, id=3183, 657.45625pt x 494.84875pt>
+<SUnit/figures/test-runner.png, id=3188, 657.45625pt x 494.84875pt>
 <use SUnit/figures/test-runner.png> <use figures/pharo.png>
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2269,7 +2269,7 @@ Underfull \hbox (badness 1552) in paragraph at lines 607--616
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<SUnit/figures/sunit-classes.pdf, id=3232, 430.60875pt x 193.72375pt>
+<SUnit/figures/sunit-classes.pdf, id=3237, 430.60875pt x 193.72375pt>
 <use SUnit/figures/sunit-classes.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2335,7 +2335,7 @@ Underfull \hbox (badness 1783) in paragraph at lines 930--935
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<SUnit/figures/sunit-scenario.pdf, id=3307, 320.19624pt x 292.09125pt>
+<SUnit/figures/sunit-scenario.pdf, id=3312, 320.19624pt x 292.09125pt>
 <use SUnit/figures/sunit-scenario.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2614,7 +2614,7 @@ Underfull \hbox (badness 1490) in paragraph at lines 454--455
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [178]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<BasicClasses/figures/NumberHierarchy.pdf, id=3622, 416.55624pt x 310.15875pt>
+<BasicClasses/figures/NumberHierarchy.pdf, id=3627, 416.55624pt x 310.15875pt>
 <use BasicClasses/figures/NumberHierarchy.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2752,7 +2752,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 720--721
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<BasicClasses/figures/StringHierarchy.pdf, id=3706, 242.9075pt x 311.1625pt>
+<BasicClasses/figures/StringHierarchy.pdf, id=3711, 242.9075pt x 311.1625pt>
 <use BasicClasses/figures/StringHierarchy.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2782,8 +2782,7 @@ es/figures/StringHierarchy.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<BasicClasses/figures/BooleanHierarchy.pdf, id=3763, 359.3425pt x 300.12125pt>
+<BasicClasses/figures/BooleanHierarchy.pdf, id=3768, 359.3425pt x 300.12125pt>
 <use BasicClasses/figures/BooleanHierarchy.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2809,28 +2808,27 @@ es/figures/BooleanHierarchy.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 1406) in paragraph at lines 856--856
+Underfull \hbox (badness 1406) in paragraph at lines 866--866
 [] \T2A/ppl/m/sc/10 (+20) Try to imagine how [][][][] and [][][][] are implemen
 ted. Check the
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [186]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2857,7 +2855,7 @@ ted. Check the
 Underfull \hbox (badness 1831) in paragraph at lines 55--60
 []\T2A/ppl/m/sc/10 (+20) В Pharo, абстрактный класс [][][][] имеет 101 подкласс
 , а
-<Collections/figures/CollectionHierarchy.pdf, id=3829, 720.6925pt x 424.58624pt
+<Collections/figures/CollectionHierarchy.pdf, id=3834, 720.6925pt x 424.58624pt
 > <use Collections/figures/CollectionHierarchy.pdf>
 Underfull \vbox (badness 10000) has occurred while \output is active [189]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -2989,7 +2987,7 @@ Underfull \hbox (badness 1748) in paragraph at lines 240--249
 гут
 pdfTeX warning: pdflatex (file ./Collections/figures/CollectionsByImpl.pdf): PD
 F inclusion: found PDF version <1.4>, but at most version <1.3> allowed
-<Collections/figures/CollectionsByImpl.pdf, id=3873, 519.02164pt x 148.07831pt>
+<Collections/figures/CollectionsByImpl.pdf, id=3878, 519.02164pt x 148.07831pt>
 <use Collections/figures/CollectionsByImpl.pdf> [193 <./Collections/figures/Col
 lectionsByImpl.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3471,11 +3469,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--73
 Underfull \hbox (badness 10000) in paragraph at lines 64--73
 \T2A/ppl/m/sc/10 (+20) можно рассматривать как две последовательности элементов
 :
-<Streams/figures/_abcdeStef.pdf, id=4266, 438.63875pt x 79.29625pt>
+<Streams/figures/_abcdeStef.pdf, id=4271, 438.63875pt x 79.29625pt>
 <use Streams/figures/_abcdeStef.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [213 <./Streams/fi
 gures/_abcdeStef.pdf>]
-<Streams/figures/a_bcdeStef.pdf, id=4311, 438.63875pt x 79.29625pt>
+<Streams/figures/a_bcdeStef.pdf, id=4316, 438.63875pt x 79.29625pt>
 <use Streams/figures/a_bcdeStef.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3492,7 +3490,7 @@ gures/_abcdeStef.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Streams/figures/ax_cdeStef.pdf, id=4313, 438.63875pt x 79.29625pt>
+<Streams/figures/ax_cdeStef.pdf, id=4318, 438.63875pt x 79.29625pt>
 <use Streams/figures/ax_cdeStef.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3532,7 +3530,7 @@ Underfull \hbox (badness 1077) in paragraph at lines 221--222
 [216] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Streams/figures/ab_cdeStef.pdf, id=4446, 438.63875pt x 79.29625pt>
+<Streams/figures/ab_cdeStef.pdf, id=4451, 438.63875pt x 79.29625pt>
 <use Streams/figures/ab_cdeStef.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3576,25 +3574,25 @@ Overfull \hbox (0.90318pt too wide) in paragraph at lines 371--379
 року-получатель
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Streams/figures/emptyStef.pdf, id=4567, 260.975pt x 79.29625pt>
+<Streams/figures/emptyStef.pdf, id=4572, 260.975pt x 79.29625pt>
 <use Streams/figures/emptyStef.pdf>
 Underfull \hbox (badness 1215) in paragraph at lines 400--400
 []\T2A/ppl/m/sc/10 (+20) Рис. 10.5: []Вновь созданная история пуста. В браузере
  ничего не
-<Streams/figures/page1Stef.pdf, id=4568, 260.975pt x 79.29625pt>
+<Streams/figures/page1Stef.pdf, id=4573, 260.975pt x 79.29625pt>
 <use Streams/figures/page1Stef.pdf>
-<Streams/figures/page2Stef.pdf, id=4569, 260.975pt x 79.29625pt>
+<Streams/figures/page2Stef.pdf, id=4574, 260.975pt x 79.29625pt>
 <use Streams/figures/page2Stef.pdf>
-<Streams/figures/page3Stef.pdf, id=4570, 270.00874pt x 79.29625pt>
+<Streams/figures/page3Stef.pdf, id=4575, 270.00874pt x 79.29625pt>
 <use Streams/figures/page3Stef.pdf>
-<Streams/figures/page2_Stef.pdf, id=4571, 260.975pt x 79.29625pt>
+<Streams/figures/page2_Stef.pdf, id=4576, 260.975pt x 79.29625pt>
 <use Streams/figures/page2_Stef.pdf>
-<Streams/figures/page1_Stef.pdf, id=4572, 260.975pt x 79.29625pt>
+<Streams/figures/page1_Stef.pdf, id=4577, 260.975pt x 79.29625pt>
 <use Streams/figures/page1_Stef.pdf>
 Underfull \hbox (badness 2368) in paragraph at lines 440--440
 []\T2A/ppl/m/sc/10 (+20) Рис. 10.10: []Пользователь снова нажимает на кнопку <<
 Назад>> --
-<Streams/figures/page4Stef.pdf, id=4573, 260.975pt x 79.29625pt>
+<Streams/figures/page4Stef.pdf, id=4578, 260.975pt x 79.29625pt>
 <use Streams/figures/page4Stef.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [220 <./Streams/fi
 gures/emptyStef.pdf>]
@@ -3635,7 +3633,7 @@ Underfull \hbox (badness 1721) in paragraph at lines 648--649
 \T2A/ppl/m/sc/10 (+20) изображений). Вы можете открыть этот файл в својм любимо
 м
 [225] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Streams/figures/checkerboard4x4.png, id=4818, 112.42pt x 112.42pt>
+<Streams/figures/checkerboard4x4.png, id=4823, 112.42pt x 112.42pt>
 <use Streams/figures/checkerboard4x4.png>
 Underfull \hbox (badness 1442) in paragraph at lines 674--674
 []\T2A/ppl/m/sc/10 (+20) Рис. 10.12: []Шахматная доска размером 4x4, которую вы
@@ -3659,9 +3657,9 @@ Underfull \hbox (badness 3701) in paragraph at lines 696--697
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 11.
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<figures/blackHandle.png, id=4846, 20.075pt x 20.075pt>
+<figures/blackHandle.png, id=4851, 20.075pt x 20.075pt>
 <use figures/blackHandle.png> [229]
-<Morphic/figures/detachingMenu.png, id=4852, 172.645pt x 245.91875pt>
+<Morphic/figures/detachingMenu.png, id=4857, 172.645pt x 245.91875pt>
 <use Morphic/figures/detachingMenu.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3708,7 +3706,7 @@ Underfull \hbox (badness 1320) in paragraph at lines 187--200
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/joeStar.png, id=4873, 106.3975pt x 106.3975pt>
+<Morphic/figures/joeStar.png, id=4878, 106.3975pt x 106.3975pt>
 <use Morphic/figures/joeStar.png> [232 <./Morphic/figures/joeStar.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3726,7 +3724,7 @@ Underfull \hbox (badness 1931) in paragraph at lines 240--244
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/NewCross.png, id=4885, 130.4875pt x 130.4875pt>
+<Morphic/figures/NewCross.png, id=4890, 130.4875pt x 130.4875pt>
 <use Morphic/figures/NewCross.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3762,9 +3760,9 @@ gures/NewCross.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/overdrawBug.png, id=4923, 160.6pt x 160.6pt>
+<Morphic/figures/overdrawBug.png, id=4928, 160.6pt x 160.6pt>
 <use Morphic/figures/overdrawBug.png>
-<Morphic/figures/hairlineBug.png, id=4924, 160.6pt x 160.6pt>
+<Morphic/figures/hairlineBug.png, id=4929, 160.6pt x 160.6pt>
 <use Morphic/figures/hairlineBug.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3801,7 +3799,7 @@ Underfull \hbox (badness 2418) in paragraph at lines 494--497
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<figures/moveHandle.png, id=4975, 20.075pt x 20.075pt>
+<figures/moveHandle.png, id=4980, 20.075pt x 20.075pt>
 <use figures/moveHandle.png> <use figures/blackHandle.png> [237]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3862,9 +3860,9 @@ Underfull \hbox (badness 1019) in paragraph at lines 630--636
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/dialog-ru.png, id=5029, 173.14688pt x 132.495pt>
+<Morphic/figures/dialog-ru.png, id=5034, 173.14688pt x 132.495pt>
 <use Morphic/figures/dialog-ru.png>
-<Morphic/figures/popup-ru.png, id=5030, 161.85469pt x 185.19188pt>
+<Morphic/figures/popup-ru.png, id=5035, 161.85469pt x 185.19188pt>
 <use Morphic/figures/popup-ru.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3916,7 +3914,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 783--783
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/die.png, id=5085, 100.375pt x 111.41624pt>
+<Morphic/figures/die.png, id=5090, 100.375pt x 111.41624pt>
 <use Morphic/figures/die.png> [243] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -3994,7 +3992,7 @@ Underfull \hbox (badness 4859) in paragraph at lines 1057--1064
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Morphic/figures/multiMorphs.png, id=5216, 110.4125pt x 105.39375pt>
+<Morphic/figures/multiMorphs.png, id=5221, 110.4125pt x 105.39375pt>
 <use Morphic/figures/multiMorphs.png>
 Underfull \vbox (badness 2644) has occurred while \output is active [248 <./Mor
 phic/figures/multiMorphs.png>]
@@ -4029,7 +4027,7 @@ Underfull \hbox (badness 5231) in paragraph at lines 1133--1134
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentEllipse.png, id=5262, 525.965pt x 170.6375pt>
+<Metaclasses/figures/TranslucentEllipse.png, id=5267, 525.965pt x 170.6375pt>
 <use Metaclasses/figures/TranslucentEllipse.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4047,7 +4045,7 @@ Underfull \hbox (badness 5231) in paragraph at lines 1133--1134
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentClassMessage.pdf, id=5285, 726.715pt x 282.0537
+<Metaclasses/figures/TranslucentClassMessage.pdf, id=5290, 726.715pt x 282.0537
 6pt> <use Metaclasses/figures/TranslucentClassMessage.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4060,7 +4058,7 @@ e.pdf>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentMetaclasses.pdf, id=5324, 667.49374pt x 220.825
+<Metaclasses/figures/TranslucentMetaclasses.pdf, id=5329, 667.49374pt x 220.825
 pt> <use Metaclasses/figures/TranslucentMetaclasses.pdf> [256 <./Metaclasses/fi
 gures/TranslucentMetaclasses.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4068,7 +4066,7 @@ Underfull \hbox (badness 4765) in paragraph at lines 227--227
  |[]\T2A/ppl/bx/n/14.4 The metaclass hierarchy parallels the class
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentMetaclassHierarchy.pdf, id=5363, 667.49374pt x 
+<Metaclasses/figures/TranslucentMetaclassHierarchy.pdf, id=5368, 667.49374pt x 
 220.825pt> <use Metaclasses/figures/TranslucentMetaclassHierarchy.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [257 <./Metaclasse
 s/figures/TranslucentMetaclassHierarchy.pdf>]
@@ -4080,7 +4078,7 @@ s/figures/TranslucentMetaclassHierarchy.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentColorBlue.pdf, id=5402, 759.83875pt x 271.0125p
+<Metaclasses/figures/TranslucentColorBlue.pdf, id=5407, 759.83875pt x 271.0125p
 t> <use Metaclasses/figures/TranslucentColorBlue.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4092,14 +4090,14 @@ s/figures/TranslucentColorBlue.pdf>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/InspectingColor.png, id=5443, 600.2425pt x 313.17pt>
+<Metaclasses/figures/InspectingColor.png, id=5448, 600.2425pt x 313.17pt>
 <use Metaclasses/figures/InspectingColor.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentBehavior.pdf, id=5445, 703.62875pt x 374.39874p
+<Metaclasses/figures/TranslucentBehavior.pdf, id=5450, 703.62875pt x 374.39874p
 t> <use Metaclasses/figures/TranslucentBehavior.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4120,7 +4118,7 @@ s/figures/InspectingColor.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentSendingNew.pdf, id=5453, 815.045pt x 396.48125p
+<Metaclasses/figures/TranslucentSendingNew.pdf, id=5458, 815.045pt x 396.48125p
 t> <use Metaclasses/figures/TranslucentSendingNew.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4165,12 +4163,12 @@ It provides
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \vbox (badness 10000) has occurred while \output is active [261 <./Me
 taclasses/figures/TranslucentSendingNew.pdf>]
-<Metaclasses/figures/TranslucentMetaclassClass.pdf, id=5513, 804.00375pt x 375.
+<Metaclasses/figures/TranslucentMetaclassClass.pdf, id=5518, 804.00375pt x 375.
 4025pt> <use Metaclasses/figures/TranslucentMetaclassClass.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Metaclasses/figures/TranslucentMetaclassClassClass.pdf, id=5515, 775.89874pt x
+<Metaclasses/figures/TranslucentMetaclassClassClass.pdf, id=5520, 775.89874pt x
  432.61626pt> <use Metaclasses/figures/TranslucentMetaclassClassClass.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4206,7 +4204,7 @@ s/figures/TranslucentMetaclassClassClass.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<FirstApp/figures/monticelloBrowser.png, id=5610, 825.0825pt x 331.2375pt>
+<FirstApp/figures/monticelloBrowser.png, id=5615, 825.0825pt x 331.2375pt>
 <use FirstApp/figures/monticelloBrowser.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4214,7 +4212,7 @@ s/figures/TranslucentMetaclassClassClass.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [268]
 <use figures/pharo.png>
-<Monticello/figures/perfectPackage.png, id=5626, 757.83125pt x 235.88126pt>
+<Monticello/figures/perfectPackage.png, id=5631, 757.83125pt x 235.88126pt>
 <use Monticello/figures/perfectPackage.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4224,7 +4222,7 @@ igures/monticelloBrowser.png> <./Monticello/figures/perfectPackage.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
-<Monticello/figures/saving.png, id=5635, 417.56pt x 202.7575pt>
+<Monticello/figures/saving.png, id=5640, 417.56pt x 202.7575pt>
 <use Monticello/figures/saving.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [270 <./Monticello
@@ -4240,27 +4238,27 @@ igures/monticelloBrowser.png> <./Monticello/figures/perfectPackage.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [271]
-<Monticello/figures/dirty.png, id=5657, 597.23125pt x 213.79875pt>
+<Monticello/figures/dirty.png, id=5662, 597.23125pt x 213.79875pt>
 <use Monticello/figures/dirty.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/repositoryinspector.png, id=5660, 698.61pt x 488.82625pt>
+<Monticello/figures/repositoryinspector.png, id=5665, 698.61pt x 488.82625pt>
 <use Monticello/figures/repositoryinspector.png> [272 <./Monticello/figures/dir
 ty.png>] [273 <./Monticello/figures/repositoryinspector.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/unload.png, id=5674, 597.23125pt x 314.17375pt>
+<Monticello/figures/unload.png, id=5679, 597.23125pt x 314.17375pt>
 <use Monticello/figures/unload.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/loading.png, id=5675, 597.23125pt x 357.335pt>
+<Monticello/figures/loading.png, id=5680, 597.23125pt x 357.335pt>
 <use Monticello/figures/loading.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [274 <./Monticello
 /figures/unload.png>] <use figures/pharo.png>
@@ -4271,24 +4269,24 @@ ty.png>] [273 <./Monticello/figures/repositoryinspector.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [275 <./Monticello
 /figures/loading.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/unsavedWarning.png, id=5692, 466.74374pt x 163.61125pt>
+<Monticello/figures/unsavedWarning.png, id=5697, 466.74374pt x 163.61125pt>
 <use Monticello/figures/unsavedWarning.png> <use figures/pharo.png>
-<Monticello/figures/newerWarning.png, id=5693, 583.17876pt x 240.9pt>
+<Monticello/figures/newerWarning.png, id=5698, 583.17876pt x 240.9pt>
 <use Monticello/figures/newerWarning.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/branch.png, id=5694, 657.45625pt x 314.17375pt>
+<Monticello/figures/branch.png, id=5699, 657.45625pt x 314.17375pt>
 <use Monticello/figures/branch.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [276 <./Monticello
 /figures/unsavedWarning.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/branching-merging.pdf, id=5715, 527.9725pt x 173.64874pt>
+<Monticello/figures/branching-merging.pdf, id=5720, 527.9725pt x 173.64874pt>
 <use Monticello/figures/branching-merging.pdf>
 Underfull \vbox (badness 1810) has occurred while \output is active [277 <./Mon
 ticello/figures/newerWarning.png> <./Monticello/figures/branch.png>]
-<Monticello/figures/mergeButton.png, id=5723, 657.45625pt x 361.35pt>
+<Monticello/figures/mergeButton.png, id=5728, 657.45625pt x 361.35pt>
 <use Monticello/figures/mergeButton.png> <use figures/pharo.png>
-<Monticello/figures/mergeTool.png, id=5725, 537.00626pt x 378.41376pt>
+<Monticello/figures/mergeTool.png, id=5730, 537.00626pt x 378.41376pt>
 <use Monticello/figures/mergeTool.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4304,17 +4302,17 @@ ticello/figures/newerWarning.png> <./Monticello/figures/branch.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/keepReject.png, id=5748, 540.0175pt x 403.5075pt>
+<Monticello/figures/keepReject.png, id=5753, 540.0175pt x 403.5075pt>
 <use Monticello/figures/keepReject.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [279 <./Monticello
 /figures/mergeTool.png>]
-<Monticello/figures/merged.png, id=5755, 569.12625pt x 373.395pt>
+<Monticello/figures/merged.png, id=5760, 569.12625pt x 373.395pt>
 <use Monticello/figures/merged.png> [280 <./Monticello/figures/keepReject.png> 
 <./Monticello/figures/merged.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/packageviewer.png, id=5763, 724.7075pt x 342.27875pt>
+<Monticello/figures/packageviewer.png, id=5768, 724.7075pt x 342.27875pt>
 <use Monticello/figures/packageviewer.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4324,15 +4322,15 @@ Underfull \vbox (badness 5161) has occurred while \output is active [281 <./Mon
 ticello/figures/packageviewer.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/patchbrowser.png, id=5771, 615.29875pt x 323.2075pt>
+<Monticello/figures/patchbrowser.png, id=5776, 615.29875pt x 323.2075pt>
 <use Monticello/figures/patchbrowser.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [282 <./Monticello
 /figures/patchbrowser.png>] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/historyviewer.png, id=5791, 654.445pt x 250.9375pt>
+<Monticello/figures/historyviewer.png, id=5796, 654.445pt x 250.9375pt>
 <use Monticello/figures/historyviewer.png>
-<Monticello/figures/backport.pdf, id=5793, 565.11125pt x 524.96124pt>
+<Monticello/figures/backport.pdf, id=5798, 565.11125pt x 524.96124pt>
 <use Monticello/figures/backport.pdf> [283 <./Monticello/figures/historyviewer.
 png>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4344,7 +4342,7 @@ png>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \vbox (badness 10000) has occurred while \output is active [284 <./Mo
 nticello/figures/backport.pdf>]
-<Monticello/figures/changes.png, id=5823, 509.905pt x 381.425pt>
+<Monticello/figures/changes.png, id=5828, 509.905pt x 381.425pt>
 <use Monticello/figures/changes.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4356,7 +4354,7 @@ nticello/figures/backport.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/dependencies.pdf, id=5833, 558.085pt x 224.84pt>
+<Monticello/figures/dependencies.pdf, id=5838, 558.085pt x 224.84pt>
 <use Monticello/figures/dependencies.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4380,7 +4378,7 @@ nticello/figures/backport.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Monticello/figures/perfectDependencies.png, id=5857, 850.17625pt x 239.89626pt
+<Monticello/figures/perfectDependencies.png, id=5862, 850.17625pt x 239.89626pt
 > <use Monticello/figures/perfectDependencies.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4418,13 +4416,13 @@ nticello/figures/backport.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [289]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [290]
-<Monticello/figures/squeaksource2.png, id=5911, 784.9325pt x 527.9725pt>
+<Monticello/figures/squeaksource2.png, id=5916, 784.9325pt x 527.9725pt>
 <use Monticello/figures/squeaksource2.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [291 <./Monticello
 /figures/squeaksource2.png>]
 LaTeX Font Warning: Font shape `T2A/lmr/m/n' undefined
 (Font)              using `T2A/cmr/m/n' instead on input line 813.
-<Monticello/figures/squeaksourcesetting.png, id=5928, 791.95876pt x 885.3075pt>
+<Monticello/figures/squeaksourcesetting.png, id=5933, 791.95876pt x 885.3075pt>
 <use Monticello/figures/squeaksourcesetting.png> [292 <./Monticello/figures/squ
 eaksourcesetting.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4469,10 +4467,10 @@ Underfull \hbox (badness 1348) in paragraph at lines 153--161
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [300]
-<Seaside/figures/seasideStartup.png, id=5975, 920.43875pt x 581.17125pt>
+<Seaside/figures/seasideStartup.png, id=5980, 920.43875pt x 581.17125pt>
 <use Seaside/figures/seasideStartup.png> <use figures/pharo.png>
 <use figures/pharo.png>
-<Seaside/figures/counter.png, id=5979, 901.3675pt x 358.33875pt>
+<Seaside/figures/counter.png, id=5984, 901.3675pt x 358.33875pt>
 <use Seaside/figures/counter.png>
 Underfull \hbox (badness 1112) in paragraph at lines 262--268
 \T2A/ppl/m/sc/10 (+20) страницу, и щелкните по сслылке $[]$. Стоит обратить вни
@@ -4499,7 +4497,7 @@ Underfull \hbox (badness 1325) in paragraph at lines 287--300
 Underfull \hbox (badness 1259) in paragraph at lines 309--316
 []\T2A/ppl/m/sc/10 (+20) Seaside приложение создается из подключаемых <<компоне
 нтов>>.
-<Seaside/figures/counterHalos.png, id=5988, 743.77875pt x 334.24875pt>
+<Seaside/figures/counterHalos.png, id=5993, 743.77875pt x 334.24875pt>
 <use Seaside/figures/counterHalos.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 LaTeX Font Warning: Font shape `T2A/lmr/m/it' undefined
@@ -4508,13 +4506,13 @@ LaTeX Font Warning: Font shape `T2A/lmr/m/it' undefined
 Underfull \hbox (badness 1137) in paragraph at lines 360--364
 []\T2A/ppl/m/sc/10 (+20) Seaside классовый браузер и объектный инспектор могут 
 быть
-<Seaside/figures/haltingCounter.png, id=5995, 467.7475pt x 165.61874pt>
+<Seaside/figures/haltingCounter.png, id=6000, 467.7475pt x 165.61874pt>
 <use Seaside/figures/haltingCounter.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [303 <./Seaside/fi
 gures/counterHalos.png> <./Seaside/figures/haltingCounter.png>]
-<Seaside/figures/multiCounterHalos.png, id=6003, 784.9325pt x 481.8pt>
+<Seaside/figures/multiCounterHalos.png, id=6008, 784.9325pt x 481.8pt>
 <use Seaside/figures/multiCounterHalos.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4532,7 +4530,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 439--442
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [304 <./Seaside/fi
 gures/multiCounterHalos.png>]
-<Seaside/figures/counter2.png, id=6014, 598.1547pt x 555.0336pt>
+<Seaside/figures/counter2.png, id=6019, 598.1547pt x 555.0336pt>
 <use Seaside/figures/counter2.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4568,9 +4566,9 @@ Underfull \hbox (badness 6641) in paragraph at lines 576--576
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/WAHelloWorld.png, id=6024, 592.2125pt x 253.94875pt>
+<Seaside/figures/WAHelloWorld.png, id=6029, 592.2125pt x 253.94875pt>
 <use Seaside/figures/WAHelloWorld.png>
-<Seaside/figures/WACounter.pdf, id=6025, 672.5125pt x 405.515pt>
+<Seaside/figures/WACounter.pdf, id=6030, 672.5125pt x 405.515pt>
 <use Seaside/figures/WACounter.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [306]
@@ -4638,7 +4636,7 @@ Underfull \hbox (badness 5847) in paragraph at lines 760--770
 Underfull \hbox (badness 3849) in paragraph at lines 760--770
 \T2A/ppl/m/sc/10 (+20) вложенных компонентов. Компонент сам прорисовывает кажды
 й
-<Seaside/figures/WAMultiCounter.pdf, id=6100, 741.77126pt x 231.86626pt>
+<Seaside/figures/WAMultiCounter.pdf, id=6105, 741.77126pt x 231.86626pt>
 <use Seaside/figures/WAMultiCounter.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4667,7 +4665,7 @@ Underfull \hbox (badness 1852) in paragraph at lines 843--850
 \T2A/ppl/m/sc/10 (+20) просмотреть класс [][][][][] и его подклассы. Аргумент м
 етода
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/RenderingDemo.png, id=6134, 689.57625pt x 783.92876pt>
+<Seaside/figures/RenderingDemo.png, id=6139, 689.57625pt x 783.92876pt>
 <use Seaside/figures/RenderingDemo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4773,7 +4771,7 @@ Underfull \vbox (badness 7081) has occurred while \output is active [317]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/dialogs.pdf, id=6326, 562.1pt x 254.9525pt>
+<Seaside/figures/dialogs.pdf, id=6331, 562.1pt x 254.9525pt>
 <use Seaside/figures/dialogs.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4799,11 +4797,11 @@ gures/dialogs.pdf>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/chooseCheese.pdf, id=6395, 674.52pt x 252.945pt>
+<Seaside/figures/chooseCheese.pdf, id=6400, 674.52pt x 252.945pt>
 <use Seaside/figures/chooseCheese.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [321 <./Seaside/fi
 gures/chooseCheese.pdf>]
-<Seaside/figures/sushiStore.png, id=6442, 917.4275pt x 404.51125pt>
+<Seaside/figures/sushiStore.png, id=6447, 917.4275pt x 404.51125pt>
 <use Seaside/figures/sushiStore.png> [322 <./Seaside/figures/sushiStore.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4822,7 +4820,7 @@ gures/chooseCheese.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 1603--1603
 [] \T2A/ppl/m/sc/10 (+20) Go to [][]$http : / / localhost : 8080 / seaside / te
 sts / alltests$[][], select
-<Seaside/figures/stackMachine.pdf, id=6487, 638.385pt x 294.09875pt>
+<Seaside/figures/stackMachine.pdf, id=6492, 638.385pt x 294.09875pt>
 <use Seaside/figures/stackMachine.pdf> [324] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4881,7 +4879,7 @@ Underfull \hbox (badness 1077) in paragraph at lines 1749--1749
  keypad
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/firstStackDisplay.png, id=6548, 373.395pt x 111.41624pt>
+<Seaside/figures/firstStackDisplay.png, id=6553, 373.395pt x 111.41624pt>
 <use Seaside/figures/firstStackDisplay.png> <use figures/pharo.png> [327]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -4949,7 +4947,7 @@ elf, you can simply
 <use figures/pharo.png> [332] <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Seaside/figures/ajax-processing.pdf, id=6677, 786.94pt x 539.01375pt>
+<Seaside/figures/ajax-processing.pdf, id=6682, 786.94pt x 539.01375pt>
 <use Seaside/figures/ajax-processing.pdf> <use figures/pharo.png> [333 <./Seasi
 de/figures/ajax-processing.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5025,7 +5023,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Regex/figures/aWebDir.png, id=6738, 332.24126pt x 176.66pt>
+<Regex/figures/aWebDir.png, id=6743, 332.24126pt x 176.66pt>
 <use Regex/figures/aWebDir.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png> [338]
@@ -5113,7 +5111,7 @@ res/aWebDir.png>] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Regex/figures/PBE-toc.png, id=6891, 944.52875pt x 352.31625pt>
+<Regex/figures/PBE-toc.png, id=6896, 944.52875pt x 352.31625pt>
 <use Regex/figures/PBE-toc.png> [345 <./Regex/figures/PBE-toc.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5291,7 +5289,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 936--942
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [357])
 (./Omnibrowser/Omnibrowser.tex [358]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 16.
-<Omnibrowser/figures/filebrowser.png, id=7167, 749.80125pt x 379.4175pt>
+<Omnibrowser/figures/filebrowser.png, id=7172, 749.80125pt x 379.4175pt>
 <use Omnibrowser/figures/filebrowser.png> [359]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5338,7 +5336,7 @@ r/figures/filebrowser.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 10000) in paragraph at lines 228--228
  |[]\T2A/phv/bx/n/14.4 Enhancing the file browser with actions,
-<Omnibrowser/figures/command.png, id=7246, 334.3692pt x 218.7372pt>
+<Omnibrowser/figures/command.png, id=7251, 334.3692pt x 218.7372pt>
 <use Omnibrowser/figures/command.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5413,10 +5411,10 @@ r/figures/command.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [368]
-<Omnibrowser/figures/CoreOnly.pdf, id=7394, 575.14874pt x 265.99374pt>
+<Omnibrowser/figures/CoreOnly.pdf, id=7399, 575.14874pt x 265.99374pt>
 <use Omnibrowser/figures/CoreOnly.pdf> [369 <./Omnibrowser/figures/CoreOnly.pdf
 >] (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [370]
-<Omnibrowser/figures/Core.pdf, id=7436, 574.145pt x 446.66875pt>
+<Omnibrowser/figures/Core.pdf, id=7441, 574.145pt x 446.66875pt>
 <use Omnibrowser/figures/Core.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5446,7 +5444,7 @@ r/figures/Core.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \vbox (badness 1540) has occurred while \output is active [373]
-<Omnibrowser/figures/obbrowser.png, id=7486, 902.37125pt x 449.68pt>
+<Omnibrowser/figures/obbrowser.png, id=7491, 902.37125pt x 449.68pt>
 <use Omnibrowser/figures/obbrowser.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5462,9 +5460,9 @@ r/figures/obbrowser.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Omnibrowser/figures/obInternal.pdf, id=7494, 574.145pt x 393.47pt>
+<Omnibrowser/figures/obInternal.pdf, id=7499, 574.145pt x 393.47pt>
 <use Omnibrowser/figures/obInternal.pdf>
-<Omnibrowser/figures/ob-graph.pdf, id=7495, 529.98pt x 238.8925pt>
+<Omnibrowser/figures/ob-graph.pdf, id=7500, 529.98pt x 238.8925pt>
 <use Omnibrowser/figures/ob-graph.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [375 <./Omnibrowse
@@ -5485,7 +5483,7 @@ method
 r/figures/ob-graph.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Omnibrowser/figures/classSortFilter.pdf, id=7547, 45.16875pt x 98.3675pt>
+<Omnibrowser/figures/classSortFilter.pdf, id=7552, 45.16875pt x 98.3675pt>
 <use Omnibrowser/figures/classSortFilter.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5513,7 +5511,7 @@ r/figures/classSortFilter.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [378]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Omnibrowser/figures/BrowserFamily.pdf, id=7572, 452.69125pt x 262.9825pt>
+<Omnibrowser/figures/BrowserFamily.pdf, id=7577, 452.69125pt x 262.9825pt>
 <use Omnibrowser/figures/BrowserFamily.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [379 <./Omnibrowse
@@ -5601,7 +5599,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active [385]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [389]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Exceptions/figures/SimpleHierarchy.pdf, id=7701, 345.29pt x 266.9975pt>
+<Exceptions/figures/SimpleHierarchy.pdf, id=7706, 345.29pt x 266.9975pt>
 <use Exceptions/figures/SimpleHierarchy.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5679,7 +5677,7 @@ Underfull \hbox (badness 6220) in paragraph at lines 382--384
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Exceptions/figures/Stack.pdf, id=7819, 571.13374pt x 234.8775pt>
+<Exceptions/figures/Stack.pdf, id=7824, 571.13374pt x 234.8775pt>
 <use Exceptions/figures/Stack.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5755,7 +5753,7 @@ Underfull \hbox (badness 6220) in paragraph at lines 382--384
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 Underfull \hbox (badness 10000) in paragraph at lines 716--717
 []\T2A/ppl/m/sc/10 (+20) When the message [][][][] is sent, if the
-<Exceptions/figures/Deprecation.png, id=7967, 712.6625pt x 488.82625pt>
+<Exceptions/figures/Deprecation.png, id=7972, 712.6625pt x 488.82625pt>
 <use Exceptions/figures/Deprecation.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5862,7 +5860,7 @@ Underfull \hbox (badness 2020) in paragraph at lines 1029--1031
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [409]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Exceptions/figures/ExceptionSubclasses.pdf, id=8179, 760.8425pt x 508.90125pt>
+<Exceptions/figures/ExceptionSubclasses.pdf, id=8184, 760.8425pt x 508.90125pt>
 <use Exceptions/figures/ExceptionSubclasses.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5912,7 +5910,7 @@ Underfull \hbox (badness 2020) in paragraph at lines 1029--1031
 Underfull \hbox (badness 1354) in paragraph at lines 52--62
 \T2A/ppl/m/sc/10 (+20) Smalltalk обладает возможностями рефлексии (reflection).
  Вкратце,
-<Reflection/figures/reflect.pdf, id=8235, 649.42625pt x 305.14pt>
+<Reflection/figures/reflect.pdf, id=8240, 649.42625pt x 305.14pt>
 <use Reflection/figures/reflect.pdf> [415 <./Reflection/figures/reflect.pdf>]
 Underfull \hbox (badness 1325) in paragraph at lines 76--79
 \T2A/ppl/m/sc/10 (+20) язык программирования должен поддерживать и []интроспекц
@@ -5926,7 +5924,7 @@ Underfull \hbox (badness 1226) in paragraph at lines 81--86
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/workspaceInspector.png, id=8294, 832.10875pt x 339.2675pt>
+<Reflection/figures/workspaceInspector.png, id=8299, 832.10875pt x 339.2675pt>
 <use Reflection/figures/workspaceInspector.png> <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -5942,7 +5940,7 @@ Underfull \hbox (badness 1226) in paragraph at lines 81--86
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [417 <./Reflection
 /figures/workspaceInspector.png>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/allInstanceVariables.png, id=8312, 570.13pt x 162.6075pt>
+<Reflection/figures/allInstanceVariables.png, id=8317, 570.13pt x 162.6075pt>
 <use Reflection/figures/allInstanceVariables.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6039,7 +6037,7 @@ Underfull \hbox (badness 1173) in paragraph at lines 412--420
 \T2A/ppl/m/sc/10 (+20) программирования Pharo, в частности в браузеры кода. Как
  вам
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/implementors.png, id=8384, 862.22125pt x 396.48125pt>
+<Reflection/figures/implementors.png, id=8389, 862.22125pt x 396.48125pt>
 <use Reflection/figures/implementors.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6054,7 +6052,7 @@ Underfull \hbox (badness 6995) in paragraph at lines 431--434
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/CompiledMethod.png, id=8399, 403.5075pt x 445.665pt>
+<Reflection/figures/CompiledMethod.png, id=8404, 403.5075pt x 445.665pt>
 <use Reflection/figures/CompiledMethod.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6067,7 +6065,7 @@ Underfull \hbox (badness 1152) in paragraph at lines 464--473
 \T2A/ppl/m/sc/10 (+20) На Рис. [][]18.5[][] мы можем даже видеть, что эта связь
  хранится в
 [423 <./Reflection/figures/implementors.png>]
-<Reflection/figures/MethodsAsObjects.pdf, id=8415, 546.04pt x 303.1325pt>
+<Reflection/figures/MethodsAsObjects.pdf, id=8420, 546.04pt x 303.1325pt>
 <use Reflection/figures/MethodsAsObjects.pdf> [424 <./Reflection/figures/Compil
 edMethod.png> <./Reflection/figures/MethodsAsObjects.pdf>]
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6095,7 +6093,7 @@ Underfull \hbox (badness 1577) in paragraph at lines 556--556
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/sendDifferentSuper.png, id=8460, 998.73125pt x 616.3025pt>
+<Reflection/figures/sendDifferentSuper.png, id=8465, 998.73125pt x 616.3025pt>
 <use Reflection/figures/sendDifferentSuper.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6120,7 +6118,7 @@ Underfull \hbox (badness 1210) in paragraph at lines 608--613
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 <use figures/pharo.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/exploringThisContext.png, id=8483, 1022.82124pt x 513.92pt>
+<Reflection/figures/exploringThisContext.png, id=8488, 1022.82124pt x 513.92pt>
 <use Reflection/figures/exploringThisContext.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [428 <./Reflection
 /figures/exploringThisContext.png>]
@@ -6232,7 +6230,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 925--926
 []\T2A/ppl/m/sc/10 (+20) Допустим, класс [][][][] содержит
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
-<Reflection/figures/DynamicAccessors.pdf, id=8590, 634.37pt x 325.215pt>
+<Reflection/figures/DynamicAccessors.pdf, id=8595, 634.37pt x 325.215pt>
 <use Reflection/figures/DynamicAccessors.pdf>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
@@ -6392,9 +6390,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 1215--1217
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [445]
-<FAQ/figures/chooseNewBrowser.png, id=8759, 321.2pt x 211.79124pt>
+<FAQ/figures/chooseNewBrowser.png, id=8764, 321.2pt x 211.79124pt>
 <use FAQ/figures/chooseNewBrowser.png>
-<FAQ/figures/O2PackageBrowserAdaptor.png, id=8760, 351.3125pt x 165.61874pt>
+<FAQ/figures/O2PackageBrowserAdaptor.png, id=8765, 351.3125pt x 165.61874pt>
 <use FAQ/figures/O2PackageBrowserAdaptor.png>
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [446 <./FAQ/figure
 s/chooseNewBrowser.png> <./FAQ/figures/O2PackageBrowserAdaptor.png>]
@@ -6417,9 +6415,503 @@ $http : / / www . squeaksource . com /
 (./PBE-Omnibus.bbl [450]
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
 \T2A/ppl/m/sc/10 (+20) Software. Reading, Mass.: Addison Wesley, 1995, ISBN
-)
-No file PBE-Omnibus.ind.
-[451] [452] [453] [454] [455] [456] (./PBE-Omnibus.aux)
+) (./PBE-Omnibus.ind [451]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [452]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [453]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [454]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [455]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [456]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [457]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [458]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [459]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [460]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [461]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.38199pt too wide) in paragraph at lines 1485--1487
+[]| [] 
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (19.72897pt too wide) in paragraph at lines 1487--1489
+[]| [] 
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [462]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (9.32117pt too wide) in paragraph at lines 1645--1647
+[]| [] 
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.48357pt too wide) in paragraph at lines 1684--1686
+[]| [] 
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [463]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [464]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/utf8.def) [465]) [466]
+[467] [468] [469] [470] (./PBE-Omnibus.aux)
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
  )
@@ -6427,10 +6919,10 @@ LaTeX Warning: There were multiply-defined labels.
 ### simple group (level 1) entered at line 425 ({)
 ### bottom level
 (see the transcript file for additional information){/usr/local/texlive/2011/te
-xmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2011/texmf-dist/fonts
-/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips
-/base/8r.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/cm-super/cm-su
-per-t2a.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.en
+xmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2011/texmf-dist/f
+onts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips
+/lm/lm-mathit.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.en
 c}</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy
 6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/tex
@@ -6439,19 +6931,20 @@ exmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2011/texmf-dist/fo
 nts/type1/public/lm/lmr8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pu
 blic/lm/lmss8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lms
 y10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></u
-sr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr
-/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/l
-ocal/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/loc
-al/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local
-/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive
-/2011/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2
-011/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/local/texlive/201
-1/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2011/texmf
--dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2011/texmf-dist/
-fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/urw/palatino/uplri8a.pfb>
-Output written on PBE-Omnibus.pdf (472 pages, 11385551 bytes).
+sr/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/te
+xlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texl
+ive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texliv
+e/2011/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/
+2011/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2011
+/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2011/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2011/tex
+mf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2011/texmf
+-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2011/texmf-d
+ist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/local/texlive/2011/texmf-dis
+t/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts
+/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1
+/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/pa
+latino/uplri8a.pfb>
+Output written on PBE-Omnibus.pdf (486 pages, 11703631 bytes).
 Transcript written on PBE-Omnibus.log.
