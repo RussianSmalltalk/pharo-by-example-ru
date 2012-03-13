@@ -18,7 +18,7 @@ about testing, see the Wiki link under:
 
 http://www.squeaksource.com/PharoByExample.html
 
-Last update: 2010-09-24T21:12:40+01:00
+Last update: 2012-03-13T22:08:09+06:00
 
 ===== CHAPTER: Preface ==========
 
@@ -42,7 +42,7 @@ shout
 	^ self asUppercase, '!'
 -----
 
-===== CHAPTER: A first application ==========
+===== CHAPTER: Первое приложение ==========
 
 -----
 SimpleSwitchMorph subclass: #LOCell
@@ -78,12 +78,11 @@ initialize
    cells := Matrix new: n tabulate: [ :i :j | self newCellAt: i at: j ].
 -----
 LOGame>>cellsPerSide
- "The number of cells along each side of the game"
+ "Количество ячеек, приходящееся на одну сторону игрового поля"
    ^ 10
 -----
 LOGame>>newCellAt: i at: j
- "Create a cell for position (i,j) and add it to my on-screen
-   representation at the appropriate screen position.  Answer the new cell"
+ "Создаёт ячейку в позиции (i,j) и добавляет её на экран. Возвращает новую ячейку."
    | c origin |
    c := LOCell new.
    origin := self innerBounds origin.
@@ -104,8 +103,7 @@ LOCell>>mouseUp: anEvent
    mouseAction value
 -----
 LOGame>>newCellAt: i at: j
- "Create a cell for position (i,j) and add it to my on-screen
-   representation at the appropriate screen position.  Answer the new cell"
+ "Создаёт ячейку в позиции (i,j) и добавляет её на экран. Возвращает новую ячейку."
    | c origin |
    c := LOCell new.
    origin := self innerBounds origin.
@@ -115,9 +113,9 @@ LOGame>>newCellAt: i at: j
    ^ c
 -----
 MCHttpRepository 
-    location: 'http://www.squeaksource.com/!\emph{YourProject}!'
-    user: '!\emph{yourInitials}!' 
-    password: '!\emph{yourPassword}!'
+    location: 'http://www.squeaksource.com/!\emph{ваш проект}!'
+    user: '!\emph{ваши инициалы}!' 
+    password: '!\emph{ваш пароль}!'
 -----
 MCHttpRepository 
     location: 'http://www.squeaksource.com/!\emph{YourProject}!'
@@ -515,7 +513,7 @@ Text>>testCR
       ^ CR == Character cr
 -----
 
-===== CHAPTER: The Pharo programming environment ==========
+===== CHAPTER: Pharo - современная среда разработки ==========
 
 -----
 SystemNavigation default browseAllCallsOn: #drawOn:
@@ -539,6 +537,7 @@ self - TimeStamp today
 -----
 suffix
 	"assumes that I'm a file name, and answers my suffix, the part after the last dot"
+	"предполагает, что я представляю собой имя файла и возвращает мой суффикс, часть после точки"
 	| dot dotPosition |
 	dot := FileDirectory dot.
 	dotPosition := (self size to: 1 by: -1) detect: [ :i | (self at: i) = dot ].
@@ -690,7 +689,7 @@ TestResource>>initialize
 	self setUp
 -----
 
-===== CHAPTER: Basic Classes ==========
+===== CHAPTER: Базовые классы ==========
 
 -----
 Browser new printString "--> 'a Browser'"
@@ -734,11 +733,12 @@ Interval>>printOn: aStream
 -----
 Object>>= anObject
  "Answer whether the receiver and the argument represent the same object.
-    If = is redefined in any subclass, consider also redefining the message hash."
+    Если = переопределено в каком-либо потомке, рекомендуется так же
+    переопределить сообщение hash."
     ^ self == anObject
 -----
-(1 + 2 i) = (1 + 2 i) "--> true     same value"
-(1 + 2 i) == (1 + 2 i) "--> false    but different objects"
+(1 + 2 i) = (1 + 2 i) "--> true     одно и то же значние"
+(1 + 2 i) == (1 + 2 i) "--> false    но разные объекты"
 -----
 Complex>>= anObject
     anObject isComplex
@@ -834,16 +834,16 @@ Magnitude>> > aMagnitude
  "Answer whether the receiver is greater than the argument."
     ^aMagnitude < self
 -----
-1 + 2.5 "--> 3.5             Addition of two numbers"
-3.4 * 5 "--> 17.0           Multiplication of two numbers"
-8 / 2 "--> 4                 Division of two numbers"
-10 - 8.3 "--> 1.7              Subtraction of two numbers"
-12 = 11 "--> false           Equality between two numbers"
-12 ~= 11 "--> true            Test if two numbers are different"
-12 > 9 "--> true            Greater than"
-12 >= 10 "--> true            Greater or equal  than"
-12 < 10 "--> false           Smaller than"
-100@10 "--> 100@10    Point creation"
+1 + 2.5 "--> 3.5             Сумма двух чисел"
+3.4 * 5 "--> 17.0           Произведение двух чисел"
+8 / 2 "--> 4                 Частное двух чисел"
+10 - 8.3 "--> 1.7              Разность двух чисел"
+12 = 11 "--> false           Равентсно двух чисел"
+12 ~= 11 "--> true            Проверка, являются ли числа различными"
+12 > 9 "--> true            Больше, чем"
+12 >= 10 "--> true            Больше либо равно"
+12 < 10 "--> false           Меньше, чем"
+100@10 "--> 100@10    Создание точки"
 -----
 1000 factorial / 999 factorial "--> 1000"
 -----
@@ -915,7 +915,7 @@ True>>not
 (1>2) and: [ (1/0) > 0 ] "--> false    argument block is never evaluated, so no exception"
 -----
 
-===== CHAPTER: Collections ==========
+===== CHAPTER: Коллекции ==========
 
 -----
 students select: [ :each | each gpa < threshold ]
@@ -1102,9 +1102,9 @@ res "--> 'bob.joe.toto'"
 String streamContents: [:stream | #('bob' 'joe' 'toto') asStringOn: stream delimiter: '.' ] "--> 'bob.joe.toto'"
 -----
 colors := Dictionary newFrom: { #yellow -> Color yellow. #blue -> Color blue. #red -> Color red }.
-colors keysDo: [:key | Transcript show: key; cr]. "displays the keys"
-colors valuesDo: [:value | Transcript show: value;cr]. "displays the values"
-colors associationsDo: [:value | Transcript show: value;cr]. "displays the associations"
+colors keysDo: [:key | Transcript show: key; cr]. "выводит ключи"
+colors valuesDo: [:value | Transcript show: value; cr]. "выводит значения"
+colors associationsDo: [:value | Transcript show: value; cr]. "выводит ассоциации"
 -----
 double := OrderedCollection new.
 #(1 2 3 4 5 6) do: [:e | double add: 2 * e].
@@ -1170,7 +1170,7 @@ Book>>hash
    ^ title hash xor: authors hash
 -----
 
-===== CHAPTER: Streams ==========
+===== CHAPTER: Потоки ==========
 
 -----
 r := ReadStream on: (1 to: 1000).
@@ -1184,7 +1184,7 @@ w nextPut: $b.
 w contents. "-->  'ab'"
 -----
 w := WriteStream on: (OrderedCollection new: 20).
-w nextPut: 12. "-->  raises an error"
+w nextPut: 12. "-->  выдаёт ошибку"
 -----
 StandardFileStream
   fileNamed: 'test.txt'
@@ -1205,9 +1205,9 @@ stream next: 3. "-->   'bcd'"
 stream next: 2. "-->   'ef'"
 -----
 stream := ReadStream on: '-143'.
-negative := (stream peek = $-). "look at the first element without reading it"
+negative := (stream peek = $-). "получить следующий элемент, не читая его"
 negative. "--> true"
-negative ifTrue: [stream next]. "ignores the minus character"
+negative ifTrue: [stream next]. "игнорирует знак минус"
 number := stream upToEnd.
 number. "--> '143'"
 -----
@@ -1220,29 +1220,30 @@ stream position: 2.
 stream peek "--> $c"
 -----
 stream := 'abcdef' readStream.
-stream next. "--> $a    stream is now positioned just after the a"
-stream skip: 3. "stream is now after the d"
+stream next. "--> $a    поток установен в позицию сразу после a"
+stream skip: 3. "теперь после d"
 stream position. "-->   4"
-stream skip: -2. "stream is after the b"
+stream skip: -2. "теперь после b"
 stream position. "--> 2"
 stream reset.
 stream position. "--> 0"
-stream skipTo: $e. "stream is just after the e now"
+stream skipTo: $e. "а теперь сразу за e"
 stream next. "--> $f"
 stream contents. "--> 'abcdef'"
 -----
 stream1 := #(1 4 9 11 12 13) readStream.
 stream2 := #(1 2 3 4 5 10 13 14 15) readStream.
 
-"The variable result will contain the sorted collection."
+"Переменная result будет содержать отсортированную коллекцию"
 result := OrderedCollection new.
 [stream1 atEnd not & stream2 atEnd not]
   whileTrue: [stream1 peek < stream2 peek
- "Remove the smallest element from either stream and add it to the result."
+ 	"Удалить наименьший элемент из обоих потоков и добавить его к результату"
     ifTrue: [result add: stream1 next]
     ifFalse: [result add: stream2 next]].
 
 "One of the two streams might not be at its end. Copy whatever remains."
+"Один из двух потоков может быть не в конечной позиции. Копировать всё, что осталось."
 result
   addAll: stream1 upToEnd;
   addAll: stream2 upToEnd.
@@ -1251,14 +1252,14 @@ result. "-->   an OrderedCollection(1 1 2 3 4 4 5 9 10 11 12 13 13 14 15)"
 -----
 stream := String new writeStream.
 stream
-  nextPutAll: 'This Smalltalk image contains: ';
+  nextPutAll: 'В этом Smalltalk образе ';
   print: Smalltalk allClasses size;
-  nextPutAll: ' classes.';
+  nextPutAll: ' классов.';
   cr;
-  nextPutAll: 'This is really a lot.'.
+  nextPutAll: 'Это очень много.'.
 
-stream contents. "--> 'This Smalltalk image contains: 2322 classes."
-This is really a lot.'
+stream contents. "--> 'В этом Smalltalk образе 2322 классов."
+Это очень много.'
 -----
 string := String streamContents:
 		[:stream |
@@ -1275,13 +1276,13 @@ string. "-->   '#(1 2 3) size = 3'"
 [| temp |
   temp := String new.
   (1 to: 100000)
-    do: [:i | temp := temp, i asString, ' ']] timeToRun "--> 115176 (milliseconds)"
+    do: [:i | temp := temp, i asString, ' ']] timeToRun "--> 115176 (миллисекунд)"
 
 [| temp |
   temp := WriteStream on: String new.
   (1 to: 100000)
     do: [:i | temp nextPutAll: i asString; space].
-  temp contents] timeToRun "--> 1262 (milliseconds)"
+  temp contents] timeToRun "--> 1262 миллисекунд"
 -----
 String streamContents: [ :tempStream |
   (1 to: 100000)
@@ -1298,12 +1299,12 @@ History>>initialize
     stream := ReadWriteStream on: Array new.
 -----
 History>>goBackward
-  self canGoBackward ifFalse: [self error: 'Already on the first element'].
+  self canGoBackward ifFalse: [self error: 'Уже указываем на первый элемент'].
   stream skip: -2.
   ^ stream next.
 
 History>>goForward
-  self canGoForward ifFalse: [self error: 'Already on the last element'].
+  self canGoForward ifFalse: [self error: 'Уже указываем на последний элемент'].
   ^ stream next
 -----
 History>>goTo: aPage
@@ -1334,24 +1335,24 @@ History new
 -----
 stream := FileStream forceNewFileNamed: 'test.txt'.
 stream
-    nextPutAll: 'This text is written in a file named ';
+    nextPutAll: 'Этот текст будет записан в файл с именем ';
     print: stream localName.
 stream close.
 
 stream := FileStream readOnlyFileNamed: 'test.txt'.
-stream contents. "--> 'This text is written in a file named ''test.txt'''"
+stream contents. "--> 'Этот текст будет записан в файл с именем ''test.txt'''"
 stream close.
 -----
 FileStream
     forceNewFileNamed: 'test.txt'
     do: [:stream |
         stream
-            nextPutAll: 'This text is written in a file named ';
+            nextPutAll: 'Этот текст будет записан в файл с именем ';
             print: stream localName].
 string := FileStream
             readOnlyFileNamed: 'test.txt'
             do: [:stream | stream contents].
-string "--> 'This text is written in a file named ''test.txt'''"
+string "--> 'Этот текст будет записан в файл с именем ''test.txt'''"
 -----
 FileStream
   forceNewFileNamed: 'test.bin'
@@ -1387,7 +1388,7 @@ FileStream
 ===== CHAPTER: Morphic ==========
 
 -----
-'Morph' asMorph openInWorld
+'Morph' asMorph openInWorld 
 -----
 Color>>asMorph
 	^ Morph new color: self
@@ -1487,13 +1488,13 @@ CrossMorph>>mouseLeave: anEvent
 CrossMorph>>handleKeystroke: anEvent
 	| keyValue |
 	keyValue := anEvent keyValue.
-	keyValue = 30	 "up arrow"
+	keyValue = 30	 "стрелка вверх"
 		ifTrue: [self position: self position - (0 @ 1)].
-	keyValue = 31	 "down arrow"
+	keyValue = 31	 "стрелка вниз"
 		ifTrue: [self position: self position + (0 @ 1)].
-	keyValue = 29	 "right arrow"
+	keyValue = 29	 "срелка вправо"
 		ifTrue: [self position: self position + (1 @ 0)].
-	keyValue = 28	 "left arrow"
+	keyValue = 28	 "стрелка влево"
 		ifTrue: [self position: self position - (1 @ 0)]
 -----
 CrossMorph>>stepTime
@@ -1509,11 +1510,11 @@ CrossMorph>>step
 	keyValue = $- asciiValue
 		ifTrue: [self stopStepping].
 -----
-UIManager default request: 'What''s your name?' initialAnswer: 'no name'
+UIManager default request: 'Как ваше имя?' initialAnswer: 'нет имени'
 -----
 UIManager default
-	chooseFrom: #('circle' 'oval' 'square' 'rectangle' 'triangle')
-	lines: #(2 4) message: 'Choose a shape'
+	chooseFrom: #('круг' 'овал' 'квадрат' 'прямоугольник' 'треугольник')
+	lines: #(2 4) message: 'Выберите фигуру'
 -----
 Morph subclass: #ReceiverMorph
 	instanceVariableNames: ''
@@ -1578,7 +1579,7 @@ DieMorph>>initialize
 	isStopped := false
 -----
 DieMorph>>faces: aNumber
-	"Set the number of faces"
+	"Устанавливает количество граней"
 	(aNumber isInteger
 			and: [aNumber > 0]
 			and: [aNumber <= 9])
