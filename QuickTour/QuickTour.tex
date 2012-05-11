@@ -43,54 +43,159 @@
 	\raisebox{-0.8ex}[0pt][0pt]{%
 		\includegraphics[width=1em]{cloverleafKey}}}
 %=================================================================
-\chapter{A quick tour of \pharo}
+% \chapter{A quick tour of \pharo}
+\chapter{Краткий обзор \pharo}
 \chalabel{quick}
 
-In this chapter we will give you a high-level tour of \pharo to help you get comfortable with the environment.
-There will be plenty of opportunities to try things out, so it would be a good idea if you have a computer handy when you read this chapter.
+% In this chapter we will give you a high-level tour of \pharo to help you get
+% comfortable with the environment.
+% There will be plenty of opportunities to try things out, so it would be a good
+% idea if you have a computer handy when you read this chapter.
 
-We will use this icon: \dothisicon{} to mark places in the text where you should try something out in \pharo.
-In particular, you will fire up \pharo, learn about the different ways of interacting with the system, and discover some of the basic tools.
-You will also learn how to define a new method, create an object and send it messages.
+В этой главе мы постараемся провести содержательный обзор по Pharo
+с целью помочь Вам познакомиться с удобной средой.
+Будет много возможностей попробовать разные вещи,
+поэтому было бы неплохо,
+если в процессе чтения у Вас был бы компьютер. 
+
+% We will use this icon: \dothisicon{} to mark places in the text where you
+% should try something out in \pharo.
+% In particular, you will fire up \pharo, learn about the different ways of
+% interacting with the system, and discover some of the basic tools.
+% You will also learn how to define a new method,
+% create an object and send it messages.
+
+Мы будем использовать этот символ: \dothisicon{} в качестве отметок
+в тексте, где Вы должны попробовать что-то в Pharo.
+В частности,  используя Pharo, Вы узнаете различные способы
+взаимодействия с системой и изучите основные инструменты.
+Вы также узнаете, как определить новый метод, создать
+объект и как послать му сообщения. 
 
 %=================================================================
-\section{Getting started}
+% \section{Getting started}
+\section{Приступая к работе}
 
-\pharo is available as a free \ind{download} from \pharoweb.
-There are three parts that you will need to download, consisting of four files (see \figref{download}).
+% \pharo is available as a free \ind{download} from \pharoweb.
+% There are three parts that you will need to download,
+% consisting of four files (see \figref{download}).
+
+\pharo доступен для загрузки с http://pharo-project.org.
+И состоит из трех частей, которые вам необходимо скачать и
+которые включают в себя 4 файла (см. \figref{download}).
 
 \begin{figure}[htb]
 \centerline {\includegraphics[width=\textwidth]{annotatedDownload-flat}}
-\caption{The \pharo download files for one of the supported platforms.\figlabel{download}}
+% \caption{The \pharo download files for one of the supported platforms.
+\caption{Загружаемые файлы Pharo для одной из поддерживаемых
+платформ \figlabel{download}}
 \end{figure}
 
 \begin{enumerate}
 
-  \item The \emphind{virtual machine} (VM) is the only part of the system that is different for each operating system and processor.  Pre-compiled virtual machines are available for all the major computing environments.  In \figref{download} we see the VM for the selected platform is called \textit{Pharo.exe}.
+% \item The \emphind{virtual machine} (VM) is the only part of the system
+% that is different for each operating system and processor.  Pre-compiled
+% virtual machines are available for all the major computing environments.
+% In \figref{download} we see the VM for the selected platform is called
+% \textit{Pharo.exe}.
 
-  \item The \emphind{sources} file contains the source code for all of the parts of \pharo that don't change very frequently. In \figref{download} it is called \emph{SqueakV39.sources}.\footnote{\pharo is derived from \squeak 3.9, and presently shares the VM with \squeak.}
+\item Виртуальная машина (VM) является единственной частью системы,
+которая отличается для каждой операционной системы  и процессора.
+Предварительно скомпилированные виртуальные машины доступны
+для всех основных вычислительных сред. На \figref{download} мы
+видим, что VM для выбранной платформы  называется \textit{Pharo.exe}. 
 
-  \item The current \emph{system \ind{image}} is a snapshot of a running \pharo system, frozen in time.  It consists of two files: an \emph{.}\emphind{image} file, which contains the state of all of the objects in the system (including classes and methods, since they are objects too), and a \emph{.}\emphind{changes} file, which contains a log of all of the changes to the source code of the system.
-In \figref{download}, these files are called \emph{pharo.image} and \emph{pharo.changes}.
+%  \item The \emphind{sources} file contains the source code for all of the
+% parts of \pharo that don't change very frequently. In \figref{download} it is
+% called \emph{SqueakV39.sources}.\footnote{\pharo is derived from \squeak
+% 3.9, and presently shares the VM with \squeak.}
+
+\item Файл с расширением .source
+содержит исходный код для всех частей Pharo и
+изменяется очень редко. На \figref{download} он называется
+\emph{SqueskV39.sources}
+\footnote{Pharo унаследован от  Squeak3.9, и теперь делит VM со Squeak.}
+
+%  \item The current \emph{system \ind{image}} is a snapshot of a running
+% \pharo system, frozen in time.  It consists of two files: an
+% \emph{.}\emphind{image} file, which contains the state of all of the objects
+% in the system (including classes and methods, since they are objects too),
+% and a \emph{.}\emphind{changes} file, which contains a log of all of the
+% changes to the source code of the system.
+% In \figref{download}, these files are called \emph{pharo.image} and
+% \emph{pharo.changes}.
+
+\item Текущий системный образ является снимком исполняемой системы
+и изменяется очень часто. Он состоит из двух файлов: \emph{.}
+\emphind{image} файл, который хранит состояение всех объектов в
+системе (в том числе классы и методы, т.к. тоже являются объектами),
+и \emph{.}\emphind{changes} файл содержит журнал всех изменений
+в исходном коде системы. На \figref{download} эти файлы названы
+\emph{pharo.image} и \emph{pharo.changes} соответственно.
+
 \end{enumerate}
 
-\dothis{Download and install \pharo on your computer.}
-We recommend that you use the image provided on the \pharo by Example web page.\footnote{\pbe}
-\index{download}
+% \dothis{Download and install \pharo on your computer.}
+% We recommend that you use the image provided on the \pharo by Example
+% web page.\footnote{\pbe}
+% \index{download}
+% \seclabel{sbeImage}
+
+\dothis{Загрузите и установите \pharo на Ваш компьютер.}
+Мы рекомендуем Вам использовать образ представленный на странице
+\pharo by example.\footnote{\pbe}
+\index{загрузка}
 \seclabel{sbeImage}
 
-Most of the introductory material in this book will work with any version, so if you already have one installed, you may as well continue to use it.
-However, if you notice differences between the appearance or behaviour of your system and what is described here, do not be surprised. 
-% On the other hand, if you are about to download \pharo for the first time, you may as well grab the \emph{\pharo by Example} image.
+% Most of the introductory material in this book will work with any version,
+% so if you already have one installed, you may as well continue to use it.
+% However, if you notice differences between the appearance or behaviour of
+% your system and what is described here, do not be surprised. 
 
-As you work in \pharo, the image and changes files are modified, so you need to make sure that they are writable.
-Always keep these two files together.
-Never edit them directly with a text editor, as \pharo uses them to store the objects you work with and to log the changes you make to the source code.
-It is a good idea to keep a backup copy of the downloaded image and changes files so you can always start from a fresh image and reload your code.
+%%% On the other hand, if you are about to download \pharo for the first time, you may as well grab the \emph{\pharo by Example} image.
 
-The \emphind{sources} file and the VM can be read-only\,---\,they can be shared between different users.
-All of these files can be placed in the same directory, but it is also possible to put the Virtual Machine and sources file in separate directory where everyone has access to them.
-Do whatever works best for your style of working and your operating system.
+Большая часть вводного материала этой книги может работать
+с любой версией \pharo,  так, если у Вас уже была установлена среда,
+то можете успешно продолжить ее изучение. Однако,
+не стоит удивляться, если Вы заметите различия в интерфейсе или
+исполнении своей среды от той, что здесь описана. 
+
+% As you work in \pharo, the image and changes files are modified,
+% so you need to make sure that they are writable.
+% Always keep these two files together.
+% Never edit them directly with a text editor, as \pharo uses them to store the
+% objects you work with and to log the changes you make to the source code.
+% It is a good idea to keep a backup copy of the downloaded image and
+% changes files so you can always start from a fresh image and reload
+% your code.
+
+При работе с \pharo  \emph{.}image и \emph{.}сhanges  файлы будут
+изменяться, поэтому Вам необходимо  всякий раз убеждаться
+в их читаемости (они должны быть доступны для записи).
+Всегда держите оба файла вместе. Никогда не
+изменяйте  их непосредственно с помощью текстового редактора,
+поскольку \pharo использует их для хранения объектов,
+с которыми Вы работаете,  и регистрирует изменения,
+совершенные Вами в исходном коде.  Неплохо было бы делать резервные
+копии загруженных .image и .changes файлов с той целью,
+чтобы впоследствии Вы смогли восстановить образ и
+перезагрузить свой код. 
+
+% The \emphind{sources} file and the VM can be read-only\,---\,they can be
+% shared between different users.
+% All of these files can be placed in the same directory, but it is also possible
+% to put the Virtual Machine and sources file in separate directory where
+% everyone has access to them.
+% Do whatever works best for your style of working and your operating
+% system.
+
+\emph{.}\emphind{sources} файл и VM могут быть использованы
+только для чтения и могут разделяются между несколькими
+пользователями. Все эти файлы могут лежать в одной и той же
+директории, но так же возможно разместить виртуальную машину и
+\emph{.}\emphind{sources} файлы в различных директориях,
+где у каждого есть доступ к ним. Делайте все для
+улучшения Вашего стиля работы и операционной системы.
 
 %\sd{it would be really nice to have a setup and startup section on PC, Mac and Linux}
 %\ab{I agree entirely; the reason that this is not here is because I could do only the Mac section.  Damien can probably do Windoze.  Perhaps we can ask on the list for a Linux volunteer?}
@@ -99,11 +204,30 @@ Do whatever works best for your style of working and your operating system.
 \begin{figure}[htb]
 % \centerline {\includegraphics[width=0.6\textwidth]{download}}
 \centerline {\includegraphics[width=\textwidth]{startup}}
-\caption{A fresh \pbe image.\figlabel{startup}}
+% \caption{A fresh \pbe image.\figlabel{startup}
+\caption{Новый образ загруженный из \pbe. \figlabel{startup}}
 \end{figure}
 
-\index{launching \pharo}
-\paragraph{Launching.} To start \pharo, do whatever your operating system expects: drag the \emph{.}\emphind{image} file onto the icon of the virtual machine, or double-click the \emph{.image} file, or  at the command line type the name of the virtual machine followed by the path to the \emph{.image} file. (When you have multiple VMs installed on your machine the operating system may not automatically pick the right one; in this case it is safer to drag and drop the image onto the virtual machine, or to use the command line.)
+% \index{launching \pharo}
+% \paragraph{Launching.} To start \pharo, do whatever your operating
+% system expects: drag the \emph{.}\emphind{image} file onto the icon
+% of the virtual machine, or double-click the \emph{.image} file,
+% or  at the command line type the name of the virtual machine followed
+% by the path to the \emph{.image} file. (When you have multiple VMs
+% installed on your machine the operating system may not automatically
+% pick the right one; in this case it is safer to drag and drop the image
+% onto the virtual machine, or to use the command line.)
+
+\index{Запуск \pharo}
+\paragraph{Запуск.} Для старта \pharo сделайте следующее:
+перетащите \emph{.}\emphind{image} файл на иконку виртуальной
+машины или дважды кликнете по этому файлу или еще один вариант:
+пропишите в командной строке имя виртуальной машины и путь
+к \emph{.}\emphind{image} файлу. (В случае если на
+вашем компьютере установлено несколько виртуальных машин,
+операционная система возможно не сможет определить нужную из них.
+В этом случае наиболее безопасным будет перетащить
+образ на VM или воспользоваться командной строкой.)
 
 Once \pharo is running, you should see a single large window, possibly containing some open workspace windows (see \figref{startup}), and it's not obvious how to proceed!
 You might notice a menu bar, but \pharo mainly makes use of context-dependent pop-up menus.
