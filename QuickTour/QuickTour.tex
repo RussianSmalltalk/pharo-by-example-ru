@@ -27,7 +27,6 @@
 	\input{../common.tex}
 	\pagestyle{headings}
 	\setboolean{lulu}{true}
-
 % --------------------------------------------
 % A4:
 %	\documentclass[a4paper,11pt,twoside]{book}
@@ -1036,88 +1035,223 @@ Explorer похож на inspector, за исключением древовид
 % \section{The Class Browser}
 \section{Браузер классов}
 
-The class \ind{browser}\footnote{Confusingly, this is variously referred to as the ``system browser'' or the ``code browser''. \pharo uses the \ind{OmniBrowser} implementation of the browser, which may also be variously known as ``OB'' or the ``Package browser''.
-In this book we will simply use the term ``browser'', or, in case of ambiguity, the ``class browser''.} is one of the key tools used for programming.
-As we shall see, there are several interesting browsers available for \pharo, but this is the basic one you will find in any image.
-\seeindex{class browser}{browser}
+% The class \ind{browser}\footnote{Confusingly, this is variously referred to
+% as the ``system browser'' or the ``code browser''. \pharo uses the
+% \ind{OmniBrowser} implementation of the browser, which may also be
+% variously known as ``OB'' or the ``Package browser''.
+% In this book we will simply use the term ``browser'', or, in case of
+% ambiguity, the ``class browser''.} is one of the key tools used for
+% programming. As we shall see, there are several interesting browsers
+% available for \pharo, but this is the basic one you will find in any image.
+% \seeindex{class browser}{browser}
 
-\dothis{Open a browser by selecting \menu{World \go Class browser}.\footnote{If the browser you get does not look like the one shown in \figref{classBrowser}, then you may need to change the default browser.  See \faqref{packagebrowser}.}}
+Браузер классов\footnote{Почему-то это наименование может
+употребляться как <<системный браузер>> или как <<кодовый
+браузер>>.
+В Pharo используется OmniBrowser, который может быть известен под
+названием <<OB>> или <<Pachage browser>>. В этой книге мы просто
+используем термин <<браузер>> или, в случае двусмысленности,
+<<браузер классов>>.}\,---\,один из ключевых инструментов,
+используемых в
+программировании. Как мы увидим далее, несколько интересных
+браузеров доступны в  Pharo, но это основной, который вы найдёте в
+любом образе.
+\seeindex{браузер классов}{браузер}
+ 
+
+% \dothis{Open a browser by selecting \menu{World \go Class browser}.
+% \footnote{If the browser you get does not look like the one shown in
+% \figref{classBrowser}, then you may need to change the default browser. 
+% See \faqref{packagebrowser}.}}
+
+\dothis{Откройте браузер и выберите \menu{World \go Class browser.}
+\footnote{Если вид у браузера будет отличаться от \figref{classBrowser},
+в таком случае нужно изменить браузер по умолчанию. Смотрите
+\faqref{packagebrowser}.}}
 
 \begin{figure}[htb]
 \ifluluelse
 	{\centerline {\includegraphics[width=\textwidth]{ClassBrowser1}}}
 	{\centerline {\includegraphics[width=0.7\textwidth]{ClassBrowser1}}}
-\caption{The browser showing the \ct{printString} method of class object.
+% \caption{The browser showing the \ct{printString} method of class object.
+\caption{Браузер демонстрирует метод printString класса Object.
 \figlabel{classBrowser}}
 \end{figure}
 
-We can see a browser in \figref{classBrowser}.
-The title bar indicates that we are browsing the class \clsind{Object}.
-%\footnote{If the browser you have seems to differ from the one described in this book, you may be using an image with a different default browser. See \faqref{omnibrowser}.}
+% We can see a browser in \figref{classBrowser}.
+% The title bar indicates that we are browsing the class \clsind{Object}.
+%% \footnote{If the browser you have seems to differ from the one described
+%% in this book, you may be using an image with a different default browser.
+%% See \faqref{omnibrowser}.}
 
-When the browser first opens, all panes are empty but the leftmost one.
-This first pane lists all known \emph{packages}, which contain groups of related classes.
+Мы можем видеть браузер на \figref{classBrowser} Заголовок окна
+указывает, что мы просматриваем класс \clsind{Object}. 
+
+% When the browser first opens, all panes are empty but the leftmost one.
+% This first pane lists all known \emph{packages}, which contain groups of
+% related classes.
+% \index{category}
+
+При первом открытии браузера все панели пусты, за исключением
+одной\,---\,крайней левой. Эта первая панель перечисляет все известные
+пакеты, которые содержат группы связанных классов.
 \index{category}
+ 
 
-\dothis{Click on the \scatind{Kernel} package.}
-This causes the second pane to show a list of all of the classes in the selected package.
+% \dothis{Click on the \scatind{Kernel} package.}
+% This causes the second pane to show a list of all of the classes in the
+% selected package.
 
-\dothis{Select the class \clsind{Object}.}
-Now the remaining two panes will be filled with text.
-The third pane displays the \emph{protocols} of the currently selected class.
-These are convenient groupings of related methods.
-If no \ind{protocol} is selected you should see all methods in the fourth pane.
+\dothis{Кликнете по  Kernel пакету.}
+Вторая панель покажет нам список всех классов выбранного пакета. 
 
-\dothis{Select the \protind{printing} protocol.}
-You may have to scroll down to find it.
-Now you will see in the fourth pane only methods related to printing.
+% \dothis{Select the class \clsind{Object}.}
+% Now the remaining two panes will be filled with text.
+% The third pane displays the \emph{protocols} of the currently selected
+% class. These are convenient groupings of related methods.
+% If no \ind{protocol} is selected you should see all methods in
+% the fourth pane.
 
-\dothis{Select the \mthind{Object}{printString} method.}
-Now we see in the bottom pane the source code of the \ct{printString} method, shared by all objects in the system (except those that override it).
+\dothis{Выберите класс Object.}
+Теперь в оставшихся панелях появится текст. Третья панель выводит
+протоколы текущего выбранного класса. Это удобно при группировке
+связанных методов. Если вы не выбрали ни одного протокола, то
+четвертая панель покажет все методы. 
+
+% \dothis{Select the \protind{printing} protocol.}
+% You may have to scroll down to find it.
+% Now you will see in the fourth pane only methods related to printing.
+
+\dothis{Выберите протокол printing.}
+Вы можете прокрутить вниз для его поиска.  Теперь вы будете видеть в
+четвертом блоке только те методы, которые связаны с печатью. 
+
+% \dothis{Select the \mthind{Object}{printString} method.}
+% Now we see in the bottom pane the source code of the \ct{printString}
+% method, shared by all objects in the system (except those that override it).
+
+\dothis{Выберите метод printString.}
+Теперь вы увидите на нижней панели исходный код метода printString,
+используемый всеми объектами системы (кроме тех, которые
+переопределили его). 
 
 %=================================================================
-\section{Finding classes}
+% \section{Finding classes}
+\section{Поиск классов}
 
-There are several ways to find a class in \pharo.  The first, as we have just seen above, is to know (or guess) what category it is in, and to navigate to it using the browser.
-\index{browser}
-\seeindex{browser!finding classes}{class, finding}
-\index{class!finding}
+% There are several ways to find a class in \pharo.  The first, as we have just
+% seen above, is to know (or guess) what category it is in, and to navigate
+% to it using the browser.
+% \index{browser}
+% \seeindex{browser!finding classes}{class, finding}
+% \index{class!finding}
 
-A second way is to send the \ct{browse} message to the class, asking it to open a browser on itself.  Suppose we want to browse the class \clsind{Boolean}.
+Есть несколько способов найти класс в Pharo. Во-первых, как мы видели
+только что выше, нужно знать (или предполагать), к какой категории он
+принадлежит и ориентироваться при помощи браузера.
+\index{браузер}
+\seeindex{браузер!поиск классов}{класс, поиск}
+\index{класс!поиск}
 
-\dothis{Type \ct{Boolean browse} into a workspace and \menu{do it}.}
-A browser will open on the Boolean class (\figref{browseBoolean}).
-There is also a \ind{keyboard shortcut} \short{b} (browse) that you can use in any tool where you find a class name;
-\index{keyboard shortcut!browse it}
-select the name and type \short{b}.
+% A second way is to send the \ct{browse} message to the class, asking it to
+% open a browser on itself.  Suppose we want to browse the class
+% \clsind{Boolean}.
 
-\dothis{Use the keyboard shortcut to browse the class \ct{Boolean}.}
+Второй способ заключается в том, чтобы послать browse сообщение
+классу, попросив при этом открыть результат в браузере.
+Предположим, что мы хотим просмотреть класс Boolean. 
+
+% \dothis{Type \ct{Boolean browse} into a workspace and \menu{do it}.}
+% A browser will open on the Boolean class (\figref{browseBoolean}).
+% There is also a \ind{keyboard shortcut} \short{b} (browse) that you can
+% use in any tool where you find a class name;
+% \index{keyboard shortcut!browse it}
+% select the name and type \short{b}.
+
+\dothis{Наберите \ct{Boolean browse} в рабочей области и \menu{do it}.}
+Браузер откроет класс Boolean (figref{browseBoolean}).
+Есть также горячая клавиша \short{b}(browser), которую можете
+использовать в любом инструменте где вы найдете имя класса; выберите имя и наберите \short{b}. 
+\index{Горячие клавиши!browse it}
+
+
+% \dothis{Use the keyboard shortcut to browse the class \ct{Boolean}.}
+
+\dothis{Используйте горячую клавишу, чтобы просмотреть класс Boolean.}
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{Kernel-objects-boolean}}
-\caption{The browser showing the definition of class Boolean.
+% \caption{The browser showing the definition of class Boolean.
+% \figlabel{browseBoolean}}
+\caption{Браузер отображает содержимое класса Boolean
 \figlabel{browseBoolean}}
 \end{figure}
 
-Notice that when the \ct{Boolean} class is selected but no protocol or method is selected, instead of the source code of a method, we see a \emph{class definition} (\figref{browseBoolean}).
-This is nothing more than an ordinary \st message that is sent to the parent class, asking it to create a subclass.
-Here we see that the class \ct{Object} is being asked to create a subclass named \ct{Boolean} with no instance variables, class variables or ``pool dictionaries'', and to put the class \ct{Boolean} in the \scatind{Kernel-Objects} category.
-% The lower pane shows the \emph{class comment} --- a piece of plain text describing the class.
-If you \click on the \button{?} at the bottom of the class pane, you can see the class \subind{class}{comment} in a dedicated pane (see \figref{classComment}).
+% Notice that when the \ct{Boolean} class is selected but no protocol or
+% method is selected, instead of the source code of a method, we see a
+% \emph{class definition} (\figref{browseBoolean}).
+% This is nothing more than an ordinary \st message that is sent to the parent
+% class, asking it to create a subclass.
+% Here we see that the class \ct{Object} is being asked to create a subclass
+% named \ct{Boolean} with no instance variables, class variables or ``pool
+% dictionaries'', and to put the class \ct{Boolean} in the
+% \scatind{Kernel-Objects} category.
+%% The lower pane shows the \emph{class comment} --- a piece of plain
+%% text describing the class.
+% If you \click on the \button{?} at the bottom of the class pane, you can see
+% the class \subind{class}{comment} in a dedicated pane (see
+% \figref{classComment}).
+
+Заметим, что когда класс \ct{Boolean} класс выбран, а протоколы или
+методы\,---\,нет, то вместо исходного кода метода мы видим
+определение класса (\figref{browseBoolean}). Это не что иное как обычная
+посылка Smalltalk-сообщения родительскому классу с просьбой создать
+подкласс. Здесь мы видим, как  класс \ct{Object} просят создать подкласс
+с именем \ct{Boolean} без переменных экземпляра, переменных класса или
+<<общих словарей>> и поместить класс \ct{Boolean} в категорию
+Kernel-Objects. Если вы кликнете по \button {?} в нижней части второй
+панели (отвечающей за классы), то увидите комментарии к классу в
+специальной области (смотрите \figref{classComment}) 
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{classComment}}
-\caption{The class comment for \ct{Boolean}.
+% \caption{The class comment for \ct{Boolean}.
+\caption{Комментарий класса \ct{Boolean}.
 \figlabel{classComment}}
 \end{figure}
 
-Often, the fastest way to find a class is to search for it by name.  For example, suppose that you are looking for some unknown class that represents dates and times.
+% Often, the fastest way to find a class is to search for it by name.
+% For example, suppose that you are looking for some unknown class that
+% represents dates and times.
 
-\dothis{Put the mouse in the package pane of the browser and type \short{f}, or select \menu{find class \ldots (f)} by \actclick{ing}.  Type ``time'' in the dialog box and accept it.} 
+Часто самый быстрый способ найти класс это искать его по имени.
+Для примера, предположим, что вам нужно найти какой-либо известный
+класс, представляющий даты и время. 
+
+% \dothis{Put the mouse in the package pane of the browser and type
+% \short{f}, or select \menu{find class \ldots (f)} by \actclick{ing}.  Type
+% ``time'' in the dialog box and accept it.} 
+% \noindent
+% You will be presented with a list of classes whose names contain ``time''
+% (see \figref{findit}).  Choose one, say, \ct{Time}, and the browser will
+% show it, along with a class comment that suggests other classes that might
+% be useful.  If you want to browse one of the others, select its name (in any
+% text pane), and type \short{b}.
+% \index{keyboard shortcut!find ...}
+% \index{keyboard shortcut!browse it}
+
+\dothis{Наведите мышь на пакет панель браузера и наберите \short{f}
+или выберите \menu{find class \ldots (f)}.
+Наберите <<time>> в диалоговом окне и accept it.}
 \noindent
-You will be presented with a list of classes whose names contain ``time'' (see \figref{findit}).  Choose one, say, \ct{Time}, and the browser will show it, along with a class comment that suggests other classes that might be useful.  If you want to browse one of the others, select its name (in any text pane), and type \short{b}.
-\index{keyboard shortcut!find ...}
-\index{keyboard shortcut!browse it}
+Вам будет предоставлен список классов, имена которых содержат
+<<time>> (\figref{findit}). Выберите один, скажем, Time и браузер
+покажет его наряду с другими возможными вариантами.
+Если хотите просмотреть другой класс, выберите его имя,
+и наберите \short{b}.
+\index{горячая клавиша!найти...}
+\index{горячая клавиша!browse it}
+ 
 
 \begin{figure}[hbt]
 \centerline{
@@ -1125,14 +1259,24 @@ You will be presented with a list of classes whose names contain ``time'' (see \
 	\hspace{1cm}
 	\includegraphics[width=0.45\textwidth]{TimeClasses}
 }
-\caption{Searching for a class by name.
+% \caption{Searching for a class by name.
+\caption{Поиск классов по имени.
 \figlabel{findit}}
 \end{figure}
 
-Note that if you type the complete (and correctly capitalized) name of a class in the find dialog, the browser will go directly to that class without showing you the list of options.
+% Note that if you type the complete (and correctly capitalized) name of a
+% class in the find dialog, the browser will go directly to that class without
+% showing you the list of options.
+
+Обратите внимание, что если вы наберете полное (и с заглавной буквы)
+имя класса в диалоговом окне, то браузер перейдет непосредственно 
+к этому классу, не показывая вам список вариантов. 
 
 %=================================================================
-\section{Finding methods}
+% \section{Finding methods}
+% \seclabel{quick:methodFinder}
+
+\section{Поиск методов}
 \seclabel{quick:methodFinder}
 
 Sometimes you can guess the name of a method, or at least part of the name of a method, more easily than the name of a class.  For example, if you are interested in the current time, you might expect that there would be a method called ``now'', or containing ``now'' as a substring.   But where might it be?
@@ -1353,4 +1497,4 @@ This chapter has introduced you to the \pharo environment and shown you how to u
 %%% TeX-master: t
 %%% TeX-PDF-mode: t
 %%% ispell-local-dictionary: "english"
-%%% End
+%%% End:
