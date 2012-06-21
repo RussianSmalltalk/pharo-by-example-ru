@@ -1279,87 +1279,250 @@ Kernel-Objects. Если вы кликнете по \button {?} в нижней 
 \section{Поиск методов}
 \seclabel{quick:methodFinder}
 
-Sometimes you can guess the name of a method, or at least part of the name of a method, more easily than the name of a class.  For example, if you are interested in the current time, you might expect that there would be a method called ``now'', or containing ``now'' as a substring.   But where might it be?
-The \emphind{method finder} can help you.
-\seeindex{browser!finding methods}{method, finding}
-\index{method!finding}
+% Sometimes you can guess the name of a method, or at least part of the
+% name of a method, more easily than the name of a class.  For example,
+% if you are interested in the current time, you might expect that there
+% would be a method called ``now'', or containing ``now'' as a substring.
+% But where might it be?
+% The \emphind{method finder} can help you.
+% \seeindex{browser!finding methods}{method, finding}
+% \index{method!finding}
 
-\dothis{Select \menu{World \go Tools ... \go Method finder}.
-Type ``now'' in the top left pane, and \menu{accept} it (or just press the \textsc{return} key).}
-The method finder will display a list of all the method names that contain the substring ``now''.  
-To scroll to \ct{now} itself, move the cursor to the list and type ``\ct{n}''; this trick works in all scrolling windows.  Select ``now'' and the right-hand pane shows you the classes that define a method with this name, as shown in \figref{MethodFinder}.  Selecting any one of them will open a browser on it.
+Иногда вы можете предположить имя метода, или по крайней мере,
+часть имени этого метода, ведь это сделать проще, чем угадать имя
+класса. Например, если вы хотите узнать текущее время, то наверняка
+ожидаете, что метод будет называться <<now>> или содержать в своем
+имени подстроку <<now>>. Как его обнаружить?
+\emphind{Method finder} поможет вам в этом.
+\seeindex{браузер!поиск методов}{метод, поиск}
+\index{метод!поиск}
+
+% \dothis{Select \menu{World \go Tools ... \go Method finder}.
+% Type ``now'' in the top left pane, and \menu{accept} it
+% (or just press the \textsc{return} key).}
+% The method finder will display a list of all the method names
+% that contain the substring ``now''.  
+% To scroll to \ct{now} itself, move the cursor to the list and type ``\ct{n}'';
+%  this trick works in all scrolling windows.  Select ``now'' and the right-hand
+%  pane shows you the classes that define a method with this name,
+% as shown in \figref{MethodFinder}.  Selecting any one of them will
+% open a browser on it.
+
+\dothis{Выберите \menu{World \go Tools ... \go Method finder}.
+Наберите <<now>> в верхней левой панели и выберите \menu{accept}(или нажмите только клавишу \textsc{return}).}
+Method finder покажет список всех имен методов, содержащих подстроку
+<<now>>. Прокрутите его самостоятельно и перетащите курсор на этот
+список и наберите <<n>>; Этот трюк работает во всех прокручиваемых
+окнах. Выберите <<now>>,  и правая сторона панели  покажет все
+классы, которые определяют метод с этим именем, как показано на
+\figref{MethodFinder}. После выбора одного из них браузер
+откроет этот класс. 
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=0.7\textwidth]{methodFinder-now}}
-\caption{The method finder showing all classes defining a method named \ct{now}.
+% \caption{The method finder showing all classes defining a method named
+% \ct{now}.
+\caption{Метод finder показывает все классы, определяющие метод
+с именем <<now>>
 \figlabel{MethodFinder}}
 \end{figure}
 
-At other times you may have a good idea that a method exists, but will have no idea what it might be called.
-The method finder can still help!  For example, suppose that you would like to find a method that turns a string into upper case, for example, it would translate \ct{'eureka'} into \ct{'EUREKA'}.
+% At other times you may have a good idea that a method exists,
+% but will have no idea what it might be called.
+% The method finder can still help!  For example, suppose that you
+% would like to find a method that turns a string into upper case,
+% for example, it would translate \ct{'eureka'} into \ct{'EUREKA'}.
 
-\dothis{Type \ct{'eureka' . 'EUREKA'} into the method finder and press
-  the \textsc{return} key, as shown in
-  \figref{methodFinder-example1}.}
+В других случаях, когда вы предполагаете, что метод существует,
+но не знаете, как он может быть назван, т.е. под каким именем
+его нужно искать\,---\,здесь вновь нам поможет method finder.
+Для примера предположим, что вам нужно найти метод, который
+переводит любую строку в верхний регистр, то есть, например,
+строку \ct{'eureka'} в \ct{'EUREKA'}. 
+
+% \dothis{Type \ct{'eureka' . 'EUREKA'} into the method finder and press
+%  the \textsc{return} key, as shown in
+%  \figref{methodFinder-example1}.}
+% \noindent
+% The method finder will suggest a method that does what you want.
+% \footnote{If a window pops up with a warning about a deprecated method,
+% don't panic --- the method finder is simply trying out all likely candidates,
+% including deprecated methods. Just \click ~\button{Proceed}.}
+
+\dothis{Напечатайте \ct{'eureka' . 'EUREKA'} в окне method finder
+и нажмите клавишу \textsc{return}, как показано на
+\figref{methodFinder-example1}.}
 \noindent
-The method finder will suggest a method that does what you want.\footnote{If a window pops up with a warning about a deprecated method, don't panic --- the method finder is simply trying out all likely candidates, including deprecated methods. Just \click ~\button{Proceed}.}
+Method finder предложит метод, который сможет сделать то,
+что мы хотим.\footnote{Если всплывающее окно предупреждает об
+устаревшем методе\,---\,не паникуйте, просто method finder пытается
+вывести все похожие методы, включая устаревшие.
+Кликнете ~\button{Proceed} для продолжения.} 
 
-An asterisk at the beginning of a line in the right pane of the method finder indicates that this method is the one that was actually used to obtain the requested result. 
-So, the asterisk in front of \ct{String asUppercase} lets us know that the method \mthind{String}{asUppercase} defined on the class \clsind{String} was executed and returned the result we wanted. The methods that do not have an asterisk are just the other methods that have the same name as the ones that returned the expected result. So \cmind{Character}{asUppercase} was not executed on our example, because \ct{'eureka'} is not a \clsind{Character} object.
+% An asterisk at the beginning of a line in the right pane of the method
+% finder indicates that this method is the one that was actually used to
+% obtain the requested result. 
+% So, the asterisk in front of \ct{String asUppercase} lets us know that the
+% method \mthind{String}{asUppercase} defined on the class \clsind{String}
+% was executed and returned the result we wanted. The methods that do not
+% have an asterisk are just the other methods that have the same name as
+% the ones that returned the expected result. So \cmind{Character}
+% {asUppercase} was not executed on our example, because \ct{'eureka'}
+% is not a \clsind{Character} object.
+
+Звездочка в начале строки указывает  на то,  что на правой панели
+method finder показывает тот метод, который действительно
+использовался для достижения требуемого результата. Так, звездочка
+перед String asUppercase сообщает нам, что метод asUppercase,
+определенный в классе String был выполнен и нужный результат
+возвращен. Методы, у которых нет звездочки в начале, просто другие
+методы, у которых такие же имена, как и у тех, которые возвращают
+ожидаемый результат.
+Так, метод \ct{Character>>>asUppercase} не работает на нашем примере,
+потому что 'eureka' не объект класса Character. 
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{MethodFinder-example1}}
-\caption{Finding a method by example.
+% \caption{Finding a method by example.
+\caption{Пример поиска метода
 \figlabel{methodFinder-example1}}
 \end{figure}
 
-You can also use the method finder for methods with arguments; for example, if you are looking for a method that will find the greatest common factor of two integers, you might try \ct{25. 35. 5} as an example.  You can also give the method finder multiple examples to narrow the search space; the help text in the bottom pane explains how.
+% You can also use the method finder for methods with arguments;
+% for example, if you are looking for a method that will find the greatest
+% common factor of two integers, you might try \ct{25. 35. 5} as an
+% example.  You can also give the method finder multiple examples to
+% narrow the search space; the help text in the bottom pane explains how.
+
+Вы можете также использовать method finder и для поиска методов
+с аргументами, например, если захотите найти метод, позволяющий
+отыскать наибольший общий делитель двух чисел, то используйте в
+качестве примера 25. 35. 5. Еще методу finder можно давать не один,
+а несколько примеров для сужения области поиска. Справка на нижней
+панели покажет, как это сделать. 
 
 %=================================================================
-\section{Defining a new method}
+% \section{Defining a new method}
+\section{Определение нового метода}
 
-The advent of \ind{Test Driven Development}\cite{Beck03a} (TDD) has changed the way that we write code.  
-The idea behind TDD is that we write a test that defines the desired behaviour of our code \emph{before} we write the code itself.
-Only then do we write the code that satisfies the test.
-\seeindex{Behavior Driven Development}{Test Driven Development}
-% \orla{describe the technique where we write a test hat ... subsequently we write ...}
+% The advent of \ind{Test Driven Development}\cite{Beck03a} (TDD) has
+% changed the way that we write code.  
+% The idea behind TDD is that we write a test that defines the desired
+% behaviour of our code \emph{before} we write the code itself.
+% Only then do we write the code that satisfies the test.
+% \seeindex{Behavior Driven Development}{Test Driven Development}
+%% \orla{describe the technique where we write a test hat ... subsequently we write ...}
 
-Suppose that our assignment is to write a method that ``says something loudly and with emphasis''.  What exactly could that mean?  What would be a good name for such a method?  How can we make sure  that programmers who may have to maintain our method in the future have an unambiguous description of what it should do?   We can answer all of these questions by giving an example:
+Появление \ind{Test Driven Development}\footnote{Kent Beck, Test Driven
+Development: By Example. Addison--Wesley, 2003, ISBN 0-321-14653-0.}
+(TDD, Разработка через тестирование) изменило путь написания кода.
+Идея TDD заключается в том, что мы пишем тест, который определит
+поведение нашего кода  до написания самого кода. Только после этого
+мы пишем код, которому удовлетворяет наш тест.
+\seeindex{Behavior Driven Development}{Test Driven Development} 
+
+% Suppose that our assignment is to write a method that ``says something
+% loudly and with emphasis''.  What exactly could that mean?  What would
+% be a good name for such a method?  How can we make sure  that
+% programmers who may have to maintain our method in the future have
+% an unambiguous description of what it should do?   We can answer all of
+% these questions by giving an example:
+
+Предположим, что нам нужно написать метод, который
+<<says something loudly and with emphasis>> (<<говорит о чем-то
+громко и с выражением>>). Что бы это значило? Какое подходящее
+название можно дать этому методу? Как мы можем быть уверенными,
+что программисты, которые будут поддерживать наш метод в будущем,
+будут иметь однозначно описание того, для чего он создан? Мы можем
+ответить на все эти вопросы, например: 
+
+% \begin{quote}
+% When we send the message \ct{shout} to the string ``Don't panic''
+% the result should be ``DON'T PANIC!''.
+% \end{quote}
 
 \begin{quote}
-When we send the message \ct{shout} to the string ``Don't panic'' the result should be ``DON'T PANIC!''.
+Когда мы посылаем сообщение shout строке ''Don't panic'', результат
+должен быть "DON'T PANIC!". 
 \end{quote}
 
-\noindent
-To make this example into something that the system can use, we turn it into a test method:
-\index{testing}
-\index{SUnit}
+% \noindent
+% To make this example into something that the system can use,
+% we turn it into a test method:
+% \index{testing}
+% \index{SUnit}
 
+\noindent
+Теперь чтобы превратить этот пример во что-то, понятное системе, мы обратимся к тестовому методу:
+\index{тестирование}
+\index{SUnit}
+ 
 \needlines{3}
 \begin{method}[testShout]{A test for a shout method}
 testShout
 	self assert: ('Don''t panic' shout = 'DON''T PANICBANG')
 \end{method} % BANG is the escape for !
 
-How do we create a new method in \pharo?   First, we have to decide which class the method should belong to.
-In this case, the \ct{shout} method that we are testing will go in class \clsind{String}, so the corresponding test will, by convention, go in a class called \clsind{StringTest}.
+% How do we create a new method in \pharo?   First, we have to decide
+% which class the method should belong to.
+% In this case, the \ct{shout} method that we are testing will go in class
+% \clsind{String}, so the corresponding test will, by convention, go in a class
+% called \clsind{StringTest}.
+
+Как мы создаем новый метод в Pharo? Во-первых, мы должны решить,
+какому классу будет принадлежать метод shout. В этом случае метод
+\ct{shout} мы будем тестировать в классе \clsind{String}, следовательно,
+следуя соглашению, соответствующий тест будет входить в класс с
+названием \clsind{StringTest}. 
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{StringTest-newMethodTemplate}}
-\caption{The new method template in class \ct{StringTest}.
+% \caption{The new method template in class \ct{StringTest}.
+\caption{Новый шаблон метода в классе \ct{StringTest}
 \figlabel{newMethodTemplate}}
 \end{figure}
 
-\dothis{Open a browser on the class \ct{StringTest}, and select an appropriate protocol for our method, in this case \menu{tests - converting}, as shown in \figref{newMethodTemplate}.
-The highlighted text in the bottom pane is a template that reminds you what a \st method looks like.
-Delete this and enter the code from  \mthref{testShout}.}
-Once you have typed the text into the browser, notice that the bottom pane is outlined in red.  This is a reminder that the pane contains unsaved changes.
-So select \menu{accept (s)} by \actclick{ing} in the bottom pane, or just type \short{s}, to compile and save your method.
-\index{keyboard shortcuts}
-\index{keyboard shortcut!accept}
-\seeindex{accept it}{keyboard shortcut, accept}
+% \dothis{Open a browser on the class \ct{StringTest}, and select an
+%  appropriate protocol for our method, in this case \menu{tests -
+% converting}, as shown in \figref{newMethodTemplate}.
+% The highlighted text in the bottom pane is a template that reminds you
+% what a \st method looks like.
+% Delete this and enter the code from  \mthref{testShout}.}
+% Once you have typed the text into the browser, notice that the bottom
+% pane is outlined in red.  This is a reminder that the pane contains unsaved
+% changes.
+% So select \menu{accept (s)} by \actclick{ing} in the bottom pane,
+% or just type \short{s}, to compile and save your method.
+% \index{keyboard shortcuts}
+% \index{keyboard shortcut!accept}
+% \seeindex{accept it}{keyboard shortcut, accept}
 
-If this is the first time you have accepted any code in your image, you will likely be prompted to enter your name. Since many people have contributed code to the image, it is important to keep track of everyone who creates or modifies methods. Simply enter your first and last names, without any spaces, or separated by a dot.
+\dothis{Откройте браузер для класса \ct{StringTest} и выберите
+соответствующий протокол для нашего метода, в этом
+случае\,---\,\menu{tests-converting}, как показано на
+\figref{newMthodTemplate}. Подчеркнутый текст в нижней
+панели\,---\,шаблон метода  напоминает нам, как выглядит метод
+\st-а. Удалите там всё и поместите туда код из метода \mthref{testShout}.}
+После ввода текста в браузер, вы заметите что нижняя панель подсвечена
+красным. Это означает, что она содержит несохраненные изменения.
+Так выберите \menu{accept (s)} действием-кликом на нижней панели
+или просо наберите  \short{s}, чтобы скомпилировать
+и сохранить ваш метод.
+\index{горячая клавиша}
+\index{горячая клавиша!accept}
+\seeindex{accept it}{горячая клавиша, accept} 
+
+% If this is the first time you have accepted any code in your image,
+% you will likely be prompted to enter your name. Since many people have
+% contributed code to the image, it is important to keep track of everyone
+% who creates or modifies methods. Simply enter your first and last names,
+% without any spaces, or separated by a dot.
+
+Если это первый раз, когда вы ввели какие-либо изменения в этом коде,
+то скорее всего вам будет предложено ввести свое имя.  Так как много
+людей поддерживают код, то становится важным следить за всеми, кто
+создает или изменяет методы. Просто введите ваши имя и фамилию без
+пробелов и разделителей (точек). 
 
 %\begin{figure}[hbt]
 %\centerline {\includegraphics[width=0.35\textwidth]{initials}}
@@ -1367,50 +1530,93 @@ If this is the first time you have accepted any code in your image, you will lik
 %\figlabel{initials}}
 %\end{figure}
 
-Because there is as yet no method called \ct{shout}, the browser will ask you to confirm that this is the name that you really want\,---\,and it will suggest some other names that you might have intended (\figref{testShoutConfirm}).
-This can be quite useful if you have merely made a typing mistake, but in this case, we really \emph{do} mean \ct{shout}, since that is the method we are about to create, so we have to confirm this by selecting the first option from the menu of choices, as shown in \figref{testShoutConfirm}. 
+% Because there is as yet no method called \ct{shout}, the browser will ask
+% you to confirm that this is the name that you really want\,---\,and it will
+% suggest some other names that you might have intended
+% (\figref{testShoutConfirm}).
+% This can be quite useful if you have merely made a typing mistake,
+% but in this case, we really \emph{do} mean \ct{shout}, since that is the
+% method we are about to create, so we have to confirm this by selecting the
+% first option from the menu of choices, as shown in
+% \figref{testShoutConfirm}. 
+
+Так как до сих пор не было метода \ct{shout}, то браузер попросит вас
+подтвердить это имя, что действительно вы имели в виду именно такое
+написание имени. И предложит несколько других имен,  которые вы
+могли подразумевать (\figref{testShoutConfirm}). Это может быть
+полезно, если в имени у вас закралась опечатка, но в данном случае это
+не так\,---\,мы действительно хотим создать метод \ct{shout}, поэтому
+подтвердите, выбрав первую опцию из меню выбора,
+как на \figref{testShoutConfirm}. 
 
 
-%\begin{figure}[htb]
-%\begin{minipage}[b]{0.48\textwidth}
-%\centerline {\includegraphics[width=0.9\textwidth]{name}}
-%\caption{Entering your name.\figlabel{name}}
-%\end{minipage}
-%\hfill
-%\begin{minipage}[b]{0.48\textwidth}
-%\centerline {\includegraphics[width=\textwidth]{testShoutConfirm}}
-%\caption{Accepting the \ct{StringTest} method \ct{testShout}.\figlabel{testShoutConfirm}}
-%\end{minipage}
-%\end{figure}
+%%\begin{figure}[htb]
+%%\begin{minipage}[b]{0.48\textwidth}
+%%\centerline {\includegraphics[width=0.9\textwidth]{name}}
+%%\caption{Entering your name.\figlabel{name}}
+%%\end{minipage}
+%%\hfill
+%%\begin{minipage}[b]{0.48\textwidth}
+%%\centerline {\includegraphics[width=\textwidth]{testShoutConfirm}}
+%%\caption{Accepting the \ct{StringTest} method \ct{testShout}.
+%%\figlabel{testShoutConfirm}}
+%%\end{minipage}
+%%\end{figure}
 
 \begin{figure}[htb]
 \centerline {\includegraphics[width=0.6\textwidth]{name}}
-\caption{Entering your name.\figlabel{name}}
+% \caption{Entering your name.\figlabel{name}}
+\caption{Ввод вашего имени. \figlabel{name}}
 \end{figure}
 
 \begin{figure}[htb]
 \centerline {\includegraphics[width=\textwidth]{testShoutConfirm}}
-\caption{Accepting the \ct{StringTest} method \ct{testShout}.\figlabel{testShoutConfirm}}
+% \caption{Accepting the \ct{StringTest} method \ct{testShout}.
+% \figlabel{testShoutConfirm}}
+\caption{Выполнение метода \ct{StringTest>>>testShout}
+\figlabel{testShoutConfirm}}
 \end{figure}
 
 
-%\begin{figure}[hbt]
-%\ifluluelse
-%	{\centerline {\includegraphics[width=\textwidth]{testShoutConfirm}}}
-%	{\centerline {\includegraphics[width=0.7\textwidth]{testShoutConfirm}}}
-%\caption{Accepting the \ct{StringTest} method \ct{testShout}.
-%\figlabel{testShoutConfirm}}
-%\end{figure}
+% %\begin{figure}[hbt]
+% %\ifluluelse
+% %	{\centerline {\includegraphics[width=\textwidth]
+% % {testShoutConfirm}}}
+% %{\centerline {\includegraphics[width=0.7\textwidth]{testShoutConfirm}}}
+% %\caption{Accepting the \ct{StringTest} method \ct{testShout}.
+% %\figlabel{testShoutConfirm}}
+% %\end{figure}
 
-\dothis{Run your newly created test: open the \ind{SUnit} \emphind{TestRunner} from the \menu{World} menu.}
+% \dothis{Run your newly created test: open the \ind{SUnit}
+% \emphind{TestRunner} from the \menu{World} menu.}
 
-The leftmost two panes are a bit like the top panes in the browser.  The left pane contains a list of categories, but it's restricted to those categories that contain test classes.
+\dothis{Запустите ваш новый созданный тест: откройте \ind{SUnit}
+\emphind{TestRunner} из меню \menu{World}.}
 
-\dothis{Select \scat{CollectionsTests-Text} and the pane to the right will show all of the test classes in that category, which includes the class \ct{StringTest}.  The names of the classes are already selected, so \click \menu{Run Selected} to run all these tests.}
+% The leftmost two panes are a bit like the top panes in the browser.
+% The left pane contains a list of categories, but it's restricted to those
+% categories that contain test classes.
+
+Левые две панели немного похожи на верхние панели в браузере.
+Левая панель содержит список категорий, в который входят только
+те (категории), которые содержат тестовые классы. 
+
+% \dothis{Select \scat{CollectionsTests-Text} and the pane to the right will
+% show all of the test classes in that category, which includes the class
+% \ct{StringTest}.  The names of the classes are already selected, so \click
+% \menu{Run Selected} to run all these tests.}
+
+\dothis{Выберите \scat{CollectionsTests-Text} и панель справа покажет
+вам все тестовые классы, которые содержит данная категория.
+Здесь есть класс \ct{StringTest}. Имена классов уже выбраны,
+поэтому просто кликнете \menu{Run Selected} для запуска
+всех этих тестов.}
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{testRunnerOnStringTest}}
-\caption{Running the String tests.
+% \caption{Running the String tests.
+% \figlabel{testRunnerTestShout}}
+\caption{Выполнение тестов String
 \figlabel{testRunnerTestShout}}
 \end{figure}
 
