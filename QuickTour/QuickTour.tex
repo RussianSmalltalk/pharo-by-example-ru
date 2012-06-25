@@ -1620,42 +1620,110 @@ testShout
 \figlabel{testRunnerTestShout}}
 \end{figure}
 
-You should see a message like that shown in \figref{testRunnerTestShout}, which indicates that there was an error in running the tests.  The list of tests that gave rise to errors is shown in the bottom right pane; as you can see, \ct{StringTest>>>#testShout} is the culprit.
-(Note that \ct{StringTest>>#testShout} is the Smalltalk way of identifying the \mthind{StringTest}{testShout} method of the \ct{StringTest} class.)
-If you \click on that line of text, the erroneous test will run again, this time in such a way that you see the error happen: ``\ct{MessageNotUnderstood: ByteString>>>shout}''.
-\seeindex{\ct{>>}}{Behavior, \ct{>>}}
+% You should see a message like that shown in \figref{testRunnerTestShout},
+% which indicates that there was an error in running the tests.  The list of
+% tests that gave rise to errors is shown in the bottom right pane; as you
+% can see, \ct{StringTest>>>#testShout} is the culprit.
+% (Note that \ct{StringTest>>#testShout} is the Smalltalk way of identifying
+% the \mthind{StringTest}{testShout} method of the \ct{StringTest} class.)
+% If you \click on that line of text, the erroneous test will run again,
+% this time in such a way that you see the error happen:
+% ``\ct{MessageNotUnderstood: ByteString>>>shout}''.
+% \seeindex{\ct{>>}}{Behavior, \ct{>>}}
+% \cmindex{Behavior}{>>}
+
+Вы должны увидеть сообщение, подобное тому, что показано на
+\figref{testRunnerTestShout}, которое указывает на наличие ошибки
+при запуске тестов. Список тестов, который привел к её появлению,
+отображается в нижней правой части окна; как вы видите,
+\ct{StringTest>>>#testShout} виновен в этом (Заметим, что
+\ct{StringTest>>>#testShout} позволяет выявить метод testShout
+в классе StringTest). Если вы нажмете на эту строчку текста,
+то тест с ошибкой выполниться снова, но на этот раз  вы увидите
+появление ошибки сообщением:
+<<\ct{MessageNotUnderstood: ByteString>>>shout}>>.
+\seeindex{\ct{>>}}{Bahavior, \ct{>>}}
 \cmindex{Behavior}{>>}
 
-The window that opens with the error message is the \st debugger (see \figref{predebugger}).
-% \ab{Well, it's actually the \emph{pre-}debugger.  Does this matter?}\damien{I don't think it's important at this point.}
-We will look at the \ind{debugger} and how to use it in \charef{env}.
+% The window that opens with the error message is the \st debugger
+% (see \figref{predebugger}).
+%% \ab{Well, it's actually the \emph{pre-}debugger.  Does this
+%% matter?}\damien{I don't think it's important at this point.}
+% We will look at the \ind{debugger} and how to use it in \charef{env}.
+
+Открывшееся окно с сообщением об ошибке\,---\,это Smalltalk отладчик
+(Smalltalk debugger) (\figref{predebugger}). Дальнейшее подробное
+изучение отладчика продолжиться в \charef{env}. 
 
 \begin{figure}[hbt]
 \centerline {\includegraphics[width=\textwidth]{Predebugger}}
-\caption{The (pre-)debugger.}
+% \caption{The (pre-)debugger.}
+\caption{Предварительный отладчик}
 \figlabel{predebugger}
 \end{figure}
 
-The error is, of course, exactly what we expected:  running the test generates an error because we haven't yet written a method that tells strings how to \ct{shout}.  
-Nevertheless, it's good practice to make sure that the test fails because this confirms that we have set up the testing machinery correctly and that the new test is actually being run.
-Once you have seen the error, you can \button{Abandon} the running test, which will close the debugger window.
-Note that often with Smalltalk you can define the missing method using the \button{Create} button, edit the newly-created method in the debugger, and then \button{Proceed} with the test.
+% The error is, of course, exactly what we expected:  running the test
+% generates an error because we haven't yet written a method that tells
+% strings how to \ct{shout}.  
+% Nevertheless, it's good practice to make sure that the test fails because this
+% confirms that we have set up the testing machinery correctly and that
+% the new test is actually being run.
+% Once you have seen the error, you can \button{Abandon} the running test,
+% which will close the debugger window.
+%Note that often with Smalltalk you can define the missing method using
+% the \button{Create} button, edit the newly-created method in the debugger,
+% and then \button{Proceed} with the test.
 
-Now let's define the method that will make the test succeed!
+Конечно, эту ошибку мы ожидали, потому что еще не существует метода,
+позволяющего обработать данную стоку, то есть нет метода, который
+говорит как shout. 
+Тем не менее, это хорошая практика, чтобы убедиться, что тест не
+пройден, и потому это подтверждает, что мы правильно настроили
+машину тестирования. Как только вы увидели ошибку, вы можете нажать
+кнопку \button{Abandon} (Остановить), то есть  остановить запущенный
+тест, которая закроет окно отладчика. Заметим, что вы можете
+определить со \st отсутствующие методы, используя кнопку
+\button{Create}, редактировать вновь созданный метод в отладчике,
+а затем нажать \button{Proceed}, то есть выполнить с тестом. 
 
-\dothis{Select class \clsind{String} in the browser, select the \menu{converting} protocol, type the text in \mthref{shout} over the method creation template, and \menu{accept} it.
-(Note: to get a \mbox{\ct{^}}, type \caret). }
-\begin{method}[shout]{The shout method}
+% Now let's define the method that will make the test succeed!
+
+Теперь давайте определим метод, который скажет, что тест пройден!
+
+% \dothis{Select class \clsind{String} in the browser, select the
+% \menu{converting} protocol, type the text in \mthref{shout} over the
+% method creation template, and \menu{accept} it.
+% (Note: to get a \mbox{\ct{^}}, type \caret). }
+
+\dothis{Выберите класс \clsind{String} в браузере, выберите
+\menu{converting} протокол, наберите текст \mthref{shout}
+после метода создания шаблона и \menu{accept it} (Замечание: чтобы
+получить \mbox{\ct{^}}, наберите \caret).}
+
+% \begin{method}[shout]{The shout method}
+\begin{method}[shout]{Метод shout}
 shout
 	^ self asUppercase, 'BANG'
 \end{method}
 
-The comma is the string concatenation operation, so the body of this method appends an exclamation mark to an upper-case version of whatever \ct{String} object the \ct{shout} message was sent to.
-The $\uparrow$ tells \pharo that the expression that follows is the answer to be returned from the method, in this case the new concatenated string.
-\seeindex{comma}{Collection, comma operator}
-\index{Collection!comma operator}
+% The comma is the string concatenation operation, so the body of this
+% method appends an exclamation mark to an upper-case version of
+% whatever \ct{String} object the \ct{shout} message was sent to.
+% The $\uparrow$ tells \pharo that the expression that follows is the answer
+% to be returned from the method, in this case the new concatenated string.
+% \seeindex{comma}{Collection, comma operator}
+% \index{Collection!comma operator}
 
-Does this method work?  Let's run the tests and see.
+Запятая\,---\,это операция для связи строк, поэтому к телу этого метода
+добавлен восклицательный знак, означающий верхний регистр всех
+объектов String, которым было послано сообщение shout.  \ct{^} говорит
+\pharo, что выражение, которое последует это на самом деле ответ,
+который возвращается из метода, в этом случае это новая
+присоединенная строка. 
+
+% Does this method work?  Let's run the tests and see.
+
+Работает этот метод? Давайте проверим это, запустив тесты.
 
 \dothis{Click on \menu{Run Selected} again in the test runner, and this time you should see a green bar and text indicating that all of the tests ran with no failures and no errors.}
 When you get to a green bar\footnotemark, it's a good idea to save your work and take a break.  
@@ -1665,28 +1733,89 @@ So do that right now!
 %\pharo is constantly evolving.
 %}
 
+\dothis{Нажмите на \menu{Run Selected} снова в test runner и на этот раз
+вы увидите зеленую полоску и текст о том, что все тесты запустились
+без сбоев и ошибок.}
+Когда вы дойдете до зеленой полоски /достигнете зеленую полоску/,
+то хорошо бы сохранить свою работу и пойти на перерыв.
+Так что сделайте это прямо сейчас! 
+
 \begin{figure}[hbt]
 \ifluluelse
 	{\centerline{\includegraphics[width=\textwidth]{String-Shout}}}
 	{\centerline{\includegraphics[width=0.7\textwidth]{String-Shout}}}
-\caption{The \ct{shout} method defined on class \ct{String}.
+% \caption{The \ct{shout} method defined on class \ct{String}.
+\caption{Метод \ct{shout}, определенный в классе \ct{String}.
 \figlabel{String-shout}}
 \end{figure}
 
 %=================================================================
-\section{Chapter summary}
-This chapter has introduced you to the \pharo environment and shown you how to use some of the major tools, such as the browser, the method finder, and the test runner.   You have also seen a little of \pharo's syntax, even though you may not understand it all yet.
+% \section{Chapter summary}
+\section{Заключение}
+
+% This chapter has introduced you to the \pharo environment and shown you
+% how to use some of the major tools, such as the browser, the method
+% finder, and the test runner.   You have also seen a little of \pharo's syntax,
+% even though you may not understand it all yet.
+
+Эта глава познакомила вас со средой разработки \pharo и
+продемонстрировала возможности таких инструментов, как браузер,
+метод finder, и test runner. Так же вы увидели небольшой фрагмент
+синтаксиса \pharo, но далеко не полностью смогли его понять. 
 
 \begin{itemize}
-  \item A running \pharo system consists of a \emph{virtual machine}, a \emph{sources} file, and \emph{image} and \emph{changes} files. Only these last two change, as they record a snapshot of the running system.
-  \item When you restore a \pharo image, you will find yourself in exactly the same state\,---\,with the same running objects\,---\,that you had when you last saved that image.
-  \item \pharo is designed to work with a three-button mouse to \click, \actclick or \metaclick.  If you don't have a three-button mouse, you can use modifier keys to obtain the same effect.
-  \item You \click on the \pharo background to bring up the \emph{World menu} and launch various tools.
-  \item A \emph{workspace} is a tool for writing and evaluating snippets of code. You can also use it to store arbitrary text.
-  \item You can use \ind{keyboard shortcuts} on text in the workspace, or any other tool, to evaluate code. The most important of these are \menu{do it} (\short{d}), \menu{print it} (\short{p}), \menu{inspect it} (\short{i}), \menu{explore it} (\short{I}) and \menu{browse it} (\short{b}).
-%  \item \sqmap is a tool for loading useful packages from the Internet.
-  \item The \emph{browser} is the main tool for browsing \pharo code, and for developing new code.
-  \item The \emph{test runner} is a tool for running unit tests. It also supports Test Driven Development.
+%  \item A running \pharo system consists of a \emph{virtual machine},
+%a \emph{sources} file, and \emph{image} and \emph{changes} files.
+% Only these last two change, as they record a snapshot of the
+% running system.
+\item \pharo-система состоит из виртуальной машины, исходных файлов
+и \emph{image} и \emph{change} файлов.
+
+%  \item When you restore a \pharo image, you will find yourself in exactly
+% the same state\,---\,with the same running objects\,---\,that you had
+% when you last saved that image.
+\item При восстановлении image файла, вы обнаружите все те созданные
+вами при последнем сохранении объекты находятся в том же состоянии.
+
+% \item \pharo is designed to work with a three-button mouse to \click,
+% \actclick or \metaclick.  If you don't have a three-button mouse, you can
+% use modifier keys to obtain the same effect.
+\item Pharo предназначен для работы с тремя кнопками мыши: клик,
+действие-клик или мета-клик. Если у вас нет мыши с тремя кнопками,
+то можно использовать клавиши-модификаторы для получения
+того же эффекта.
+
+%  \item You \click on the \pharo background to bring up the
+% \emph{World menu} and launch various tools.
+\item Кликнете по фону \pharo и вы запустите \emph{World-меню}
+и другие различные настройки.
+
+%  \item A \emph{workspace} is a tool for writing and evaluating snippets
+% of code. You can also use it to store arbitrary text.
+\item Рабочее пространство\,---\,это инструмент для написания и оценки
+/вычисления/ фрагментов кода. Так же его можно использовать для
+хранения произвольного текста.
+
+%  \item You can use \ind{keyboard shortcuts} on text in the workspace,
+% or any other tool, to evaluate code. The most important of these are
+% \menu{do it} (\short{d}), \menu{print it} (\short{p}), \menu{inspect it}
+% (\short{i}), \menu{explore it} (\short{I}) and \menu{browse it}
+% (\short{b}).
+%%  \item \sqmap is a tool for loading useful packages from the Internet.
+Для оценки кода вы можете использовать горячие клавиши. Вот наиболее
+важные из них: \menu{do it} (\short{d}), \menu{print it} (\short{p}),
+\menu{inspect it} (\short{i}), \menu{explore it} (\short{I}) и
+\menu{browse it} (\short{b})
+
+% \item The \emph{browser} is the main tool for browsing \pharo code,
+% and for developing new code.
+\item Браузер является основным инструментом для просмотра кода,
+а также для написания нового.
+
+% \item The \emph{test runner} is a tool for running unit tests.
+% It also supports Test Driven Development.
+\item Runner tester\,---\,инструмент для выполнения модульных тестов.
+Он также поддерживает TDD.
 \end{itemize}
 
 %=================================================================
