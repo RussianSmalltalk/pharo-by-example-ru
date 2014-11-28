@@ -37,117 +37,182 @@
 	\frontmatter
 \fi
 %=================================================================
-\chapter{Preface}\chalabel{intro}
-
+%\chapter{Preface}\chalabel{intro}
+\chapter{Предисловие}\chalabel{intro}
 %=================================================================
-\section*{What is \pharo?}
+%\section*{What is \pharo?}
+\section*{Что такое \pharo?}
 
-\pharo is a modern, open source, fully-featured implementation of the \st programming language and environment. \pharo is derived from \squeak\cite{Inga97a}, a re-implementation of the classic \st-80 system. Whereas \squeak was developed mainly as a platform for developing experimental educational software, \pharo strives to offer a lean, open-source platform for professional software development, and a robust and stable platform for research and development into dynamic languages and environments. \pharo serves as the reference implementation for the Seaside web development framework.
+%\pharo is a modern, open source, fully-featured implementation of the \st programming language and environment. \pharo is derived from \squeak\cite{Inga97a}, a re-implementation of the classic \st-80 system. Whereas \squeak was developed mainly as a platform for developing experimental educational software, \pharo strives to offer a lean, open-source platform for professional software development, and a robust and stable platform for research and development into dynamic languages and environments. \pharo serves as the reference implementation for the Seaside web development framework.
 
-\pharo resolves some licensing issues with \squeak. Unlike previous versions of \squeak, the \pharo core contains only code that has been contributed under the MIT license. The \pharo project started in March 2008 as a fork of \squeak 3.9, and the first 1.0 beta version was released on July 31, 2009.
+\pharo это современная полнофункциональная реализация языка программирования \st и среды разработки на нем с открытым исходным кодом. \pharo произошел от \squeak\cite{Inga97a}, повторной реализации классической системы \st-80. Если \squeak был разработан преимущественно в качестве платформы для разработки эксперементальных образовательных программ, то \pharo, напротив, стремится предложить небольшую, стабильную и надежную платформу с открытым исходным кодом как для профессиональной разработки программного обеспечения, так и для исследований и разработок в динамических языках и средах. Также \pharo служит эталонной реализацией фреймворка Seaside, применяемого для веб разработки.
 
-Although \pharo removes many packages from \squeak, it also includes numerous features that are optional in \squeak. For example, true type fonts are bundled into \pharo. \pharo also includes support for true block closures. The user interfaces has been simplified and revised.
+%\pharo resolves some licensing issues with \squeak. Unlike previous versions of \squeak, the \pharo core contains only code that has been contributed under the MIT license. The \pharo project started in March 2008 as a fork of \squeak 3.9, and the first 1.0 beta version was released on July 31, 2009.
 
-\pharo is highly portable --- even its virtual machine is written entirely in \st, making it easy to debug, analyze, and change. \pharo is the vehicle for a wide range of innovative projects from multimedia applications and educational platforms to commercial web development environments. 
+\pharo решает определенные вопросы лицензирования \squeak. В отличие от предыдущих версий \squeak, ядро \pharo содержит только код, внесенный под лицензией MIT. Проект \pharo начался в марте 2008 года как ответвление от \squeak 3.9, и первая бета-версия 1.0 была выпущена 31 июля 2009 года.
 
-There is an important aspect behind \pharo: \pharo should not just be a copy of the past but really \emph{reinvent} Smalltalk. Big-bang approaches rarely succeed. \pharo will really favor evolutionary and incremental changes. We want to be able to experiment with important new features or libraries. Evolution means that \pharo accepts mistakes and is not aiming for the next perfect solution in one big step\,---\,even if we would love it. \pharo will favor small incremental changes but a multitude of them. The success of \pharo depends on the contributions of its community.
+%Although \pharo removes many packages from \squeak, it also includes numerous features that are optional in \squeak. For example, true type fonts are bundled into \pharo. \pharo also includes support for true block closures. The user interfaces has been simplified and revised.
+
+Несмотря на то, что при разработке \pharo многие модули из \squeak были удалены, тем не менее в него включены многие функции, опциональные для \squeak. К примеру, шрифты True Type встроены в \pharo. \pharo также включает поддержку полнофункциональных блоковых замыканий. Пользовательский интерфейс был упрощен и усовершенствован.
+
+%\pharo is highly portable --- even its virtual machine is written entirely in \st, making it easy to debug, analyze,  and change. \pharo is the vehicle for a wide range of innovative projects from multimedia applications and educational platforms to commercial web development environments. 
+
+\pharo свободно переносим --- даже его виртуальная машина полностью написана на языке \st, что упрощает отладку, анализ и изменения. \pharo это инструмент для широкого диапазона инновационных разработок, от мультимедиа-приложений и образовательных программ до коммерческих веб-программных сред. 
+
+%There is an important aspect behind \pharo: \pharo should not just be a copy of the past but really \emph{reinvent} Smalltalk. Big-bang approaches rarely succeed. \pharo will really favor evolutionary and incremental changes. We want to be able to experiment with important new features or libraries. Evolution means that \pharo accepts mistakes and is not aiming for the next perfect solution in one big step\,---\,even if we would love it. \pharo will favor small incremental changes but a multitude of them. The success of \pharo depends on the contributions of its community.
+
+Есть важная особенность: \pharo не просто копия, а полностью новая реализация \st. Подход к реализации всего и сразу не всегда приводит к успеху. Эволюционные и пошаговые изменения\,---\, это основное преимущество \pharo. Желательно иметь возможность эксперементировать по получению новых важных характеристик и библиотек. Постепенное преобразование \pharo не направлено на получение нового идеального решения за один раз, что было бы крайне желательно, и ошибки приемлемы. Важны не сами небольшие пошаговые изменения в \pharo, а их большое количество. От вклада единомышленников \pharo зависит его успех.
 % The \pharo community will pay attention to your submissions to improve the system.
-
 %=================================================================
-\section*{Who should read this book?}
+%\section*{Who should read this book?}
+\section*{Для кого эта книга?}
 
-This book is based on \emph{Squeak by Example}\footnote{\sbe}, an open-source introduction to \squeak.
-The book has been liberally adapted and revised to reflect the differences between \pharo and \squeak.
-This book presents the various aspects of \pharo, starting with the basics, and proceeding to more advanced topics.
+%This book is based on \emph{Squeak by Example}\footnote{\sbe}, an open-source introduction to \squeak.
+%The book has been liberally adapted and revised to reflect the differences between \pharo and \squeak.
+%This book presents the various aspects of \pharo, starting with the basics, and proceeding to more advanced topics.
 
-This book will not teach you how to program. The reader should have some familiarity with programming languages. Some background with object-oriented programming would be helpful.
+За основу этой книги взята публикация \emph{Squeak by Example}\footnote{\sbe}, являющаяся вводным курсом в \squeak и всем доступная для редактирования. Данная книга была существенно переделана и пересмотрена с целью выделения различий между \pharo и \squeak. В ней представлены различные аспекты программирования в \pharo, начиная с основ и продолжая более сложными вопросами.
 
-This book will introduce the \pharo programming environment, the language and the associated tools.  You will be exposed to common idioms and practices, but the focus is on the technology, not on object-oriented design. Wherever possible, we will show you lots of examples. (We have been inspired by Alec Sharp's excellent book on Smalltalk\cite{Shar97a}.)
+%This book will not teach you how to program. The reader should have some familiarity with programming languages. Some background with object-oriented programming would be helpful.
+
+Обучение программированию в книге не предусмотрено. Читатель должен иметь определенные знания языков программирования. Будет полезным опыт в объектно-ориентированном программировании.
+
+%This book will introduce the \pharo programming environment, the language and the associated tools.  You will be exposed to common idioms and practices, but the focus is on the technology, not on object-oriented design. Wherever possible, we will show you lots of examples. (We have been inspired by Alec Sharp's excellent book on Smalltalk\cite{Shar97a}.)
+%\index{Sharp, Alex}
+
+Книга знакомит вас со средой программирования \pharo, с языком и соответсвующими инструментальными средствами. Будут раскрыты общепринятые идиомы и практики, однако внимание будет обращаться на технику, а не на объектно-ориентированный дизайн. Там где возможно, будут приводиться многочисленные примеры. ( Книга Алека Шарпа о \st стала для нас источником вдохновения \cite{Shar97a}.)
 \index{Sharp, Alex}
 
-There are numerous other books on \st freely available on the web but none of these focuses specifically on \pharo. See for example:
+%There are numerous other books on \st freely available on the web but none of these focuses specifically on \pharo. See for example:
+%\url{http://stephane.ducasse.free.fr/FreeBooks.html}
+
+В сети можно найти много других книг о \st, однако ни одна из них не выделяет отдельной темой \pharo. Как пример:
 \url{http://stephane.ducasse.free.fr/FreeBooks.html}
 
 \ifluluelse{}{\newpage} % layout hint
 %=================================================================
-\section*{A word of advice}
+%\section*{A word of advice}
+\section*{Небольшой совет}
 
 % http://www.surfscranton.com/architecture/KnightsPrinciples.htm
 
-Do not be frustrated by parts of \st that you do not immediately understand.
-You do not have to know everything!
-Alan Knight expresses this principle as follows\footnote{\url{http://www.surfscranton.com/architecture/KnightsPrinciples.htm}}:
+%Do not be frustrated by parts of \st that you do not immediately understand.
+Не следует отчаиваться, если некоторые места в \st будут вначале непонятны.
+%You do not have to know everything!
+Вы не можете знать все!
+%Alan Knight expresses this principle as follows\footnote{\url{http://www.surfscranton.com/architecture/KnightsPrinciples.htm}}:
+%\index{Knight, Alan}
+Алан Найт говорит об этом так\footnote{\url{http://www.surfscranton.com/architecture/KnightsPrinciples.htm}}:
 \index{Knight, Alan}
-\important{{\bf Try not to care.}
-Beginning \st programmers often have trouble because they think they need to understand all the details of how a thing works before they can use it. This means it takes quite a while before they can master \ct{Transcript show: 'Hello World'}. One of the great leaps in OO is to be able to answer the question ``How does this work?'' with ``I don't care''.}
+%\important{{\bf Try not to care.}
+%Beginning \st programmers often have trouble because they think they need to understand all the details of how a thing works before they can use it. This means it takes quite a while before they can master \ct{Transcript show: 'Hello World'}. One of the great leaps in OO is to be able to answer the question ``How does this work?'' with ``I don't care''.}
+
+\important{{\bf Не стоит об этом много думать.}
+Приступая к применению, начинающие смолтокеры часто переживают от незнания того, как это работает. Таким образом уходит много времени на освавивание \ct{Transcript show: 'Hello World'}. Умение не задумываться о деталях работы будет новым уровнем познания ООП.}
 
 %=================================================================
-\section*{An open book}
+%\section*{An open book}
+\section*{Книга с открытым доступом}
 
-This book is an open book in the following senses: 
+%This book is an open book in the following senses: 
+
+Книга со открытым доступом подразумевает:
 
 \begin{itemize}
 
-\item	The content of this book is released under the Creative Commons Attribution-ShareAlike (by-sa) license.
-		In short, you are allowed to freely share and adapt this book, as long as you respect the conditions of the license available at the following URL: 
-		\url{http://creativecommons.org/licenses/by-sa/3.0/}.
+%\item	The content of this book is released under the Creative Commons Attribution-ShareAlike (by-sa) license. In short, you are allowed to freely share and adapt this book, as long as you respect the conditions of the license available at the following URL:\url{http://creativecommons.org/licenses/by-sa/3.0/}.
 
-\item	This book just describes the core of \pharo.
-		Ideally we would like to encourage others to contribute chapters
-		on the parts of \pharo that we have not described.
-		If you would like to participate in this effort, please
-		contact us.  We would like to see this book grow!
+\item	Содержание этой книги соответствует требованиям лицензии Creative Commons Attribution-ShareAlike (by-sa) на выход в свет.
+		Это значит, что вы можете свободно ее распостранять и видоизменять, соблюдая условия лицензии по следующей ссылке: \url{http://creativecommons.org/licenses/by-sa/3.0/}.
+
+%\item	This book just describes the core of \pharo. Ideally we would like to encourage others to contribute chapters on the parts of \pharo that we have not described. If you would like to participate in this effort, please contact us.  We would like to see this book grow!
+	
+\item	В ней представлено только лишь описание ядра \pharo.
+		В идеале, мы хотели бы поощрить других к написанию и внесению разделов о неописаных частях \pharo.
+		Если вы хотите внести свой вклад, просьба обращаться к нам. Пусть книга становится обьемнее!
 \end{itemize}
 
-For more details, visit \pbe.
+%For more details, visit \pbe.
+Подробности смотрите на сайте \pbe.
 
 %=================================================================
-\section*{The \pharo community}
+%\section*{The \pharo community}
+\section*{Сообщество \pharo}
 
-The \pharo community is friendly and active.
-Here is a short list of resources that you may find useful:
+%The \pharo community is friendly and active.
+%Here is a short list of resources that you may find useful:
+
+Наше сообщество доброжелательно и деятельно.
+Вот список ресурсов, которые вам могут пригодиться:
 
 \begin{itemize}
-\item \url{http://www.pharo-project.org} is the main web site of \pharo.
+%\item \url{http://www.pharo-project.org} is the main web site of \pharo.]
+
+\item Основной веб-сайт \pharo: \url{http://www.pharo-project.org}.
 %environment built on top of \pharo but whose audience is elementary
 %school teachers.) % I remove this [Martial: french contributor]
 
-\item \url{http://www.squeaksource.com} is the equivalent of SourceForge for \pharo projects.
-Many optional packages for \pharo live here.
+%\item \url{http://www.squeaksource.com} is the equivalent of SourceForge for \pharo projects.
+%Many optional packages for \pharo live here.
+
+\item Эквивалент SourceForge для проектов в \pharo: \url{http://www.squeaksource.com}.
+Здесь находится значительное количество опциональных модулей для \pharo.
 \end{itemize}
 
 %=================================================================
-\section*{Examples and exercises}
+%\section*{Examples and exercises}
+\section*{Примеры и упражнения}
 
-We make use of two special conventions in this book.
+%We make use of two special conventions in this book.
+В книге приняты два вида условных обозначений.
 
-We have tried to provide as many examples as possible.
-In particular, there are many examples that show a fragment of code which can be evaluated.  We use the symbol \ct{-->} to indicate the result that you obtain when you select an expression and \menu{print it}:
+%We have tried to provide as many examples as possible.
+Мы старались привести как можно больше примеров.
+
+%In particular, there are many examples that show a fragment of code which can be evaluated.  We use the symbol \ct{-->} to indicate the result that you obtain when you select an expression and \menu{print it}:
+
+В частности, много примеров выполения фрагментов кода. Символ\,\ct{-->} указывает на результат, получаемый выделением выражения и выполнением команды \menu{print it}:
 
 \begin{code}{@TEST}
-3 + 4 --> 7    "if you select 3+4 and 'print it', you will see 7"
+3 + 4 --> 7    "если выделить 3+4 и выполнить 'print it', результатом будет 7"
 \end{code}
 
-In case you want to play in \pharo with these code snippets, you can download a plain text file with all the example code from the book's web site: \pbe.
+%In case you want to play in \pharo with these code snippets, you can download a plain text file with all the example code from the book's web site: \pbe.
 
-The second convention that we use is to display the icon \dothisicon{} to indicate when there is something for you to do:
+В случае желания испытать участки кода в \pharo, вы можете скачать файл с неформатированым текстом, содержащим все примеры кода, с сайта книги: \pbe.
 
-\dothis{Go ahead and read the next chapter!}
+%The second convention that we use is to display the icon \dothisicon{} to indicate when there is something for you to do:
+
+Иконкой \dothisicon{}, вторым видом используемого условного обозначения, указывается необходимость выполнения действия:
+
+%\dothis{Go ahead and read the next chapter!}
+\dothis{Перейдите к следующему разделу!}
 
 %=================================================================
-\section*{Acknowledgments}
+%\section*{Acknowledgments}
+\section*{Признательность}
 
-We would first like to thank the original developers of \squeak for making this amazing \st development environment available as an open source project.
+%We would first like to thank the original developers of \squeak for making this amazing \st development environment available as an open source project.
+
+В первую очередь мы признательны разработчикам \squeak за создание такой восхитительной среды программирования со свободным доступом как \st .
 
 % We would like to thank various people who have contributed to this book.
 % In particular, we thank
-We would also like to thank Hilaire Fernandes and Serge Stinckwich who allowed us to translate parts of their columns on \st, and Damien Cassou for contributing the chapter on streams.
+%We would also like to thank Hilaire Fernandes and Serge Stinckwich who allowed us to translate parts of their columns on \st, and Damien Cassou for contributing the chapter on streams.
 
-We especially thank Alexandre Bergel, Orla Greevy, Fabrizio Perin, Lukas Renggli, Jorge Ressia and Erwann Wernli for their detailed reviews.
+Также мы выражаем благодарность Хилари Фернандес и Серджу Стинквич, позволившие перевести части их статей о \st, и Дамьену Кассу за вклад в главу о потоках.
 
-We thank the University of Bern, Switzerland, for graciously supporting this open-source project and for hosting the web site of this book.
+%We especially thank Alexandre Bergel, Orla Greevy, Fabrizio Perin, Lukas Renggli, Jorge Ressia and Erwann Wernli for their detailed reviews.
 
-We also thank the Squeak community for their enthusiastic support of this book project, and for informing us of the errors found in the first edition of this book.
+Особенная благодарность Александрэ Бергель, Орла Гриви, Фабриццио Пера, Лукасу Ренггли, Джорджу Рессиа и Эрвану Вернли за их детальные рецензии.
+
+%We thank the University of Bern, Switzerland, for graciously supporting this open-source project and for hosting the web site of this book.
+
+Мы благодарим Университет Берна, Швейцария, за любезно предоставленную поддержку данного проекта с открытым исходным кодом и за предоставление хостинга для веб-сайта данной книги.
+
+%We also thank the Squeak community for their enthusiastic support of this book project, and for informing us of the errors found in the first edition of this book.
+
+Мы также благодарим сообщество Squeak за их воодушевленную поддержку проекта данной книги и за уведомление об ошибках найденных в первом ее издании.
 
 %=============================================================
 \ifx\wholebook\relax\else
